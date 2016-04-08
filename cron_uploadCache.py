@@ -40,9 +40,9 @@ for cache_file in os.listdir(base['cache_path']):
         # Load file as object
         with open(base['cache_path'] + cache_file) as infile:
             jsonObj = json.load(infile)
-        table_name = jsonObj['table_name']
+        table_name = jsonObj["table_name"]
         # Build SQL query
-        strQuery = 'INSERT INTO ' + table_name + ' ('
+        strQuery = "INSERT INTO " + table_name + " ("
         for key in jsonObj:
             if not (key == 'table_name'):
                 strQuery = strQuery + key + ','

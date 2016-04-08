@@ -1,0 +1,25 @@
+2016-04-08 16:31:17,652 - colector.mgtVpn - INFO - mgtVpn.py loaded.
+2016-04-08 16:31:17,652 - colector.cache - INFO - cache.py loaded.
+2016-04-08 16:31:17,652 - colector.cache - INFO - Base confuguration loaded.
+2016-04-08 16:31:17,652 - colector.hostCheck - INFO - hostCheck.py loaded.
+2016-04-08 16:31:17,653 - colector.process - INFO - process.py loaded.
+2016-04-08 16:31:17,653 - cron_checkVpnStatus - INFO - cron_checkVpnStatus.py loaded.
+2016-04-08 16:31:17,653 - cron_checkVpnStatus - INFO - Base confuguration loaded.
+2016-04-08 16:31:17,653 - cron_checkVpnStatus - INFO - Credentials loaded.
+2016-04-08 16:31:17,664 - colector.process - INFO - Process /var/DashboardSL/array_vpn/array_vpnc64 running on PID#10726
+2016-04-08 16:31:17,664 - cron_checkVpnStatus - INFO - Management VPN already running (PID#10726)
+2016-04-08 16:31:17,718 - colector.hostCheck - INFO - api.service.softlayer.com reachable.
+2016-04-08 16:31:17,718 - cron_checkVpnStatus - INFO - SoftLayer private API endpoint is REACHABLE
+2016-04-08 16:31:17,718 - cron_checkVpnStatus - INFO - Writing cache file...
+2016-04-08 16:31:17,718 - colector.cache - INFO - Dumped to cache: mgtVpn_status.20160408_163117.json
+2016-04-08 16:31:17,719 - cron_checkVpnStatus - INFO - cron_checkVpnStatus.py FINISHED.
+2016-04-08 16:31:39,361 - cron_uploadCache - INFO - cron_uploadCache.py started.
+2016-04-08 16:31:39,367 - cron_uploadCache - INFO - Connected to remote MySQL SLPortal on 192.168.10.49:3306
+2016-04-08 16:31:39,368 - cron_uploadCache - INFO - Contents of mgtVpn_status.20160408_163117.json sent to remte DB and deleted from local disk.
+2016-04-08 16:31:39,369 - cron_uploadCache - INFO - Changes committed to remote DB
+2016-04-08 16:32:01,069 - cron_uploadCache - INFO - cron_uploadCache.py started.
+2016-04-08 16:32:01,069 - cron_uploadCache - INFO - No job to do. Exiting...
+2016-04-08 16:33:01,113 - cron_uploadCache - INFO - cron_uploadCache.py started.
+2016-04-08 16:33:01,113 - cron_uploadCache - INFO - No job to do. Exiting...
+2016-04-08 16:34:01,159 - cron_uploadCache - INFO - cron_uploadCache.py started.
+2016-04-08 16:34:01,160 - cron_uploadCache - INFO - No job to do. Exiting...

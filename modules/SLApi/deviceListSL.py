@@ -84,6 +84,8 @@ def updateDeviceListFromSL(config):
 
     #Update local list
     if (not inError):
+        logger.debug("Compare data...")
+        
         #Verifica se jah existe o arquivo de configuracoes para a conta, senao existe entao irah criar um novo
         if (os.path.exists(devicesFile)):
             with open(devicesFile) as infile:

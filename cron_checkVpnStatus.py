@@ -1,24 +1,28 @@
-##
-##   SETUP:
-##   Create a crontab entry like: 
-##   0,5,10,15,20,25,30,35,40,45,50,55 * * * * `cd /var/DashboardSL && python cron_checkVpnStatus.py`
+# SETUP:
+# Create a crontab entry like:
+# 0,5,10,15,20,25,30,35,40,45,50,55 * * * * `cd /var/DashboardSL && python cron_checkVpnStatus.py`
 
-### PRE WORK ###
+# PRE WORK
+import json
+import os
+import sys
+import time
+
+import colector.cache.cache as cache
 import colector.log.syslog
-import colector.mgtVpn as mgtVpn
-import colector.cache as cache
-import colector.hostCheck as hostCheck
-import colector.process as process
-import json, os, sys, re, time
+import colector.tools.hostCheck as hostCheck
+import colector.tools.process as process
+import colector.vpn.mgtVpn as mgtVpn
+
 baseFile = "config/base.json"
 credentialsFile = "config/credentials.json"
 
-#Logger
+# Logger
 logger = colector.log.syslog.getLogger("cron_checkVpnStatus")
 logger.info('cron_checkVpnStatus.py loaded.')
 
-#Load base configuration
-if (os.path.exists(baseFile)):
+# Load base configuration
+if os.path.exists(baseFile):
     with open(baseFile) as infile:
         base = json.load(infile)
     logger.info('Base confuguration loaded.')
@@ -26,8 +30,8 @@ else:
     logger.error('Not able to retrieve config/base.json')
     sys.exit()
 
-#Load credentials
-if (os.path.exists(credentialsFile)):
+# Load credentials
+if os.path.exists(credentialsFile):
     with open(credentialsFile) as infile:
         credentials = json.load(infile)
     logger.info('Credentials loaded.')
@@ -35,7 +39,7 @@ else:
     logger.error('Not able to retrieve config/credentials.json')
     sys.exit()
 
-#Vars
+# Vars
 table_name = 'mgtVpn_status'
 results_dict = {}
 vpn_endpoint = base['vpn_endpoint']
@@ -45,9 +49,9 @@ cache_path = base['cache_path']
 mgtVpn_status = 0
 pvtApiEndp_status = 0
 
-### MAIN CODE ###
+# MAIN CODE
 PID = process.getPid(array_vpn_path)
-if (PID == "0"):
+if PID == "0":
     logger.info('Management VPN not running (no array_vpnc64 process found). Calling colector.mgtVpn.start...')
     mgtVpn.start(credentials['account_vpnID'], credentials['account_vpnPassword'], vpn_endpoint, array_vpn_path)
     # Sleep for 5s before continuing with link verification
@@ -56,11 +60,11 @@ else:
     mgtVpn_status = 1
     logger.info('Management VPN already running (PID#' + PID + ')')
 
-#Check connectivity to api endpoint
+# Check connectivity to api endpoint
 pingResult = hostCheck.ping(pvtApi_endpoint)
-if (pingResult == 0):
+if pingResult == 0:
     logger.info('SoftLayer private API endpoint is REACHABLE')
-    pvtApiEndp_status = 1 
+    pvtApiEndp_status = 1
 else:
     logger.error('SoftLayer private API endpoint is UNREACHABLE. Will restart management VPN and try one more time')
     mgtVpn.stop()
@@ -68,15 +72,15 @@ else:
     mgtVpn.start(credentials['account_vpnID'], credentials['account_vpnPassword'], vpn_endpoint, array_vpn_path)
     time.sleep(4)
     pingResult = hostCheck.ping(pvtApi_endpoint)
-    if (pingResult == 0):
-	logger.info('SoftLayer private API endpoint is now REACHABLE')
-	mgtVpn_status = 1
-	pvtApiEndp_status = 1
+    if pingResult == 0:
+        logger.info('SoftLayer private API endpoint is now REACHABLE')
+        mgtVpn_status = 1
+        pvtApiEndp_status = 1
     else:
-	logger.error('SoftLayer private API endpoint is really UNREACHABLE')
+        logger.error('SoftLayer private API endpoint is really UNREACHABLE')
 
 
-#Build results dictionary
+# Build results dictionary
 # {
 #   "account_id":"fixed, read from config/base.json",
 #   "mgtVpn_status":"1/0",
@@ -92,7 +96,7 @@ results_dict['pvtApiEndp_status'] = pvtApiEndp_status
 results_dict['table_name'] = table_name
 results_dict['timestamp'] = time.strftime('%Y-%m-%d %H:%M:%S')
 
-#Write pingResult and timestamp to json for uploading. e.g. cache/mgtVpn_201604051749.json
+# Write pingResult and timestamp to json for uploading. e.g. cache/mgtVpn_201604051749.json
 logger.info('Writing cache file...')
 cache.dump(results_dict)
 

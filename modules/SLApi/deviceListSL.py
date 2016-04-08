@@ -1,8 +1,8 @@
-'''
+"""
 Created on Mar 31, 2016
 
 @author: jpmenega
-'''
+"""
 import requests
 import json
 import os.path
@@ -11,6 +11,7 @@ import modules.log.syslog as syslog
 logger = syslog.getLogger(__name__)
 
 devicesFile = 'data/devices.json'
+
 
 def updateDeviceListFromSL(config):
     USER = config['USER']

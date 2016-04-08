@@ -1,5 +1,5 @@
 import pymysql, json, os, sys
-import colector.log.syslog
+import modules.log.syslog
 
 # Vars
 baseConfig = "config/base.json"
@@ -7,7 +7,7 @@ conn = None
 cursor = None
 
 # Logger
-logger = colector.log.syslog.getLogger("cron_uploadCache")
+logger = modules.log.syslog.getLogger("cron_uploadCache")
 logger.info('cron_uploadCache.py started.')
 
 # Load base configuration

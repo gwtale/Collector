@@ -1,11 +1,11 @@
 import os
-import colector.log.syslog
+import modules.log.syslog
 
 # Vars
 vpnConfig = "config/credentials.json"
 
 # Logger
-logger = colector.log.syslog.getLogger(__name__)
+logger = modules.log.syslog.getLogger(__name__)
 logger.info('mgtVpn.py loaded.')
 
 

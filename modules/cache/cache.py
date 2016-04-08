@@ -1,11 +1,11 @@
 import json, os, sys, re
-import colector.log.syslog
+import modules.log.syslog
 
 # Vars
 baseFile = "config/base.json"
 
 # Logger
-logger = colector.log.syslog.getLogger(__name__)
+logger = modules.log.syslog.getLogger(__name__)
 logger.info('cache.py loaded.')
 
 # Load base configuration

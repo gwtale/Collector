@@ -1,11 +1,11 @@
 import pymysql, json, os, sys
-import colector.log.syslog
+import modules.log.syslog
 
 # Vars
 dbConfig = "config/base.json"
 
 # Logger
-logger = colector.log.syslog.getLogger("cron_retrieveVpnServiceConfig")
+logger = modules.log.syslog.getLogger("cron_retrieveVpnServiceConfig")
 logger.info('cron_retrieveVpnServiceConfig.py started.')
 
 # Load base configuration

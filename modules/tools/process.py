@@ -1,8 +1,8 @@
 import subprocess, re
-import colector.log.syslog
+import modules.log.syslog
 
 # Logger
-logger = colector.log.syslog.getLogger(__name__)
+logger = modules.log.syslog.getLogger(__name__)
 logger.info('process.py loaded.')
 
 

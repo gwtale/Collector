@@ -1,8 +1,8 @@
 import os
-import colector.log.syslog
+import modules.log.syslog
 
 # Logger
-logger = colector.log.syslog.getLogger(__name__)
+logger = modules.log.syslog.getLogger(__name__)
 logger.info('hostCheck.py loaded.')
 
 

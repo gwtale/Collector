@@ -8,17 +8,17 @@ import os
 import sys
 import time
 
-import colector.cache.cache as cache
-import colector.log.syslog
-import colector.tools.hostCheck as hostCheck
-import colector.tools.process as process
-import colector.vpn.mgtVpn as mgtVpn
+import modules.cache.cache as cache
+import modules.log.syslog
+import modules.tools.hostCheck as hostCheck
+import modules.tools.process as process
+import modules.vpn.mgtVpn as mgtVpn
 
 baseFile = "config/base.json"
 credentialsFile = "config/credentials.json"
 
 # Logger
-logger = colector.log.syslog.getLogger("cron_checkVpnStatus")
+logger = modules.log.syslog.getLogger("cron_checkVpnStatus")
 logger.info('cron_checkVpnStatus.py loaded.')
 
 # Load base configuration
@@ -52,7 +52,7 @@ pvtApiEndp_status = 0
 # MAIN CODE
 PID = process.getPid(array_vpn_path)
 if PID == "0":
-    logger.info('Management VPN not running (no array_vpnc64 process found). Calling colector.mgtVpn.start...')
+    logger.info('Management VPN not running (no array_vpnc64 process found). Calling modules.mgtVpn.start...')
     mgtVpn.start(credentials['account_vpnID'], credentials['account_vpnPassword'], vpn_endpoint, array_vpn_path)
     # Sleep for 5s before continuing with link verification
     time.sleep(5)

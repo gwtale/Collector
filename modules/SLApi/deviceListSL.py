@@ -6,9 +6,9 @@ Created on Mar 31, 2016
 import requests
 import json
 import os.path
-import colector.log.syslog
+import modules.log.syslog as syslog
 
-logger = colector.log.syslog.getLogger(__name__)
+logger = syslog.getLogger(__name__)
 
 devicesFile = 'data/devices.json'
 

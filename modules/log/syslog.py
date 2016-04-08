@@ -6,7 +6,7 @@ Created on Mar 31, 2016
 import logging
 
 def getLogger(module):
-    #logging.basicConfig(filename='log/modules.log', level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    #logging.basicConfig(filename='log/colector.log', level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
     #logger = logging.getLogger(module)
 
     logger = logging.getLogger(module)
@@ -15,7 +15,7 @@ def getLogger(module):
     formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
     #File Handler
-    fh = logging.FileHandler('log/modules.log')
+    fh = logging.FileHandler('log/colector.log')
     fh.setLevel(logging.INFO)
     fh.setFormatter(formatter)
     logger.addHandler(fh)

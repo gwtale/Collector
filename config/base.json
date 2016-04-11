@@ -1,5 +1,10 @@
 {
 	"sherlockIp":"192.168.10.49",
+    "dbServerIp":"192.168.10.49",
+    "dbPort":"3306",
+    "dbId":"cloudbr",
+    "dbPass":"dqm@50vnc",
+    "db":"SLPortal",
     "scp_ssh_id":"cloudbr",
 	"account_id":"18",
 	"comment":"account_id is a column on table customer_accounts on DB SLPortal",

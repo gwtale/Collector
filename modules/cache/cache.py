@@ -19,14 +19,18 @@ else:
 
 
 def dump(input_dict):
+    cache_path = base['cache_path']
+    strDate = input_dict['timestamp']
+    strDate = re.sub('[-:]', '', strDate)
+    strDate = re.sub(' ', '_', strDate)
+    filename = input_dict['table_name'] + "." + strDate + ".json"
+    full_path = cache_path + filename
+    out_file = open(full_path, "w")
     try:
-        cache_path = base['cache_path']
-        strDate = input_dict['timestamp']
-        strDate = re.sub('[-:]', '', strDate)
-        strDate = re.sub(' ', '_', strDate)
-        filename = input_dict['table_name'] + "." + strDate + ".json"
-        full_path = cache_path + filename
-        out_file = open(full_path, "w")
+        os.stat(base['cache_path'])
+    except:
+        os.mkdir(base['cache_path'])
+    try:
         json.dump(input_dict, out_file, indent=4)
         out_file.close()
         logger.info('Dumped to cache: ' + filename)

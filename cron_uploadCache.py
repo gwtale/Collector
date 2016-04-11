@@ -2,7 +2,7 @@ import pymysql, sys
 from os import path, listdir, remove
 from json import load
 import modules.log.syslog
-import modules.tools.scpWrapper as scp
+import modules.tools.scpWrapper as scpWrapper
 
 # Vars
 baseConfig = "config/base.json"
@@ -32,10 +32,11 @@ if cachedCount == 0:
 for cache_file in listdir(base['cache_path']):
     try:
         # scp to Sherlock
-        scp.send(cache_file)
+        result = scpWrapper.send(cache_file)
         # Delete uploaded file
-        remove(base['cache_path'] + cache_file)
-        logger.info('Cache file uploaded and deleted from local cache: {0}'.format(str(cache_file)))
+        if result is True:
+            remove(base['cache_path'] + cache_file)
+            logger.info('Cache file uploaded and deleted from local cache: {0}'.format(str(cache_file)))
     except Exception as detail:
         logger.error('Not able to upload cache file {0}. Error message: {1}'.format(str(cache_file), str(detail)))
 

@@ -1,7 +1,6 @@
 import modules.log.syslog
 import os, sys, json
-from paramiko import SSHClient
-from scp import SCPClient
+import paramiko
 
 # Vars
 baseConfig = "config/base.json"
@@ -21,21 +20,26 @@ else:
 
 # Load base configuration
 def send(fileToSend, remotePath=None, remoteFileName=None):
+    if remotePath is None:
+        remotePath = base['sherlockCachePath']
+    if remoteFileName is None:
+        remoteFileName = ""
+
+    # Vars
+    ssh = paramiko.SSHClient()
+    localFilePath = base['cache_path'] + str(fileToSend)
+    remoteFilePath = remotePath + remoteFileName
+    host = base['sherlockIp']
+
     try:
-        if remotePath is None:
-            remotePath = base['sherlockCachePath']
-        if remoteFileName is None:
-            remoteFileName = remotePath
-        else:
-            remoteFileName = remotePath + remoteFileName
-        localFilePath = base['cache_path'] + str(fileToSend)
+        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+        ssh.connect(host, username=base['scp_ssh_id'], password=base['scp_ssh_pwd'])
+        # Copy remote file to server
+        sftp = ssh.open_sftp()
+        sftp.put(localFilePath, remoteFilePath)
+        sftp.close()
+        ssh.close()
 
-        ssh = SSHClient()
-        ssh.load_system_host_keys()
-        ssh.connect(base['sherlockIp'])
-
-        with SCPClient(ssh.get_transport()) as scp:
-            scp.put(localFilePath, remoteFileName)
         return True
     except Exception as detail:
         logger.error('Error sending file: ' + str(detail))

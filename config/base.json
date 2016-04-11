@@ -6,6 +6,7 @@
     "dbPass":"dqm@50vnc",
     "db":"SLPortal",
     "scp_ssh_id":"cloudbr",
+    "scp_ssh_pwd":"dqm@50vnc",
 	"account_id":"18",
 	"comment":"account_id is a column on table customer_accounts on DB SLPortal",
 	"cache_path":"cache/",

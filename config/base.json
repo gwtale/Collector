@@ -1,12 +1,10 @@
 {
-	"dbServerIp":"192.168.10.49",
-	"dbPort":"3306",
-	"dbId":"cloudbr",
-	"dbPass":"dqm@50vnc",
-	"db":"SLPortal",
+	"sherlockIp":"192.168.10.49",
+    "scp_ssh_id":"cloudbr",
 	"account_id":"18",
 	"comment":"account_id is a column on table customer_accounts on DB SLPortal",
 	"cache_path":"cache/",
+	"sherlockCachePath":"/var/Sherlock/cache/",
 	"vpn_endpoint":"vpn.dal07.softlayer.com",
 	"pvtApi_endpoint":"api.service.softlayer.com",
 	"array_vpn_path":"/var/DashboardSL/array_vpn/array_vpnc64"

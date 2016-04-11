@@ -1,5 +1,6 @@
 import pymysql, json, os, sys
 import modules.log.syslog
+import modules.tools.scp as scp
 
 # Vars
 baseConfig = "config/base.json"
@@ -23,45 +24,16 @@ cachedCount = len([name for name in os.listdir(base['cache_path'])])
 if cachedCount == 0:
     logger.info('No job to do. Exiting...')
     sys.exit()
-# There is work, so connect to DB and start
-try:
-    conn = pymysql.connect(host=base["dbServerIp"], port=int(base["dbPort"]), user=base["dbId"], passwd=base["dbPass"],
-                           db=base["db"], cursorclass=pymysql.cursors.DictCursor)
-    cursor = conn.cursor()
-    logger.info('Connected to remote MySQL '+str(base["db"])+' on '+str(base["dbServerIp"])+':'+str(base["dbPort"]))
-except Exception as detail:
-    logger.error('Not able to connect to '+str(base["db"])+' on '+str(base["dbServerIp"])+':'+str(base["dbPort"]) +
-                 '. Error message: '+str(detail))
 
-
+# There is work
 # Loop through EACH cached file
 for cache_file in os.listdir(base['cache_path']):
     try:
-        # Load file as object
-        with open(base['cache_path'] + cache_file) as infile:
-            jsonObj = json.load(infile)
-        table_name = jsonObj["table_name"]
-        # Build SQL query
-        strQuery = "INSERT INTO " + table_name + " ("
-        for key in jsonObj:
-            if not (key == 'table_name'):
-                strQuery = strQuery + key + ','
-        strQuery = strQuery[:-1]
-        strQuery += ') VALUES ('
-        for key, value in jsonObj.items():
-            if not (key == 'table_name'):
-                strQuery = strQuery + "'" + str(value) + "',"
-        strQuery = strQuery[:-1]
-        strQuery += ')'
-        # Dump all fields into DB
-        cursor.execute(strQuery)
-        # If success, delete file
+        # scp to Sherlock
+        scp.send(cache_file)
+        # Delete uploaded file
         os.remove(base['cache_path'] + cache_file)
-        logger.info('Contents of ' + str(cache_file) + ' sent to remte DB and deleted from local disk.')
+        logger.info('Cache file uploaded and deleted from local cache: {0}'.format(str(cache_file)))
     except Exception as detail:
-        logger.error('Not able to upload cache file. Error message: ' + str(detail))
+        logger.error('Not able to upload cache file {0}. Error message: {1}'.format(str(cache_file), str(detail)))
 
-# Close DB connection
-conn.commit()
-logger.info('Changes committed to remote DB')
-conn.close()

@@ -81,14 +81,6 @@ else:
 
 
 # Build results dictionary
-# {
-#   "account_id":"fixed, read from config/base.json",
-#   "mgtVpn_status":"1/0",
-#   "mgtVpn_error":"not implemented",
-#   "pvtApiEndp_status":"1/0";
-#   "timestamp":"<timestamp>"
-# }
-
 results_dict['account_id'] = int(base['account_id'])
 results_dict['mgtVpn_status'] = mgtVpn_status
 results_dict['mgtVpn_error'] = 'not implemented'

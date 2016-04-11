@@ -1,4 +1,4 @@
-import os
+from os import system
 import modules.log.syslog
 
 # Logger
@@ -8,7 +8,7 @@ logger.info('hostCheck.py loaded.')
 
 def ping(address):
     try:
-        response = os.system("ping -c 1 -w2 " + address + " > /dev/null 2>&1")
+        response = system("ping -c 1 -w2 " + address + " > /dev/null 2>&1")
         if response == 0:
             logger.info(address + ' reachable.')
             return 0

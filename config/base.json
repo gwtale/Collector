@@ -13,5 +13,5 @@
 	"sherlockCachePath":"/var/Sherlock/cache/",
 	"vpn_endpoint":"vpn.dal07.softlayer.com",
 	"pvtApi_endpoint":"api.service.softlayer.com",
-	"array_vpn_path":"/var/DashboardSL/array_vpn/array_vpnc64"
+	"array_vpn_path":"/var/Collector/array_vpn/array_vpnc64"
 }

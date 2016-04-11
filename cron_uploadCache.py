@@ -2,7 +2,7 @@ import pymysql, sys
 from os import path, listdir, remove
 from json import load
 import modules.log.syslog
-import modules.tools.scp as scp
+import modules.tools.scpWrapper as scp
 
 # Vars
 baseConfig = "config/base.json"

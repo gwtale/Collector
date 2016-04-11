@@ -1,12 +1,14 @@
 import modules.log.syslog
 import os, sys, json
+from paramiko import SSHClient
+from scp import SCPClient
 
 # Vars
 baseConfig = "config/base.json"
 
 # Logger
 logger = modules.log.syslog.getLogger(__name__)
-logger.info('scp.py loaded.')
+logger.info('scpWrapper.py loaded.')
 
 # Load base configuration
 if os.path.exists(baseConfig):
@@ -27,7 +29,13 @@ def send(fileToSend, remotePath=None, remoteFileName=None):
         else:
             remoteFileName = remotePath + remoteFileName
         localFilePath = base['cache_path'] + str(fileToSend)
-        os.system("scp " + localFilePath + " " + base['scp_ssh_id'] + "@" + base['sherlockIp'] + ":" + remoteFileName)
+
+        ssh = SSHClient()
+        ssh.load_system_host_keys()
+        ssh.connect(base['sherlockIp'])
+
+        with SCPClient(ssh.get_transport()) as scp:
+            scp.put(localFilePath, remoteFileName)
         return True
     except Exception as detail:
         logger.error('Error sending file: ' + str(detail))

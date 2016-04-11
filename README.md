@@ -8,7 +8,9 @@
     * * * * * `cd /var/Collector && python cron_uploadCache.py`
 
 #2 - Install dependencies:
-    # apt install python-paramiko
+    # yum/apt install python-pip
+    # pip install python-paramiko
+    # pip install scp
 
 #3 - Exchange SSH keys with server running Sherlock project
     NOTE: the same instructiosn below are also in README.md on Sherlock. Please remember to update both.

@@ -7,7 +7,10 @@
     0,5,10,15,20,25,30,35,40,45,50,55 * * * * `cd /var/Collector && python cron_checkVpnStatus.py`
     * * * * * `cd /var/Collector && python cron_uploadCache.py`
 
-#2 - Exchange SSH keys with server running Sherlock project
+#2 - Install dependencies:
+    # apt install python-paramiko
+
+#3 - Exchange SSH keys with server running Sherlock project
     NOTE: the same instructiosn below are also in README.md on Sherlock. Please remember to update both.
 
     If there is already 1 collector node deployed, replicate the file [collector]/home/cloudbr/.ssh/id_rsa to

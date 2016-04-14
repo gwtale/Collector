@@ -48,6 +48,7 @@ array_vpn_path = base['array_vpn_path']
 cache_path = base['cache_path']
 mgtVpn_status = 0
 pvtApiEndp_status = 0
+mgtVpn_error = ""
 
 # MAIN CODE
 PID = process.getPid(array_vpn_path)
@@ -64,7 +65,10 @@ else:
 pingResult = hostCheck.ping(pvtApi_endpoint)
 if pingResult == 0:
     logger.info('SoftLayer private API endpoint is REACHABLE')
+    mgtVpn_status = 1
     pvtApiEndp_status = 1
+    mgtVpn_error = "VPN and API endpoint OK"  # Will be shown in the web interface as "Message" field on a
+    # table control.
 else:
     logger.error('SoftLayer private API endpoint is UNREACHABLE. Will restart management VPN and try one more time')
     mgtVpn.stop()
@@ -76,14 +80,18 @@ else:
         logger.info('SoftLayer private API endpoint is now REACHABLE')
         mgtVpn_status = 1
         pvtApiEndp_status = 1
+        mgtVpn_error = "VPN and API endpoint OK"  # Will be shown in the web interface as "Message" field on a
+        # table control.
     else:
         logger.error('SoftLayer private API endpoint is really UNREACHABLE')
-
+        mgtVpn_status = 0
+        pvtApiEndp_status = 0
+        mgtVpn_error = "Account with ID #" + str(base['account_id']) + " is offline"
 
 # Build results dictionary
 results_dict['account_id'] = int(base['account_id'])
 results_dict['mgtVpn_status'] = mgtVpn_status
-results_dict['mgtVpn_error'] = 'not implemented'
+results_dict['mgtVpn_error'] = mgtVpn_error
 results_dict['pvtApiEndp_status'] = pvtApiEndp_status
 results_dict['table_name'] = table_name
 results_dict['timestamp'] = time.strftime('%Y-%m-%d %H:%M:%S')

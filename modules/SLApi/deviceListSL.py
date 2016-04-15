@@ -41,11 +41,12 @@ def updateDeviceListFromSL(config):
             isIdera = False
             softwareComponents = hardwareSL['softwareComponents']
             for softwareComponent in softwareComponents:
-                if ('passwords' in softwareComponent):
-                    for user in softwareComponent['passwords']:
-                        username = user['username']
-                        password = user['password']
-                        logger.debug("* "+hardwareSL['fullyQualifiedDomainName']+" "+username+" "+password)
+                #if ('passwords' in softwareComponent):
+                #    for user in softwareComponent['passwords']:
+                #        username = user['username']
+                #        password = user['password']
+                #        logger.debug("* "+hardwareSL['fullyQualifiedDomainName']+" "+username+" "+password)
+                #        logger.debug("* "+softwareComponent['softwareLicense']['softwareDescription']['longDescription'])
                 if ('softwareLicense' in softwareComponent and softwareComponent['softwareLicense']['softwareDescription']['manufacturer'] == 'Idera'):
                     isIdera = True
                     break
@@ -57,14 +58,14 @@ def updateDeviceListFromSL(config):
             
             
             if (len(hardwareSL['operatingSystem']['passwords'])==0):
-                username = ""
-                password = ""
-                logger.debug(hardwareSL['fullyQualifiedDomainName'])
+                users = []
             else:
                 for user in hardwareSL['operatingSystem']['passwords']:
                     username = user['username']
                     password = user['password']
-                    logger.debug(hardwareSL['fullyQualifiedDomainName']+" "+username+" "+password)
+                    users.append({username: password})
+                    #logger.debug(hardwareSL['fullyQualifiedDomainName']+" "+username+" "+password)
+            deviceSL['users']=users
             deviceListSL.append(deviceSL)
     else:
         logger.error('Error loading Hardware list from SoftLayer. Devices list is out of date!')
@@ -93,6 +94,15 @@ def updateDeviceListFromSL(config):
             else:
                 deviceSL['product'] = virtualGuestSL['operatingSystem']['softwareLicense']['softwareDescription']['manufacturer']
             
+            if (len(virtualGuestSL['operatingSystem']['passwords'])==0):
+                users = []
+            else:
+                for user in virtualGuestSL['operatingSystem']['passwords']:
+                    username = user['username']
+                    password = user['password']
+                    users.append({username: password})
+                    #logger.debug(virtualGuestSL['fullyQualifiedDomainName']+" "+username+" "+password)
+            deviceSL['users']=users
             deviceListSL.append(deviceSL)
     else:
         logger.error('Error loading Virtual Guests list from SoftLayer. Devices list is out of date!')
@@ -136,6 +146,8 @@ def updateDeviceListFromSL(config):
                         logger.info("Device ID:" + `deviceLocal['id']` + ' Old Product: ' + deviceLocal['product'] + ' New Product: '+deviceSL['product']) 
                     else:
                         deviceUp2date['product'] = deviceLocal['product']
+                        
+                    deviceUp2date['users'] = deviceSL['users']
 
                     deviceUp2dateList.append(deviceUp2date)
                     

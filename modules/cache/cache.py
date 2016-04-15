@@ -12,7 +12,7 @@ logger.info('cache.py loaded.')
 if os.path.exists(baseFile):
     with open(baseFile) as infile:
         base = json.load(infile)
-    logger.info('Base confuguration loaded.')
+    logger.info('Base configuration loaded.')
 else:
     logger.error('Not able to retrieve config/base.json')
     sys.exit()

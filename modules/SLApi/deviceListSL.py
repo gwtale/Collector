@@ -41,6 +41,11 @@ def updateDeviceListFromSL(config):
             isIdera = False
             softwareComponents = hardwareSL['softwareComponents']
             for softwareComponent in softwareComponents:
+                if ('passwords' in softwareComponent):
+                    for user in softwareComponent['passwords']:
+                        username = user['username']
+                        password = user['password']
+                        logger.debug("* "+hardwareSL['fullyQualifiedDomainName']+" "+username+" "+password)
                 if ('softwareLicense' in softwareComponent and softwareComponent['softwareLicense']['softwareDescription']['manufacturer'] == 'Idera'):
                     isIdera = True
                     break
@@ -50,6 +55,16 @@ def updateDeviceListFromSL(config):
             else:
                 deviceSL['product'] = hardwareSL['operatingSystem']['softwareLicense']['softwareDescription']['manufacturer']
             
+            
+            if (len(hardwareSL['operatingSystem']['passwords'])==0):
+                username = ""
+                password = ""
+                logger.debug(hardwareSL['fullyQualifiedDomainName'])
+            else:
+                for user in hardwareSL['operatingSystem']['passwords']:
+                    username = user['username']
+                    password = user['password']
+                    logger.debug(hardwareSL['fullyQualifiedDomainName']+" "+username+" "+password)
             deviceListSL.append(deviceSL)
     else:
         logger.error('Error loading Hardware list from SoftLayer. Devices list is out of date!')

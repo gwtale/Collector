@@ -5,9 +5,9 @@ import modules.log.syslog as syslog
 
 logger = syslog.getLogger(__name__)
 
-"""    
-#vpnStatusTxt = vyatta.getVyattaInfo("10.150.135.45", "vyatta", "W3MvlmtX", "show vpn ipsec sa")
-vpnStatusTxt = open('data/testeVyatta.txt', 'r').read()
+    
+vpnStatusTxt = vyatta.getVyattaInfo("ams3vya02.brf.com", "10.136.81.58", "vyatta", "HXlxmeA9", "show vpn ipsec sa")
+#vpnStatusTxt = open('data/testeVyatta.txt', 'r').read()
 vpnStatusTxt = string.split(vpnStatusTxt, '\n')
 #for line in vpnStatus:
 #    print line
@@ -18,6 +18,6 @@ for status in vpnStatus:
     print "Description: "+status['Description']
     for tunnel in status['Tunnel']:
         print tunnel.keys()[0] + " " + tunnel[tunnel.keys()[0]]
-"""
-vrrpTxt = vyatta.getVyattaInfo("10.150.135.45", "vyatta", "W3MvlmtX", "show vrrp")
-print vyatta.parseUpDown(vrrpTxt)
+
+#vrrpTxt = vyatta.getVyattaInfo("ams3vya02.brf.com", "10.136.81.58", "vyatta", "HXlxmeA9", "show vrrp")
+#print vyatta.parseUpDown(vrrpTxt)

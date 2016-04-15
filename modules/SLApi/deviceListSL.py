@@ -37,6 +37,7 @@ def updateDeviceListFromSL(config):
             deviceSL['type']='BareMetal'
             deviceSL['id']=hardwareSL['id']
             deviceSL['fullyQualifiedDomainName']=hardwareSL['fullyQualifiedDomainName']
+            deviceSL['primaryBackendIpAddress']=hardwareSL['primaryBackendIpAddress']
             
             isIdera = False
             softwareComponents = hardwareSL['softwareComponents']
@@ -56,10 +57,8 @@ def updateDeviceListFromSL(config):
             else:
                 deviceSL['product'] = hardwareSL['operatingSystem']['softwareLicense']['softwareDescription']['manufacturer']
             
-            
-            if (len(hardwareSL['operatingSystem']['passwords'])==0):
-                users = []
-            else:
+            users = []
+            if (len(hardwareSL['operatingSystem']['passwords'])<>0):
                 for user in hardwareSL['operatingSystem']['passwords']:
                     username = user['username']
                     password = user['password']
@@ -81,6 +80,7 @@ def updateDeviceListFromSL(config):
             deviceSL['type']='Virtual'
             deviceSL['id']=virtualGuestSL['id']
             deviceSL['fullyQualifiedDomainName']=virtualGuestSL['fullyQualifiedDomainName']
+            deviceSL['primaryBackendIpAddress']=virtualGuestSL['primaryBackendIpAddress']
             
             isIdera = False
             softwareComponents = virtualGuestSL['softwareComponents']
@@ -94,9 +94,8 @@ def updateDeviceListFromSL(config):
             else:
                 deviceSL['product'] = virtualGuestSL['operatingSystem']['softwareLicense']['softwareDescription']['manufacturer']
             
-            if (len(virtualGuestSL['operatingSystem']['passwords'])==0):
-                users = []
-            else:
+            users = []
+            if (len(virtualGuestSL['operatingSystem']['passwords'])<>0):
                 for user in virtualGuestSL['operatingSystem']['passwords']:
                     username = user['username']
                     password = user['password']
@@ -146,6 +145,13 @@ def updateDeviceListFromSL(config):
                         logger.info("Device ID:" + `deviceLocal['id']` + ' Old Product: ' + deviceLocal['product'] + ' New Product: '+deviceSL['product']) 
                     else:
                         deviceUp2date['product'] = deviceLocal['product']
+                        
+                    if (deviceSL['primaryBackendIpAddress'] <> deviceLocal['primaryBackendIpAddress']):
+                        deviceUp2date['primaryBackendIpAddress'] = deviceSL['primaryBackendIpAddress']
+                        logger.info("Device ID:" + `deviceLocal['id']` + ' Old IP Address: ' + deviceLocal['primaryBackendIpAddress'] + ' New IP Address: '+deviceSL['primaryBackendIpAddress']) 
+                    else:
+                        deviceUp2date['primaryBackendIpAddress'] = deviceLocal['primaryBackendIpAddress']
+                        
                         
                     deviceUp2date['users'] = deviceSL['users']
 

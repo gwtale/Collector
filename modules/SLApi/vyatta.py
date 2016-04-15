@@ -8,7 +8,7 @@ import modules.log.syslog as syslog
 
 logger = syslog.getLogger(__name__)
 
-def getVyattaInfo(URL, USER, PASSWORD, COMMAND):
+def getVyattaInfo(FQDN, URL, USER, PASSWORD, COMMAND):
     headers = {'Accept': 'application/json', 
                'Vyatta-Specification-Version': '0.1', 
                'Authorization': 'Basic '+base64.b64encode(USER+':'+PASSWORD)}
@@ -19,7 +19,7 @@ def getVyattaInfo(URL, USER, PASSWORD, COMMAND):
     try:
         response = requests.post("https://"+URL+"/rest/op/"+restVyattaCommand, headers=headers, verify=False)
     except requests.exceptions.ConnectionError:
-        logger.error("getVyattaInfo: Error contacting Vyatta!")
+        logger.error("getVyattaInfo: Error contacting Vyatta "+FQDN+"!")
         return "ERROR: Error contacting Vyatta!"
         
     if (response.status_code == 201):
@@ -27,7 +27,7 @@ def getVyattaInfo(URL, USER, PASSWORD, COMMAND):
         try:
             response = requests.get("https://"+URL+"/"+location, headers=headers, verify=False)
         except requests.exceptions.ConnectionError:
-            logger.error("getVyattaInfo: Error contacting Vyatta!")
+            logger.error("getVyattaInfo: Error contacting Vyatta "+FQDN+"!")
             return "ERROR: Error contacting Vyatta!"
         if (response.status_code == 200):
             #logger.debug(response.content)

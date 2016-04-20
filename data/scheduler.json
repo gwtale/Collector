@@ -1,0 +1,10 @@
+[
+	{
+		"deviceId": 346216, 
+		"schedules": [ {"vpn": {"rule": "* * * * *", "enable": "True"}}, {"cpu": {"rule": "* * * * *", "enable": "False"}} ]
+	},
+	{
+		"deviceId": 702795, 
+		"schedules": [ {"vpn": {"rule": "* * * * *", "enable": "True"}}, {"cpu": {"rule": "* * * * *", "enable": "False"}} ]
+	}
+]

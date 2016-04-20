@@ -152,7 +152,7 @@ def updateDeviceListFromSL(config):
                     else:
                         deviceUp2date['primaryBackendIpAddress'] = deviceLocal['primaryBackendIpAddress']
                         
-                        
+                    deviceUp2date['schedules'] = deviceLocal['schedules']
                     deviceUp2date['users'] = deviceSL['users']
 
                     deviceUp2dateList.append(deviceUp2date)
@@ -172,6 +172,25 @@ def updateDeviceListFromSL(config):
             #Se nao existe trata-se de um novo device
             if (not jaExiste):
                 logger.info("Adding Device ID:" + `deviceSL['id']` + ' Type: ' + deviceSL['type'] + ' FQDN: ' + deviceSL['fullyQualifiedDomainName'])
+                
+                #schedule default by product
+                if (deviceSL['product']=="Vyatta"):
+                    #schedule=[]
+                    scheduleItem={}
+                    vpn={}
+                    vpn['rule']='* * * * *'
+                    vpn['enable']='True'
+                    scheduleItem['vpn']=vpn
+                    cpu={}
+                    cpu['rule']='* * * * *'
+                    cpu['enable']='False'
+                    scheduleItem['cpu']=cpu
+                    #schedule.append(scheduleItem)
+                    #"schedules": [ {"vpn": {"rule": "* * * * *", "enable": "True"}}, {"cpu": {"rule": "* * * * *", "enable": "False"}} ]
+                else:
+                    scheduleItem={}
+                deviceSL['schedules']=[]
+                deviceSL['schedules'].append(scheduleItem)
 
                 deviceUp2dateList.append(deviceSL)
                 

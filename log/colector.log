@@ -1,3 +1,12 @@
-2016-04-15 14:17:36,440 - modules.SLApi.vyatta - ERROR - getVyattaInfo: Error contacting Vyatta fwvyatta05.brf.com!
-2016-04-15 14:17:43,160 - modules.SLApi.vyatta - ERROR - getVyattaInfo: Error contacting Vyatta fwvyatta03.brf.com!
-2016-04-15 14:18:24,723 - modules.SLApi.vyatta - ERROR - getVyattaInfo: Error contacting Vyatta fwvyatta03.brf.com!
+2016-04-20 11:41:14,588 - __main__ - INFO - ams3vya01.brf.com is up and backup
+2016-04-20 11:43:03,823 - __main__ - INFO - ams3vya01.brf.com is up and backup
+2016-04-20 11:46:02,480 - __main__ - INFO - ams3vya01.brf.com is up and backup
+2016-04-20 11:46:03,713 - __main__ - INFO - ERROR: Error getting Vyatta command results! ams3vya01.brf.com is down
+2016-04-20 11:47:05,730 - __main__ - INFO - ams3vya01.brf.com is up and backup
+2016-04-20 11:48:08,746 - __main__ - INFO - ams3vya01.brf.com is up and backup
+2016-04-20 11:50:04,980 - __main__ - INFO - ams3vya01.brf.com is up and backup
+2016-04-20 11:50:05,230 - __main__ - INFO - fwvyatta04.brf.com is up and backup
+2016-04-20 11:50:05,746 - __main__ - INFO - fwvytsao101.brf.com.br is up and backup
+2016-04-20 11:50:08,808 - __main__ - INFO - ams3vya02.brf.com is up and master
+2016-04-20 11:50:09,042 - __main__ - INFO - fwvyatta03.brf.com is up and master
+2016-04-20 11:50:09,480 - __main__ - INFO - fwvytsao102.brf.com.br is up and master

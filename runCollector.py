@@ -5,12 +5,14 @@ from time import sleep
 import os.path as path
 import json
 import modules.log.syslog as syslog
+import modules.cache.cache as cache
 from datetime import datetime
 
 import modules.SLApi.vyatta as vyatta
 
 logger = syslog.getLogger(__name__)
 
+baseFile = "config/base.json"
 devicesFile = 'data/devices.json'
 
 exitFlag = 0
@@ -80,22 +82,45 @@ def process_data(threadName, q):
                         password = users[users.keys()[0]]
                         break
                 if (password<>""):
+                    history={}
+                    history['timestamp']=datetime.now().strftime("%Y%m%d%H%M%S")
+                    history['account_id']=base['account_id']
+                    history['device']=data['fullyQualifiedDomainName']
+                    history['product']="Vyatta"
+                    history['item']="UpDown"
+                        
                     #print data['primaryBackendIpAddress'] + " " + password
                     vrrpTxt = vyatta.getVyattaInfo(data['fullyQualifiedDomainName'], data['primaryBackendIpAddress'],"vyatta", password, "show vrrp")
                     upDown = vyatta.parseUpDown(vrrpTxt)
                     if (upDown == 0):
                         # is down
                         #print data['fullyQualifiedDomainName'] + " is down"
-                        logger.info(vrrpTxt + " " + data['fullyQualifiedDomainName'] + " is down")
+                        logger.debug(vrrpTxt + " " + data['fullyQualifiedDomainName'] + " is down")
+                        history['value']='down'
                     elif (upDown == 1):
                         # is up and master vrrp
                         #print data['fullyQualifiedDomainName'] + " is up and master"
                         vpnStatusTxt = vyatta.getVyattaInfo(data['fullyQualifiedDomainName'], data['primaryBackendIpAddress'],"vyatta", password, "show vpn ipsec sa")
+                        vpnStatusTxt = vpnStatusTxt.split("\n")
                         vpnStatus =  vyatta.parseVPN(vpnStatusTxt)
+                        
+                        historyVPN={}
+                        historyVPN['timestamp']=datetime.now().strftime("%Y%m%d%H%M%S")
+                        historyVPN['account_id']=base['account_id']
+                        historyVPN['device']=data['fullyQualifiedDomainName']
+                        historyVPN['product']="Vyatta"
+                        historyVPN['item']="VPNs"
+                        historyVPN['value']=vpnStatus
+                        cache.dumpHistory(historyVPN)
+
                         #print vpnStatus
-                        logger.info(data['fullyQualifiedDomainName'] + " is up and master")
+                        logger.debug(data['fullyQualifiedDomainName'] + " is up and master")
+                        history['value']='up'
                     else:
-                        logger.info(data['fullyQualifiedDomainName'] + " is up and backup")
+                        logger.debug(data['fullyQualifiedDomainName'] + " is up and backup")
+                        history['value']='up'
+                        
+                    cache.dumpHistory(history)
                 else:
                     logger.error("Cant retrieve " + data['fullyQualifiedDomainName'] + " authentication")
         else:
@@ -119,6 +144,16 @@ for tName in threadList:
     threads.append(thread)
     threadID += 1
 
+
+# Load base configuration (account_id)
+if path.exists(baseFile):
+    with open(baseFile) as infile:
+        base = json.load(infile)
+    logger.info('Base configuration loaded.')
+else:
+    logger.error('Not able to retrieve config/base.json')
+    sys.exit()
+    
 #minute trigger (infinite loop)
 while (True):
     # Load device list scheduler
@@ -145,4 +180,5 @@ while (True):
     else:
         logger.error("Devices file "+devicesFile+" doesnt exist!")
     
+    logger.info("Sleeping  runCollector...")
     sleep( 60-datetime.now().second )

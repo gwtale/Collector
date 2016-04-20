@@ -50,10 +50,20 @@ def process_data(threadName, q):
                         #print data['fullyQualifiedDomainName'] + " is down"
                         logger.info(vrrpTxt + " " + data['fullyQualifiedDomainName'] + " is down")
                     elif (upDown == 1):
+                        print "----------------------------------------------------------"
                         # is up and master vrrp
                         #print data['fullyQualifiedDomainName'] + " is up and master"
                         vpnStatusTxt = vyatta.getVyattaInfo(data['fullyQualifiedDomainName'], data['primaryBackendIpAddress'],"vyatta", password, "show vpn ipsec sa")
+                        vpnStatusTxt = vpnStatusTxt.split("\n")
                         vpnStatus =  vyatta.parseVPN(vpnStatusTxt)
+                        
+                        for vpn in vpnStatus:
+                            peerID = vpn['PeerID']
+                            localID = vpn['LocalID']
+                            #print vpn['Tunnel']
+                            for tunnel in vpn['Tunnel']:
+                                print tunnel.keys()[0] + " " + tunnel[tunnel.keys()[0]]
+                                
                         #print vpnStatus
                         logger.info(data['fullyQualifiedDomainName'] + " is up and master")
                     else:

@@ -10,3 +10,123 @@
 2016-04-20 11:50:08,808 - __main__ - INFO - ams3vya02.brf.com is up and master
 2016-04-20 11:50:09,042 - __main__ - INFO - fwvyatta03.brf.com is up and master
 2016-04-20 11:50:09,480 - __main__ - INFO - fwvytsao102.brf.com.br is up and master
+2016-04-20 14:56:57,990 - __main__ - INFO - ams3vya01.brf.com is up and backup
+2016-04-20 14:57:02,082 - __main__ - INFO - fwvyatta04.brf.com is up and backup
+2016-04-20 14:57:02,348 - __main__ - INFO - fwvyatta03.brf.com is up and master
+2016-04-20 14:57:02,568 - __main__ - INFO - ams3vya02.brf.com is up and master
+2016-04-20 14:57:04,207 - __main__ - INFO - ERROR: Error sending Vyatta commands! fwvyatta05.brf.com is down
+2016-04-20 14:57:05,895 - __main__ - INFO - fwvytsao101.brf.com.br is up and backup
+2016-04-20 14:57:13,740 - __main__ - INFO - fwvytsao102.brf.com.br is up and master
+2016-04-20 14:58:17,520 - __main__ - INFO - ams3vya01.brf.com is up and backup
+2016-04-20 14:58:22,443 - __main__ - INFO - fwvyatta03.brf.com is up and master
+2016-04-20 14:58:22,490 - __main__ - INFO - fwvyatta04.brf.com is up and backup
+2016-04-20 14:58:22,755 - __main__ - INFO - ams3vya02.brf.com is up and master
+2016-04-20 14:58:24,332 - __main__ - INFO - ERROR: Error sending Vyatta commands! fwvyatta05.brf.com is down
+2016-04-20 14:58:26,270 - __main__ - INFO - fwvytsao101.brf.com.br is up and backup
+2016-04-20 14:58:30,005 - __main__ - INFO - fwvytsao102.brf.com.br is up and master
+2016-04-20 14:58:36,177 - __main__ - INFO - ams3vya01.brf.com is up and backup
+2016-04-20 14:58:40,786 - __main__ - INFO - fwvyatta04.brf.com is up and backup
+2016-04-20 14:58:41,240 - __main__ - INFO - ams3vya02.brf.com is up and master
+2016-04-20 14:58:41,240 - __main__ - INFO - fwvyatta03.brf.com is up and master
+2016-04-20 14:58:42,832 - __main__ - INFO - ERROR: Error sending Vyatta commands! fwvyatta05.brf.com is down
+2016-04-20 14:58:45,582 - __main__ - INFO - fwvytsao101.brf.com.br is up and backup
+2016-04-20 14:58:49,957 - __main__ - INFO - fwvytsao102.brf.com.br is up and master
+2016-04-20 15:00:33,365 - __main__ - INFO - ams3vya01.brf.com is up and backup
+2016-04-20 15:00:37,052 - __main__ - INFO - fwvyatta04.brf.com is up and backup
+2016-04-20 15:00:38,052 - __main__ - INFO - ams3vya02.brf.com is up and master
+2016-04-20 15:00:40,005 - __main__ - INFO - fwvyatta03.brf.com is up and master
+2016-04-20 15:00:41,161 - __main__ - INFO - fwvytsao101.brf.com.br is up and backup
+2016-04-20 15:00:41,645 - __main__ - INFO - ERROR: Error sending Vyatta commands! fwvyatta05.brf.com is down
+2016-04-20 15:00:46,005 - __main__ - INFO - fwvytsao102.brf.com.br is up and master
+2016-04-20 15:01:15,348 - __main__ - INFO - ams3vya01.brf.com is up and backup
+2016-04-20 15:01:18,848 - __main__ - INFO - fwvyatta04.brf.com is up and backup
+2016-04-20 15:01:20,020 - __main__ - INFO - ams3vya02.brf.com is up and master
+2016-04-20 15:01:20,286 - __main__ - INFO - fwvyatta03.brf.com is up and master
+2016-04-20 15:01:21,927 - __main__ - INFO - ERROR: Error sending Vyatta commands! fwvyatta05.brf.com is down
+2016-04-20 15:01:23,661 - __main__ - INFO - fwvytsao101.brf.com.br is up and backup
+2016-04-20 15:01:27,990 - __main__ - INFO - fwvytsao102.brf.com.br is up and master
+2016-04-20 15:01:55,380 - __main__ - INFO - ams3vya01.brf.com is up and backup
+2016-04-20 15:01:59,443 - __main__ - INFO - fwvyatta04.brf.com is up and backup
+2016-04-20 15:02:01,302 - __main__ - INFO - ams3vya02.brf.com is up and master
+2016-04-20 15:02:01,302 - __main__ - INFO - fwvyatta03.brf.com is up and master
+2016-04-20 15:02:03,332 - __main__ - INFO - ERROR: Error sending Vyatta commands! fwvyatta05.brf.com is down
+2016-04-20 15:02:04,490 - __main__ - INFO - fwvytsao101.brf.com.br is up and backup
+2016-04-20 15:02:11,630 - __main__ - INFO - fwvytsao102.brf.com.br is up and master
+2016-04-20 15:03:25,973 - __main__ - INFO - ams3vya01.brf.com is up and backup
+2016-04-20 15:03:30,082 - __main__ - INFO - fwvyatta04.brf.com is up and backup
+2016-04-20 15:03:34,115 - __main__ - INFO - fwvytsao101.brf.com.br is up and backup
+2016-04-20 15:03:51,598 - __main__ - INFO - fwvytsao102.brf.com.br is up and master
+2016-04-20 15:03:53,161 - __main__ - INFO - ERROR: Error sending Vyatta commands! fwvyatta05.brf.com is down
+2016-04-20 15:03:55,568 - __main__ - INFO - ams3vya02.brf.com is up and master
+2016-04-20 15:03:57,318 - __main__ - INFO - fwvyatta03.brf.com is up and master
+2016-04-20 15:04:52,270 - __main__ - INFO - ams3vya01.brf.com is up and backup
+2016-04-20 15:04:55,677 - __main__ - INFO - fwvyatta04.brf.com is up and backup
+2016-04-20 15:04:59,645 - __main__ - INFO - fwvytsao101.brf.com.br is up and backup
+2016-04-20 15:05:55,770 - __main__ - INFO - ams3vya01.brf.com is up and backup
+2016-04-20 15:05:59,598 - __main__ - INFO - fwvyatta04.brf.com is up and backup
+2016-04-20 15:06:04,098 - __main__ - INFO - fwvytsao101.brf.com.br is up and backup
+2016-04-20 15:06:58,318 - __main__ - INFO - ams3vya01.brf.com is up and backup
+2016-04-20 15:07:01,802 - __main__ - INFO - fwvyatta04.brf.com is up and backup
+2016-04-20 15:07:01,880 - __main__ - INFO - ams3vya02.brf.com is up and master
+2016-04-20 15:07:01,880 - __main__ - INFO - fwvyatta03.brf.com is up and master
+2016-04-20 15:07:03,473 - __main__ - INFO - ERROR: Error sending Vyatta commands! fwvyatta05.brf.com is down
+2016-04-20 15:07:05,630 - __main__ - INFO - fwvytsao101.brf.com.br is up and backup
+2016-04-20 15:07:09,457 - __main__ - INFO - fwvytsao102.brf.com.br is up and master
+2016-04-20 15:07:44,911 - __main__ - INFO - ams3vya01.brf.com is up and backup
+2016-04-20 15:07:48,802 - __main__ - INFO - fwvyatta04.brf.com is up and backup
+2016-04-20 15:07:52,598 - __main__ - INFO - fwvytsao101.brf.com.br is up and backup
+2016-04-20 15:10:44,770 - __main__ - INFO - ams3vya01.brf.com is up and backup
+2016-04-20 15:10:48,082 - __main__ - INFO - fwvyatta04.brf.com is up and backup
+2016-04-20 15:10:52,068 - __main__ - INFO - ams3vya02.brf.com is up and master
+2016-04-20 15:10:52,068 - __main__ - INFO - fwvytsao101.brf.com.br is up and backup
+2016-04-20 15:10:52,693 - __main__ - INFO - fwvyatta03.brf.com is up and master
+2016-04-20 15:10:53,693 - __main__ - INFO - ERROR: Error sending Vyatta commands! fwvyatta05.brf.com is down
+2016-04-20 15:11:00,552 - __main__ - INFO - fwvytsao102.brf.com.br is up and master
+2016-04-20 15:11:36,240 - __main__ - INFO - ams3vya01.brf.com is up and backup
+2016-04-20 15:11:39,957 - __main__ - INFO - fwvyatta04.brf.com is up and backup
+2016-04-20 15:11:43,177 - __main__ - INFO - ams3vya02.brf.com is up and master
+2016-04-20 15:11:43,832 - __main__ - INFO - fwvytsao101.brf.com.br is up and backup
+2016-04-20 15:11:43,927 - __main__ - INFO - fwvyatta03.brf.com is up and master
+2016-04-20 15:11:46,177 - __main__ - INFO - ERROR: Error sending Vyatta commands! fwvyatta05.brf.com is down
+2016-04-20 15:11:52,365 - __main__ - INFO - fwvytsao102.brf.com.br is up and master
+2016-04-20 15:12:24,348 - __main__ - INFO - ams3vya01.brf.com is up and backup
+2016-04-20 15:12:28,568 - __main__ - INFO - fwvyatta04.brf.com is up and backup
+2016-04-20 15:12:33,332 - __main__ - INFO - fwvytsao101.brf.com.br is up and backup
+2016-04-20 15:12:54,895 - __main__ - INFO - ams3vya01.brf.com is up and backup
+2016-04-20 15:12:58,443 - __main__ - INFO - fwvyatta04.brf.com is up and backup
+2016-04-20 15:12:58,957 - __main__ - INFO - ams3vya02.brf.com is up and master
+2016-04-20 15:12:59,380 - __main__ - INFO - fwvyatta03.brf.com is up and master
+2016-04-20 15:13:01,005 - __main__ - INFO - ERROR: Error sending Vyatta commands! fwvyatta05.brf.com is down
+2016-04-20 15:13:02,318 - __main__ - INFO - fwvytsao101.brf.com.br is up and backup
+2016-04-20 15:13:06,832 - __main__ - INFO - fwvytsao102.brf.com.br is up and master
+2016-04-20 15:13:43,427 - __main__ - INFO - ams3vya01.brf.com is up and backup
+2016-04-20 15:13:47,332 - __main__ - INFO - fwvyatta04.brf.com is up and backup
+2016-04-20 15:13:51,145 - __main__ - INFO - fwvytsao101.brf.com.br is up and backup
+2016-04-20 15:14:11,177 - __main__ - INFO - ams3vya01.brf.com is up and backup
+2016-04-20 15:14:14,473 - __main__ - INFO - fwvyatta04.brf.com is up and backup
+2016-04-20 15:14:15,457 - __main__ - INFO - ams3vya02.brf.com is up and master
+2016-04-20 15:14:15,598 - __main__ - INFO - fwvyatta03.brf.com is up and master
+2016-04-20 15:14:17,177 - __main__ - INFO - ERROR: Error sending Vyatta commands! fwvyatta05.brf.com is down
+2016-04-20 15:14:18,520 - __main__ - INFO - fwvytsao101.brf.com.br is up and backup
+2016-04-20 15:14:23,457 - __main__ - INFO - fwvytsao102.brf.com.br is up and master
+2016-04-20 15:17:54,286 - modules.cache.cache - INFO - Base configuration loaded.
+2016-04-20 15:18:31,545 - modules.cache.cache - INFO - Base configuration loaded.
+2016-04-20 15:18:31,967 - __main__ - INFO - Base configuration loaded.
+2016-04-20 15:21:32,029 - modules.cache.cache - INFO - Base configuration loaded.
+2016-04-20 15:21:41,999 - __main__ - INFO - Base configuration loaded.
+2016-04-20 15:25:05,358 - modules.cache.cache - INFO - Base configuration loaded.
+2016-04-20 15:25:06,608 - __main__ - INFO - Base configuration loaded.
+2016-04-20 15:25:06,638 - __main__ - INFO - Sleeping  runCollector...
+2016-04-20 15:26:34,170 - modules.cache.cache - INFO - Base configuration loaded.
+2016-04-20 15:26:34,561 - __main__ - INFO - Base configuration loaded.
+2016-04-20 15:26:34,576 - __main__ - INFO - Sleeping  runCollector...
+2016-04-20 15:26:39,545 - modules.cache.cache - ERROR - Not able to dump data for fwvyatta04.brf.com. Error details: [Errno 2] No such file or directory: u'cache/history-20160420152635-fwvyatta04.brf.com-Up/Down.json'
+2016-04-20 15:26:39,545 - modules.cache.cache - ERROR - Not able to dump data for ams3vya01.brf.com. Error details: [Errno 2] No such file or directory: u'cache/history-20160420152635-ams3vya01.brf.com-Up/Down.json'
+2016-04-20 15:26:39,842 - modules.cache.cache - ERROR - Not able to dump data for fwvytsao101.brf.com.br. Error details: [Errno 2] No such file or directory: u'cache/history-20160420152635-fwvytsao101.brf.com.br-Up/Down.json'
+2016-04-20 15:26:42,686 - modules.cache.cache - ERROR - Not able to dump data for ams3vya02.brf.com. Error details: [Errno 2] No such file or directory: u'cache/history-20160420152635-ams3vya02.brf.com-Up/Down.json'
+2016-04-20 15:26:43,029 - modules.cache.cache - ERROR - Not able to dump data for fwvyatta03.brf.com. Error details: [Errno 2] No such file or directory: u'cache/history-20160420152635-fwvyatta03.brf.com-Up/Down.json'
+2016-04-20 15:26:43,842 - modules.cache.cache - ERROR - Not able to dump data for fwvytsao102.brf.com.br. Error details: [Errno 2] No such file or directory: u'cache/history-20160420152635-fwvytsao102.brf.com.br-Up/Down.json'
+2016-04-20 15:27:37,154 - modules.cache.cache - INFO - Base configuration loaded.
+2016-04-20 15:27:37,529 - __main__ - INFO - Base configuration loaded.
+2016-04-20 15:27:37,545 - __main__ - INFO - Sleeping  runCollector...
+2016-04-20 15:28:00,576 - __main__ - INFO - Sleeping  runCollector...

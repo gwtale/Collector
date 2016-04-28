@@ -109,7 +109,7 @@ def process_data(threadName, q):
                         historyVPN['account_id']=base['account_id']
                         historyVPN['device']=data['fullyQualifiedDomainName']
                         historyVPN['product']="Vyatta"
-                        historyVPN['item']="VPNs"
+                        historyVPN['item']="VPN"
                         historyVPN['value']=vpnStatus
                         cache.dumpHistory(historyVPN)
 

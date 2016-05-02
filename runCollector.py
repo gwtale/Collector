@@ -9,10 +9,11 @@ import modules.cache.cache as cache
 from datetime import datetime
 
 import modules.SLApi.vyatta as vyatta
+import modules.alerts.slack as slack
 
 logger = syslog.getLogger(__name__)
 
-#baseFile = "config/base.json"
+baseFile = "config/base.json"
 configFile = "config/slapi-config.json"
 devicesFile = 'data/devices.json'
 
@@ -64,11 +65,11 @@ class collectorThread (threading.Thread):
         self.stateDataQueue = stateDataQueue
     def run(self):
         logger.debug( "Starting thread " + self.name )
-        process_data(self.name, self.q)
+        process_data(self.name, self.q, self.stateDataQueue)
         logger.debug( "Exiting thread " + self.name )
 
 # Thread process data function
-def process_data(threadName, q):
+def process_data(threadName, q, stateDataQueue):
     while not exitFlag:
         queueLock.acquire()
         if not q.empty():
@@ -123,13 +124,13 @@ def process_data(threadName, q):
                                     vpnQueue={}
                                     vpnQueue['timestamp']=historyVPN['timestamp']
                                     vpnQueue['account_id']=historyVPN['account_id']
-                                    vpnQueue['device']=historyVPN['fullyQualifiedDomainName']
+                                    vpnQueue['device']=historyVPN['device']
                                     vpnQueue['product']="Vyatta"
                                     vpnQueue['item'] = vpn['Description']+" PeerID:"+vpn['PeerID']+" LocalID:"+vpn['LocalID']+" Tunnel:"+key
                                     vpnQueue['value'] = value
                                     #Add to queue
                                     stateDataQueueLock.acquire()
-                                    self.stateDataQueue.put(vpnQueue)
+                                    stateDataQueue.put(vpnQueue)
                                     stateDataQueueLock.release()
 
                         #print vpnStatus
@@ -144,7 +145,7 @@ def process_data(threadName, q):
                     
                     # Add to queue evaluation change state (UpDown)
                     stateDataQueueLock.acquire()
-                    self.stateDataQueue.put(history)
+                    stateDataQueue.put(history)
                     stateDataQueueLock.release()
                 else:
                     logger.error("Cant retrieve " + data['fullyQualifiedDomainName'] + " authentication")
@@ -153,7 +154,6 @@ def process_data(threadName, q):
             sleep(1)
 
 ################################################################################
-"""
 # Load base configuration (account_id)
 if path.exists(baseFile):
     with open(baseFile) as infile:
@@ -162,8 +162,8 @@ if path.exists(baseFile):
 else:
     logger.error('Not able to retrieve config/base.json')
     sys.exit()
-"""    
-# Load base configuration (account_id)
+    
+# Load base configuration (CUSTOMER)
 if path.exists(configFile):
     with open(configFile) as infile:
         config = json.load(infile)

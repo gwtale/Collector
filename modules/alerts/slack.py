@@ -5,7 +5,7 @@ import requests
 import json
 from time import sleep
 import modules.log.syslog as syslog
-from atk import StateSet
+#from atk import StateSet
 
 logger = syslog.getLogger(__name__)
 
@@ -95,9 +95,9 @@ class slackAlertsThread (threading.Thread):
                 self.queueLock.release()
         
                 #process_data(self.name, self.q)
-                payload = {'text': message}
+                payload = {"username": "ISSD-BOT", 'text': message}
                 try:
-                    #response = requests.post(URL, data=json.dumps(payload), headers=headers, verify=False)
+                    response = requests.post(URL, data=json.dumps(payload), headers=headers, verify=False)
                     print message
                 except requests.exceptions.ConnectionError:
                     logger.error("Error sending message to Slack.com")
@@ -107,6 +107,8 @@ class slackAlertsThread (threading.Thread):
                 self.queueLock.release()
                 if (self.exitThread):
                     aliveThread = 0 #exit thread only when the queue is empty
+                else:
+                    sleep(10)
         
         logger.debug( "Exiting thread " + self.name )
     

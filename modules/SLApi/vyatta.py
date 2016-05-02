@@ -1,12 +1,17 @@
 #https://www.brocade.com/content/dam/common/documents/content-types/api-reference-guide/vyatta-remote-access-api-3.5r3-v01.pdf
 
 import requests
+from requests.packages.urllib3.exceptions import InsecureRequestWarning
+
 import json
 import base64
 
 import modules.log.syslog as syslog
 
 logger = syslog.getLogger(__name__)
+
+#disable HTTPS certificates warning
+requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 
 def getVyattaInfo(FQDN, URL, USER, PASSWORD, COMMAND):
     headers = {'Accept': 'application/json', 
@@ -16,37 +21,50 @@ def getVyattaInfo(FQDN, URL, USER, PASSWORD, COMMAND):
     restVyattaCommand = COMMAND.replace(" ","/")
     logger.debug("Vyatta operational command: "+COMMAND)
     #response = requests.get("https://"+URL+"/rest/op", headers=headers, verify=False)
-    try:
-        response = requests.post("https://"+URL+"/rest/op/"+restVyattaCommand, headers=headers, verify=False)
-    except requests.exceptions.ConnectionError:
-        logger.error("getVyattaInfo: Error contacting Vyatta "+FQDN+"!")
-        return "ERROR: Error contacting Vyatta!"
-        
-    if (response.status_code == 201):
-        location = response.headers['Location']
+    tries = 2
+    ret = 0
+    while (tries > 0 and ret<>201):
         try:
-            response = requests.get("https://"+URL+"/"+location, headers=headers, verify=False)
+            response = requests.post("https://"+URL+"/rest/op/"+restVyattaCommand, headers=headers, verify=False)
+            ret = response.status_code
         except requests.exceptions.ConnectionError:
             logger.error("getVyattaInfo: Error contacting Vyatta "+FQDN+"!")
             return "ERROR: Error contacting Vyatta!"
-        if (response.status_code == 200):
+        tries -= 1
+
+    if (ret == 201): #201
+        location = response.headers['Location']
+        tries = 2
+        ret = 0
+        while (tries > 0 and ret<>200):
+            try:
+                response = requests.get("https://"+URL+"/"+location, headers=headers, verify=False)
+                ret = response.status_code
+            except requests.exceptions.ConnectionError:
+                logger.error("getVyattaInfo: Error contacting Vyatta "+FQDN+"!")
+                return "ERROR: Error contacting Vyatta!"
+            tries -= 1
+            
+        if (ret == 200): #200
             #logger.debug(response.content)
             infoRet = response.content
             logger.debug("getVyattaInfo: Query executed with success!")
             
             try:
                 response = requests.delete("https://"+URL+"/"+location, headers=headers, verify=False)
-                if (response.status_code <> 200):
-                    logger.debug("getVyattaInfo: Error cleaning Vyatta command buffer!. HTTP Error code: "+`response.status_code`)
+                ret = response.status_code
+                if (ret <> 200):
+                    logger.debug("getVyattaInfo: Error cleaning Vyatta "+FQDN+" command buffer!. HTTP Error code: "+`ret`)
             except requests.exceptions.ConnectionError:
-                logger.debug("getVyattaInfo: Error contacting Vyatta to clear buffer command!"+`response.status_code`)
+                logger.debug("getVyattaInfo: Error contacting Vyatta "+FQDN+" to clear buffer command!"+`ret`)
 
             return infoRet
         else:
-            logger.debug("getVyattaInfo: Error getting Vyatta command results!. HTTP Error code: "+`response.status_code`)
+            #if (ret == 410): vyatta nao tem VPN
+            logger.debug("getVyattaInfo: Error getting Vyatta "+FQDN+" command results!. HTTP Error code: "+`ret`)
             return "ERROR: Error getting Vyatta command results!"
     else:
-        logger.debug("getVyattaInfo: Error sending Vyatta commands!. HTTP Error code: "+`response.status_code`)
+        logger.debug("getVyattaInfo: Error sending Vyatta "+FQDN+" commands!. HTTP Error code: "+`ret`)
         return "ERROR: Error sending Vyatta commands!"
 
     
@@ -127,3 +145,5 @@ def parseUpDown(vrrpTxt):
     elif (" MASTER " in vrrpTxt):
         #print "Vyatta Master"
         return 1
+    else:
+        return 0

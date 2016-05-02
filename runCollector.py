@@ -12,7 +12,8 @@ import modules.SLApi.vyatta as vyatta
 
 logger = syslog.getLogger(__name__)
 
-baseFile = "config/base.json"
+#baseFile = "config/base.json"
+configFile = "config/slapi-config.json"
 devicesFile = 'data/devices.json'
 
 exitFlag = 0
@@ -55,11 +56,12 @@ def itsTime2Run(now, rule):
 
 # Thread class
 class collectorThread (threading.Thread):
-    def __init__(self, threadID, name, q):
+    def __init__(self, threadID, name, q, stateDataQueue):
         threading.Thread.__init__(self)
         self.threadID = threadID
         self.name = name
         self.q = q
+        self.stateDataQueue = stateDataQueue
     def run(self):
         logger.debug( "Starting thread " + self.name )
         process_data(self.name, self.q)
@@ -112,15 +114,38 @@ def process_data(threadName, q):
                         historyVPN['item']="VPN"
                         historyVPN['value']=vpnStatus
                         cache.dumpHistory(historyVPN)
+                        
+                        # Add to queue evaluation change state (VPN)
+                        for vpn in vpnStatus:
+                            for tunnel in vpn['Tunnel']:
+                                for key, value in tunnel.iteritems():
+                                    #print key, value
+                                    vpnQueue={}
+                                    vpnQueue['timestamp']=historyVPN['timestamp']
+                                    vpnQueue['account_id']=historyVPN['account_id']
+                                    vpnQueue['device']=historyVPN['fullyQualifiedDomainName']
+                                    vpnQueue['product']="Vyatta"
+                                    vpnQueue['item'] = vpn['Description']+" PeerID:"+vpn['PeerID']+" LocalID:"+vpn['LocalID']+" Tunnel:"+key
+                                    vpnQueue['value'] = value
+                                    #Add to queue
+                                    stateDataQueueLock.acquire()
+                                    self.stateDataQueue.put(vpnQueue)
+                                    stateDataQueueLock.release()
 
                         #print vpnStatus
                         logger.debug(data['fullyQualifiedDomainName'] + " is up and master")
-                        history['value']='up'
+                        history['value']='up-master'
+                        
                     else:
                         logger.debug(data['fullyQualifiedDomainName'] + " is up and backup")
-                        history['value']='up'
+                        history['value']='up-backup'
                         
                     cache.dumpHistory(history)
+                    
+                    # Add to queue evaluation change state (UpDown)
+                    stateDataQueueLock.acquire()
+                    self.stateDataQueue.put(history)
+                    stateDataQueueLock.release()
                 else:
                     logger.error("Cant retrieve " + data['fullyQualifiedDomainName'] + " authentication")
         else:
@@ -128,8 +153,32 @@ def process_data(threadName, q):
             sleep(1)
 
 ################################################################################
+"""
+# Load base configuration (account_id)
+if path.exists(baseFile):
+    with open(baseFile) as infile:
+        base = json.load(infile)
+    logger.info('Base configuration loaded.')
+else:
+    logger.error('Not able to retrieve config/base.json')
+    sys.exit()
+"""    
+# Load base configuration (account_id)
+if path.exists(configFile):
+    with open(configFile) as infile:
+        config = json.load(infile)
+    logger.info('Configuration loaded.')
+else:
+    logger.error('Not able to retrieve '+configFile)
+    sys.exit()
+    
+# Creating state device evaluation thread
+stateDataQueueLock = threading.Lock()
+stateDataQueue = Queue.Queue(0)
+threadEval = slack.evaluateStateThread("Evaluation State Thread", stateDataQueue, stateDataQueueLock, config['CUSTOMER'])
+threadEval.start()
 
-# Creating parallel threads 
+# Creating parallel schedule threads 
 threadList = ["Thread-1", "Thread-2", "Thread-3", "Thread-4", "Thread-5", "Thread-6", "Thread-7", "Thread-8", "Thread-9", "Thread-10"]
 #nameList = ["One", "Two", "Three", "Four", "Five"]
 queueLock = threading.Lock()
@@ -139,20 +188,10 @@ threads = []
 threadID = 1
 # Create new threads
 for tName in threadList:
-    thread = collectorThread(threadID, tName, workQueue)
+    thread = collectorThread(threadID, tName, workQueue, stateDataQueue)
     thread.start()
     threads.append(thread)
     threadID += 1
-
-
-# Load base configuration (account_id)
-if path.exists(baseFile):
-    with open(baseFile) as infile:
-        base = json.load(infile)
-    logger.info('Base configuration loaded.')
-else:
-    logger.error('Not able to retrieve config/base.json')
-    sys.exit()
     
 #minute trigger (infinite loop)
 while (True):
@@ -179,6 +218,7 @@ while (True):
                         queueLock.release()
     else:
         logger.error("Devices file "+devicesFile+" doesnt exist!")
+        sys.exit()
     
     logger.info("Sleeping  runCollector...")
     sleep( 60-datetime.now().second )

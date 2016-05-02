@@ -58,3 +58,24 @@ def dumpHistory(input_dict):
         logger.debug('Dumped to cache: ' + filename)
     except Exception as detail:
         logger.error('Not able to dump data for ' + device + '. Error details: ' + str(detail))
+
+def dumpAlerts(input_dict):
+    alerts_path = base['alerts_path']
+    
+    strDate = input_dict['timestamp']
+    device = input_dict['device']
+    item = input_dict['item']
+    
+    filename = "alert-" + strDate + "-" + device + "-" + item + ".json"
+    full_path = alerts_path + filename
+    try:
+        os.stat(base['alerts_path'])
+    except:
+        os.mkdir(base['alerts_path'])
+    try:
+        out_file = open(full_path, "w")
+        json.dump(input_dict, out_file, indent=4)
+        out_file.close()
+        logger.debug('Dumped to cache: ' + filename)
+    except Exception as detail:
+        logger.error('Not able to dump data for ' + device + '. Error details: ' + str(detail))

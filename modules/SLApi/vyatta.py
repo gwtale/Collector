@@ -85,7 +85,8 @@ def parseVPN(status):
                     vpn['Tunnel']=tunnel
 
                     #newVpn={'peer': vpn}
-                    vpns.append(vpn)
+                    if (peerID!="0.0.0.0"):
+                        vpns.append(vpn)
                 else:
                     newLine = line.strip() 
                     idx = newLine.index(' ')

@@ -22,10 +22,10 @@ def getLogger(module):
     logger.addHandler(fh)
 
     # Console Handler
-    ch = logging.StreamHandler()
-    ch.setLevel(logging.DEBUG)
-    ch.setFormatter(formatter)
-    logger.addHandler(ch)
+    #ch = logging.StreamHandler()
+    #ch.setLevel(logging.DEBUG)
+    #ch.setFormatter(formatter)
+    #logger.addHandler(ch)
 
     return logger
 

@@ -44,7 +44,7 @@ class evaluateStateThread (threading.Thread):
                 for state in self.states:
                     if (state['device'] == data['device'] and state['item'] == data['item']):
                         if ( state['value']<>data['value']):
-                            changeStateMsg = "Client: " + self.customer+" | Product: "+data['product']+" | Device: "+data['device']+" | Item: "+data['item']+" | Old State: "+state['value']+" | New State: "+data['value']
+                            changeStateMsg = "Customer: " + self.customer+" | Product: "+data['product']+" | Device: "+data['device']+" | Item: "+data['item']+" | Old State: "+state['value']+" | New State: "+data['value']
                             #change the actual state
                             self.states[pos]['value']=data['value']
                             

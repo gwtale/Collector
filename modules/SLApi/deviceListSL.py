@@ -28,7 +28,6 @@ def updateDeviceListFromSL(config):
     
     logger.debug("Loading Hardware (Bare Metal) list from SL...")
     response = requests.get("https://"+USER+":"+USER_KEY+"@"+SERVER+REST_HARDWARE)
-    print "https://"+USER+":"+USER_KEY+"@"+SERVER+REST_HARDWARE
     if (response.status_code == 200):
         logger.debug("Hardware list received with success!")
         hardwareListSL = json.loads(response.content)
@@ -38,6 +37,7 @@ def updateDeviceListFromSL(config):
             deviceSL['type']='BareMetal'
             deviceSL['id']=hardwareSL['id']
             deviceSL['fullyQualifiedDomainName']=hardwareSL['fullyQualifiedDomainName']
+            #print hardwareSL
             deviceSL['primaryBackendIpAddress']=hardwareSL['primaryBackendIpAddress']
             
             isIdera = False

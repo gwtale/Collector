@@ -28,8 +28,8 @@ def getVyattaInfo(FQDN, URL, USER, PASSWORD, COMMAND):
             response = requests.post("https://"+URL+"/rest/op/"+restVyattaCommand, headers=headers, verify=False)
             ret = response.status_code
         except requests.exceptions.ConnectionError:
-            logger.error("getVyattaInfo: Error contacting Vyatta "+FQDN+"!")
-            return "ERROR: Error contacting Vyatta!"
+            logger.error("getVyattaInfo: Error trying contacting Vyatta "+FQDN+"!")
+            #return "ERROR: Error contacting Vyatta!"
         tries -= 1
 
     if (ret == 201): #201
@@ -41,8 +41,8 @@ def getVyattaInfo(FQDN, URL, USER, PASSWORD, COMMAND):
                 response = requests.get("https://"+URL+"/"+location, headers=headers, verify=False)
                 ret = response.status_code
             except requests.exceptions.ConnectionError:
-                logger.error("getVyattaInfo: Error contacting Vyatta "+FQDN+"!")
-                return "ERROR: Error contacting Vyatta!"
+                logger.error("getVyattaInfo: Error trying contacting Vyatta "+FQDN+"!")
+                #return "ERROR: Error contacting Vyatta!"
             tries -= 1
             
         if (ret == 200): #200

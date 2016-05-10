@@ -5,6 +5,6 @@
 	"_comment1": "private server - api.service.softlayer.com",
 	"_comment2": "public server - api.softlayer.com",
 	"SERVER": "api.softlayer.com",
-	"REST_HARDWARE": "/rest/v3/SoftLayer_Account/Hardware.json?objectMask=id;fullyQualifiedDomainName;operatingSystem;softwareComponents",
-	"REST_VIRTUAL_GUESTS": "/rest/v3/SoftLayer_Account/VirtualGuests.json?objectMask=id;fullyQualifiedDomainName;operatingSystem;softwareComponents"
+	"REST_HARDWARE": "/rest/v3/SoftLayer_Account/Hardware.json?objectMask=id;fullyQualifiedDomainName;operatingSystem;softwareComponents;primaryBackendIpAddress;operatingSystem.passwords",
+	"REST_VIRTUAL_GUESTS": "/rest/v3/SoftLayer_Account/VirtualGuests.json?objectMask=id;fullyQualifiedDomainName;operatingSystem;softwareComponents;primaryBackendIpAddress;operatingSystem.passwords"
 }

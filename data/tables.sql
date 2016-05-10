@@ -8,8 +8,12 @@ create table history (
 	item varchar(30) not null, 
 	description varchar(255) not null,
 	value varchar(30) not null,
+	timestampMonitor timestamp DEFAULT CURRENT_TIMESTAMP not null,
 	foreign key (account_id) references customer_accounts(account_id), 
 	primary key(idHistory) );
+	
+--alter table history add timestampMonitor timestamp DEFAULT CURRENT_TIMESTAMP;
+--alter table history modify column timestampMonitor timestamp default current_timestamp not null;
 	
 -- insert into history (account_id, product, timestamp, device, item, description, value) values (18, 'JP-PROD', '2016-05-04 14:41', 'JP-DEV', 'JP-ITEM', 'JP-DESC', 'down');
 -- insert into lastStatus (account_id, product, device, item, description, timestamp, value) values (12, 'Vyatta', 'xyz.icc', 'VPN', '{"LocalID": "1.1.1.1", "Tunnel": "10", "Description": "VPN with XYZ", "PeerID": "0.0.0.0"}', '2016-05-04 14:41', 'up');
@@ -25,9 +29,14 @@ create table lastStatus (
 	description varchar(255) not null,
 	timestamp datetime not null,
 	value varchar(30) not null,
+	timestampMonitor timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP not null,
 	foreign key (account_id) references customer_accounts(account_id),
 	primary key(idLastStatus),
 	CONSTRAINT uc_lastStatus UNIQUE (account_id, product, device, item, description));
+	
+--alter table lastStatus add timestampMonitor timestamp DEFAULT CURRENT_TIMESTAMP;
+--alter table lastStatus modify column timestampMonitor timestamp default current_timestamp not null;
+--alter table lastStatus add timestampMonitor timestamp ON UPDATE CURRENT_TIMESTAMP;
 	
 DROP TRIGGER trigger_setLastStatus;
 DELIMITER //
@@ -58,16 +67,19 @@ DELIMITER ;
 DROP VIEW viewDashboardMain;
 CREATE VIEW viewDashboardMain AS 
 	SELECT lastStatus.account_id, customer_accounts.account_label, product, 
-	(select count(*) from lastStatus as statusUp where lastStatus.account_id=statusUp.account_id and lastStatus.product=statusUp.product and statusUp.value='down') as down,
-	(select count(*) from lastStatus as statusUp where lastStatus.account_id=statusUp.account_id and lastStatus.product=statusUp.product and statusUp.value<>'down') as up
+	(select count(*) from lastStatus as statusDown where lastStatus.account_id=statusDown.account_id and lastStatus.product=statusDown.product and statusDown.value='down' and date_add(timestampMonitor, interval 5 minute)>now()) as down,
+	(select count(*) from lastStatus as statusUp where lastStatus.account_id=statusUp.account_id and lastStatus.product=statusUp.product and statusUp.value<>'down' and date_add(timestampMonitor, interval 5 minute)>now()) as up
 	from lastStatus
 	inner join customer_accounts on customer_accounts.account_id = lastStatus.account_id
 	group by lastStatus.account_id, customer_accounts.account_label, product
 	order by down desc, customer_accounts.account_label, product;
+select * from viewDashboardMain;
+
+select count(*) from lastStatus as statusUp where statusUp.account_id=18 and statusUp.product="Vyatta" and statusUp.value<>'down' and date_add(timestampMonitor, interval 5 minute)>now();
 
 DROP VIEW viewDashboardMarquee;	
 CREATE VIEW viewDashboardMarquee AS
 	SELECT customer_accounts.account_label, lastStatus.device, lastStatus.item, lastStatus.description, lastStatus.value 
 	from lastStatus
 	inner join customer_accounts on customer_accounts.account_id = lastStatus.account_id
-	where lastStatus.value='down';
+	where lastStatus.value='down' and date_add(timestampMonitor, interval 5 minute)>now();

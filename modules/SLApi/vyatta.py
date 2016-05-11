@@ -60,9 +60,12 @@ def getVyattaInfo(FQDN, URL, USER, PASSWORD, COMMAND):
 
             return infoRet
         else:
-            #if (ret == 410): vyatta nao tem VPN
-            logger.error("getVyattaInfo: Error getting Vyatta "+FQDN+" command results!. HTTP Error code: "+`ret`)
-            return "ERROR: Error getting Vyatta command results!"
+            if (ret == 410): #vyatta nao tem VPN
+                logger.debug("getVyattaInfo: Vyatta "+FQDN+" dont have VPN!. HTTP Error code: "+`ret`)
+                return "ERROR: Vyatta dont have VPN!"
+            else:
+                logger.error("getVyattaInfo: Error getting Vyatta "+FQDN+" command results!. HTTP Error code: "+`ret`)
+                return "ERROR: Error getting Vyatta command results!"
     else:
         logger.error("getVyattaInfo: Error sending Vyatta "+FQDN+" commands!. HTTP Error code: "+`ret`)
         return "ERROR: Error sending Vyatta commands!"

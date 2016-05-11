@@ -27,8 +27,8 @@ def getVyattaInfo(FQDN, URL, USER, PASSWORD, COMMAND):
         try:
             response = requests.post("https://"+URL+"/rest/op/"+restVyattaCommand, headers=headers, verify=False)
             ret = response.status_code
-        except requests.exceptions.ConnectionError:
-            logger.error("getVyattaInfo: Error trying contacting Vyatta "+FQDN+"!")
+        except requests.exceptions.ConnectionError as e:
+            logger.error("getVyattaInfo: Error trying contacting Vyatta "+FQDN+"! "+e)
             #return "ERROR: Error contacting Vyatta!"
         tries -= 1
 
@@ -40,8 +40,8 @@ def getVyattaInfo(FQDN, URL, USER, PASSWORD, COMMAND):
             try:
                 response = requests.get("https://"+URL+"/"+location, headers=headers, verify=False)
                 ret = response.status_code
-            except requests.exceptions.ConnectionError:
-                logger.error("getVyattaInfo: Error trying contacting Vyatta "+FQDN+"!")
+            except requests.exceptions.ConnectionError as e:
+                logger.error("getVyattaInfo: Error trying contacting Vyatta "+FQDN+"! "+e)
                 #return "ERROR: Error contacting Vyatta!"
             tries -= 1
             
@@ -54,17 +54,17 @@ def getVyattaInfo(FQDN, URL, USER, PASSWORD, COMMAND):
                 response = requests.delete("https://"+URL+"/"+location, headers=headers, verify=False)
                 ret = response.status_code
                 if (ret <> 200):
-                    logger.debug("getVyattaInfo: Error cleaning Vyatta "+FQDN+" command buffer!. HTTP Error code: "+`ret`)
-            except requests.exceptions.ConnectionError:
-                logger.debug("getVyattaInfo: Error contacting Vyatta "+FQDN+" to clear buffer command!"+`ret`)
+                    logger.error("getVyattaInfo: Error cleaning Vyatta "+FQDN+" command buffer!. HTTP Error code: "+`ret`)
+            except requests.exceptions.ConnectionError  as e:
+                logger.error("getVyattaInfo: Error contacting Vyatta "+FQDN+" to clear buffer command! "+`ret`+" "+e)
 
             return infoRet
         else:
             #if (ret == 410): vyatta nao tem VPN
-            logger.debug("getVyattaInfo: Error getting Vyatta "+FQDN+" command results!. HTTP Error code: "+`ret`)
+            logger.error("getVyattaInfo: Error getting Vyatta "+FQDN+" command results!. HTTP Error code: "+`ret`)
             return "ERROR: Error getting Vyatta command results!"
     else:
-        logger.debug("getVyattaInfo: Error sending Vyatta "+FQDN+" commands!. HTTP Error code: "+`ret`)
+        logger.error("getVyattaInfo: Error sending Vyatta "+FQDN+" commands!. HTTP Error code: "+`ret`)
         return "ERROR: Error sending Vyatta commands!"
 
     

@@ -2,6 +2,7 @@
 
 import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
+import time
 
 import json
 import base64
@@ -40,6 +41,8 @@ def getVyattaInfo(FQDN, URL, USER, PASSWORD, COMMAND):
             try:
                 response = requests.get("https://"+URL+"/"+location, headers=headers, verify=False)
                 ret = response.status_code
+                if (ret == 202 and tries > 1):
+                    time.sleep(2)
             except requests.exceptions.ConnectionError as e:
                 logger.error("getVyattaInfo: Error trying contacting Vyatta "+FQDN+"! "+e)
                 #return "ERROR: Error contacting Vyatta!"

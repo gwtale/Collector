@@ -35,7 +35,7 @@ def getVyattaInfo(FQDN, URL, USER, PASSWORD, COMMAND):
 
     if (ret == 201): #201
         location = response.headers['Location']
-        tries = 2
+        tries = 5
         ret = 0
         while (tries > 0 and ret<>200):
             try:

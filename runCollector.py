@@ -76,6 +76,8 @@ def process_data(threadName, q, stateDataQueue):
             data = q.get()
             queueLock.release()
             
+            logger.info("Collection data from " + data['fullyQualifiedDomainName']+"...")
+            
             # Category devices
             if (data['product'] == "Vyatta"):
                 #print "%s processing %s" % (threadName, data['product'])
@@ -149,6 +151,7 @@ def process_data(threadName, q, stateDataQueue):
                     stateDataQueueLock.release()
                 else:
                     logger.error("Cant retrieve " + data['fullyQualifiedDomainName'] + " authentication")
+            logger.info("Collection data from " + data['fullyQualifiedDomainName']+" is done!")
         else:
             queueLock.release()
             sleep(1)
@@ -218,7 +221,6 @@ while (True):
                         queueLock.acquire()
                         workQueue.put(device)
                         queueLock.release()
-                        logger.info("Done!")
                         nJobs+=1
         logger.info("Created "+`nJobs`+" schedules!")
     else:

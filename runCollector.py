@@ -11,7 +11,7 @@ from datetime import datetime
 import modules.SLApi.vyatta as vyatta
 import modules.alerts.slack as slack
 
-logger = syslog.getLogger(__name__)
+logger = syslog.getLogger("runCollector.py")
 
 baseFile = "config/base.json"
 configFile = "config/slapi-config.json"
@@ -200,10 +200,11 @@ while (True):
         with open(devicesFile) as infile:
             devices = json.loads(json.load(infile))
     
-        #check each schedule for each device 
+        #check each schedule for each device
+        logger.info("Trigger schedule starting...")
+        now = datetime.now() 
+        nJobs=0
         for device in devices:
-            now = datetime.now()
-            
             for item in device['schedules']:
                 #all scheduled itens
                 for index in range(len(item.keys())):
@@ -216,6 +217,8 @@ while (True):
                         queueLock.acquire()
                         workQueue.put(device)
                         queueLock.release()
+                        nJobs+=1
+        logger.info("Created "+`nJobs`+" schedules!")
     else:
         logger.error("Devices file "+devicesFile+" doesnt exist!")
         sys.exit()

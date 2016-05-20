@@ -29,7 +29,7 @@ def getVyattaInfo(FQDN, URL, USER, PASSWORD, COMMAND):
             response = requests.post("https://"+URL+"/rest/op/"+restVyattaCommand, headers=headers, verify=False)
             ret = response.status_code
         except requests.exceptions.ConnectionError as e:
-            logger.error("getVyattaInfo: Error trying contacting Vyatta "+FQDN+"! "+e)
+            logger.error("getVyattaInfo: Error trying contacting Vyatta "+FQDN+"! ")
             #return "ERROR: Error contacting Vyatta!"
         tries -= 1
 
@@ -44,7 +44,7 @@ def getVyattaInfo(FQDN, URL, USER, PASSWORD, COMMAND):
                 if (ret == 202 and tries > 1):
                     time.sleep(2)
             except requests.exceptions.ConnectionError as e:
-                logger.error("getVyattaInfo: Error trying contacting Vyatta "+FQDN+"! "+e)
+                logger.error("getVyattaInfo: Error trying contacting Vyatta "+FQDN+"! ")
                 #return "ERROR: Error contacting Vyatta!"
             tries -= 1
             
@@ -59,7 +59,7 @@ def getVyattaInfo(FQDN, URL, USER, PASSWORD, COMMAND):
                 if (ret <> 200):
                     logger.error("getVyattaInfo: Error cleaning Vyatta "+FQDN+" command buffer!. HTTP Error code: "+`ret`)
             except requests.exceptions.ConnectionError  as e:
-                logger.error("getVyattaInfo: Error contacting Vyatta "+FQDN+" to clear buffer command! "+`ret`+" "+e)
+                logger.error("getVyattaInfo: Error contacting Vyatta "+FQDN+" to clear buffer command! "+`ret`+" ")
 
             return infoRet
         else:

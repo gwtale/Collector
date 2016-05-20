@@ -214,9 +214,11 @@ while (True):
                     #if reach the schedule time put schedule job in the queue
                     if (enable and itsTime2Run(now, rule)):
                         #print `device['id']` + " " + monitor
+                        logger.info("Adding device "+`device['id']`+" in schedule list...")
                         queueLock.acquire()
                         workQueue.put(device)
                         queueLock.release()
+                        logger.info("Done!")
                         nJobs+=1
         logger.info("Created "+`nJobs`+" schedules!")
     else:

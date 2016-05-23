@@ -50,6 +50,7 @@ class evaluateStateThread (threading.Thread):
                             
                             # Add alert message in the queue
                             #print changeStateMsg
+                            logger.info("Adding alert do queue: "+changeStateMsg)
                             self.queueLock.acquire()
                             self.alertsQueue.put(changeStateMsg)
                             self.queueLock.release()
@@ -98,7 +99,7 @@ class slackAlertsThread (threading.Thread):
                 payload = {"username": "ISSD-BOT", 'text': message}
                 try:
                     response = requests.post(URL, data=json.dumps(payload), headers=headers, verify=False)
-                    print message
+                    logger.info("Sent slack message: "+message)
                 except requests.exceptions.ConnectionError:
                     logger.error("Error sending message to Slack.com")
     

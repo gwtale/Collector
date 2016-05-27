@@ -146,6 +146,9 @@ def parseUpDown(vrrpTxt):
     if (vrrpTxt.startswith("ERROR:")):
         #print "Error contacting Vyatta"
         return 0
+    elif ("VRRP process not responding to request for operational data" in vrrpTxt):
+        #print "Vyatta crash MASTER/MASTER?"
+        return 3
     elif (" BACKUP " in vrrpTxt):
         #print "Vyatta Backup"
         return 2

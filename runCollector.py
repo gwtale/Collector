@@ -139,10 +139,15 @@ def process_data(threadName, q, stateDataQueue):
                         logger.debug(data['fullyQualifiedDomainName'] + " is up and master")
                         history['value']='up-master'
                         
-                    else:
+                    elif (upDown == 2):
                         logger.debug(data['fullyQualifiedDomainName'] + " is up and backup")
                         history['value']='up-backup'
                         
+                    elif (upDown == 3):
+                        logger.debug(data['fullyQualifiedDomainName'] + " is crashed, maybe MASTER/MASTER")
+                        history['value']='VRRP process not responding'
+                    #else:
+                    
                     cache.dumpHistory(history)
                     
                     # Add to queue evaluation change state (UpDown)

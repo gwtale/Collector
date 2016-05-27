@@ -93,6 +93,13 @@ def process_data(threadName, q, stateDataQueue):
                     history['device']=data['fullyQualifiedDomainName']
                     history['product']="Vyatta"
                     history['item']="UpDown"
+                    
+                    historyAlert={}
+                    historyAlert['timestamp']=datetime.now().strftime("%Y%m%d%H%M%S")
+                    historyAlert['account_id']=base['account_id']
+                    historyAlert['device']=data['fullyQualifiedDomainName']
+                    historyAlert['product']="Vyatta"
+                    historyAlert['item']="UpDown"
                         
                     #print data['primaryBackendIpAddress'] + " " + password
                     vrrpTxt = vyatta.getVyattaInfo(data['fullyQualifiedDomainName'], data['primaryBackendIpAddress'],"vyatta", password, "show vrrp")
@@ -102,6 +109,7 @@ def process_data(threadName, q, stateDataQueue):
                         #print data['fullyQualifiedDomainName'] + " is down"
                         logger.debug(vrrpTxt + " " + data['fullyQualifiedDomainName'] + " is down")
                         history['value']='down'
+                        historyAlert['value']='down'
                     elif (upDown == 1):
                         # is up and master vrrp
                         #print data['fullyQualifiedDomainName'] + " is up and master"
@@ -138,21 +146,24 @@ def process_data(threadName, q, stateDataQueue):
                         #print vpnStatus
                         logger.debug(data['fullyQualifiedDomainName'] + " is up and master")
                         history['value']='up-master'
+                        historyAlert['value']='up-master'
                         
                     elif (upDown == 2):
                         logger.debug(data['fullyQualifiedDomainName'] + " is up and backup")
                         history['value']='up-backup'
+                        historyAlert['value']='up-backup'
                         
                     elif (upDown == 3):
-                        logger.debug(data['fullyQualifiedDomainName'] + " is crashed, maybe MASTER/MASTER")
-                        history['value']='VRRP process not responding'
+                        logger.debug(data['fullyQualifiedDomainName'] + " is up but in crash, maybe MASTER/MASTER")
+                        history['value']='down'
+                        historyAlert['value']='down VRRP process not responding'
                     #else:
                     
                     cache.dumpHistory(history)
                     
                     # Add to queue evaluation change state (UpDown)
                     stateDataQueueLock.acquire()
-                    stateDataQueue.put(history)
+                    stateDataQueue.put(historyAlert)
                     stateDataQueueLock.release()
                 else:
                     logger.error("Cant retrieve " + data['fullyQualifiedDomainName'] + " authentication")

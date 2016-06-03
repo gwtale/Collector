@@ -71,6 +71,7 @@ class collectorThread (threading.Thread):
 # Thread process data function
 def process_data(threadName, q, stateDataQueue):
     while not exitFlag:
+        logger.info("Acquiring device from the list to collect data...")
         queueLock.acquire()
         if not q.empty():
             data = q.get()

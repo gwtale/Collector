@@ -47,7 +47,8 @@ class evaluateStateThread (threading.Thread):
                             color = "good"
                             if ("DOWN" in data['value'].upper()):
                                 color = "danger"
-                            changeStateMsg = {"username": "ISSD-BOT", 'color': color, 'fields': [{"title": "Customer", "value": self.customer, "short": True}, {"title": "Product", "value": data['product'], "short": True}, {"title": "Device", "value": data['device'], "short": True}, {"title": "Item", "value": data['item'], "short": True}, {"title": "Prior State", "value": state['value'], "short": True}, {"title": "New State", "value": data['value'], "short": True}]}
+                            preText = self.customer+ " - "+ data['device'] + " - " + data['value'] 
+                            changeStateMsg = {"username": "ISSD-BOT", 'color': color, 'text': preText , 'fields': [{"title": "Customer", "value": self.customer, "short": True}, {"title": "Product", "value": data['product'], "short": True}, {"title": "Device", "value": data['device'], "short": True}, {"title": "Item", "value": data['item'], "short": True}, {"title": "Prior State", "value": state['value'], "short": True}, {"title": "New State", "value": data['value'], "short": True}]}
                             changeStateTxt = "Customer: " + self.customer+" | Product: "+data['product']+" | Device: "+data['device']+" | Item: "+data['item']+" | Old State: "+state['value']+" | New State: "+data['value']
                             #change the actual state
                             self.states[pos]['value']=data['value']

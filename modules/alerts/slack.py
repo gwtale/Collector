@@ -121,11 +121,3 @@ class slackAlertsThread (threading.Thread):
     
     def exitSlackAlertsThread(self):
         self.exitThread = 1
-        
-        
-payload = {"username": "ISSD-BOT", 'fields': [{"title": "Customer", "value": "Test Customer", "short": true}, {"title": "Product", "value": "Teste Product", "short": true}, {"title": "Device", "value": "Test Dev", "short": true}, {"title": "Item", "value": "Test Item", "short": true}, {"title": "Prior State", "value": "Test", "short": true}, {"title": "New State", "value": "Test", "short": true}]}
-try:
-    response = requests.post(URL, data=json.dumps(payload), headers=headers, verify=False)
-    logger.info("Sent slack message: "+message)
-except requests.exceptions.ConnectionError:
-    logger.error("Error sending message to Slack.com")

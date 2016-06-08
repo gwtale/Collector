@@ -44,7 +44,11 @@ class evaluateStateThread (threading.Thread):
                 for state in self.states:
                     if (state['device'] == data['device'] and state['item'] == data['item']):
                         if ( state['value']<>data['value']):
-                            changeStateMsg = "Customer: " + self.customer+" | Product: "+data['product']+" | Device: "+data['device']+" | Item: "+data['item']+" | Old State: "+state['value']+" | New State: "+data['value']
+                            color = "good"
+                            if ("DOWN" in data['value'].upper()):
+                                color = "danger"
+                            changeStateMsg = {"username": "ISSD-BOT", 'color': color, 'fields': [{"title": "Customer", "value": self.customer, "short": True}, {"title": "Product", "value": data['product'], "short": True}, {"title": "Device", "value": data['device'], "short": True}, {"title": "Item", "value": data['item'], "short": True}, {"title": "Prior State", "value": state['value'], "short": True}, {"title": "New State", "value": data['value'], "short": True}]}
+                            #changeStateMsg = "Customer: " + self.customer+" | Product: "+data['product']+" | Device: "+data['device']+" | Item: "+data['item']+" | Old State: "+state['value']+" | New State: "+data['value']
                             #change the actual state
                             self.states[pos]['value']=data['value']
                             
@@ -96,10 +100,12 @@ class slackAlertsThread (threading.Thread):
                 self.queueLock.release()
         
                 #process_data(self.name, self.q)
-                payload = {"username": "ISSD-BOT", 'text': message}
+                #payload = {"username": "ISSD-BOT", 'text': message}
+                payload = message
                 try:
                     response = requests.post(URL, data=json.dumps(payload), headers=headers, verify=False)
-                    logger.info("Sent slack message: "+message)
+                    #logger.info("Sent slack message: "+message)
+                    logger.debug("Sent slack message")
                 except requests.exceptions.ConnectionError:
                     logger.error("Error sending message to Slack.com")
     
@@ -115,3 +121,11 @@ class slackAlertsThread (threading.Thread):
     
     def exitSlackAlertsThread(self):
         self.exitThread = 1
+        
+        
+payload = {"username": "ISSD-BOT", 'fields': [{"title": "Customer", "value": "Test Customer", "short": true}, {"title": "Product", "value": "Teste Product", "short": true}, {"title": "Device", "value": "Test Dev", "short": true}, {"title": "Item", "value": "Test Item", "short": true}, {"title": "Prior State", "value": "Test", "short": true}, {"title": "New State", "value": "Test", "short": true}]}
+try:
+    response = requests.post(URL, data=json.dumps(payload), headers=headers, verify=False)
+    logger.info("Sent slack message: "+message)
+except requests.exceptions.ConnectionError:
+    logger.error("Error sending message to Slack.com")

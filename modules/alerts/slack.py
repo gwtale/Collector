@@ -48,13 +48,13 @@ class evaluateStateThread (threading.Thread):
                             if ("DOWN" in data['value'].upper()):
                                 color = "danger"
                             changeStateMsg = {"username": "ISSD-BOT", 'color': color, 'fields': [{"title": "Customer", "value": self.customer, "short": True}, {"title": "Product", "value": data['product'], "short": True}, {"title": "Device", "value": data['device'], "short": True}, {"title": "Item", "value": data['item'], "short": True}, {"title": "Prior State", "value": state['value'], "short": True}, {"title": "New State", "value": data['value'], "short": True}]}
-                            #changeStateMsg = "Customer: " + self.customer+" | Product: "+data['product']+" | Device: "+data['device']+" | Item: "+data['item']+" | Old State: "+state['value']+" | New State: "+data['value']
+                            changeStateTxt = "Customer: " + self.customer+" | Product: "+data['product']+" | Device: "+data['device']+" | Item: "+data['item']+" | Old State: "+state['value']+" | New State: "+data['value']
                             #change the actual state
                             self.states[pos]['value']=data['value']
                             
                             # Add alert message in the queue
                             #print changeStateMsg
-                            logger.info("Adding alert do queue: "+changeStateMsg)
+                            logger.info("Adding alert do queue: "+changeStateTxt)
                             self.queueLock.acquire()
                             self.alertsQueue.put(changeStateMsg)
                             self.queueLock.release()

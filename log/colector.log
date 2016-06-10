@@ -566,21 +566,3 @@
 2016-05-20 10:18:39,202 - runCollector.py - INFO - Done!
 2016-05-20 10:18:39,202 - runCollector.py - INFO - Created 7 schedules!
 2016-05-20 10:18:39,202 - runCollector.py - INFO - Sleeping  runCollector...
-2016-06-09 17:13:46,313 - modules.alerts.slack - INFO - Adding alert to queue: Customer: BRF | Product: Vyatta | Device: teste.brf.com | Item: UpDown | Old State: Up | New State: Down
-2016-06-09 17:13:46,354 - modules.alerts.slack - INFO - Adding alert to queue: Customer: BRF | Product: Vyatta | Device: teste.brf.com | Item: VPN | Old State: VPN xyz PeerID:0.0.0.0 LocalID:1.1.1.1 Tunnel 1: Up | New State: VPN xyz PeerID:0.0.0.0 LocalID:1.1.1.1 Tunnel 1: Down
-2016-06-09 17:31:23,237 - modules.alerts.slack - INFO - Adding alert to queue: Customer: BRF | Product: Vyatta | Device: teste.brf.com | Item: UpDown | Old State: Up | New State: Down
-2016-06-09 17:31:23,237 - modules.alerts.slack - INFO - Adding alert to queue: Customer: BRF | Product: Vyatta | Device: teste.brf.com | Item: VPN xyz PeerID:0.0.0.0 LocalID:1.1.1.1 Tunnel 1 | Old State: up | New State: down
-2016-06-09 17:31:49,277 - modules.alerts.slack - INFO - Adding alert to queue: Customer: BRF | Product: Vyatta | Device: teste.brf.com | Item: UpDown | Old State: Up | New State: Down
-2016-06-09 17:31:49,278 - modules.alerts.slack - INFO - Adding alert to queue: Customer: BRF | Product: Vyatta | Device: teste.brf.com | Item: VPN xyz PeerID:0.0.0.0 LocalID:1.1.1.1 Tunnel 1 | Old State: up | New State: down
-2016-06-09 17:34:37,659 - modules.alerts.slack - INFO - Adding alert to queue: Customer: BRF | Product: Vyatta | Device: teste.brf.com | Item: UpDown | Old State: Up | New State: Down
-2016-06-09 17:34:37,660 - modules.alerts.slack - INFO - Adding alert to queue: Customer: BRF | Product: Vyatta | Device: teste.brf.com | Item: VPN xyz PeerID:0.0.0.0 LocalID:1.1.1.1 Tunnel 1 | Old State: up | New State: down
-2016-06-09 17:37:54,343 - modules.alerts.slack - INFO - Adding alert to queue: Customer: BRF | Product: Vyatta | Device: teste.brf.com | Item: UpDown | Old State: Up | New State: Down
-2016-06-09 17:37:54,343 - modules.alerts.slack - INFO - Adding alert to queue: Customer: BRF | Product: Vyatta | Device: teste.brf.com | Item: VPN xyz PeerID:0.0.0.0 LocalID:1.1.1.1 Tunnel 1 | Old State: up | New State: down
-2016-06-09 17:39:08,534 - modules.alerts.slack - INFO - Adding alert to queue: Customer: BRF | Product: Vyatta | Device: teste.brf.com | Item: UpDown | Old State: Up | New State: Down
-2016-06-09 17:39:08,534 - modules.alerts.slack - INFO - Adding alert to queue: Customer: BRF | Product: Vyatta | Device: teste.brf.com | Item: VPN xyz PeerID:0.0.0.0 LocalID:1.1.1.1 Tunnel 1 | Old State: up | New State: down
-2016-06-09 17:39:57,260 - modules.alerts.slack - INFO - Adding alert to queue: Customer: BRF | Product: Vyatta | Device: teste.brf.com | Item: UpDown | Old State: Up | New State: Down
-2016-06-09 17:39:57,260 - modules.alerts.slack - INFO - Adding alert to queue: Customer: BRF | Product: Vyatta | Device: teste.brf.com | Item: VPN xyz PeerID:0.0.0.0 LocalID:1.1.1.1 Tunnel 1 | Old State: up | New State: down
-2016-06-09 17:41:21,793 - modules.alerts.slack - INFO - Adding alert to queue: Customer: BRF | Product: Vyatta | Device: teste.brf.com | Item: UpDown | Old State: Up | New State: Down
-2016-06-09 17:41:21,793 - modules.alerts.slack - INFO - Adding alert to queue: Customer: BRF | Product: Vyatta | Device: teste.brf.com | Item: VPN xyz PeerID:0.0.0.0 LocalID:1.1.1.1 Tunnel 1 | Old State: up | New State: down
-2016-06-10 10:45:53,496 - modules.alerts.slack - INFO - Adding alert to queue: Customer: BRF | Product: Vyatta | Device: teste.brf.com | Item: UpDown | Old State: Up | New State: Down
-2016-06-10 10:45:53,518 - modules.alerts.slack - INFO - Adding alert to queue: Customer: BRF | Product: Vyatta | Device: teste.brf.com | Item: VPN xyz PeerID:0.0.0.0 LocalID:1.1.1.1 Tunnel 1 | Old State: up | New State: down

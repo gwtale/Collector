@@ -88,3 +88,4 @@ CREATE VIEW viewDashboardMarquee AS
 DROP VIEW viewLastUpdateByCustomer;
 CREATE VIEW viewLastUpdateByCustomer AS
 	select account_id, max(timestamp) as lastUpdate from lastStatus group by account_id; 
+	

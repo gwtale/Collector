@@ -136,7 +136,7 @@ def process_data(threadName, q, stateDataQueue):
                                     vpnQueue['account_id']=historyVPN['account_id']
                                     vpnQueue['device']=historyVPN['device']
                                     vpnQueue['product']="Vyatta"
-                                    vpnQueue['item'] = vpn['Description']+" PeerID:"+vpn['PeerID']+" LocalID:"+vpn['LocalID']+" Tunnel:"+key
+                                    vpnQueue['item'] = vpn['Description']+"\nPeerID:"+vpn['PeerID']+"\nLocalID:"+vpn['LocalID']+"\nTunnel:"+key
                                     vpnQueue['value'] = value
                                     #Add to queue
                                     stateDataQueueLock.acquire()

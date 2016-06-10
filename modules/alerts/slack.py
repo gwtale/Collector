@@ -2,6 +2,7 @@
 import Queue
 import threading
 import requests
+from requests_toolbelt.multipart.encoder import MultipartEncoder
 import json
 from time import sleep
 import modules.log.syslog as syslog
@@ -9,8 +10,14 @@ import modules.log.syslog as syslog
 
 logger = syslog.getLogger(__name__)
 
-URL="https://hooks.slack.com/services/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"
-headers = {'Content-type': 'application/json'}
+#Slack_URL="https://hooks.slack.com/services/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"
+#headers = {'Content-type': 'application/json'}
+
+Slack_URL="https://slack.com/api/chat.postMessage"
+Slack_channel="#softlayer_alerts"
+#Slack_channel="#softlayer_dev"
+Slack_username="softlayermon"
+
 
 # Thread class
 class evaluateStateThread (threading.Thread):
@@ -48,14 +55,16 @@ class evaluateStateThread (threading.Thread):
                             if ("DOWN" in data['value'].upper()):
                                 color = "danger"
                             preText = self.customer+ " - "+ data['device'] + " - " + data['value'] 
-                            changeStateMsg = {"username": "ISSD-BOT", 'color': color, 'text': preText , 'fields': [{"title": "Customer", "value": self.customer, "short": True}, {"title": "Product", "value": data['product'], "short": True}, {"title": "Device", "value": data['device'], "short": True}, {"title": "Item", "value": data['item'], "short": True}, {"title": "Prior State", "value": state['value'], "short": True}, {"title": "New State", "value": data['value'], "short": True}]}
+                            #changeStateMsg = {"username": "ISSD-BOT", 'color': color, 'text': preText , 'fields': [{"title": "Customer", "value": self.customer, "short": True}, {"title": "Product", "value": data['product'], "short": True}, {"title": "Prior State", "value": state['value'], "short": True}, {"title": "New State", "value": data['value'], "short": True}, {"title": "Device", "value": data['device'], "short": False}, {"title": "Item", "value": data['item'], "short": False}]}
+                            changeStateMsg = {'text': preText , 'color': color, 'fields': [{"title": "Customer", "value": self.customer, "short": True}, {"title": "Product", "value": data['product'], "short": True}, {"title": "Prior State", "value": state['value'], "short": True}, {"title": "New State", "value": data['value'], "short": True}, {"title": "Device", "value": data['device'], "short": False}, {"title": "Item", "value": data['item'], "short": False}]}
                             changeStateTxt = "Customer: " + self.customer+" | Product: "+data['product']+" | Device: "+data['device']+" | Item: "+data['item']+" | Old State: "+state['value']+" | New State: "+data['value']
+                            
                             #change the actual state
                             self.states[pos]['value']=data['value']
                             
                             # Add alert message in the queue
                             #print changeStateMsg
-                            logger.info("Adding alert do queue: "+changeStateTxt)
+                            logger.info("Adding alert to queue: "+changeStateTxt)
                             self.queueLock.acquire()
                             self.alertsQueue.put(changeStateMsg)
                             self.queueLock.release()
@@ -102,9 +111,38 @@ class slackAlertsThread (threading.Thread):
         
                 #process_data(self.name, self.q)
                 #payload = {"username": "ISSD-BOT", 'text': message}
-                payload = message
+                #payload = message       
+                text = message.pop('text', None)
+                #print json.dumps(message)  
+                payload = MultipartEncoder(
+                        fields={'token': 'xoxb-49553493588-6Fxbn38CaJft1OcARPzOP5il',
+                                 "channel": Slack_channel,
+                                 "username": Slack_username,
+                                 "text": text,
+                                'attachments': '['+json.dumps(message)+']'})
+                headers = {'Content-type': payload.content_type}
+                
+                            #if (payload['color'] == "danger"):
+                            #    #new issue
+                            #    changeStateMsg = MultipartEncoder(
+                            #        fields={'token': 'xoxb-49553493588-6Fxbn38CaJft1OcARPzOP5il',
+                            #                 "channel": Slack_channel,
+                            #                 "username": Slack_username,
+                            #                 "text": preText,
+                            #                 'attachments': '['+json.dumps(attachment)+']'}
+                            #        )
+                            #else:
+                            #    #delete issue
+                            #    changeStateMsg = MultipartEncoder(
+                            #        fields={'token': 'xoxb-49553493588-6Fxbn38CaJft1OcARPzOP5il',
+                            #                 "channel": "",
+                            #                 "username": Slack_username,
+                            #                 "ts": ""}
+                            #        )
+                
                 try:
-                    response = requests.post(URL, data=json.dumps(payload), headers=headers, verify=False)
+                    #response = requests.post(Slack_URL, data=json.dumps(payload), headers=headers, verify=False)
+                    response = requests.post(Slack_URL, data=payload, headers=headers, verify=False)
                     #logger.info("Sent slack message: "+message)
                     logger.debug("Sent slack message")
                 except requests.exceptions.ConnectionError:

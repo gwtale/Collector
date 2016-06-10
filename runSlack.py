@@ -45,8 +45,8 @@ data['timestamp']='201604281700'
 data['account_id']='18'
 data['device']='teste.brf.com'
 data['product']="Vyatta"
-data['item']="VPN"
-data['value']="VPN xyz PeerID:0.0.0.0 LocalID:1.1.1.1 Tunnel 1: Up"
+data['item']="VPN xyz PeerID:0.0.0.0 LocalID:1.1.1.1 Tunnel 1"
+data['value']="up"
 
 stateDataQueueLock.acquire()
 stateDataQueue.put(data)
@@ -57,8 +57,8 @@ data['timestamp']='201604281700'
 data['account_id']='18'
 data['device']='teste.brf.com'
 data['product']="Vyatta"
-data['item']="VPN"
-data['value']="VPN xyz PeerID:0.0.0.0 LocalID:1.1.1.1 Tunnel 1: Down"
+data['item']="VPN xyz PeerID:0.0.0.0 LocalID:1.1.1.1 Tunnel 1"
+data['value']="down"
 
 stateDataQueueLock.acquire()
 stateDataQueue.put(data)

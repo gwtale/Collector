@@ -6,3 +6,4 @@ Setup:
 Create hourly entry like:
 0 * * * * `cd /var/Collector && python cron_zabbix_createHosts.py`
 """
+# teste

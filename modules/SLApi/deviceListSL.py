@@ -19,6 +19,7 @@ def updateDeviceListFromSL(config):
     SERVER = config['SERVER']
     REST_HARDWARE = config['REST_HARDWARE']
     REST_VIRTUAL_GUESTS = config['REST_VIRTUAL_GUESTS']
+    REST_NETSCALER = config['REST_NETSCALER']
     
     logger.info("Updating local device list...")
     
@@ -106,6 +107,24 @@ def updateDeviceListFromSL(config):
             deviceListSL.append(deviceSL)
     else:
         logger.error('Error loading Virtual Guests list from SoftLayer. Devices list is out of date!')
+        inError = True
+
+    logger.debug("Loading NetScaler list from SL...")
+    response = requests.get("https://" + USER + ":" + USER_KEY + "@" + SERVER + REST_NETSCALER)
+    if (response.status_code == 200):
+        logger.debug("NetScaler list received with success!")
+        netscalerListSL = json.loads(response.content)
+        for netscalerSL in netscalerListSL:
+            deviceSL = {}
+            deviceSL['type'] = 'Appliance'
+            deviceSL['product'] = 'NetScaler'
+            deviceSL['id'] = netscalerSL['id']
+            deviceSL['fullyQualifiedDomainName'] = netscalerSL['name']
+            deviceSL['primaryBackendIpAddress'] = netscalerSL['managementIpAddress']
+            deviceSL['users'] = [{netscalerSL['password']['username']: netscalerSL['password']['password']}]
+            deviceListSL.append(deviceSL)
+    else:
+        logger.error('Error loading NetScaler list from SoftLayer. Devices list is out of date!')
         inError = True
 
     #Update local list

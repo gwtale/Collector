@@ -7,5 +7,5 @@
 	"SERVER": "api.softlayer.com",
 	"REST_HARDWARE": "/rest/v3/SoftLayer_Account/Hardware.json?objectMask=id;fullyQualifiedDomainName;operatingSystem;softwareComponents;primaryBackendIpAddress;operatingSystem.passwords",
 	"REST_VIRTUAL_GUESTS": "/rest/v3/SoftLayer_Account/VirtualGuests.json?objectMask=id;fullyQualifiedDomainName;operatingSystem;softwareComponents;primaryBackendIpAddress;operatingSystem.passwords",
-	"REST_NETSCALER": "rest/v3/SoftLayer_Account/getApplicationDeliveryControllers"
+	"REST_NETSCALER": "/rest/v3/SoftLayer_Account/getApplicationDeliveryControllers.json?objectMask=id;managementIpAddress;name;password.password;password.username"
 }

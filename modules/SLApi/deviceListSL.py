@@ -50,7 +50,7 @@ def updateDeviceListFromSL(config):
                 #        password = user['password']
                 #        logger.debug("* "+hardwareSL['fullyQualifiedDomainName']+" "+username+" "+password)
                 #        logger.debug("* "+softwareComponent['softwareLicense']['softwareDescription']['longDescription'])
-                if ('softwareLicense' in softwareComponent and softwareComponent['softwareLicense']['softwareDescription']['manufacturer'] == 'Idera'):
+                if ('softwareLicense' in softwareComponent and softwareComponent['softwareLicense']['softwareDescription']['manufacturer'] == 'R1Soft'):
                     isIdera = True
                     break
             

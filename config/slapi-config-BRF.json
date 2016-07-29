@@ -1,7 +1,7 @@
 {
-	"CUSTOMER": "Ecom Carrefour",
-	"USER": "jpmenega@ecom.carrefour",
-	"USER_KEY": "b957dfb4bf7c17471cc7d4a3d452f26c2c04512c38f9824a1c6f47a95952625d",
+	"CUSTOMER": "BRF",
+	"USER": "cloudbr@brf",
+	"USER_KEY": "57e5874ce98d1492b9310602aa1bb3a42f82fc12570639a5c2a4f686e44b8084",
 	"_comment1": "private server - api.service.softlayer.com",
 	"_comment2": "public server - api.softlayer.com",
 	"SERVER": "api.softlayer.com",

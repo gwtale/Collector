@@ -20,6 +20,12 @@ def updateDeviceListFromSL(config):
     REST_HARDWARE = config['REST_HARDWARE']
     REST_VIRTUAL_GUESTS = config['REST_VIRTUAL_GUESTS']
     REST_NETSCALER = config['REST_NETSCALER']
+    REST_PUBLIC_VLANS = config['REST_PUBLIC_VLANS']
+    REST_PUBLIC_VLAN_CHECK_IS_DEDICATED = config['REST_PUBLIC_VLAN_CHECK_IS_DEDICATED']
+    REST_PUBLIC_VLAN_FIREWALL = config['REST_PUBLIC_VLAN_FIREWALL']
+    REST_PUBLIC_VLAN_FIREWALL_FQDN = config['REST_PUBLIC_VLAN_FIREWALL_FQDN']
+    REST_PUBLIC_VLAN_FIREWALL_CREDENTIALS = config['REST_PUBLIC_VLAN_FIREWALL_CREDENTIALS']
+    
     
     logger.info("Updating local device list...")
     
@@ -125,6 +131,74 @@ def updateDeviceListFromSL(config):
             deviceListSL.append(deviceSL)
     else:
         logger.error('Error loading NetScaler list from SoftLayer. Devices list is out of date!')
+        inError = True
+        
+    logger.debug("Loading Firewall (Fortigate) list from SL...")
+    response = requests.get("https://" + USER + ":" + USER_KEY + "@" + SERVER + REST_PUBLIC_VLANS)
+    if (response.status_code == 200):
+        logger.debug("VLAN list received with success!")
+        vlanListSL = json.loads(response.content)
+        for vlanSL in vlanListSL:
+            vlanSLID = vlanSL['id']
+            
+            #check if is a dedicated firewall (fortigate)
+            REST_PUBLIC_VLAN_CHECK_IS_DEDICATED_WITH_ID = REST_PUBLIC_VLAN_CHECK_IS_DEDICATED.replace('%VLAN_ID%', `vlanSLID`)
+            response = requests.get("https://" + USER + ":" + USER_KEY + "@" + SERVER + REST_PUBLIC_VLAN_CHECK_IS_DEDICATED_WITH_ID)
+            if (response.status_code == 200):
+                logger.debug("Flag received with success!")
+                vlanDedicatedFlagSL = json.loads(response.content)
+                if (vlanDedicatedFlagSL):
+                    #Get firewall ID and primary IP
+                    REST_PUBLIC_VLAN_FIREWALL_WITH_ID = REST_PUBLIC_VLAN_FIREWALL.replace('%VLAN_ID%', `vlanSLID`)
+                    response = requests.get("https://" + USER + ":" + USER_KEY + "@" + SERVER + REST_PUBLIC_VLAN_FIREWALL_WITH_ID)
+                    if (response.status_code == 200):
+                        logger.debug("Firewall received with success!")
+                        dedicatedFirewallSL = json.loads(response.content)
+                        firewallSLID = dedicatedFirewallSL['id']
+                        firewallSLPrimaryIpAddress = dedicatedFirewallSL['primaryIpAddress']
+                        
+                        #Get firewall FQDN
+                        REST_PUBLIC_VLAN_FIREWALL_FQDN_WITH_ID = REST_PUBLIC_VLAN_FIREWALL_FQDN.replace('%FIREWALL_ID%', `firewallSLID`)
+                        response = requests.get("https://" + USER + ":" + USER_KEY + "@" + SERVER + REST_PUBLIC_VLAN_FIREWALL_FQDN_WITH_ID)
+                        if (response.status_code == 200):
+                            logger.debug("Firewall FQDN received with success!")
+                            firewallSLFQDN = json.loads(response.content)
+
+                            #Get firewall Credentials
+                            REST_PUBLIC_VLAN_FIREWALL_CREDENTIALS_WITH_ID = REST_PUBLIC_VLAN_FIREWALL_CREDENTIALS.replace('%FIREWALL_ID%', `firewallSLID`)
+                            response = requests.get("https://" + USER + ":" + USER_KEY + "@" + SERVER + REST_PUBLIC_VLAN_FIREWALL_CREDENTIALS_WITH_ID)
+                            if (response.status_code == 200):
+                                logger.debug("Firewall credentials received with success!")
+                                dedicatedFirewallCredentialsSL = json.loads(response.content)
+                                firewallSLCredentialsUsername=dedicatedFirewallCredentialsSL['username']
+                                firewallSLCredentialsPassword=dedicatedFirewallCredentialsSL['password']
+                                #print `firewallSLID`+ " "+ firewallSLPrimaryIpAddress+ " "+ firewallSLFQDN+ " "+firewallSLCredentialsUsername+ " "+firewallSLCredentialsPassword
+                                
+                                deviceSL = {}
+                                deviceSL['type'] = 'Appliance'
+                                deviceSL['product'] = 'Fortigate'
+                                deviceSL['id'] = firewallSLID
+                                deviceSL['fullyQualifiedDomainName'] = firewallSLFQDN
+                                deviceSL['primaryBackendIpAddress'] = firewallSLPrimaryIpAddress
+                                deviceSL['users'] = [{firewallSLCredentialsUsername: firewallSLCredentialsPassword}]
+                                deviceListSL.append(deviceSL) 
+                            else:
+                                logger.error('Error loading firewall FQDN from SoftLayer. Devices list is out of date!')
+                                inError = True
+                        
+                        else:
+                            logger.error('Error loading firewall FQDN from SoftLayer. Devices list is out of date!')
+                            inError = True
+                    
+                    else:
+                        logger.error('Error loading firewall from SoftLayer. Devices list is out of date!')
+                        inError = True
+            
+            else:
+                logger.error('Error loading dedicated firewall flag from SoftLayer. Devices list is out of date!')
+                inError = True
+    else:
+        logger.error('Error loading VLAN list from SoftLayer. Devices list is out of date!')
         inError = True
 
     #Update local list

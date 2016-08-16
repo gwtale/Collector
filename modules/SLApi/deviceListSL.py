@@ -40,40 +40,41 @@ def updateDeviceListFromSL(config):
         hardwareListSL = json.loads(response.content)
         
         for hardwareSL in hardwareListSL:
-            deviceSL = {}
-            deviceSL['type']='BareMetal'
-            deviceSL['id']=hardwareSL['id']
-            deviceSL['fullyQualifiedDomainName']=hardwareSL['fullyQualifiedDomainName']
-            #print hardwareSL
-            deviceSL['primaryBackendIpAddress']=hardwareSL['primaryBackendIpAddress']
-            
-            isIdera = False
-            softwareComponents = hardwareSL['softwareComponents']
-            for softwareComponent in softwareComponents:
-                #if ('passwords' in softwareComponent):
-                #    for user in softwareComponent['passwords']:
-                #        username = user['username']
-                #        password = user['password']
-                #        logger.debug("* "+hardwareSL['fullyQualifiedDomainName']+" "+username+" "+password)
-                #        logger.debug("* "+softwareComponent['softwareLicense']['softwareDescription']['longDescription'])
-                if ('softwareLicense' in softwareComponent and softwareComponent['softwareLicense']['softwareDescription']['manufacturer'] == 'R1Soft'):
-                    isIdera = True
-                    break
-            
-            if (isIdera):
-                deviceSL['product'] = 'Idera'
-            else:
-                deviceSL['product'] = hardwareSL['operatingSystem']['softwareLicense']['softwareDescription']['manufacturer']
-            
-            users = []
-            if (len(hardwareSL['operatingSystem']['passwords'])<>0):
-                for user in hardwareSL['operatingSystem']['passwords']:
-                    username = user['username']
-                    password = user['password']
-                    users.append({username: password})
-                    #logger.debug(hardwareSL['fullyQualifiedDomainName']+" "+username+" "+password)
-            deviceSL['users']=users
-            deviceListSL.append(deviceSL)
+            if ('primaryBackendIpAddress' in hardwareSL and hardwareSL['primaryBackendIpAddress'] <> ''):
+                deviceSL = {}
+                deviceSL['type']='BareMetal'
+                deviceSL['id']=hardwareSL['id']
+                deviceSL['fullyQualifiedDomainName']=hardwareSL['fullyQualifiedDomainName']
+                #print hardwareSL
+                deviceSL['primaryBackendIpAddress']=hardwareSL['primaryBackendIpAddress']
+                
+                isIdera = False
+                softwareComponents = hardwareSL['softwareComponents']
+                for softwareComponent in softwareComponents:
+                    #if ('passwords' in softwareComponent):
+                    #    for user in softwareComponent['passwords']:
+                    #        username = user['username']
+                    #        password = user['password']
+                    #        logger.debug("* "+hardwareSL['fullyQualifiedDomainName']+" "+username+" "+password)
+                    #        logger.debug("* "+softwareComponent['softwareLicense']['softwareDescription']['longDescription'])
+                    if ('softwareLicense' in softwareComponent and softwareComponent['softwareLicense']['softwareDescription']['manufacturer'] == 'R1Soft'):
+                        isIdera = True
+                        break
+                
+                if (isIdera):
+                    deviceSL['product'] = 'Idera'
+                else:
+                    deviceSL['product'] = hardwareSL['operatingSystem']['softwareLicense']['softwareDescription']['manufacturer']
+                
+                users = []
+                if (len(hardwareSL['operatingSystem']['passwords'])<>0):
+                    for user in hardwareSL['operatingSystem']['passwords']:
+                        username = user['username']
+                        password = user['password']
+                        users.append({username: password})
+                        #logger.debug(hardwareSL['fullyQualifiedDomainName']+" "+username+" "+password)
+                deviceSL['users']=users
+                deviceListSL.append(deviceSL)
     else:
         logger.error('Error loading Hardware list from SoftLayer. Devices list is out of date!')
         inError = True    

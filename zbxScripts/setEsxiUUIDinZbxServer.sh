@@ -2,6 +2,9 @@ server=$1
 fqdn=$2
 user=$3
 passwd=$4
+zbxsvrip=$5
+zbxsvrid=$6
+zbxsvrpw=$7
  
 rm ~/.ssh/known_hosts
 cd /var/Collector/zbxScripts
@@ -13,7 +16,7 @@ if ping -c1 $server &>/dev/null; then
 #!/usr/bin/python
 from pyzabbix import ZabbixAPI
 import urllib2,ssl,base64,re
-zapi = ZabbixAPI(url='http://192.168.10.15/zabbix/', user='Admin', password='dqm@50vnc')
+zapi = ZabbixAPI(url='http://$zbxsvrip/zabbix/', user='$zbxsvrid', password='$zbxsvrpw')
 url = 'https://$server/mob/?moid=ha-host&doPath=hardware.systemInfo'
 hostid = ''
 def getUUID():

@@ -394,7 +394,7 @@ cat &lt;&lt;EOF | python -
 
 from pyzabbix import ZabbixAPI
 
-zapi = ZabbixAPI(url='http://192.168.10.15/zabbix/', user='Admin', password='dqm@50vnc')
+zapi = ZabbixAPI(url='http://{$ZBX_SERVERIP}/zabbix/', user='{$ZBX_SERVERAPIID}', password='{$ZBX_SERVERAPIPW}')
 
 groupName = &quot;{$ZBX_CUSTOMERGROUP}&quot;
 proxyName = &quot;{HOST.NAME}&quot;
@@ -533,7 +533,7 @@ echo &quot;done configuring snmp&quot;</params>
 zbxClientConfig=&quot;/etc/zabbix/zabbix_agentd.conf&quot;
 if [ -f &quot;$zbxClientConfig&quot; ]
 then
-    if cat $zbxClientConfig|grep 192.168.10.15&gt;&amp; /dev/null
+    if cat $zbxClientConfig|grep {$ZBX_SERVERIP}&gt;&amp; /dev/null
     then
         echo &quot;Zabbix agent already configured&quot;
     else
@@ -542,7 +542,7 @@ then
         sudo echo &quot;PidFile=/var/run/zabbix/zabbix_agentd.pid&quot; &gt;&gt; $zbxClientConfig
         sudo echo &quot;LogFile=/var/log/zabbix/zabbix_agentd.log&quot; &gt;&gt; $zbxClientConfig
         sudo echo &quot;LogFileSize=0&quot; &gt;&gt; $zbxClientConfig
-        sudo echo &quot;Server=192.168.10.15&quot; &gt;&gt; $zbxClientConfig
+        sudo echo &quot;Server={$ZBX_SERVERIP}&quot; &gt;&gt; $zbxClientConfig
         sudo echo &quot;Include=/etc/zabbix/zabbix_agentd.d/&quot; &gt;&gt; $zbxClientConfig
         sudo echo &quot;UserParameter=array_vpnc64Status[*],if pgrep array_vpnc64 &gt; /dev/null; then echo 1; else echo 0; fi&quot; &gt;&gt; $zbxClientConfig
         sudo echo &quot;UserParameter=SoftLayerPrivateApiEndpointAlive[*],if dpkg -l| grep &quot;fping &quot; &gt; /dev/null; then if fping -ur 1 api.service.softlayer.com &gt; /dev/null ;then echo 1; else echo 0; fi; else echo 0; fi&quot; &gt;&gt; $zbxClientConfig
@@ -602,7 +602,7 @@ fi</params>
 zbxProxyConfig=&quot;/etc/zabbix/zabbix_proxy.conf&quot;
 if [ -f &quot;$zbxProxyConfig&quot; ]
 then
-    if cat $zbxProxyConfig|grep 192.168.10.15&gt;&amp; /dev/null
+    if cat $zbxProxyConfig|grep {$ZBX_SERVERIP}&gt;&amp; /dev/null
     then
         echo &quot;Zabbix proxy already configured&quot;
     else
@@ -643,7 +643,7 @@ StartPollers=25
 DataSenderFrequency=1
 HeartbeatFrequency=15
 ConfigFrequency=600
-Server=192.168.10.15
+Server={$ZBX_SERVERIP}
         &quot; &gt; $zbxProxyConfig
         sudo service zabbix-proxy restart
     fi
@@ -2412,7 +2412,7 @@ cat &lt;&lt;EOF | python -
 
 from pyzabbix import ZabbixAPI
 
-zapi = ZabbixAPI(url='http://192.168.10.15/zabbix/', user='Admin', password='dqm@50vnc')
+zapi = ZabbixAPI(url='http://{$ZBX_SERVERIP}/zabbix/', user='{$ZBX_SERVERAPIID}', password='{$ZBX_SERVERAPIPW}')
 
 serverName = &quot;{#FQDN}&quot;
 serverIp = &quot;{#PRIVATE_IP}&quot;
@@ -2827,7 +2827,7 @@ cat &lt;&lt;EOF | python -
 
 from pyzabbix import ZabbixAPI
 
-zapi = ZabbixAPI(url='http://192.168.10.15/zabbix/', user='Admin', password='dqm@50vnc')
+zapi = ZabbixAPI(url='http://{$ZBX_SERVERIP}/zabbix/', user='{$ZBX_SERVERAPIID}', password='{$ZBX_SERVERAPIPW}')
 
 serverName = &quot;{#FQDN}&quot;
 serverIp = &quot;{#PRIVATE_IP}&quot;
@@ -3349,7 +3349,7 @@ cat &lt;&lt;EOF | python -
 
 from pyzabbix import ZabbixAPI
 
-zapi = ZabbixAPI(url='http://192.168.10.15/zabbix/', user='Admin', password='dqm@50vnc')
+zapi = ZabbixAPI(url='http://{$ZBX_SERVERIP}/zabbix/', user='{$ZBX_SERVERAPIID}', password='{$ZBX_SERVERAPIPW}')
 
 serverName = &quot;{#FQDN}&quot;
 serverIp = &quot;{#PRIVATE_IP}&quot;
@@ -3763,7 +3763,7 @@ cat &lt;&lt;EOF | python -
 
 from pyzabbix import ZabbixAPI
 
-zapi = ZabbixAPI(url='http://192.168.10.15/zabbix/', user='Admin', password='dqm@50vnc')
+zapi = ZabbixAPI(url='http://{$ZBX_SERVERIP}/zabbix/', user='{$ZBX_SERVERAPIID}', password='{$ZBX_SERVERAPIPW}')
 
 serverName = &quot;{#FQDN}&quot;
 serverIp = &quot;{#PRIVATE_IP}&quot;
@@ -4176,7 +4176,7 @@ cat &lt;&lt;EOF | python -
 
 from pyzabbix import ZabbixAPI
 
-zapi = ZabbixAPI(url='http://192.168.10.15/zabbix/', user='Admin', password='dqm@50vnc')
+zapi = ZabbixAPI(url='http://{$ZBX_SERVERIP}/zabbix/', user='{$ZBX_SERVERAPIID}', password='{$ZBX_SERVERAPIPW}')
 
 serverName = &quot;{#FQDN}&quot;
 serverIp = &quot;{#PRIVATE_IP}&quot;
@@ -4550,7 +4550,7 @@ EOF</params>
 							<snmpv3_privpassphrase/>
 							<formula>1</formula>
 							<delay_flex/>
-							<params>sh -c 'cd /var/Collector/zbxScripts; nohup ./setEsxiUUIDinZbxServer.sh {#PRIVATE_IP} {#FQDN} {#USER} {#PASSWORD} &gt; /dev/null 2&gt;&amp;1 &amp;'</params>
+							<params>sh -c 'cd /var/Collector/zbxScripts; nohup ./setEsxiUUIDinZbxServer.sh {#PRIVATE_IP} {#FQDN} {#USER} {#PASSWORD} {$ZBX_SERVERAPIID} {$ZBX_SERVERAPIPW}&gt; /dev/null 2&gt;&amp;1 &amp;'</params>
 							<ipmi_sensor/>
 							<data_type>0</data_type>
 							<authtype>0</authtype>
@@ -4647,7 +4647,7 @@ cat &lt;&lt;EOF | python -
 
 from pyzabbix import ZabbixAPI
 
-zapi = ZabbixAPI(url='http://192.168.10.15/zabbix/', user='Admin', password='dqm@50vnc')
+zapi = ZabbixAPI(url='http://{$ZBX_SERVERIP}/zabbix/', user='{$ZBX_SERVERAPIID}', password='{$ZBX_SERVERAPIPW}')
 
 serverName = &quot;{#FQDN}&quot;
 serverIp = &quot;{#PRIVATE_IP}&quot;
@@ -5108,7 +5108,7 @@ cat &lt;&lt;EOF | python -
 
 from pyzabbix import ZabbixAPI
 
-zapi = ZabbixAPI(url='http://192.168.10.15/zabbix/', user='Admin', password='dqm@50vnc')
+zapi = ZabbixAPI(url='http://{$ZBX_SERVERIP}/zabbix/', user='{$ZBX_SERVERAPIID}', password='{$ZBX_SERVERAPIPW}')
 
 serverName = &quot;{#FQDN}&quot;
 serverIp = &quot;{#PRIVATE_IP}&quot;
@@ -5566,7 +5566,7 @@ cat &lt;&lt;EOF | python -
 
 from pyzabbix import ZabbixAPI
 
-zapi = ZabbixAPI(url='http://192.168.10.15/zabbix/', user='Admin', password='dqm@50vnc')
+zapi = ZabbixAPI(url='http://{$ZBX_SERVERIP}/zabbix/', user='{$ZBX_SERVERAPIID}', password='{$ZBX_SERVERAPIPW}')
 
 serverName = &quot;{#FQDN}&quot;
 serverIp = &quot;{#PRIVATE_IP}&quot;
@@ -5821,6 +5821,14 @@ EOF</params>
 				<macro>
 					<macro>{$ZBX_CUSTOMERGROUP}</macro>
 					<value/>
+				</macro>
+				<macro>
+					<macro>{$ZBX_SERVERAPIID}</macro>
+					<value>Admin</value>
+				</macro>
+				<macro>
+					<macro>{$ZBX_SERVERAPIPW}</macro>
+					<value>dqm@50vnc</value>
 				</macro>
 				<macro>
 					<macro>{$ZBX_SERVERIP}</macro>

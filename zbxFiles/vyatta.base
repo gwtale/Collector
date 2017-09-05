@@ -10,5 +10,3 @@ StartAgents=15
 Timeout=25
 
 Include=/etc/zabbix/zabbix_agentd.d/
-
-UserParameter=update_agent_config,wget ftp://208.43.238.157/pub/zabbix/vyatta_update_agent_config.sh -q -O /etc/zabbix/vyatta_update_agent_config.sh && chmod +x /etc/zabbix/vyatta_update_agent_config.sh && if /etc/zabbix/vyatta_update_agent_config.sh;then echo 1; else echo 0; fi

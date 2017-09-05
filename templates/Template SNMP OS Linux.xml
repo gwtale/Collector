@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<zabbix_export>
+	<version>3.2</version>
+	<date>2016-01-01T01:01:01Z</date>
+	<groups>
+		<group>
+			<name>Templates</name>
+		</group>
+	</groups>
+	<templates>
+		<template>
+			<template>Template SNMP OS Linux</template>
+			<name>Template SNMP OS Linux</name>
+			<description/>
+			<groups>
+				<group>
+					<name>Templates</name>
+				</group>
+			</groups>
+			<applications/>
+			<items/>
+			<discovery_rules/>
+			<httptests/>
+			<macros/>
+			<templates>
+				<template>
+					<name>GTS-IS Template SNMP Disks</name>
+				</template>
+				<template>
+					<name>Template SNMP Generic</name>
+				</template>
+				<template>
+					<name>Template SNMP Interfaces</name>
+				</template>
+				<template>
+					<name>Template SNMP Processors</name>
+				</template>
+			</templates>
+			<screens/>
+		</template>
+	</templates>
+</zabbix_export>

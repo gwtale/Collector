@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<zabbix_export>
+	<version>3.2</version>
+	<date>2016-01-01T01:01:01Z</date>
+	<groups>
+		<group>
+			<name>Templates</name>
+		</group>
+	</groups>
+	<templates>
+		<template>
+			<template>GTS-IS Template APP Idera Windows</template>
+			<name>GTS-IS Template APP Idera Windows</name>
+			<description/>
+			<groups>
+				<group>
+					<name>Templates</name>
+				</group>
+			</groups>
+			<applications/>
+			<items/>
+			<discovery_rules/>
+			<httptests/>
+			<macros/>
+			<templates/>
+			<screens/>
+		</template>
+	</templates>
+</zabbix_export>

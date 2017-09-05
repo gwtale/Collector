@@ -1,0 +1,5931 @@
+<?xml version="1.0" ?>
+<zabbix_export>
+	<version>3.2</version>
+	<date>2016-01-01T01:01:01Z</date>
+	<groups>
+		<group>
+			<name>Templates</name>
+		</group>
+	</groups>
+	<templates>
+		<template>
+			<template>GTS-IS Sherlock for Ubuntu Xenial 16.04</template>
+			<name>GTS-IS Sherlock for Ubuntu Xenial 16.04</name>
+			<description/>
+			<groups>
+				<group>
+					<name>Templates</name>
+				</group>
+			</groups>
+			<applications>
+				<application>
+					<name>Discoverd Fortigate Hosts</name>
+				</application>
+				<application>
+					<name>Discovered Idera Hosts</name>
+				</application>
+				<application>
+					<name>Discovered NetScaler Hosts</name>
+				</application>
+				<application>
+					<name>Discovered Quantastor Hosts</name>
+				</application>
+				<application>
+					<name>Discovered RHEL and CentOS Hosts</name>
+				</application>
+				<application>
+					<name>Discovered VMware Hosts</name>
+				</application>
+				<application>
+					<name>Discovered Vyatta Hosts</name>
+				</application>
+				<application>
+					<name>Sherlock</name>
+				</application>
+				<application>
+					<name>Sherlock Configuration</name>
+				</application>
+				<application>
+					<name>Sherlock Dependencies</name>
+				</application>
+			</applications>
+			<items>
+				<item>
+					<name>Array VPN process status</name>
+					<type>0</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>array_vpnc64Status</key>
+					<delay>60</delay>
+					<history>5</history>
+					<trends>60</trends>
+					<status>0</status>
+					<value_type>3</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params/>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username/>
+					<password/>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description/>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Sherlock</name>
+						</application>
+					</applications>
+					<valuemap>
+						<name>Service state</name>
+					</valuemap>
+					<logtimefmt/>
+				</item>
+				<item>
+					<name>Connected SSH sessions</name>
+					<type>0</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>connectedSSHsessions</key>
+					<delay>30</delay>
+					<history>5</history>
+					<trends>60</trends>
+					<status>0</status>
+					<value_type>3</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params/>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username/>
+					<password/>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description/>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Sherlock</name>
+						</application>
+					</applications>
+					<valuemap/>
+					<logtimefmt/>
+				</item>
+				<item>
+					<name>Install Py-zabbix Python Module (PIP)</name>
+					<type>0</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>installPyzabbixLibs</key>
+					<delay>600</delay>
+					<history>1</history>
+					<trends>2</trends>
+					<status>0</status>
+					<value_type>3</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params/>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username/>
+					<password/>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description/>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Sherlock Dependencies</name>
+						</application>
+					</applications>
+					<valuemap>
+						<name>Application Availability</name>
+					</valuemap>
+					<logtimefmt/>
+				</item>
+				<item>
+					<name>Install Requests Python Module (PIP)</name>
+					<type>0</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>installRequestsLibs</key>
+					<delay>600</delay>
+					<history>1</history>
+					<trends>2</trends>
+					<status>0</status>
+					<value_type>3</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params/>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username/>
+					<password/>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description/>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Sherlock Dependencies</name>
+						</application>
+					</applications>
+					<valuemap>
+						<name>Application Availability</name>
+					</valuemap>
+					<logtimefmt/>
+				</item>
+				<item>
+					<name>Install SoftLayer Python Module (PIP)</name>
+					<type>0</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>installSoftlayerLibs</key>
+					<delay>600</delay>
+					<history>1</history>
+					<trends>2</trends>
+					<status>0</status>
+					<value_type>3</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params/>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username/>
+					<password/>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description/>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Sherlock Dependencies</name>
+						</application>
+					</applications>
+					<valuemap>
+						<name>Application Availability</name>
+					</valuemap>
+					<logtimefmt/>
+				</item>
+				<item>
+					<name>Install Suds Python  (PIP)</name>
+					<type>0</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>installSudsLibs</key>
+					<delay>600</delay>
+					<history>1</history>
+					<trends>2</trends>
+					<status>0</status>
+					<value_type>3</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params/>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username/>
+					<password/>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description/>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Sherlock Dependencies</name>
+						</application>
+					</applications>
+					<valuemap>
+						<name>Application Availability</name>
+					</valuemap>
+					<logtimefmt/>
+				</item>
+				<item>
+					<name>SoftLayer Private API Endpoint Status</name>
+					<type>0</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>SoftLayerPrivateApiEndpointAlive</key>
+					<delay>60</delay>
+					<history>5</history>
+					<trends>60</trends>
+					<status>0</status>
+					<value_type>3</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params/>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username/>
+					<password/>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description/>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Sherlock</name>
+						</application>
+					</applications>
+					<valuemap>
+						<name>Host availability</name>
+					</valuemap>
+					<logtimefmt/>
+				</item>
+				<item>
+					<name>Add proxy in Zabbix server</name>
+					<type>13</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>ssh.run[addZbxProxy]</key>
+					<delay>600</delay>
+					<history>1</history>
+					<trends>0</trends>
+					<status>0</status>
+					<value_type>4</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params>#!/bin/bash
+cat &lt;&lt;EOF | python -
+
+#!/usr/bin/python
+
+from pyzabbix import ZabbixAPI
+
+zapi = ZabbixAPI(url='http://192.168.10.15/zabbix/', user='Admin', password='dqm@50vnc')
+
+groupName = &quot;{$ZBX_CUSTOMERGROUP}&quot;
+proxyName = &quot;{HOST.NAME}&quot;
+
+def addProxy():
+    print(&quot;Adding new proxy...&quot;)
+    result = zapi.do_request('proxy.create',{
+        &quot;host&quot;: str(proxyName),
+        &quot;status&quot;: &quot;5&quot;
+    })
+    print(str(result))
+
+def addGroup():
+    print(&quot;Adding new group...&quot;)
+    result = zapi.do_request('hostgroup.create',{
+        &quot;name&quot;: str(groupName)
+    })
+    print(str(result))
+
+print(&quot;Querying existing proxies...&quot;)
+proxies = zapi.proxy.get()
+found = False
+for proxy in proxies:
+    if proxy['host'] == proxyName:
+        found = True
+
+if found == False:
+    addProxy()
+else:
+    print(&quot;Proxy already on Zabbix server.&quot;)
+
+print(&quot;Querying existing hostgroups...&quot;)
+hostgroups = zapi.hostgroup.get()
+found = False
+for group in hostgroups:
+    if group['name'] == groupName:
+        found = True
+
+if found == False:
+    addGroup()
+else:
+    print(&quot;Host group already on Zabbix server.&quot;)
+
+EOF</params>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username>{$SSH_ID}</username>
+					<password>{$SSH_PASSWORD}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description/>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Sherlock Configuration</name>
+						</application>
+					</applications>
+					<valuemap/>
+					<logtimefmt/>
+				</item>
+				<item>
+					<name>Configure SNMP</name>
+					<type>13</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>ssh.run[configureSNMP]</key>
+					<delay>600</delay>
+					<history>1</history>
+					<trends>0</trends>
+					<status>0</status>
+					<value_type>4</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params>sudo rm -f /etc/snmp/snmp.conf
+sudo touch /etc/snmp/snmp.conf
+sudo chmod 666 /etc/snmp/snmp.conf
+sudo echo &quot;retries 4&quot; &gt; /etc/snmp/snmp.conf
+sudo echo &quot;timeout 30&quot; &gt;&gt; /etc/snmp/snmp.conf
+echo &quot;done configuring snmp&quot;</params>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username>{$SSH_ID}</username>
+					<password>{$SSH_PASSWORD}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description/>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Sherlock Configuration</name>
+						</application>
+					</applications>
+					<valuemap/>
+					<logtimefmt/>
+				</item>
+				<item>
+					<name>Configure Zabbix Agent</name>
+					<type>13</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>ssh.run[configureZbxAgent]</key>
+					<delay>600</delay>
+					<history>1</history>
+					<trends>0</trends>
+					<status>0</status>
+					<value_type>4</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params>#!/bin/bash
+zbxClientConfig=&quot;/etc/zabbix/zabbix_agentd.conf&quot;
+if [ -f &quot;$zbxClientConfig&quot; ]
+then
+    if cat $zbxClientConfig|grep 192.168.10.15&gt;&amp; /dev/null
+    then
+        echo &quot;Zabbix agent already configured&quot;
+    else
+        sudo chmod 666 $zbxClientConfig
+        sudo echo &quot;AllowRoot=1&quot; &gt; $zbxClientConfig
+        sudo echo &quot;PidFile=/var/run/zabbix/zabbix_agentd.pid&quot; &gt;&gt; $zbxClientConfig
+        sudo echo &quot;LogFile=/var/log/zabbix/zabbix_agentd.log&quot; &gt;&gt; $zbxClientConfig
+        sudo echo &quot;LogFileSize=0&quot; &gt;&gt; $zbxClientConfig
+        sudo echo &quot;Server=192.168.10.15&quot; &gt;&gt; $zbxClientConfig
+        sudo echo &quot;Include=/etc/zabbix/zabbix_agentd.d/&quot; &gt;&gt; $zbxClientConfig
+        sudo echo &quot;UserParameter=array_vpnc64Status[*],if pgrep array_vpnc64 &gt; /dev/null; then echo 1; else echo 0; fi&quot; &gt;&gt; $zbxClientConfig
+        sudo echo &quot;UserParameter=SoftLayerPrivateApiEndpointAlive[*],if dpkg -l| grep &quot;fping &quot; &gt; /dev/null; then if fping -ur 1 api.service.softlayer.com &gt; /dev/null ;then echo 1; else echo 0; fi; else echo 0; fi&quot; &gt;&gt; $zbxClientConfig
+        sudo echo &quot;UserParameter=connectedSSHsessions,ps auxwww | grep sshd:|grep -v grep| wc -l&quot; &gt;&gt; $zbxClientConfig
+        sudo echo &quot;UserParameter=installPyzabbixLibs,if pip install py-zabbix -q --upgrade &gt; /dev/null; then echo 1; else echo 0;fi&quot; &gt;&gt; $zbxClientConfig
+        sudo echo &quot;UserParameter=installSoftlayerLibs,if pip install softlayer -q --upgrade &gt; /dev/null; then echo 1; else echo 0;fi&quot; &gt;&gt; $zbxClientConfig
+        sudo echo &quot;UserParameter=installRequestsLibs,if pip install requests -q --upgrade &gt; /dev/null; then echo 1; else echo 0;fi&quot; &gt;&gt; $zbxClientConfig
+        sudo echo &quot;UserParameter=installSudsLibs,if pip install suds -q --upgrade &gt; /dev/null; then echo 1; else echo 0;fi&quot; &gt;&gt; $zbxClientConfig
+        sudo service zabbix-agent restart
+    fi
+else
+    echo &quot;$zbxClientConfig not present. Skipping config.&quot;
+fi</params>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username>{$SSH_ID}</username>
+					<password>{$SSH_PASSWORD}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description/>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Sherlock Configuration</name>
+						</application>
+					</applications>
+					<valuemap/>
+					<logtimefmt/>
+				</item>
+				<item>
+					<name>Configure Zabbix Proxy</name>
+					<type>13</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>ssh.run[configureZbxProxy]</key>
+					<delay>600</delay>
+					<history>1</history>
+					<trends>0</trends>
+					<status>0</status>
+					<value_type>4</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params>#!/bin/bash
+zbxProxyConfig=&quot;/etc/zabbix/zabbix_proxy.conf&quot;
+if [ -f &quot;$zbxProxyConfig&quot; ]
+then
+    if cat $zbxProxyConfig|grep 192.168.10.15&gt;&amp; /dev/null
+    then
+        echo &quot;Zabbix proxy already configured&quot;
+    else
+        sudo echo &quot;create database zabbix_proxy character set utf8 collate utf8_bin;&quot; | mysql -uroot -pdqm50vnc
+        sudo echo &quot;grant all privileges on zabbix_proxy.* to zabbix@localhost identified by 'dqm50vnc';&quot;| mysql -uroot -pdqm50vnc
+        sudo gunzip /usr/share/doc/zabbix-proxy-mysql/schema.sql.gz
+        sudo mysql -uzabbix -pdqm50vnc zabbix_proxy &lt; /usr/share/doc/zabbix-proxy-mysql/schema.sql
+        sudo chmod 666 $zbxProxyConfig
+        sudo echo &quot;
+Hostname={HOST.NAME}
+LogFile=/var/log/zabbix/zabbix_proxy.log
+LogFileSize=0
+PidFile=/var/run/zabbix/zabbix_proxy.pid
+DBName=zabbix_proxy
+DBUser=zabbix
+DBPassword=dqm50vnc
+ExternalScripts=/var/Collector/zbxScripts
+FpingLocation=/usr/bin/fping
+Fping6Location=/usr/bin/fping6
+LogSlowQueries=3000
+DebugLevel=3
+Timeout=30
+CacheSize=256M
+StartSNMPTrapper=1
+SNMPTrapperFile=/var/log/snmptt/snmptt.log
+
+StartVMwareCollectors=8
+VMwareFrequency=60
+VMwarePerfFrequency=60
+VMwareTimeout=60
+VMwareCacheSize=256M
+
+StartPollersUnreachable=10
+StartPingers=10
+ProxyOfflineBuffer=5
+StartPollers=25
+
+DataSenderFrequency=1
+HeartbeatFrequency=15
+ConfigFrequency=600
+Server=192.168.10.15
+        &quot; &gt; $zbxProxyConfig
+        sudo service zabbix-proxy restart
+    fi
+else
+    echo &quot;$zbxProxyConfig not present. Skipping config.&quot;
+fi</params>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username>{$SSH_ID}</username>
+					<password>{$SSH_PASSWORD}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description/>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Sherlock Configuration</name>
+						</application>
+					</applications>
+					<valuemap/>
+					<logtimefmt/>
+				</item>
+				<item>
+					<name>Create credentials.json</name>
+					<type>13</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>ssh.run[create.credentials.json]</key>
+					<delay>600</delay>
+					<history>1</history>
+					<trends>0</trends>
+					<status>0</status>
+					<value_type>4</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params>#!/bin/sh
+
+file=&quot;/var/Collector/config/credentials.json&quot;
+
+create_file () {
+    echo &quot;creating new $file&quot;
+    sudo mkdir -p /var/Collector/config/
+    sudo chmod 777 /var/Collector/config/
+    sudo echo &quot;{\&quot;account_passwd\&quot;:\&quot;{$SL_APIKEY}\&quot;,\&quot;account_vpnPassword\&quot;:\&quot;{$SL_VPNPW}\&quot;,\&quot;account_vpnID\&quot;:\&quot;{$SL_VPNID}\&quot;,\&quot;account_userID\&quot;:\&quot;{$SL_PORTALID}\&quot;}&quot; &gt; $file
+}
+
+if [ -f &quot;$file&quot; ]
+then
+    echo &quot;$file found.&quot;
+    if cat $file|grep {$SL_PORTALID} &gt;&amp; /dev/null
+    then
+        echo &quot;$file already configured&quot;
+        exit
+    else
+        echo &quot;$file not properly configured&quot;
+        create_file
+    fi
+else
+    echo &quot;$file not found.&quot;
+    create_file
+fi</params>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username>{$SSH_ID}</username>
+					<password>{$SSH_PASSWORD}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description/>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Sherlock Configuration</name>
+						</application>
+					</applications>
+					<valuemap/>
+					<logtimefmt/>
+				</item>
+				<item>
+					<name>Create slapi-config.json</name>
+					<type>13</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>ssh.run[create.slapi-config.json]</key>
+					<delay>600</delay>
+					<history>1</history>
+					<trends>0</trends>
+					<status>0</status>
+					<value_type>4</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params>#!/bin/sh
+
+file=&quot;/var/Collector/config/slapi-config.json&quot;
+
+create_file () {
+    # Wait for dependencies
+    if pip list | grep -i &quot;py-zabbix &quot; &gt; /dev/null; then echo 0 &gt; /dev/null; else echo &quot;waiting py-zabbix installation&quot; &amp;&amp; exit ;fi
+    if pip list | grep -i &quot;softlayer &quot; &gt; /dev/null; then echo 0 &gt; /dev/null; else echo &quot;waiting softlayer installation&quot; &amp;&amp; exit ;fi
+    if pip list | grep -i &quot;requests &quot; &gt; /dev/null; then echo 0 &gt; /dev/null; else echo &quot;waiting requests installation&quot; &amp;&amp; exit ;fi
+    if [ -f &quot;/var/Collector/runDeviceInventory.py&quot; ] &gt; /dev/null; then echo 0 &gt; /dev/null; else echo &quot;waiting remaining Sherlock files&quot; &amp;&amp; exit ;fi
+    echo &quot;creating new $file&quot;
+    sudo mkdir -p /var/Collector/config/
+    sudo chmod 777 /var/Collector/config/
+    sudo echo &quot;{
+        \&quot;CUSTOMER\&quot;:\&quot;{$ZBX_CUSTOMERGROUP}\&quot;,
+        \&quot;USER\&quot;:\&quot;{$SL_PORTALID}\&quot;,
+        \&quot;USER_KEY\&quot;:\&quot;{$SL_APIKEY}\&quot;,
+        \&quot;_comment1\&quot;:\&quot;private server - api.service.softlayer.com\&quot;,
+        \&quot;_comment2\&quot;:\&quot;public server - api.softlayer.com\&quot;,
+        \&quot;SERVER\&quot;:\&quot;api.softlayer.com\&quot;,
+        \&quot;REST_HARDWARE\&quot;:\&quot;/rest/v3/SoftLayer_Account/Hardware.json?objectMask=id;fullyQualifiedDomainName;operatingSystem;softwareComponents;primaryBackendIpAddress;operatingSystem.passwords\&quot;,
+        \&quot;REST_VIRTUAL_GUESTS\&quot;:\&quot;/rest/v3/SoftLayer_Account/VirtualGuests.json?objectMask=id;fullyQualifiedDomainName;operatingSystem;softwareComponents;primaryBackendIpAddress;operatingSystem.passwords\&quot;,
+        \&quot;REST_NETSCALER\&quot;:\&quot;/rest/v3/SoftLayer_Account/getApplicationDeliveryControllers.json?objectMask=id;managementIpAddress;name;password.password;password.username\&quot;,
+        \&quot;REST_PUBLIC_VLANS\&quot;:\&quot;/rest/v3/SoftLayer_Account/AvailablePublicNetworkVlans.json\&quot;,
+        \&quot;REST_PUBLIC_VLAN_CHECK_IS_DEDICATED\&quot;:\&quot;/rest/v3/SoftLayer_Network_Vlan/%VLAN_ID%/DedicatedFirewallFlag.json\&quot;,
+        \&quot;REST_PUBLIC_VLAN_FIREWALL\&quot;:\&quot;/rest/v3/SoftLayer_Network_Vlan/%VLAN_ID%/NetworkVlanFirewall.json\&quot;,
+        \&quot;REST_PUBLIC_VLAN_FIREWALL_FQDN\&quot;:\&quot;/rest/v3/SoftLayer_Network_Vlan_Firewall/%FIREWALL_ID%/FullyQualifiedDomainName.json\&quot;,
+        \&quot;REST_PUBLIC_VLAN_FIREWALL_CREDENTIALS\&quot;:\&quot;/rest/v3/SoftLayer_Network_Vlan_Firewall/%FIREWALL_ID%/ManagementCredentials.json\&quot;
+    }&quot; &gt; $file
+    cd /var/Collector &amp;&amp; sudo python runDeviceInventory.py
+}
+
+if [ -f &quot;$file&quot; ]
+then
+    echo &quot;$file found.&quot;
+    if cat $file|grep {$SL_PORTALID} &gt;&amp; /dev/null
+    then
+        echo &quot;$file already configured&quot;
+        exit
+    else
+        echo &quot;$file not properly configured&quot;
+        create_file
+    fi
+else
+    echo &quot;$file not found.&quot;
+    create_file
+fi</params>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username>{$SSH_ID}</username>
+					<password>{$SSH_PASSWORD}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description/>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Sherlock Configuration</name>
+						</application>
+					</applications>
+					<valuemap/>
+					<logtimefmt/>
+				</item>
+				<item>
+					<name>Create snmptt.ini</name>
+					<type>13</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>ssh.run[create.snmptt.ini]</key>
+					<delay>600</delay>
+					<history>1</history>
+					<trends>0</trends>
+					<status>0</status>
+					<value_type>4</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params>#!/bin/sh
+
+file=&quot;/etc/snmp/snmptt.ini&quot;
+
+create_file () {
+    echo &quot;creating new $file&quot;
+    sudo rm -f $file
+    sudo touch $file
+    sudo chmod 666 $file
+    sudo echo &quot;
+[General]
+snmptt_system_name = 
+mode = standalone
+multiple_event = 1
+dns_enable = 0
+strip_domain = 0
+strip_domain_list = &lt;&lt;END
+domain.com
+END
+resolve_value_ip_addresses = 0
+net_snmp_perl_enable = 1
+net_snmp_perl_cache_enable = 1
+net_snmp_perl_best_guess = 0
+translate_log_trap_oid = 2
+translate_value_oids = 2
+translate_enterprise_oid_format = 1
+translate_trap_oid_format = 1
+translate_varname_oid_format = 1
+translate_integers = 1
+wildcard_expansion_separator = &quot; &quot;
+allow_unsafe_regex = 0
+remove_backslash_from_quotes = 0
+dynamic_nodes = 0
+description_mode = 2
+description_clean = 1
+threads_enable = 0
+threads_max = 10
+
+[DaemonMode]
+daemon_fork = 1
+daemon_uid = snmptt
+pid_file = /var/run/snmptt.pid
+spool_directory = /var/spool/snmptt/
+sleep = 5
+use_trap_time = 1
+keep_unlogged_traps = 1
+duplicate_trap_window = 0
+
+[Logging]
+stdout_enable = 0
+log_enable = 1
+log_file = /var/log/snmptt/snmptt.log
+log_system_enable = 1
+log_system_file = /var/log/snmptt/snmpttsystem.log
+unknown_trap_log_enable = 1
+unknown_trap_log_file = /var/log/snmptt/snmpttunknown.log
+statistics_interval = 0
+syslog_enable = 0
+syslog_facility = local0
+syslog_level_debug = &lt;&lt;END
+END
+syslog_level_info = &lt;&lt;END
+END
+syslog_level_notice = &lt;&lt;END
+END
+syslog_level_warning = &lt;&lt;END
+END
+syslog_level_err = &lt;&lt;END
+END
+syslog_level_crit = &lt;&lt;END
+END
+syslog_level_alert = &lt;&lt;END
+END
+syslog_level = warning
+syslog_system_enable = 1
+syslog_system_facility = local0
+syslog_system_level = warning
+
+[SQL]
+db_translate_enterprise = 0
+db_unknown_trap_format = '$-*'
+sql_custom_columns = &lt;&lt;END
+END
+sql_custom_columns_unknown = &lt;&lt;END
+END
+mysql_dbi_enable = 0
+mysql_dbi_host = localhost
+mysql_dbi_port = 3306
+mysql_dbi_database = snmptt
+mysql_dbi_table = snmptt
+mysql_dbi_table_unknown = snmptt_unknown
+mysql_dbi_table_statistics = 
+mysql_dbi_username = snmpttuser
+mysql_dbi_password = password
+mysql_ping_on_insert = 1
+mysql_ping_interval = 300
+postgresql_dbi_enable = 0
+postgresql_dbi_module = 0
+postgresql_dbi_hostport_enable = 0
+postgresql_dbi_host = localhost
+postgresql_dbi_port = 5432
+postgresql_dbi_database = snmptt
+postgresql_dbi_table_unknown = snmptt_unknown
+postgresql_dbi_table_statistics = 
+postgresql_dbi_table = snmptt
+postgresql_dbi_username = snmpttuser
+postgresql_dbi_password = password
+postgresql_ping_on_insert = 1
+postgresql_ping_interval = 300
+dbd_odbc_enable = 0
+dbd_odbc_dsn = snmptt
+dbd_odbc_table = snmptt
+dbd_odbc_table_unknown = snmptt_unknown
+dbd_odbc_table_statistics = 
+dbd_odbc_username = snmptt
+dbd_odbc_password = password
+dbd_odbc_ping_on_insert = 1
+dbd_odbc_ping_interval = 300
+
+[Exec]
+exec_enable = 1
+pre_exec_enable = 1
+unknown_trap_exec = 
+unknown_trap_exec_format = 
+exec_escape = 1
+
+[Debugging]
+DEBUGGING = 2
+DEBUGGING_FILE = /var/log/snmptt/debug.log
+DEBUGGING_FILE_HANDLER = 
+
+[TrapFiles]
+snmptt_conf_files = &lt;&lt;END
+/etc/snmp/snmptt.conf
+END
+&quot; &gt; $file
+}
+
+create_file</params>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username>{$SSH_ID}</username>
+					<password>{$SSH_PASSWORD}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description/>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Sherlock Configuration</name>
+						</application>
+					</applications>
+					<valuemap/>
+					<logtimefmt/>
+				</item>
+				<item>
+					<name>Create snmptrapd.conf</name>
+					<type>13</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>ssh.run[createsnmptrapd.conf]</key>
+					<delay>600</delay>
+					<history>1</history>
+					<trends>0</trends>
+					<status>0</status>
+					<value_type>4</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params>sudo -rm -f /etc/snmp/snmptrapd.conf
+sudo touch /etc/snmp/snmptrapd.conf
+sudo chmod 666 /etc/snmp/snmptrapd.conf
+sudo echo &quot;traphandle default snmptt&quot; &gt; /etc/snmp/snmptrapd.conf
+sudo echo &quot;disableAuthorization yes&quot; &gt;&gt; /etc/snmp/snmptrapd.conf
+sudo echo &quot;authCommunity log, execute, net public&quot; &gt;&gt; /etc/snmp/snmptrapd.conf
+sudo echo &quot;outputOption n&quot; &gt;&gt; /etc/snmp/snmptrapd.conf
+echo &quot;snmptrapd.conf created&quot;</params>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username>{$SSH_ID}</username>
+					<password>{$SSH_PASSWORD}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description/>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Sherlock Configuration</name>
+						</application>
+					</applications>
+					<valuemap/>
+					<logtimefmt/>
+				</item>
+				<item>
+					<name>Sync Collector, Files and Scripts from ZBX server</name>
+					<type>13</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>ssh.run[downloadFiles]</key>
+					<delay>300</delay>
+					<history>1</history>
+					<trends>0</trends>
+					<status>0</status>
+					<value_type>4</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params>#!/bin/bash
+
+if dpkg -l | grep &quot;expect  &quot; &gt;&amp; /dev/null
+then
+    echo &quot;expect installed. Proceeding...&quot;
+    sudo mkdir -p /var/Collector/zbxFiles
+    sudo mkdir -p /var/Collector/zbxScripts
+    expect -c &quot;
+        log_user 1
+        spawn sudo rsync -a -e \&quot;ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no\&quot; {$ZBX_SERVERSSHID}@{$ZBX_SERVERIP}:/var/Collector/Collector_source/Collector/* /var/Collector
+        expect \&quot;password\&quot;
+        sleep 1
+        send \&quot;{$ZBX_SERVERSSHPW}\r\&quot;
+        expect \&quot;$\&quot;
+        exit
+    &quot;
+else
+    echo &quot;expect not installed. Skipping sync.&quot;
+    exit
+fi</params>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username>{$SSH_ID}</username>
+					<password>{$SSH_PASSWORD}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description/>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Sherlock Dependencies</name>
+						</application>
+					</applications>
+					<valuemap/>
+					<logtimefmt/>
+				</item>
+				<item>
+					<name>02 - Install expect</name>
+					<type>13</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>ssh.run[installExpect]</key>
+					<delay>600</delay>
+					<history>1</history>
+					<trends>0</trends>
+					<status>0</status>
+					<value_type>4</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params>lockfile=&quot;/tmp/lockfile&quot;
+
+# Wait for other packages to be installed
+if dpkg -l | grep &quot;zabbix-release  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting zabbix-release installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;mysql-server  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting mysql-server installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;expect  &quot; &gt; /dev/null
+
+then
+    echo &quot;installed&quot;
+    if [ -f &quot;$lockfile&quot; ]
+    then
+        # Checking for leftover lockfile (annoying bug that happens sometimes)
+        if cat $lockfile|grep expect &gt; /dev/null
+        then
+            rm -f $lockfile
+        fi
+    fi
+    exit
+else
+    if [ -f &quot;$lockfile&quot; ]
+    then
+        echo &quot;waiting lock release&quot;
+        exit
+    else
+        echo &quot;expect&quot; &gt; $lockfile
+        if sudo apt-get --assume-yes install expect &gt; /dev/null; then echo &quot;installed&quot;; else echo &quot;not installed&quot;;fi
+        rm -f $lockfile
+    fi
+fi</params>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username>{$SSH_ID}</username>
+					<password>{$SSH_PASSWORD}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description/>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Sherlock Dependencies</name>
+						</application>
+					</applications>
+					<valuemap/>
+					<logtimefmt/>
+				</item>
+				<item>
+					<name>03 - Install fping</name>
+					<type>13</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>ssh.run[installFping]</key>
+					<delay>600</delay>
+					<history>1</history>
+					<trends>0</trends>
+					<status>0</status>
+					<value_type>4</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params>lockfile=&quot;/tmp/lockfile&quot;
+
+# Wait for other packages to be installed
+if dpkg -l | grep &quot;zabbix-release  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting zabbix-release installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;mysql-server  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting mysql-server installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;expect  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting expect installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;fping  &quot; &gt; /dev/null
+
+then
+    echo &quot;installed&quot;
+    if [ -f &quot;$lockfile&quot; ]
+    then
+        # Checking for leftover lockfile (annoying bug that happens sometimes)
+        if cat $lockfile|grep fping &gt; /dev/null
+        then
+            rm -f $lockfile
+        fi
+    fi
+    exit
+else
+    if [ -f &quot;$lockfile&quot; ]
+    then
+        echo &quot;waiting lock release&quot;
+        exit
+    else
+        echo &quot;fping&quot; &gt; $lockfile
+        if sudo apt-get --assume-yes install fping &gt; /dev/null; then echo &quot;installed&quot;; else echo &quot;not installed&quot;;fi
+        rm -f $lockfile
+    fi
+fi</params>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username>{$SSH_ID}</username>
+					<password>{$SSH_PASSWORD}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description/>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Sherlock Dependencies</name>
+						</application>
+					</applications>
+					<valuemap/>
+					<logtimefmt/>
+				</item>
+				<item>
+					<name>01 - Install mysql-server</name>
+					<type>13</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>ssh.run[installMySQL]</key>
+					<delay>600</delay>
+					<history>1</history>
+					<trends>0</trends>
+					<status>0</status>
+					<value_type>4</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params>lockfile=&quot;/tmp/lockfile&quot;
+
+# Wait for other packages to be installed
+if dpkg -l | grep &quot;zabbix-release  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting zabbix-release installation&quot; &amp;&amp; exit ;fi
+#if dpkg -l | grep &quot;zabbix-agent  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting zabbix-agent installation&quot; &amp;&amp; exit ;fi
+#if dpkg -l | grep &quot;snmp  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting snmp installation&quot; &amp;&amp; exit ;fi
+#if dpkg -l | grep &quot;fping  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting fping installation&quot; &amp;&amp; exit ;fi
+#if dpkg -l | grep &quot;snmp-mibs-downloader  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting snmp-mibs-downloader installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;mysql-server  &quot; &gt; /dev/null
+then
+    echo &quot;installed&quot;
+    if [ -f &quot;$lockfile&quot; ]
+    then
+        # Checking for leftover lockfile (annoying bug that happens sometimes)
+        if cat $lockfile|grep mysql-server &gt; /dev/null
+        then
+            rm -f $lockfile
+        fi
+    fi
+    exit
+else
+    if [ -f &quot;$lockfile&quot; ]
+    then
+        echo &quot;waiting lock release&quot;
+        exit
+    else
+        echo &quot;mysql-server&quot; &gt; $lockfile
+        sudo debconf-set-selections &lt;&lt;&lt; 'mysql-server mysql-server/root_password password dqm50vnc'
+        sudo debconf-set-selections &lt;&lt;&lt; 'mysql-server mysql-server/root_password_again password dqm50vnc'
+        if sudo apt-get -qq --assume-yes install mysql-server &gt; /dev/null; then echo &quot;installed&quot;; else echo &quot;not installed&quot;;fi
+        rm -f $lockfile
+    fi
+fi</params>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username>{$SSH_ID}</username>
+					<password>{$SSH_PASSWORD}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description/>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Sherlock Dependencies</name>
+						</application>
+					</applications>
+					<valuemap/>
+					<logtimefmt/>
+				</item>
+				<item>
+					<name>04 - Install python's pip</name>
+					<type>13</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>ssh.run[installPythonPip]</key>
+					<delay>600</delay>
+					<history>1</history>
+					<trends>0</trends>
+					<status>0</status>
+					<value_type>4</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params>lockfile=&quot;/tmp/lockfile&quot;
+
+# Wait for other packages to be installed 
+if dpkg -l | grep &quot;zabbix-release  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting zabbix-release installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;mysql-server  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting mysql-server installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;expect  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting expect installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;fping  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting fping installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep python-pip &gt; /dev/null
+
+then
+    echo &quot;installed&quot;
+    if [ -f &quot;$lockfile&quot; ]
+    then
+        # Checking for leftover lockfile (annoying bug that happens sometimes)
+        if cat $lockfile|grep python-pip &gt; /dev/null
+        then
+            rm -f $lockfile
+        fi
+    fi
+    exit
+else
+    if [ -f &quot;$lockfile&quot; ]
+    then
+        echo &quot;waiting lock release&quot;
+        exit
+    else
+        echo &quot;python-pip&quot; &gt; $lockfile
+        if sudo apt-get --assume-yes install python-pip &gt; /dev/null; then echo &quot;installed&quot;; else echo &quot;not installed&quot;;fi
+        rm -f $lockfile
+    fi
+fi</params>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username>{$SSH_ID}</username>
+					<password>{$SSH_PASSWORD}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description/>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Sherlock Dependencies</name>
+						</application>
+					</applications>
+					<valuemap/>
+					<logtimefmt/>
+				</item>
+				<item>
+					<name>06 - Install SNMP Downloader (zabbix-release, snmp)</name>
+					<type>13</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>ssh.run[installSNMPdownloader]</key>
+					<delay>600</delay>
+					<history>1</history>
+					<trends>0</trends>
+					<status>0</status>
+					<value_type>4</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params>lockfile=&quot;/tmp/lockfile&quot;
+
+# Wait for other packages to be installed
+if dpkg -l | grep &quot;zabbix-release  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting zabbix-release installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;mysql-server  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting mysql-server installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;expect  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting expect installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;fping  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting fping installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep python-pip &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting python-pip installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;snmp  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting snmp installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;snmp-mibs-downloader  &quot; &gt; /dev/null
+
+then
+    echo &quot;installed&quot;
+    if [ -f &quot;$lockfile&quot; ]
+    then
+        # Checking for leftover lockfile (annoying bug that happens sometimes)
+        if cat $lockfile|grep snmp-mibs-downloader &gt; /dev/null
+        then
+            rm -f $lockfile
+        fi
+    fi
+    exit
+else
+    if [ -f &quot;$lockfile&quot; ]
+    then
+        echo &quot;waiting lock release&quot;
+        exit
+    else
+        echo &quot;snmp-mibs-downloader&quot; &gt; $lockfile
+        if sudo apt-get --assume-yes install snmp-mibs-downloader &gt; /dev/null; then echo &quot;installed&quot;; else echo &quot;not installed&quot;;fi
+        rm -f $lockfile
+    fi
+fi</params>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username>{$SSH_ID}</username>
+					<password>{$SSH_PASSWORD}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description>This SNMP module downloads default MIBs.</description>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Sherlock Dependencies</name>
+						</application>
+					</applications>
+					<valuemap/>
+					<logtimefmt/>
+				</item>
+				<item>
+					<name>08 - Install snmptrapd</name>
+					<type>13</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>ssh.run[installSnmptrapd]</key>
+					<delay>600</delay>
+					<history>1</history>
+					<trends>0</trends>
+					<status>0</status>
+					<value_type>4</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params>lockfile=&quot;/tmp/lockfile&quot;
+
+# Wait for other packages to be installed
+if dpkg -l | grep &quot;zabbix-release  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting zabbix-release installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;mysql-server  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting mysql-server installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;expect  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting expect installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;fping  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting fping installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep python-pip &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting python-pip installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;snmp  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting snmp installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;snmp-mibs-downloader  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting snmpmibs-downloader installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;snmptt  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting snmptt installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;snmptrapd  &quot; &gt; /dev/null
+
+then
+    echo &quot;installed&quot;
+    if [ -f &quot;$lockfile&quot; ]
+    then
+        # Checking for leftover lockfile (annoying bug that happens sometimes)
+        if cat $lockfile|grep snmptt &gt; /dev/null
+        then
+            rm -f $lockfile
+        fi
+    fi
+    exit
+else
+    if [ -f &quot;$lockfile&quot; ]
+    then
+        echo &quot;waiting lock release&quot;
+        exit
+    else
+        echo &quot;snmptrapd&quot; &gt; $lockfile
+        if sudo apt-get --assume-yes install snmptrapd &gt; /dev/null; then echo &quot;installed&quot;; else echo &quot;not installed&quot;;fi
+        rm -f $lockfile
+    fi
+fi</params>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username>{$SSH_ID}</username>
+					<password>{$SSH_PASSWORD}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description>This SNMP module downloads default MIBs.</description>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Sherlock Dependencies</name>
+						</application>
+					</applications>
+					<valuemap/>
+					<logtimefmt/>
+				</item>
+				<item>
+					<name>07 - Install snmptt</name>
+					<type>13</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>ssh.run[installSnmptt]</key>
+					<delay>600</delay>
+					<history>1</history>
+					<trends>0</trends>
+					<status>0</status>
+					<value_type>4</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params>lockfile=&quot;/tmp/lockfile&quot;
+
+# Wait for other packages to be installed
+if dpkg -l | grep &quot;zabbix-release  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting zabbix-release installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;mysql-server  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting mysql-server installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;expect  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting expect installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;fping  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting fping installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep python-pip &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting python-pip installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;snmp  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting snmp installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;snmp-mibs-downloader  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting snmpmibs-downloader installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;snmptt  &quot; &gt; /dev/null
+
+then
+    echo &quot;installed&quot;
+    if [ -f &quot;$lockfile&quot; ]
+    then
+        # Checking for leftover lockfile (annoying bug that happens sometimes)
+        if cat $lockfile|grep snmp-mibs-downloader &gt; /dev/null
+        then
+            rm -f $lockfile
+        fi
+    fi
+    exit
+else
+    if [ -f &quot;$lockfile&quot; ]
+    then
+        echo &quot;waiting lock release&quot;
+        exit
+    else
+        echo &quot;snmptt&quot; &gt; $lockfile
+        if sudo apt-get --assume-yes install snmptt &gt; /dev/null; then echo &quot;installed&quot;; else echo &quot;not installed&quot;;fi
+        rm -f $lockfile
+    fi
+fi</params>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username>{$SSH_ID}</username>
+					<password>{$SSH_PASSWORD}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description>This SNMP module downloads default MIBs.</description>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Sherlock Dependencies</name>
+						</application>
+					</applications>
+					<valuemap/>
+					<logtimefmt/>
+				</item>
+				<item>
+					<name>05 - Install SNMP Tools</name>
+					<type>13</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>ssh.run[installSNMP]</key>
+					<delay>600</delay>
+					<history>1</history>
+					<trends>0</trends>
+					<status>0</status>
+					<value_type>4</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params>lockfile=&quot;/tmp/lockfile&quot;
+
+# Wait for other packages to be installed
+if dpkg -l | grep &quot;zabbix-release  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting zabbix-release installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;mysql-server  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting mysql-server installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;expect  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting expect installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;fping  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting fping installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep python-pip &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting python-pip installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;snmp  &quot; &gt; /dev/null
+
+then
+    echo &quot;installed&quot;
+    if [ -f &quot;$lockfile&quot; ]
+    then
+        # Checking for leftover lockfile (annoying bug that happens sometimes)
+        if cat $lockfile|grep &quot;snmp &quot; &gt; /dev/null
+        then
+            rm -f $lockfile
+        fi
+    fi
+    exit
+else
+    if [ -f &quot;$lockfile&quot; ]
+    then
+        echo &quot;waiting lock release&quot;
+        exit
+    else
+        echo &quot;snmp&quot; &gt; $lockfile
+        if sudo apt-get --assume-yes install snmp &gt; /dev/null; then echo &quot;installed&quot;; else echo &quot;not installed&quot;;fi
+        rm -f $lockfile
+    fi
+fi</params>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username>{$SSH_ID}</username>
+					<password>{$SSH_PASSWORD}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description/>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Sherlock Dependencies</name>
+						</application>
+					</applications>
+					<valuemap/>
+					<logtimefmt/>
+				</item>
+				<item>
+					<name>Install VMware-vSphere-CLI</name>
+					<type>13</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>ssh.run[installVMware-vSphere-CLI]</key>
+					<delay>600</delay>
+					<history>1</history>
+					<trends>0</trends>
+					<status>0</status>
+					<value_type>4</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params>apt install libssl-dev perl-doc -y
+cp /var/Collector/zbxFiles/VMware-vSphere-CLI-*.tar.gz /tmp/
+cd /tmp
+tar -xvzf VMware-vSphere-CLI-*.tar.gz &gt; /dev/null
+cd vmware-vsphere-cli-distrib
+yes | PAGER=cat ./vmware-install.pl default</params>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username>{$SSH_ID}</username>
+					<password>{$SSH_PASSWORD}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description/>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Sherlock Configuration</name>
+						</application>
+					</applications>
+					<valuemap/>
+					<logtimefmt/>
+				</item>
+				<item>
+					<name>09 - Install Zabbix Agent</name>
+					<type>13</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>ssh.run[installZbxAgent]</key>
+					<delay>600</delay>
+					<history>1</history>
+					<trends>0</trends>
+					<status>0</status>
+					<value_type>4</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params>lockfile=&quot;/tmp/lockfile&quot;
+
+# Wait for other packages to be installed
+if dpkg -l | grep &quot;zabbix-release  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting zabbix-release installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;mysql-server  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting mysql-server installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;expect  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting expect installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;fping  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting fping installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep python-pip &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting python-pip installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;snmp  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting snmp installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;snmp-mibs-downloader  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting snmpmibs-downloader installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;snmptt  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting snmptt installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;snmptrapd  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting snmptrapd installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;zabbix-agent  &quot; &gt; /dev/null
+
+then
+    echo &quot;installed&quot;
+    if [ -f &quot;$lockfile&quot; ]
+    then
+        # Checking for leftover lockfile (annoying bug that happens sometimes)
+        if cat $lockfile|grep snmptt &gt; /dev/null
+        then
+            rm -f $lockfile
+        fi
+    fi
+    exit
+else
+    if [ -f &quot;$lockfile&quot; ]
+    then
+        echo &quot;waiting lock release&quot;
+        exit
+    else
+        echo zabbix-agent &gt; $lockfile
+        if sudo apt-get --assume-yes install zabbix-agent &gt;&amp; /dev/null; then echo &quot;installed&quot;; else echo &quot;not installed&quot;;fi
+        systemctl enable zabbix-agent
+        rm -f $lockfile
+    fi
+fi</params>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username>{$SSH_ID}</username>
+					<password>{$SSH_PASSWORD}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description/>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Sherlock Dependencies</name>
+						</application>
+					</applications>
+					<valuemap/>
+					<logtimefmt/>
+				</item>
+				<item>
+					<name>10 - Install Zabbix Proxy</name>
+					<type>13</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>ssh.run[installZbxProxy2]</key>
+					<delay>600</delay>
+					<history>1</history>
+					<trends>0</trends>
+					<status>0</status>
+					<value_type>4</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params>lockfile=&quot;/tmp/lockfile&quot;
+
+# Wait for other packages to be installed
+if dpkg -l | grep &quot;zabbix-release  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting zabbix-release installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;mysql-server  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting mysql-server installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;expect  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting expect installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;fping  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting fping installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep python-pip &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting python-pip installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;snmp  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting snmp installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;snmp-mibs-downloader  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting snmpmibs-downloader installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;snmptt  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting snmptt installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;snmptrapd  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting snmptrapd installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;zabbix-agent  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting snmptt installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;zabbix-proxy-mysql  &quot; &gt; /dev/null
+
+then
+    echo &quot;installed&quot;
+    if [ -f &quot;$lockfile&quot; ]
+    then
+        # Checking for leftover lockfile (annoying bug that happens sometimes)
+        if cat $lockfile|grep zabbix-agent &gt; /dev/null
+        then
+            rm -f $lockfile
+        fi
+    fi
+    exit
+else
+    if [ -f &quot;$lockfile&quot; ]
+    then
+        echo &quot;waiting lock release&quot;
+        exit
+    else
+        echo zabbix-proxy-mysql &gt; $lockfile
+        if sudo apt-get --assume-yes install zabbix-proxy-mysql &gt; /dev/null; then echo &quot;installed&quot;; else echo &quot;not installed&quot;;fi
+        systemctl enable zabbix-proxy
+        rm -f $lockfile
+    fi
+fi</params>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username>{$SSH_ID}</username>
+					<password>{$SSH_PASSWORD}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description/>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Sherlock Dependencies</name>
+						</application>
+					</applications>
+					<valuemap/>
+					<logtimefmt/>
+				</item>
+				<item>
+					<name>00 - Install Zabbix Repository</name>
+					<type>13</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>ssh.run[installZbxRepo]</key>
+					<delay>600</delay>
+					<history>1</history>
+					<trends>0</trends>
+					<status>0</status>
+					<value_type>4</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params>lockfile=&quot;/tmp/lockfile&quot;
+
+if dpkg -l | grep &quot;zabbix-release  &quot; &gt; /dev/null
+then
+    echo &quot;installed&quot;
+    if [ -f &quot;$lockfile&quot; ]
+    then
+        # Checking for leftover lockfile (annoying bug that happens sometimes)
+        if cat $lockfile|grep zabbix-release &gt; /dev/null
+        then
+            rm -f $lockfile
+        fi
+    fi
+    exit
+else
+    if [ -f &quot;$lockfile&quot; ]
+    then
+        echo &quot;waiting lock release&quot;
+        exit
+    else
+        echo zabbix-release &gt; $lockfile
+        cd /tmp
+        wget http://repo.zabbix.com/zabbix/3.2/ubuntu/pool/main/z/zabbix-release/zabbix-release_3.2-1+xenial_all.deb &gt;&amp; /dev/null
+        sudo dpkg -i zabbix-release_3.2-1+xenial_all.deb &gt;&amp; /dev/null
+        sudo apt-get -qq update
+        rm -f $lockfile
+        if dpkg -l | grep &quot;zabbix-release  &quot; &gt; /dev/null
+        then
+            echo &quot;installed&quot;
+        else
+            echo &quot;Error. Suggestion: Add cloudbr ID to sudoers&quot;
+        fi
+    fi
+fi</params>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username>{$SSH_ID}</username>
+					<password>{$SSH_PASSWORD}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description/>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Sherlock Dependencies</name>
+						</application>
+					</applications>
+					<valuemap/>
+					<logtimefmt/>
+				</item>
+				<item>
+					<name>Max SSH sessions</name>
+					<type>13</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>ssh.run[maxSshSessions]</key>
+					<delay>1800</delay>
+					<history>1</history>
+					<trends>365</trends>
+					<status>0</status>
+					<value_type>3</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params>if cat /etc/ssh/sshd_config |grep MaxSessions; then cat /etc/ssh/sshd_config|grep MaxSessions|awk '{print $2}'; else echo '0'; fi</params>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username>{$SSH_ID}</username>
+					<password>{$SSH_PASSWORD}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description/>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Sherlock</name>
+						</application>
+					</applications>
+					<valuemap/>
+					<logtimefmt/>
+				</item>
+				<item>
+					<name>SimpleHTTPServer watchdog</name>
+					<type>13</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>ssh.run[SimpleHTTPServerWatchdog]</key>
+					<delay>90</delay>
+					<history>1</history>
+					<trends>2</trends>
+					<status>0</status>
+					<value_type>3</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params>if [ -f &quot;/var/Collector/zbxFiles/zbx.controlfile&quot; ] &gt; /dev/null; then echo 0 &gt; /dev/null; else echo 0 &amp;&amp; exit ;fi
+if netstat -l|grep 8000 &gt; /dev/null
+then
+    echo 1
+else
+    cd /var/Collector/zbxFiles
+    (setsid sudo python -m SimpleHTTPServer &lt;/dev/null &gt;/dev/null 2&gt;&amp;1 &amp;)
+    echo 0
+fi</params>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username>{$SSH_ID}</username>
+					<password>{$SSH_PASSWORD}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description>SimpleHTTPServer can be used by SSH items/scripts that download files remotely from /var/Collector/zbxFiles on the proxy. Monitored hosts can use the following URL to download the files: http://&lt;PROXYIP&gt;:8000/
+
+HTTP sevrer's folder structure is the same as in path /var/Collector/zbxFiles. Files are served insecurely. Do not place confidential data in this path.
+
+SimpleHTTPServer is a default function of python's. Can be executed with &quot;python -m SimpleHTTPServer&quot;.</description>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Sherlock</name>
+						</application>
+					</applications>
+					<valuemap>
+						<name>Service state</name>
+					</valuemap>
+					<logtimefmt/>
+				</item>
+				<item>
+					<name>SoftLayer VPN watchdog</name>
+					<type>13</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>ssh.run[SLVpnWatchdog]</key>
+					<delay>30</delay>
+					<history>1</history>
+					<trends>2</trends>
+					<status>0</status>
+					<value_type>3</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params>if [ -f &quot;/var/Collector/array_vpn/array_vpnc64&quot; ] &gt; /dev/null; then echo 1 &gt; /dev/null; else echo 0 &amp;&amp; exit ;fi
+if dpkg -l| grep fping  &gt; /dev/null
+then
+    if fping -ur 3 api.service.softlayer.com &gt; /dev/null
+    then
+        # VPN OK, now check endpoint
+        ps -ef | grep {$SL_VPNHOST} &gt; /dev/null
+        if [ $? -eq 0 ]; then
+            # VPN OK and connected to expected endpoint
+            echo 1
+        else
+            sudo killall -q array_vpnc64 &gt; /dev/null
+            (setsid sudo /var/Collector/array_vpn/array_vpnc64 -n {$SL_VPNHOST} -u {$SL_VPNID} -p {$SL_VPNPW} &lt;/dev/null &gt;/dev/null 2&gt;&amp;1 &amp;)
+            if fping -ur 3 api.service.softlayer.com &gt; /dev/null
+            then
+                echo 1
+            else
+                echo 0
+            fi
+        fi
+    else
+        # VPN not running, or hang/idling
+        sudo killall -q array_vpnc64 &gt; /dev/null
+        (setsid sudo /var/Collector/array_vpn/array_vpnc64 -n {$SL_VPNHOST} -u {$SL_VPNID} -p {$SL_VPNPW} &lt;/dev/null &gt;/dev/null 2&gt;&amp;1 &amp;)
+        if fping -ur 3 api.service.softlayer.com &gt; /dev/null
+        then
+            echo 1
+        else
+            echo 0
+        fi
+    fi
+else
+    echo 0
+fi</params>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username>{$SSH_ID}</username>
+					<password>{$SSH_PASSWORD}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description/>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Sherlock</name>
+						</application>
+					</applications>
+					<valuemap>
+						<name>Service state</name>
+					</valuemap>
+					<logtimefmt/>
+				</item>
+				<item>
+					<name>Refresh SNMP MIBs</name>
+					<type>13</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>ssh.run[snmp.refreshMibs]</key>
+					<delay>86400</delay>
+					<history>1</history>
+					<trends>0</trends>
+					<status>0</status>
+					<value_type>4</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params>sudo cd /tmp
+sudo cp /var/Collector/zbxFiles/VMware-mibs-6.5.0-4553237.tar.gz .
+sudo tar -xzf /tmp/VMware-mibs-6.5.0-4553237.tar.gz
+sudo rm -Rf /var/lib/mibs/vmw
+sudo mv /tmp/vmw /var/lib/mibs/
+sudo download-mibs</params>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username>{$SSH_ID}</username>
+					<password>{$SSH_PASSWORD}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description/>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Sherlock Configuration</name>
+						</application>
+					</applications>
+					<valuemap/>
+					<logtimefmt/>
+				</item>
+				<item>
+					<name>Update devices datafile</name>
+					<type>13</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>ssh.run[updateDevicesDatafile]</key>
+					<delay>3600</delay>
+					<history>1</history>
+					<trends>0</trends>
+					<status>0</status>
+					<value_type>4</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params>cd /var/Collector &amp;&amp; sudo python runDeviceInventory.py</params>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username>{$SSH_ID}</username>
+					<password>{$SSH_PASSWORD}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description/>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Sherlock</name>
+						</application>
+					</applications>
+					<valuemap/>
+					<logtimefmt/>
+				</item>
+			</items>
+			<discovery_rules>
+				<discovery_rule>
+					<name>Fotigate Hosts</name>
+					<type>13</type>
+					<snmp_community/>
+					<snmp_oid/>
+					<key>ssh.run[softlayerFortigateDiscovery]</key>
+					<delay>600</delay>
+					<status>0</status>
+					<allowed_hosts/>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<delay_flex/>
+					<params>#!/bin/bash
+cat &lt;&lt;EOF | python -
+
+#!/usr/bin/python
+
+import json
+
+### VARS ###
+sherlockDir = '/var/Collector/'
+devicesFile = sherlockDir + 'data/devices.json'
+############
+
+with open(devicesFile) as devices:
+    devicesJSON = json.loads(json.load(devices))
+
+first = 1
+print('{')
+print('&quot;data&quot;:[')
+
+for device in devicesJSON:
+    if device['product'] == 'Fortigate':
+        if first == 0:
+            print(',')
+        first = 0
+        print('    {')
+        print('        &quot;{#PRODUCT}&quot;:&quot;' + device['product'] + '&quot;,')
+        print('        &quot;{#PROXY}&quot;:&quot;{HOST.NAME}&quot;,')
+        print('        &quot;{#GROUP}&quot;:&quot;{$ZBX_CUSTOMERGROUP}&quot;,')
+        print('        &quot;{#PRIVATE_IP}&quot;:&quot;' + device['primaryBackendIpAddress'] + '&quot;,')
+        print('        &quot;{#FQDN}&quot;:&quot;' + device['fullyQualifiedDomainName'] + '&quot;,')
+        for user in device['users'][0].keys():
+            print('        &quot;{#USER}&quot;:&quot;'+user+'&quot;,')
+            print('        &quot;{#PASSWORD}&quot;:&quot;' + device['users'][0][user] + '&quot;')
+        print('    }')
+print(&quot;]&quot;)
+print(&quot;}&quot;)
+
+EOF</params>
+					<ipmi_sensor/>
+					<authtype>0</authtype>
+					<username>{$SSH_ID}</username>
+					<password>{$SSH_PASSWORD}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<filter>
+						<evaltype>0</evaltype>
+						<formula/>
+						<conditions/>
+					</filter>
+					<lifetime>0</lifetime>
+					<description/>
+					<item_prototypes>
+						<item_prototype>
+							<name>{#FQDN} Configure SNMP</name>
+							<type>13</type>
+							<snmp_community/>
+							<multiplier>0</multiplier>
+							<snmp_oid/>
+							<key>ssh.run[configureFortigateSNMP:{#FQDN}]</key>
+							<delay>600</delay>
+							<history>2</history>
+							<trends>0</trends>
+							<status>0</status>
+							<value_type>4</value_type>
+							<allowed_hosts/>
+							<units/>
+							<delta>0</delta>
+							<snmpv3_contextname/>
+							<snmpv3_securityname/>
+							<snmpv3_securitylevel>0</snmpv3_securitylevel>
+							<snmpv3_authprotocol>0</snmpv3_authprotocol>
+							<snmpv3_authpassphrase/>
+							<snmpv3_privprotocol>0</snmpv3_privprotocol>
+							<snmpv3_privpassphrase/>
+							<formula>1</formula>
+							<delay_flex/>
+							<params>rm ~/.ssh/known_hosts
+cd /var/Collector/zbxScripts
+if timeout 5 snmpwalk -v2c -c ibm.cloudbr {#PRIVATE_IP} iso.3.6.1.2.1.1.1.0 &amp;&gt; /dev/null; then echo &quot;snmp OK&quot;; else ./configFortigateSnmp.exp {#PRIVATE_IP} {#USER} {#PASSWORD} &amp;&amp; PEERIP=`timeout 5 snmpget -v2c -c ibm.cloudbr {#PRIVATE_IP} iso.3.6.1.4.1.5951.4.1.1.23.2.0|awk '{print $4}'` &amp;&amp; echo {#PASSWORD} &gt; /tmp/vpxHaPeer_$PEERIP &amp;&amp; echo &quot;snmp reconfigured&quot;;fi</params>
+							<ipmi_sensor/>
+							<data_type>0</data_type>
+							<authtype>0</authtype>
+							<username>{$SSH_ID}</username>
+							<password>{$SSH_PASSWORD}</password>
+							<publickey/>
+							<privatekey/>
+							<port/>
+							<description/>
+							<inventory_link>0</inventory_link>
+							<applications>
+								<application>
+									<name>Discoverd Fortigate Hosts</name>
+								</application>
+							</applications>
+							<valuemap/>
+							<logtimefmt/>
+							<application_prototypes/>
+						</item_prototype>
+						<item_prototype>
+							<name>{#FQDN} Registration Status</name>
+							<type>13</type>
+							<snmp_community/>
+							<multiplier>0</multiplier>
+							<snmp_oid/>
+							<key>ssh.run[fortigateRegistrationStatus:{#FQDN}]</key>
+							<delay>600</delay>
+							<history>15</history>
+							<trends>0</trends>
+							<status>0</status>
+							<value_type>4</value_type>
+							<allowed_hosts/>
+							<units/>
+							<delta>0</delta>
+							<snmpv3_contextname/>
+							<snmpv3_securityname/>
+							<snmpv3_securitylevel>0</snmpv3_securitylevel>
+							<snmpv3_authprotocol>0</snmpv3_authprotocol>
+							<snmpv3_authpassphrase/>
+							<snmpv3_privprotocol>0</snmpv3_privprotocol>
+							<snmpv3_privpassphrase/>
+							<formula>1</formula>
+							<delay_flex/>
+							<params>#!/bin/bash
+cat &lt;&lt;EOF | python -
+
+#!/usr/bin/python
+
+from pyzabbix import ZabbixAPI
+
+zapi = ZabbixAPI(url='http://192.168.10.15/zabbix/', user='Admin', password='dqm@50vnc')
+
+serverName = &quot;{#FQDN}&quot;
+serverIp = &quot;{#PRIVATE_IP}&quot;
+# zbxIfType = [1 for zabbix agent, 2 for SNMP]
+zbxIfType = 2
+# zbxPort = [10050 for zabbix agent (default), 161 for SNMP (default)
+zbxPort = 161
+serverProduct = &quot;{#PRODUCT}&quot;
+groupName = &quot;{#GROUP}&quot;
+proxyName = &quot;{#PROXY}&quot;
+templates = [
+    {'name':'Template ICMP Ping'}
+]
+# Macro names need to send $ as utf8 char \x24 like u'{\x24MacroName}
+# This will avoid confusion in Zabbix variable parsing
+macros = [
+    {'name':u'{\x24SSH_ID}','value':'{#USER}'},
+    {'name':u'{\x24SSH_PASSWORD}','value':'{#PASSWORD}'},
+    {'name':u'{\x24SNMP_COMMUNITY}','value':'ibm.cloudbr'}
+]
+#additional group to add
+groups = [
+    {'name':'Fortigate'}
+]
+groupID = None
+proxyID = None
+
+def getGroupID(groupName):
+    result = zapi.do_request('hostgroup.get', {
+        &quot;output&quot;: &quot;extend&quot;,
+        &quot;filter&quot;: {
+            &quot;name&quot;: [
+                groupName
+            ]
+        }
+    })
+    return result['result'][0]['groupid']
+
+def getTemplateID(templateName):
+    result = zapi.do_request('template.get', {
+        &quot;output&quot;: &quot;extend&quot;,
+        &quot;filter&quot;: {
+            &quot;name&quot;: [
+                templateName
+            ]
+        }
+    })
+    return result['result'][0]['templateid']
+
+def addTemplates(hostID, templates):
+    templateIDs = [ ]
+    for template in templates:
+        x = { }
+        x['templateid'] = getTemplateID(template['name'])
+        templateIDs.append(x)
+    result = zapi.do_request('host.update', {
+        &quot;hostid&quot;: hostID,
+        &quot;templates&quot;: templateIDs
+    })
+
+def getProxyID(proxyName):
+    result = zapi.do_request('proxy.get', {
+        &quot;output&quot;: &quot;extend&quot;,
+        &quot;filter&quot;: {
+            &quot;host&quot;: [
+               proxyName
+            ]
+        }
+    })
+    return result['result'][0]['proxyid']
+
+def createHost():
+    ifProps = {
+                &quot;type&quot;: zbxIfType,
+                &quot;main&quot;: 1,
+                &quot;useip&quot;: 1,
+                &quot;ip&quot;: serverIp,
+                &quot;dns&quot;: &quot;&quot;,
+                &quot;port&quot;: zbxPort
+            }
+    if zbxIfType == 2:
+        ifProps.update({'bulk':'0'})
+
+    result = zapi.do_request('host.create', {
+        &quot;host&quot;: serverName,
+        &quot;interfaces&quot;: [ifProps],
+        &quot;groups&quot;: hostGroups,
+        &quot;inventory_mode&quot;: 1,
+        &quot;inventory&quot;: {
+            &quot;tag&quot;: serverProduct
+        }
+    })
+    return result['result']['hostids'][0]
+
+def updateInterface():
+    result = zapi.do_request('hostinterface.get', {
+        &quot;hostids&quot;: hostID
+    })
+    intID = result['result'][0]['interfaceid']
+    ifProps = {
+        &quot;interfaceid&quot;: intID,
+        &quot;type&quot;: zbxIfType,
+        &quot;main&quot;: 1,
+        &quot;useip&quot;: 1,
+        &quot;ip&quot;: serverIp,
+        &quot;dns&quot;: &quot;&quot;,
+        &quot;port&quot;: zbxPort
+    }
+    if zbxIfType == 2:
+        ifProps.update({'bulk':'0'})
+    result = zapi.do_request('hostinterface.update', ifProps)
+
+def updateGroups():
+    result = zapi.do_request('host.update', {
+        &quot;hostid&quot;: hostID,
+        &quot;groups&quot;: hostGroups
+    })
+
+def addToProxy(hostID, proxyID):
+    result = zapi.do_request('host.update', {
+        &quot;hostid&quot;: hostID,
+        &quot;proxy_hostid&quot;: proxyID
+    })
+
+def addMacro(hostID, macro, value):
+    result = zapi.do_request('usermacro.create',{
+        &quot;hostid&quot;: str(hostID),
+        &quot;macro&quot;: str(macro),
+        &quot;value&quot;: str(value)
+    })
+
+def updateHostMacros():
+    result = zapi.do_request('usermacro.get', {
+        &quot;hostids&quot;: hostID
+    })
+    r_macros = [[r_macro['macro'], r_macro['hostmacroid'], r_macro['value']] for r_macro in result['result']]
+    r_macrosN = [r_macro['macro'] for r_macro in result['result']]
+    
+    for macro in macros:
+        if macro['name'] in r_macrosN:
+            for r_macro in r_macros:
+                if r_macro[0] == macro['name']:
+                    result = zapi.do_request('usermacro.update', {
+                        'hostmacroid': r_macro[1],
+                        &quot;value&quot;: macro['value']
+                    })
+        else:
+            addMacro(hostID, macro['name'], macro['value'])
+
+
+_exists = False
+result = zapi.host.get()
+hostnames = [[host['host'], host['name'], host['hostid']] for host in result]
+
+# Build hostGroups object
+proxyID = getProxyID(proxyName)
+groupID = getGroupID(groupName)
+hostGroups = [{'groupid':groupID}]
+for _group in groups:
+    hostGroups.append({'groupid':getGroupID(_group['name'])})
+
+for k in hostnames:
+    for v in k:
+        if serverName in v:
+            _exists = True
+            hostID = k[2]
+            break
+
+if _exists is True:
+    try:
+        updateInterface()
+        addToProxy(hostID, proxyID)
+        addTemplates(hostID, templates)
+        updateHostMacros()
+        updateGroups()
+        print('1')
+    except Exception as e:
+        print(e)
+        print('2')
+else:
+    try:
+        hostID = createHost()
+        addToProxy(hostID, proxyID)
+        for macro in macros:
+            addMacro(hostID, macro['name'], macro['value'])
+        addTemplates(hostID, templates)
+        print('0')
+    except Exception as e:
+        print(e)
+        print('2')
+EOF</params>
+							<ipmi_sensor/>
+							<data_type>0</data_type>
+							<authtype>0</authtype>
+							<username>{$SSH_ID}</username>
+							<password>{$SSH_PASSWORD}</password>
+							<publickey/>
+							<privatekey/>
+							<port/>
+							<description/>
+							<inventory_link>0</inventory_link>
+							<applications>
+								<application>
+									<name>Discoverd Fortigate Hosts</name>
+								</application>
+							</applications>
+							<valuemap/>
+							<logtimefmt/>
+							<application_prototypes/>
+						</item_prototype>
+						<item_prototype>
+							<name>{#FQDN} ICMP Availability</name>
+							<type>13</type>
+							<snmp_community/>
+							<multiplier>0</multiplier>
+							<snmp_oid/>
+							<key>ssh.run[pingFortigate:{#PRIVATE_IP}]</key>
+							<delay>600</delay>
+							<history>5</history>
+							<trends>60</trends>
+							<status>0</status>
+							<value_type>3</value_type>
+							<allowed_hosts/>
+							<units/>
+							<delta>0</delta>
+							<snmpv3_contextname/>
+							<snmpv3_securityname/>
+							<snmpv3_securitylevel>0</snmpv3_securitylevel>
+							<snmpv3_authprotocol>0</snmpv3_authprotocol>
+							<snmpv3_authpassphrase/>
+							<snmpv3_privprotocol>0</snmpv3_privprotocol>
+							<snmpv3_privpassphrase/>
+							<formula>1</formula>
+							<delay_flex/>
+							<params>if fping -u {#PRIVATE_IP} &gt;&amp; /dev/null ;then echo 1; else echo 0; fi</params>
+							<ipmi_sensor/>
+							<data_type>0</data_type>
+							<authtype>0</authtype>
+							<username>{$SSH_ID}</username>
+							<password>{$SSH_PASSWORD}</password>
+							<publickey/>
+							<privatekey/>
+							<port/>
+							<description/>
+							<inventory_link>0</inventory_link>
+							<applications>
+								<application>
+									<name>Discoverd Fortigate Hosts</name>
+								</application>
+							</applications>
+							<valuemap>
+								<name>Host availability</name>
+							</valuemap>
+							<logtimefmt/>
+							<application_prototypes/>
+						</item_prototype>
+					</item_prototypes>
+					<trigger_prototypes/>
+					<graph_prototypes/>
+					<host_prototypes/>
+				</discovery_rule>
+				<discovery_rule>
+					<name>Idera Hosts</name>
+					<type>13</type>
+					<snmp_community/>
+					<snmp_oid/>
+					<key>ssh.run[softlayerIderaDiscovery]</key>
+					<delay>600</delay>
+					<status>0</status>
+					<allowed_hosts/>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<delay_flex/>
+					<params>#!/bin/bash
+cat &lt;&lt;EOF | python -
+
+#!/usr/bin/python
+
+import json
+
+### VARS ###
+sherlockDir = '/var/Collector/'
+devicesFile = sherlockDir + 'data/devices.json'
+############
+
+with open(devicesFile) as devices:
+    devicesJSON = json.loads(json.load(devices))
+
+first = 1
+print('{')
+print('&quot;data&quot;:[')
+
+for device in devicesJSON:
+    if device['product'] == 'Idera':
+        if first == 0:
+            print(',')
+        first = 0
+        print('    {')
+        print('        &quot;{#PRODUCT}&quot;:&quot;' + device['product'] + '&quot;,')
+        print('        &quot;{#PROXY}&quot;:&quot;{HOST.NAME}&quot;,')
+        print('        &quot;{#GROUP}&quot;:&quot;{$ZBX_CUSTOMERGROUP}&quot;,')
+        print('        &quot;{#PRIVATE_IP}&quot;:&quot;' + device['primaryBackendIpAddress'] + '&quot;,')
+        print('        &quot;{#FQDN}&quot;:&quot;' + device['fullyQualifiedDomainName'] + '&quot;,')
+        for user in device['users']:
+            if 'Administrator' in user:
+                print('        &quot;{#USER}&quot;:&quot;Administrator&quot;,')
+                print('        &quot;{#PASSWORD}&quot;:&quot;' + user['Administrator'] + '&quot;,')
+                print('        &quot;{#OS}&quot;:&quot;WIN&quot;')
+            if 'root' in user:
+                print('        &quot;{#USER}&quot;:&quot;root&quot;,')
+                print('        &quot;{#PASSWORD}&quot;:&quot;' + user['root'] + '&quot;,')
+                print('        &quot;{#OS}&quot;:&quot;LIN&quot;')
+        print('    }')
+print(&quot;]&quot;)
+print(&quot;}&quot;)
+
+EOF</params>
+					<ipmi_sensor/>
+					<authtype>0</authtype>
+					<username>{$SSH_ID}</username>
+					<password>{$SSH_PASSWORD}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<filter>
+						<evaltype>0</evaltype>
+						<formula/>
+						<conditions/>
+					</filter>
+					<lifetime>0</lifetime>
+					<description/>
+					<item_prototypes>
+						<item_prototype>
+							<name>{#FQDN} Configure SNMP</name>
+							<type>13</type>
+							<snmp_community/>
+							<multiplier>0</multiplier>
+							<snmp_oid/>
+							<key>ssh.run[configureSNMPIdera:{#FQDN}]</key>
+							<delay>600</delay>
+							<history>1</history>
+							<trends>0</trends>
+							<status>0</status>
+							<value_type>4</value_type>
+							<allowed_hosts/>
+							<units/>
+							<delta>0</delta>
+							<snmpv3_contextname/>
+							<snmpv3_securityname/>
+							<snmpv3_securitylevel>0</snmpv3_securitylevel>
+							<snmpv3_authprotocol>0</snmpv3_authprotocol>
+							<snmpv3_authpassphrase/>
+							<snmpv3_privprotocol>0</snmpv3_privprotocol>
+							<snmpv3_privpassphrase/>
+							<formula>1</formula>
+							<delay_flex/>
+							<params>rm ~/.ssh/known_hosts
+cd /var/Collector/zbxScripts
+if timeout 5 snmpwalk -v2c -c ibm.cloudbr {#PRIVATE_IP} iso.3.6.1.2.1.1.1.0 &amp;&gt; /dev/null; then echo &quot;snmp OK&quot;; else ./configLinuxSnmp.exp {#PRIVATE_IP} {#USER} {#PASSWORD} &amp;&amp; echo &quot;snmp reconfigured&quot;;fi</params>
+							<ipmi_sensor/>
+							<data_type>0</data_type>
+							<authtype>0</authtype>
+							<username>{$SSH_ID}</username>
+							<password>{$SSH_PASSWORD}</password>
+							<publickey/>
+							<privatekey/>
+							<port/>
+							<description/>
+							<inventory_link>0</inventory_link>
+							<applications>
+								<application>
+									<name>Discovered Idera Hosts</name>
+								</application>
+							</applications>
+							<valuemap/>
+							<logtimefmt/>
+							<application_prototypes/>
+						</item_prototype>
+						<item_prototype>
+							<name>{#FQDN} Registration Status</name>
+							<type>13</type>
+							<snmp_community/>
+							<multiplier>0</multiplier>
+							<snmp_oid/>
+							<key>ssh.run[ideraRegistrationStatus:{#FQDN}]</key>
+							<delay>600</delay>
+							<history>15</history>
+							<trends>0</trends>
+							<status>0</status>
+							<value_type>4</value_type>
+							<allowed_hosts/>
+							<units/>
+							<delta>0</delta>
+							<snmpv3_contextname/>
+							<snmpv3_securityname/>
+							<snmpv3_securitylevel>0</snmpv3_securitylevel>
+							<snmpv3_authprotocol>0</snmpv3_authprotocol>
+							<snmpv3_authpassphrase/>
+							<snmpv3_privprotocol>0</snmpv3_privprotocol>
+							<snmpv3_privpassphrase/>
+							<formula>1</formula>
+							<delay_flex/>
+							<params>#!/bin/bash
+cat &lt;&lt;EOF | python -
+
+#!/usr/bin/python
+
+from pyzabbix import ZabbixAPI
+
+zapi = ZabbixAPI(url='http://192.168.10.15/zabbix/', user='Admin', password='dqm@50vnc')
+
+serverName = &quot;{#FQDN}&quot;
+serverIp = &quot;{#PRIVATE_IP}&quot;
+# zbxIfType = [1 for zabbix agent, 2 for SNMP]
+zbxIfType = 2
+# zbxPort = [10050 for zabbix agent (default), 161 for SNMP (default)
+zbxPort = 161
+serverProduct = &quot;{#PRODUCT}&quot;
+groupName = &quot;{#GROUP}&quot;
+proxyName = &quot;{#PROXY}&quot;
+templatesLIN = [
+    {'name':'Template ICMP Ping'},
+    {'name':'GTS-IS Template SNMP OS Linux'},
+    {'name':'GTS-IS Template APP Idera'},
+    {'name':'Template SNMP Disk IO'}
+]
+templatesWIN = [
+    {'name':'Template ICMP Ping'},
+    {'name':'Template OS Windows'},
+    {'name':'GTS-IS Template APP Idera'},
+    {'name':'GTS-IS Template APP Idera Windows'}
+]
+# Macro names need to send $ as utf8 char \x24 like u'{\x24MacroName}
+# This will avoid confusion in Zabbix variable parsing
+macros = [
+    {'name':u'{\x24SSH_ID}','value':'{#USER}'},
+    {'name':u'{\x24SSH_PASSWORD}','value':'{#PASSWORD}'},
+    {'name':u'{\x24SNMP_COMMUNITY}','value':'ibm.cloudbr'}
+]
+#additional group to add
+# CODE IS BELOW, ON OS DETECTION
+
+groupID = None
+proxyID = None
+
+def getGroupID(groupName):
+    result = zapi.do_request('hostgroup.get', {
+        &quot;output&quot;: &quot;extend&quot;,
+        &quot;filter&quot;: {
+            &quot;name&quot;: [
+                groupName
+            ]
+        }
+    })
+    return result['result'][0]['groupid']
+
+def getTemplateID(templateName):
+    result = zapi.do_request('template.get', {
+        &quot;output&quot;: &quot;extend&quot;,
+        &quot;filter&quot;: {
+            &quot;name&quot;: [
+                templateName
+            ]
+        }
+    })
+    return result['result'][0]['templateid']
+
+def addTemplates(hostID, templates):
+    templateIDs = [ ]
+    for template in templates:
+        x = { }
+        x['templateid'] = getTemplateID(template['name'])
+        templateIDs.append(x)
+    result = zapi.do_request('host.update', {
+        &quot;hostid&quot;: hostID,
+        &quot;templates&quot;: templateIDs
+    })
+
+def getProxyID(proxyName):
+    result = zapi.do_request('proxy.get', {
+        &quot;output&quot;: &quot;extend&quot;,
+        &quot;filter&quot;: {
+            &quot;host&quot;: [
+               proxyName
+            ]
+        }
+    })
+    return result['result'][0]['proxyid']
+
+def createHost():
+    ifProps = {
+                &quot;type&quot;: zbxIfType,
+                &quot;main&quot;: 1,
+                &quot;useip&quot;: 1,
+                &quot;ip&quot;: serverIp,
+                &quot;dns&quot;: &quot;&quot;,
+                &quot;port&quot;: zbxPort
+            }
+    if zbxIfType == 2:
+        ifProps.update({'bulk':'0'})
+
+    result = zapi.do_request('host.create', {
+        &quot;host&quot;: serverName,
+        &quot;interfaces&quot;: [ifProps],
+        &quot;groups&quot;: hostGroups,
+        &quot;inventory_mode&quot;: 1,
+        &quot;inventory&quot;: {
+            &quot;tag&quot;: serverProduct
+        }
+    })
+    return result['result']['hostids'][0]
+
+def updateInterface():
+    result = zapi.do_request('hostinterface.get', {
+        &quot;hostids&quot;: hostID
+    })
+    intID = result['result'][0]['interfaceid']
+    ifProps = {
+        &quot;interfaceid&quot;: intID,
+        &quot;type&quot;: zbxIfType,
+        &quot;main&quot;: 1,
+        &quot;useip&quot;: 1,
+        &quot;ip&quot;: serverIp,
+        &quot;dns&quot;: &quot;&quot;,
+        &quot;port&quot;: zbxPort
+    }
+    if zbxIfType == 2:
+        ifProps.update({'bulk':'0'})
+    result = zapi.do_request('hostinterface.update', ifProps)
+
+def updateGroups():
+    result = zapi.do_request('host.update', {
+        &quot;hostid&quot;: hostID,
+        &quot;groups&quot;: hostGroups
+    })
+
+def addToProxy(hostID, proxyID):
+    result = zapi.do_request('host.update', {
+        &quot;hostid&quot;: hostID,
+        &quot;proxy_hostid&quot;: proxyID
+    })
+
+def addMacro(hostID, macro, value):
+    result = zapi.do_request('usermacro.create',{
+        &quot;hostid&quot;: str(hostID),
+        &quot;macro&quot;: str(macro),
+        &quot;value&quot;: str(value)
+    })
+
+def updateHostMacros():
+    result = zapi.do_request('usermacro.get', {
+        &quot;hostids&quot;: hostID
+    })
+    r_macros = [[r_macro['macro'], r_macro['hostmacroid'], r_macro['value']] for r_macro in result['result']]
+    r_macrosN = [r_macro['macro'] for r_macro in result['result']]
+    
+    for macro in macros:
+        if macro['name'] in r_macrosN:
+            for r_macro in r_macros:
+                if r_macro[0] == macro['name']:
+                    result = zapi.do_request('usermacro.update', {
+                        'hostmacroid': r_macro[1],
+                        &quot;value&quot;: macro['value']
+                    })
+        else:
+            addMacro(hostID, macro['name'], macro['value'])
+
+
+_exists = False
+result = zapi.host.get()
+hostnames = [[host['host'], host['name'], host['hostid']] for host in result]
+
+# Build hostGroups object
+proxyID = getProxyID(proxyName)
+groupID = getGroupID(groupName)
+hostGroups = [{'groupid':groupID}]
+for _group in groups:
+    hostGroups.append({'groupid':getGroupID(_group['name'])})
+#### SPECIAL CODE FOR IDERA ####
+if &quot;{#USER}&quot; == &quot;Administrator&quot;:
+    hostGroups.append({'groupid':getGroupID(_group['Windows'])})
+    macros.append({'name':u'{\x24OS_SHORT}','value':Windows})
+else:
+    hostGroups.append({'groupid':getGroupID(_group['Linux'])})
+    macros.append({'name':u'{\x24OS_SHORT}','value':Linux})
+#### END SPECIAL CODE FOR IDERA ####
+
+for k in hostnames:
+    for v in k:
+        if serverName in v:
+            _exists = True
+            hostID = k[2]
+            break
+
+if _exists is True:
+    try:
+        updateInterface()
+        addToProxy(hostID, proxyID)
+        addTemplates(hostID, templates)
+        updateHostMacros()
+        updateGroups()
+        print('1')
+    except Exception as e:
+        print(e)
+        print('2')
+else:
+    try:
+        hostID = createHost()
+        addToProxy(hostID, proxyID)
+        for macro in macros:
+            addMacro(hostID, macro['name'], macro['value'])
+        addTemplates(hostID, templates)
+        print('0')
+    except Exception as e:
+        #print(e)
+        print('2')
+EOF</params>
+							<ipmi_sensor/>
+							<data_type>0</data_type>
+							<authtype>0</authtype>
+							<username>{$SSH_ID}</username>
+							<password>{$SSH_PASSWORD}</password>
+							<publickey/>
+							<privatekey/>
+							<port/>
+							<description/>
+							<inventory_link>0</inventory_link>
+							<applications>
+								<application>
+									<name>Discovered Idera Hosts</name>
+								</application>
+							</applications>
+							<valuemap/>
+							<logtimefmt/>
+							<application_prototypes/>
+						</item_prototype>
+						<item_prototype>
+							<name>{#FQDN} Install/Reconfigure Zabbix Agent</name>
+							<type>13</type>
+							<snmp_community/>
+							<multiplier>0</multiplier>
+							<snmp_oid/>
+							<key>ssh.run[installZabbixAgentOnIdera:{#PRIVATE_IP}]</key>
+							<delay>120</delay>
+							<history>90</history>
+							<trends>0</trends>
+							<status>1</status>
+							<value_type>4</value_type>
+							<allowed_hosts/>
+							<units/>
+							<delta>0</delta>
+							<snmpv3_contextname/>
+							<snmpv3_securityname/>
+							<snmpv3_securitylevel>0</snmpv3_securitylevel>
+							<snmpv3_authprotocol>0</snmpv3_authprotocol>
+							<snmpv3_authpassphrase/>
+							<snmpv3_privprotocol>0</snmpv3_privprotocol>
+							<snmpv3_privpassphrase/>
+							<formula>1</formula>
+							<delay_flex/>
+							<params>## NOTE: Zabbix client, when working in passive mode, can accept requests from multiple servers. Some customers also use Zabbix for monitoring. 
+##            If this is the case, fill in the macro {$ZBX_ADITIONALSERVERS} with additional servers IPs delimited by a comma (e.g.: 192.168.1.2, 10.150.3.2).
+##            As result, Zabbix client's configuration file will have the Zabbix Proxy IP used by this monitoring system, plus the IPs of other servers and proxies from the client.
+
+rm ~/.ssh/known_hosts
+cd /var/Collector/zbxScripts
+if netstat -l|grep 8000 &gt; /dev/null; then echo 0 &gt; /dev/null; else echo &quot;waiting for simpleHTTPserver&quot; &amp;&amp; exit; fi
+if curl -s http://{#PRIVATE_IP}:10050 &gt; /dev/null; then echo &quot;agent is listening&quot;; else /usr/bin/expect installZabbixAgentOnIdera.exp {#PRIVATE_IP} {#USER} {#PASSWORD} {#OS} '{$ZBX_ADITIONALSERVERS}'; fi</params>
+							<ipmi_sensor/>
+							<data_type>0</data_type>
+							<authtype>0</authtype>
+							<username>{$SSH_ID}</username>
+							<password>{$SSH_PASSWORD}</password>
+							<publickey/>
+							<privatekey/>
+							<port/>
+							<description/>
+							<inventory_link>0</inventory_link>
+							<applications>
+								<application>
+									<name>Discovered Idera Hosts</name>
+								</application>
+							</applications>
+							<valuemap/>
+							<logtimefmt/>
+							<application_prototypes/>
+						</item_prototype>
+						<item_prototype>
+							<name>{#FQDN} ICMP Availability</name>
+							<type>13</type>
+							<snmp_community/>
+							<multiplier>0</multiplier>
+							<snmp_oid/>
+							<key>ssh.run[pingIdera:{#PRIVATE_IP}]</key>
+							<delay>600</delay>
+							<history>15</history>
+							<trends>60</trends>
+							<status>0</status>
+							<value_type>3</value_type>
+							<allowed_hosts/>
+							<units/>
+							<delta>0</delta>
+							<snmpv3_contextname/>
+							<snmpv3_securityname/>
+							<snmpv3_securitylevel>0</snmpv3_securitylevel>
+							<snmpv3_authprotocol>0</snmpv3_authprotocol>
+							<snmpv3_authpassphrase/>
+							<snmpv3_privprotocol>0</snmpv3_privprotocol>
+							<snmpv3_privpassphrase/>
+							<formula>1</formula>
+							<delay_flex/>
+							<params>if fping -u {#PRIVATE_IP} &gt;&amp; /dev/null ;then echo 1; else echo 0; fi</params>
+							<ipmi_sensor/>
+							<data_type>0</data_type>
+							<authtype>0</authtype>
+							<username>{$SSH_ID}</username>
+							<password>{$SSH_PASSWORD}</password>
+							<publickey/>
+							<privatekey/>
+							<port/>
+							<description/>
+							<inventory_link>0</inventory_link>
+							<applications>
+								<application>
+									<name>Discovered Idera Hosts</name>
+								</application>
+							</applications>
+							<valuemap>
+								<name>Host availability</name>
+							</valuemap>
+							<logtimefmt/>
+							<application_prototypes/>
+						</item_prototype>
+						<item_prototype>
+							<name>{#FQDN} SNMP Status</name>
+							<type>13</type>
+							<snmp_community/>
+							<multiplier>0</multiplier>
+							<snmp_oid/>
+							<key>ssh.run[snmpStatusIdera:{#FQDN}]</key>
+							<delay>600</delay>
+							<history>1</history>
+							<trends>2</trends>
+							<status>0</status>
+							<value_type>3</value_type>
+							<allowed_hosts/>
+							<units/>
+							<delta>0</delta>
+							<snmpv3_contextname/>
+							<snmpv3_securityname/>
+							<snmpv3_securitylevel>0</snmpv3_securitylevel>
+							<snmpv3_authprotocol>0</snmpv3_authprotocol>
+							<snmpv3_authpassphrase/>
+							<snmpv3_privprotocol>0</snmpv3_privprotocol>
+							<snmpv3_privpassphrase/>
+							<formula>1</formula>
+							<delay_flex/>
+							<params>if nc -zu {#PRIVATE_IP} 161 &amp;&gt; /dev/null; then echo 1; else echo 0;fi</params>
+							<ipmi_sensor/>
+							<data_type>0</data_type>
+							<authtype>0</authtype>
+							<username>{$SSH_ID}</username>
+							<password>{$SSH_PASSWORD}</password>
+							<publickey/>
+							<privatekey/>
+							<port/>
+							<description/>
+							<inventory_link>0</inventory_link>
+							<applications>
+								<application>
+									<name>Discovered Idera Hosts</name>
+								</application>
+							</applications>
+							<valuemap>
+								<name>Service state</name>
+							</valuemap>
+							<logtimefmt/>
+							<application_prototypes/>
+						</item_prototype>
+					</item_prototypes>
+					<trigger_prototypes/>
+					<graph_prototypes/>
+					<host_prototypes/>
+				</discovery_rule>
+				<discovery_rule>
+					<name>NetScaler Hosts</name>
+					<type>13</type>
+					<snmp_community/>
+					<snmp_oid/>
+					<key>ssh.run[softlayerNetscalerDiscovery]</key>
+					<delay>600</delay>
+					<status>0</status>
+					<allowed_hosts/>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<delay_flex/>
+					<params>#!/bin/bash
+cat &lt;&lt;EOF | python -
+
+#!/usr/bin/python
+
+import json
+
+### VARS ###
+sherlockDir = '/var/Collector/'
+devicesFile = sherlockDir + 'data/devices.json'
+############
+
+with open(devicesFile) as devices:
+    devicesJSON = json.loads(json.load(devices))
+
+first = 1
+print('{')
+print('&quot;data&quot;:[')
+
+for device in devicesJSON:
+    if device['product'] == 'NetScaler':
+        if first == 0:
+            print(',')
+        first = 0
+        print('    {')
+        print('        &quot;{#PRODUCT}&quot;:&quot;' + device['product'] + '&quot;,')
+        print('        &quot;{#PROXY}&quot;:&quot;{HOST.NAME}&quot;,')
+        print('        &quot;{#GROUP}&quot;:&quot;{$ZBX_CUSTOMERGROUP}&quot;,')
+        print('        &quot;{#PRIVATE_IP}&quot;:&quot;' + device['primaryBackendIpAddress'] + '&quot;,')
+        print('        &quot;{#FQDN}&quot;:&quot;' + device['fullyQualifiedDomainName'] + '&quot;,')
+        for user in device['users']:
+            print('        &quot;{#USER}&quot;:&quot;root&quot;,')
+            print('        &quot;{#PASSWORD}&quot;:&quot;' + user['root'] + '&quot;')
+        print('    }')
+print(&quot;]&quot;)
+print(&quot;}&quot;)
+
+EOF</params>
+					<ipmi_sensor/>
+					<authtype>0</authtype>
+					<username>{$SSH_ID}</username>
+					<password>{$SSH_PASSWORD}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<filter>
+						<evaltype>0</evaltype>
+						<formula/>
+						<conditions/>
+					</filter>
+					<lifetime>0</lifetime>
+					<description/>
+					<item_prototypes>
+						<item_prototype>
+							<name>{#FQDN} Configure SNMP</name>
+							<type>13</type>
+							<snmp_community/>
+							<multiplier>0</multiplier>
+							<snmp_oid/>
+							<key>ssh.run[configureVPXSNMP:{#FQDN}]</key>
+							<delay>600</delay>
+							<history>2</history>
+							<trends>0</trends>
+							<status>0</status>
+							<value_type>4</value_type>
+							<allowed_hosts/>
+							<units/>
+							<delta>0</delta>
+							<snmpv3_contextname/>
+							<snmpv3_securityname/>
+							<snmpv3_securitylevel>0</snmpv3_securitylevel>
+							<snmpv3_authprotocol>0</snmpv3_authprotocol>
+							<snmpv3_authpassphrase/>
+							<snmpv3_privprotocol>0</snmpv3_privprotocol>
+							<snmpv3_privpassphrase/>
+							<formula>1</formula>
+							<delay_flex/>
+							<params>rm ~/.ssh/known_hosts
+cd /var/Collector/zbxScripts
+if timeout 5 snmpwalk -v2c -c ibm.cloudbr {#PRIVATE_IP} iso.3.6.1.2.1.1.1.0 &amp;&gt; /dev/null; then echo &quot;snmp OK&quot;; else ./configVPXSnmp.exp {#PRIVATE_IP} {#USER} {#PASSWORD} &amp;&amp; PEERIP=`timeout 5 snmpget -v2c -c ibm.cloudbr {#PRIVATE_IP} iso.3.6.1.4.1.5951.4.1.1.23.2.0|awk '{print $4}'` &amp;&amp; echo {#PASSWORD} &gt; /tmp/vpxHaPeer_$PEERIP &amp;&amp; echo &quot;snmp reconfigured&quot;;fi</params>
+							<ipmi_sensor/>
+							<data_type>0</data_type>
+							<authtype>0</authtype>
+							<username>{$SSH_ID}</username>
+							<password>{$SSH_PASSWORD}</password>
+							<publickey/>
+							<privatekey/>
+							<port/>
+							<description>NOTE: File /tmp/vpxHaPeer_$PEERIP will contain the password that might be used to logon to the peer via SSH in case the password in SoftLayer portal fails. This happens when HA is configured and the second node password is changed to match the first node.</description>
+							<inventory_link>0</inventory_link>
+							<applications>
+								<application>
+									<name>Discovered NetScaler Hosts</name>
+								</application>
+							</applications>
+							<valuemap/>
+							<logtimefmt/>
+							<application_prototypes/>
+						</item_prototype>
+						<item_prototype>
+							<name>{#FQDN} Registration Status</name>
+							<type>13</type>
+							<snmp_community/>
+							<multiplier>0</multiplier>
+							<snmp_oid/>
+							<key>ssh.run[netscalerRegistrationStatus:{#FQDN}]</key>
+							<delay>600</delay>
+							<history>15</history>
+							<trends>0</trends>
+							<status>0</status>
+							<value_type>4</value_type>
+							<allowed_hosts/>
+							<units/>
+							<delta>0</delta>
+							<snmpv3_contextname/>
+							<snmpv3_securityname/>
+							<snmpv3_securitylevel>0</snmpv3_securitylevel>
+							<snmpv3_authprotocol>0</snmpv3_authprotocol>
+							<snmpv3_authpassphrase/>
+							<snmpv3_privprotocol>0</snmpv3_privprotocol>
+							<snmpv3_privpassphrase/>
+							<formula>1</formula>
+							<delay_flex/>
+							<params>#!/bin/bash
+cat &lt;&lt;EOF | python -
+
+#!/usr/bin/python
+
+from pyzabbix import ZabbixAPI
+
+zapi = ZabbixAPI(url='http://192.168.10.15/zabbix/', user='Admin', password='dqm@50vnc')
+
+serverName = &quot;{#FQDN}&quot;
+serverIp = &quot;{#PRIVATE_IP}&quot;
+# zbxIfType = [1 for zabbix agent, 2 for SNMP]
+zbxIfType = 2
+# zbxPort = [10050 for zabbix agent (default), 161 for SNMP (default)
+zbxPort = 161
+serverProduct = &quot;{#PRODUCT}&quot;
+groupName = &quot;{#GROUP}&quot;
+proxyName = &quot;{#PROXY}&quot;
+templates = [
+    {'name':'Template ICMP Ping'},
+    {'name':'GTS-IS Template SNMP NetScaler 10.x'}
+]
+# Macro names need to send $ as utf8 char \x24 like u'{\x24MacroName}
+# This will avoid confusion in Zabbix variable parsing
+macros = [
+    {'name':u'{\x24SSH_ID}','value':'{#USER}'},
+    {'name':u'{\x24SSH_PASSWORD}','value':'{#PASSWORD}'},
+    {'name':u'{\x24SNMP_COMMUNITY}','value':'ibm.cloudbr'}
+]
+#additional group to add
+groups = [
+    {'name':'VPX'}
+]
+groupID = None
+proxyID = None
+
+def getGroupID(groupName):
+    result = zapi.do_request('hostgroup.get', {
+        &quot;output&quot;: &quot;extend&quot;,
+        &quot;filter&quot;: {
+            &quot;name&quot;: [
+                groupName
+            ]
+        }
+    })
+    return result['result'][0]['groupid']
+
+def getTemplateID(templateName):
+    result = zapi.do_request('template.get', {
+        &quot;output&quot;: &quot;extend&quot;,
+        &quot;filter&quot;: {
+            &quot;name&quot;: [
+                templateName
+            ]
+        }
+    })
+    return result['result'][0]['templateid']
+
+def addTemplates(hostID, templates):
+    templateIDs = [ ]
+    for template in templates:
+        x = { }
+        x['templateid'] = getTemplateID(template['name'])
+        templateIDs.append(x)
+    result = zapi.do_request('host.update', {
+        &quot;hostid&quot;: hostID,
+        &quot;templates&quot;: templateIDs
+    })
+
+def getProxyID(proxyName):
+    result = zapi.do_request('proxy.get', {
+        &quot;output&quot;: &quot;extend&quot;,
+        &quot;filter&quot;: {
+            &quot;host&quot;: [
+               proxyName
+            ]
+        }
+    })
+    return result['result'][0]['proxyid']
+
+def createHost():
+    ifProps = {
+                &quot;type&quot;: zbxIfType,
+                &quot;main&quot;: 1,
+                &quot;useip&quot;: 1,
+                &quot;ip&quot;: serverIp,
+                &quot;dns&quot;: &quot;&quot;,
+                &quot;port&quot;: zbxPort
+            }
+    if zbxIfType == 2:
+        ifProps.update({'bulk':'0'})
+
+    result = zapi.do_request('host.create', {
+        &quot;host&quot;: serverName,
+        &quot;interfaces&quot;: [ifProps],
+        &quot;groups&quot;: hostGroups,
+        &quot;inventory_mode&quot;: 1,
+        &quot;inventory&quot;: {
+            &quot;tag&quot;: serverProduct
+        }
+    })
+    return result['result']['hostids'][0]
+
+def updateInterface():
+    result = zapi.do_request('hostinterface.get', {
+        &quot;hostids&quot;: hostID
+    })
+    intID = result['result'][0]['interfaceid']
+    ifProps = {
+        &quot;interfaceid&quot;: intID,
+        &quot;type&quot;: zbxIfType,
+        &quot;main&quot;: 1,
+        &quot;useip&quot;: 1,
+        &quot;ip&quot;: serverIp,
+        &quot;dns&quot;: &quot;&quot;,
+        &quot;port&quot;: zbxPort
+    }
+    if zbxIfType == 2:
+        ifProps.update({'bulk':'0'})
+    result = zapi.do_request('hostinterface.update', ifProps)
+
+def updateGroups():
+    result = zapi.do_request('host.update', {
+        &quot;hostid&quot;: hostID,
+        &quot;groups&quot;: hostGroups
+    })
+
+def addToProxy(hostID, proxyID):
+    result = zapi.do_request('host.update', {
+        &quot;hostid&quot;: hostID,
+        &quot;proxy_hostid&quot;: proxyID
+    })
+
+def addMacro(hostID, macro, value):
+    result = zapi.do_request('usermacro.create',{
+        &quot;hostid&quot;: str(hostID),
+        &quot;macro&quot;: str(macro),
+        &quot;value&quot;: str(value)
+    })
+
+def updateHostMacros():
+    result = zapi.do_request('usermacro.get', {
+        &quot;hostids&quot;: hostID
+    })
+    r_macros = [[r_macro['macro'], r_macro['hostmacroid'], r_macro['value']] for r_macro in result['result']]
+    r_macrosN = [r_macro['macro'] for r_macro in result['result']]
+    
+    for macro in macros:
+        if macro['name'] in r_macrosN:
+            for r_macro in r_macros:
+                if r_macro[0] == macro['name']:
+                    result = zapi.do_request('usermacro.update', {
+                        'hostmacroid': r_macro[1],
+                        &quot;value&quot;: macro['value']
+                    })
+        else:
+            addMacro(hostID, macro['name'], macro['value'])
+
+
+_exists = False
+result = zapi.host.get()
+hostnames = [[host['host'], host['name'], host['hostid']] for host in result]
+
+# Build hostGroups object
+proxyID = getProxyID(proxyName)
+groupID = getGroupID(groupName)
+hostGroups = [{'groupid':groupID}]
+for _group in groups:
+    hostGroups.append({'groupid':getGroupID(_group['name'])})
+
+for k in hostnames:
+    for v in k:
+        if serverName in v:
+            _exists = True
+            hostID = k[2]
+            break
+
+if _exists is True:
+    try:
+        updateInterface()
+        addToProxy(hostID, proxyID)
+        addTemplates(hostID, templates)
+        updateHostMacros()
+        updateGroups()
+        print('1')
+    except Exception as e:
+        print(e)
+        print('2')
+else:
+    try:
+        hostID = createHost()
+        addToProxy(hostID, proxyID)
+        for macro in macros:
+            addMacro(hostID, macro['name'], macro['value'])
+        addTemplates(hostID, templates)
+        print('0')
+    except Exception as e:
+        print(e)
+        print('2')
+EOF</params>
+							<ipmi_sensor/>
+							<data_type>0</data_type>
+							<authtype>0</authtype>
+							<username>{$SSH_ID}</username>
+							<password>{$SSH_PASSWORD}</password>
+							<publickey/>
+							<privatekey/>
+							<port/>
+							<description/>
+							<inventory_link>0</inventory_link>
+							<applications>
+								<application>
+									<name>Discovered NetScaler Hosts</name>
+								</application>
+							</applications>
+							<valuemap/>
+							<logtimefmt/>
+							<application_prototypes/>
+						</item_prototype>
+						<item_prototype>
+							<name>{#FQDN} ICMP Availability</name>
+							<type>13</type>
+							<snmp_community/>
+							<multiplier>0</multiplier>
+							<snmp_oid/>
+							<key>ssh.run[pingNetscaler:{#PRIVATE_IP}]</key>
+							<delay>600</delay>
+							<history>15</history>
+							<trends>60</trends>
+							<status>0</status>
+							<value_type>3</value_type>
+							<allowed_hosts/>
+							<units/>
+							<delta>0</delta>
+							<snmpv3_contextname/>
+							<snmpv3_securityname/>
+							<snmpv3_securitylevel>0</snmpv3_securitylevel>
+							<snmpv3_authprotocol>0</snmpv3_authprotocol>
+							<snmpv3_authpassphrase/>
+							<snmpv3_privprotocol>0</snmpv3_privprotocol>
+							<snmpv3_privpassphrase/>
+							<formula>1</formula>
+							<delay_flex/>
+							<params>if fping -u {#PRIVATE_IP} &gt;&amp; /dev/null ;then echo 1; else echo 0; fi</params>
+							<ipmi_sensor/>
+							<data_type>0</data_type>
+							<authtype>0</authtype>
+							<username>{$SSH_ID}</username>
+							<password>{$SSH_PASSWORD}</password>
+							<publickey/>
+							<privatekey/>
+							<port/>
+							<description/>
+							<inventory_link>0</inventory_link>
+							<applications>
+								<application>
+									<name>Discovered NetScaler Hosts</name>
+								</application>
+							</applications>
+							<valuemap>
+								<name>Host availability</name>
+							</valuemap>
+							<logtimefmt/>
+							<application_prototypes/>
+						</item_prototype>
+					</item_prototypes>
+					<trigger_prototypes/>
+					<graph_prototypes/>
+					<host_prototypes/>
+				</discovery_rule>
+				<discovery_rule>
+					<name>OSNEXUS Hosts</name>
+					<type>13</type>
+					<snmp_community/>
+					<snmp_oid/>
+					<key>ssh.run[softlayerOsnexusDiscovery]</key>
+					<delay>600</delay>
+					<status>0</status>
+					<allowed_hosts/>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<delay_flex/>
+					<params>#!/bin/bash
+cat &lt;&lt;EOF | python -
+
+#!/usr/bin/python
+
+import json
+
+### VARS ###
+sherlockDir = '/var/Collector/'
+devicesFile = sherlockDir + 'data/devices.json'
+############
+
+with open(devicesFile) as devices:
+    devicesJSON = json.loads(json.load(devices))
+
+first = 1
+print('{')
+print('&quot;data&quot;:[')
+
+for device in devicesJSON:
+    if device['product'] == 'OSNEXUS':
+        if first == 0:
+            print(',')
+        first = 0
+        print('    {')
+        print('        &quot;{#PRODUCT}&quot;:&quot;' + device['product'] + '&quot;,')
+        print('        &quot;{#PROXY}&quot;:&quot;{HOST.NAME}&quot;,')
+        print('        &quot;{#GROUP}&quot;:&quot;{$ZBX_CUSTOMERGROUP}&quot;,')
+        print('        &quot;{#PRIVATE_IP}&quot;:&quot;' + device['primaryBackendIpAddress'] + '&quot;,')
+        print('        &quot;{#FQDN}&quot;:&quot;' + device['fullyQualifiedDomainName'] + '&quot;,')
+        for user in device['users']:
+            if 'Administrator' in user:
+                print('        &quot;{#USER}&quot;:&quot;Administrator&quot;,')
+                print('        &quot;{#PASSWORD}&quot;:&quot;' + user['Administrator'] + '&quot;')
+            if 'root' in user:
+                print('        &quot;{#USER}&quot;:&quot;root&quot;,')
+                print('        &quot;{#PASSWORD}&quot;:&quot;' + user['root'] + '&quot;')
+        print('    }')
+print(&quot;]&quot;)
+print(&quot;}&quot;)
+
+EOF</params>
+					<ipmi_sensor/>
+					<authtype>0</authtype>
+					<username>{$SSH_ID}</username>
+					<password>{$SSH_PASSWORD}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<filter>
+						<evaltype>0</evaltype>
+						<formula/>
+						<conditions/>
+					</filter>
+					<lifetime>0</lifetime>
+					<description/>
+					<item_prototypes>
+						<item_prototype>
+							<name>{#FQDN} Configure SNMP</name>
+							<type>13</type>
+							<snmp_community/>
+							<multiplier>0</multiplier>
+							<snmp_oid/>
+							<key>ssh.run[configureSNMP:{#FQDN}]</key>
+							<delay>600</delay>
+							<history>1</history>
+							<trends>0</trends>
+							<status>0</status>
+							<value_type>4</value_type>
+							<allowed_hosts/>
+							<units/>
+							<delta>0</delta>
+							<snmpv3_contextname/>
+							<snmpv3_securityname/>
+							<snmpv3_securitylevel>0</snmpv3_securitylevel>
+							<snmpv3_authprotocol>0</snmpv3_authprotocol>
+							<snmpv3_authpassphrase/>
+							<snmpv3_privprotocol>0</snmpv3_privprotocol>
+							<snmpv3_privpassphrase/>
+							<formula>1</formula>
+							<delay_flex/>
+							<params>rm ~/.ssh/known_hosts
+cd /var/Collector/zbxScripts
+if timeout 5 snmpwalk -v2c -c ibm.cloudbr {#PRIVATE_IP} iso.3.6.1.2.1.1.1.0 &amp;&gt; /dev/null; then echo &quot;snmp OK&quot;; else ./configQuantastorSnmp.exp {#PRIVATE_IP} {#USER} {#PASSWORD} &amp;&amp; echo &quot;snmp reconfigured&quot;;fi</params>
+							<ipmi_sensor/>
+							<data_type>0</data_type>
+							<authtype>0</authtype>
+							<username>{$SSH_ID}</username>
+							<password>{$SSH_PASSWORD}</password>
+							<publickey/>
+							<privatekey/>
+							<port/>
+							<description/>
+							<inventory_link>0</inventory_link>
+							<applications>
+								<application>
+									<name>Discovered Quantastor Hosts</name>
+								</application>
+							</applications>
+							<valuemap/>
+							<logtimefmt/>
+							<application_prototypes/>
+						</item_prototype>
+						<item_prototype>
+							<name>{#FQDN} Registration Status</name>
+							<type>13</type>
+							<snmp_community/>
+							<multiplier>0</multiplier>
+							<snmp_oid/>
+							<key>ssh.run[osnexusRegistrationStatus:{#FQDN}]</key>
+							<delay>600</delay>
+							<history>15</history>
+							<trends>0</trends>
+							<status>0</status>
+							<value_type>4</value_type>
+							<allowed_hosts/>
+							<units/>
+							<delta>0</delta>
+							<snmpv3_contextname/>
+							<snmpv3_securityname/>
+							<snmpv3_securitylevel>0</snmpv3_securitylevel>
+							<snmpv3_authprotocol>0</snmpv3_authprotocol>
+							<snmpv3_authpassphrase/>
+							<snmpv3_privprotocol>0</snmpv3_privprotocol>
+							<snmpv3_privpassphrase/>
+							<formula>1</formula>
+							<delay_flex/>
+							<params>#!/bin/bash
+cat &lt;&lt;EOF | python -
+
+#!/usr/bin/python
+
+from pyzabbix import ZabbixAPI
+
+zapi = ZabbixAPI(url='http://192.168.10.15/zabbix/', user='Admin', password='dqm@50vnc')
+
+serverName = &quot;{#FQDN}&quot;
+serverIp = &quot;{#PRIVATE_IP}&quot;
+# zbxIfType = [1 for zabbix agent, 2 for SNMP]
+zbxIfType = 2
+# zbxPort = [10050 for zabbix agent (default), 161 for SNMP (default)
+zbxPort = 161
+serverProduct = &quot;{#PRODUCT}&quot;
+groupName = &quot;{#GROUP}&quot;
+proxyName = &quot;{#PROXY}&quot;
+templates = [
+    {'name':'Template ICMP Ping'},
+    {'name':'Template SNMP Disk IO'},
+    {'name':'GTS-IS Template SNMP OS Linux'}
+]
+# Macro names need to send $ as utf8 char \x24 like u'{\x24MacroName}
+# This will avoid confusion in Zabbix variable parsing
+macros = [
+    {'name':u'{\x24SSH_ID}','value':'{#USER}'},
+    {'name':u'{\x24SSH_PASSWORD}','value':'{#PASSWORD}'},
+    {'name':u'{\x24SNMP_COMMUNITY}','value':'ibm.cloudbr'}
+]
+#additional group to add
+groups = [
+    {'name':'Linux'},
+    {'name':'Quantastor'}
+]
+groupID = None
+proxyID = None
+
+def getGroupID(groupName):
+    result = zapi.do_request('hostgroup.get', {
+        &quot;output&quot;: &quot;extend&quot;,
+        &quot;filter&quot;: {
+            &quot;name&quot;: [
+                groupName
+            ]
+        }
+    })
+    return result['result'][0]['groupid']
+
+def getTemplateID(templateName):
+    result = zapi.do_request('template.get', {
+        &quot;output&quot;: &quot;extend&quot;,
+        &quot;filter&quot;: {
+            &quot;name&quot;: [
+                templateName
+            ]
+        }
+    })
+    return result['result'][0]['templateid']
+
+def addTemplates(hostID, templates):
+    templateIDs = [ ]
+    for template in templates:
+        x = { }
+        x['templateid'] = getTemplateID(template['name'])
+        templateIDs.append(x)
+    result = zapi.do_request('host.update', {
+        &quot;hostid&quot;: hostID,
+        &quot;templates&quot;: templateIDs
+    })
+
+def getProxyID(proxyName):
+    result = zapi.do_request('proxy.get', {
+        &quot;output&quot;: &quot;extend&quot;,
+        &quot;filter&quot;: {
+            &quot;host&quot;: [
+               proxyName
+            ]
+        }
+    })
+    return result['result'][0]['proxyid']
+
+def createHost():
+    ifProps = {
+                &quot;type&quot;: zbxIfType,
+                &quot;main&quot;: 1,
+                &quot;useip&quot;: 1,
+                &quot;ip&quot;: serverIp,
+                &quot;dns&quot;: &quot;&quot;,
+                &quot;port&quot;: zbxPort
+            }
+    if zbxIfType == 2:
+        ifProps.update({'bulk':'0'})
+
+    result = zapi.do_request('host.create', {
+        &quot;host&quot;: serverName,
+        &quot;interfaces&quot;: [ifProps],
+        &quot;groups&quot;: hostGroups,
+        &quot;inventory_mode&quot;: 1,
+        &quot;inventory&quot;: {
+            &quot;tag&quot;: serverProduct
+        }
+    })
+    return result['result']['hostids'][0]
+
+def updateInterface():
+    result = zapi.do_request('hostinterface.get', {
+        &quot;hostids&quot;: hostID
+    })
+    intID = result['result'][0]['interfaceid']
+    ifProps = {
+        &quot;interfaceid&quot;: intID,
+        &quot;type&quot;: zbxIfType,
+        &quot;main&quot;: 1,
+        &quot;useip&quot;: 1,
+        &quot;ip&quot;: serverIp,
+        &quot;dns&quot;: &quot;&quot;,
+        &quot;port&quot;: zbxPort
+    }
+    if zbxIfType == 2:
+        ifProps.update({'bulk':'0'})
+    result = zapi.do_request('hostinterface.update', ifProps)
+
+def updateGroups():
+    result = zapi.do_request('host.update', {
+        &quot;hostid&quot;: hostID,
+        &quot;groups&quot;: hostGroups
+    })
+
+def addToProxy(hostID, proxyID):
+    result = zapi.do_request('host.update', {
+        &quot;hostid&quot;: hostID,
+        &quot;proxy_hostid&quot;: proxyID
+    })
+
+def addMacro(hostID, macro, value):
+    result = zapi.do_request('usermacro.create',{
+        &quot;hostid&quot;: str(hostID),
+        &quot;macro&quot;: str(macro),
+        &quot;value&quot;: str(value)
+    })
+
+def updateHostMacros():
+    result = zapi.do_request('usermacro.get', {
+        &quot;hostids&quot;: hostID
+    })
+    r_macros = [[r_macro['macro'], r_macro['hostmacroid'], r_macro['value']] for r_macro in result['result']]
+    r_macrosN = [r_macro['macro'] for r_macro in result['result']]
+    
+    for macro in macros:
+        if macro['name'] in r_macrosN:
+            for r_macro in r_macros:
+                if r_macro[0] == macro['name']:
+                    result = zapi.do_request('usermacro.update', {
+                        'hostmacroid': r_macro[1],
+                        &quot;value&quot;: macro['value']
+                    })
+        else:
+            addMacro(hostID, macro['name'], macro['value'])
+
+
+_exists = False
+result = zapi.host.get()
+hostnames = [[host['host'], host['name'], host['hostid']] for host in result]
+
+# Build hostGroups object
+proxyID = getProxyID(proxyName)
+groupID = getGroupID(groupName)
+hostGroups = [{'groupid':groupID}]
+for _group in groups:
+    hostGroups.append({'groupid':getGroupID(_group['name'])})
+
+for k in hostnames:
+    for v in k:
+        if serverName in v:
+            _exists = True
+            hostID = k[2]
+            break
+
+if _exists is True:
+    try:
+        updateInterface()
+        addToProxy(hostID, proxyID)
+        addTemplates(hostID, templates)
+        updateHostMacros()
+        updateGroups()
+        print('1')
+    except Exception as e:
+        print(e)
+        print('2')
+else:
+    try:
+        hostID = createHost()
+        addToProxy(hostID, proxyID)
+        for macro in macros:
+            addMacro(hostID, macro['name'], macro['value'])
+        addTemplates(hostID, templates)
+        print('0')
+    except Exception as e:
+        print(e)
+        print('2')
+EOF</params>
+							<ipmi_sensor/>
+							<data_type>0</data_type>
+							<authtype>0</authtype>
+							<username>{$SSH_ID}</username>
+							<password>{$SSH_PASSWORD}</password>
+							<publickey/>
+							<privatekey/>
+							<port/>
+							<description/>
+							<inventory_link>0</inventory_link>
+							<applications>
+								<application>
+									<name>Discovered Quantastor Hosts</name>
+								</application>
+							</applications>
+							<valuemap/>
+							<logtimefmt/>
+							<application_prototypes/>
+						</item_prototype>
+						<item_prototype>
+							<name>{#FQDN} SNMP Status</name>
+							<type>13</type>
+							<snmp_community/>
+							<multiplier>0</multiplier>
+							<snmp_oid/>
+							<key>ssh.run[snmpStatus:{#FQDN}]</key>
+							<delay>600</delay>
+							<history>1</history>
+							<trends>2</trends>
+							<status>0</status>
+							<value_type>3</value_type>
+							<allowed_hosts/>
+							<units/>
+							<delta>0</delta>
+							<snmpv3_contextname/>
+							<snmpv3_securityname/>
+							<snmpv3_securitylevel>0</snmpv3_securitylevel>
+							<snmpv3_authprotocol>0</snmpv3_authprotocol>
+							<snmpv3_authpassphrase/>
+							<snmpv3_privprotocol>0</snmpv3_privprotocol>
+							<snmpv3_privpassphrase/>
+							<formula>1</formula>
+							<delay_flex/>
+							<params>if nc -zu {#PRIVATE_IP} 161 &amp;&gt; /dev/null; then echo 1; else echo 0;fi</params>
+							<ipmi_sensor/>
+							<data_type>0</data_type>
+							<authtype>0</authtype>
+							<username>{$SSH_ID}</username>
+							<password>{$SSH_PASSWORD}</password>
+							<publickey/>
+							<privatekey/>
+							<port/>
+							<description/>
+							<inventory_link>0</inventory_link>
+							<applications>
+								<application>
+									<name>Discovered Quantastor Hosts</name>
+								</application>
+							</applications>
+							<valuemap>
+								<name>Service state</name>
+							</valuemap>
+							<logtimefmt/>
+							<application_prototypes/>
+						</item_prototype>
+					</item_prototypes>
+					<trigger_prototypes/>
+					<graph_prototypes/>
+					<host_prototypes/>
+				</discovery_rule>
+				<discovery_rule>
+					<name>RHEL and CentOS Hosts</name>
+					<type>13</type>
+					<snmp_community/>
+					<snmp_oid/>
+					<key>ssh.run[softlayerRHELCentOSDiscovery]</key>
+					<delay>600</delay>
+					<status>1</status>
+					<allowed_hosts/>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<delay_flex/>
+					<params>#!/bin/bash
+cat &lt;&lt;EOF | python -
+
+#!/usr/bin/python
+
+import json
+
+### VARS ###
+sherlockDir = '/var/Collector/'
+devicesFile = sherlockDir + 'data/devices.json'
+############
+
+with open(devicesFile) as devices:
+    devicesJSON = json.loads(json.load(devices))
+
+first = 1
+print('{')
+print('&quot;data&quot;:[')
+
+for device in devicesJSON:
+    if device['product'] == 'Redhat' or device['product'] == 'CentOS':
+        if first == 0:
+            print(',')
+        first = 0
+        print('    {')
+        print('        &quot;{#PRODUCT}&quot;:&quot;' + device['product'] + '&quot;,')
+        print('        &quot;{#PROXY}&quot;:&quot;{HOST.NAME}&quot;,')
+        print('        &quot;{#GROUP}&quot;:&quot;{$ZBX_CUSTOMERGROUP}&quot;,')
+        print('        &quot;{#PRIVATE_IP}&quot;:&quot;' + device['primaryBackendIpAddress'] + '&quot;,')
+        print('        &quot;{#FQDN}&quot;:&quot;' + device['fullyQualifiedDomainName'] + '&quot;,')
+        for user in device['users']:
+            if 'root' in user:
+                print('        &quot;{#USER}&quot;:&quot;root&quot;,')
+                print('        &quot;{#PASSWORD}&quot;:&quot;' + user['root'] + '&quot;')
+        print('    }')
+print(&quot;]&quot;)
+print(&quot;}&quot;)
+
+EOF</params>
+					<ipmi_sensor/>
+					<authtype>0</authtype>
+					<username>{$SSH_ID}</username>
+					<password>{$SSH_PASSWORD}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<filter>
+						<evaltype>0</evaltype>
+						<formula/>
+						<conditions/>
+					</filter>
+					<lifetime>0</lifetime>
+					<description/>
+					<item_prototypes>
+						<item_prototype>
+							<name>{#FQDN} Configure SNMP</name>
+							<type>13</type>
+							<snmp_community/>
+							<multiplier>0</multiplier>
+							<snmp_oid/>
+							<key>ssh.run[configureSNMP_rhelcentos:{#FQDN}]</key>
+							<delay>600</delay>
+							<history>1</history>
+							<trends>0</trends>
+							<status>0</status>
+							<value_type>4</value_type>
+							<allowed_hosts/>
+							<units/>
+							<delta>0</delta>
+							<snmpv3_contextname/>
+							<snmpv3_securityname/>
+							<snmpv3_securitylevel>0</snmpv3_securitylevel>
+							<snmpv3_authprotocol>0</snmpv3_authprotocol>
+							<snmpv3_authpassphrase/>
+							<snmpv3_privprotocol>0</snmpv3_privprotocol>
+							<snmpv3_privpassphrase/>
+							<formula>1</formula>
+							<delay_flex/>
+							<params>rm ~/.ssh/known_hosts
+cd /var/Collector/zbxScripts
+if timeout 5 snmpwalk -v2c -c ibm.gbluemix {#PRIVATE_IP} iso.3.6.1.2.1.1.1.0 &amp;&gt; /dev/null; then echo &quot;snmp OK&quot;; else ./configRHELCentOSSNMP.exp {#PRIVATE_IP} {#USER} {#PASSWORD} &amp;&amp; echo &quot;snmp reconfigured&quot;;fi</params>
+							<ipmi_sensor/>
+							<data_type>0</data_type>
+							<authtype>0</authtype>
+							<username>{$SSH_ID}</username>
+							<password>{$SSH_PASSWORD}</password>
+							<publickey/>
+							<privatekey/>
+							<port/>
+							<description/>
+							<inventory_link>0</inventory_link>
+							<applications>
+								<application>
+									<name>Discovered RHEL and CentOS Hosts</name>
+								</application>
+							</applications>
+							<valuemap/>
+							<logtimefmt/>
+							<application_prototypes/>
+						</item_prototype>
+						<item_prototype>
+							<name>{#FQDN} Registration Status</name>
+							<type>13</type>
+							<snmp_community/>
+							<multiplier>0</multiplier>
+							<snmp_oid/>
+							<key>ssh.run[rhelcentos_RegistrationStatus:{#FQDN}]</key>
+							<delay>600</delay>
+							<history>15</history>
+							<trends>0</trends>
+							<status>0</status>
+							<value_type>4</value_type>
+							<allowed_hosts/>
+							<units/>
+							<delta>0</delta>
+							<snmpv3_contextname/>
+							<snmpv3_securityname/>
+							<snmpv3_securitylevel>0</snmpv3_securitylevel>
+							<snmpv3_authprotocol>0</snmpv3_authprotocol>
+							<snmpv3_authpassphrase/>
+							<snmpv3_privprotocol>0</snmpv3_privprotocol>
+							<snmpv3_privpassphrase/>
+							<formula>1</formula>
+							<delay_flex/>
+							<params>#!/bin/bash
+cat &lt;&lt;EOF | python -
+
+#!/usr/bin/python
+
+from pyzabbix import ZabbixAPI
+
+zapi = ZabbixAPI(url='http://192.168.10.15/zabbix/', user='Admin', password='dqm@50vnc')
+
+serverName = &quot;{#FQDN}&quot;
+serverIp = &quot;{#PRIVATE_IP}&quot;
+# zbxIfType = [1 for zabbix agent, 2 for SNMP]
+zbxIfType = 2
+# zbxPort = [10050 for zabbix agent (default), 161 for SNMP (default)
+zbxPort = 161
+serverProduct = &quot;{#PRODUCT}&quot;
+groupName = &quot;{#GROUP}&quot;
+proxyName = &quot;{#PROXY}&quot;
+templates = [
+    {'name':'Template ICMP Ping'},
+    {'name':'Template SNMP Disk IO'},
+    {'name':'GTS-IS Template SNMP OS Linux'}
+]
+# Macro names need to send $ as utf8 char \x24 like u'{\x24MacroName}
+# This will avoid confusion in Zabbix variable parsing
+macros = [
+    {'name':u'{\x24SSH_ID}','value':'{#USER}'},
+    {'name':u'{\x24SSH_PASSWORD}','value':'{#PASSWORD}'}
+]
+#additional group to add
+groups = [
+    {'name':'Linux'}
+]
+groupID = None
+proxyID = None
+
+def getGroupID(groupName):
+    result = zapi.do_request('hostgroup.get', {
+        &quot;output&quot;: &quot;extend&quot;,
+        &quot;filter&quot;: {
+            &quot;name&quot;: [
+                groupName
+            ]
+        }
+    })
+    return result['result'][0]['groupid']
+
+def getTemplateID(templateName):
+    result = zapi.do_request('template.get', {
+        &quot;output&quot;: &quot;extend&quot;,
+        &quot;filter&quot;: {
+            &quot;name&quot;: [
+                templateName
+            ]
+        }
+    })
+    return result['result'][0]['templateid']
+
+def addTemplates(hostID, templates):
+    templateIDs = [ ]
+    for template in templates:
+        x = { }
+        x['templateid'] = getTemplateID(template['name'])
+        templateIDs.append(x)
+    result = zapi.do_request('host.update', {
+        &quot;hostid&quot;: hostID,
+        &quot;templates&quot;: templateIDs
+    })
+
+def getProxyID(proxyName):
+    result = zapi.do_request('proxy.get', {
+        &quot;output&quot;: &quot;extend&quot;,
+        &quot;filter&quot;: {
+            &quot;host&quot;: [
+               proxyName
+            ]
+        }
+    })
+    return result['result'][0]['proxyid']
+
+def createHost():
+    ifProps = {
+                &quot;type&quot;: zbxIfType,
+                &quot;main&quot;: 1,
+                &quot;useip&quot;: 1,
+                &quot;ip&quot;: serverIp,
+                &quot;dns&quot;: &quot;&quot;,
+                &quot;port&quot;: zbxPort
+            }
+    if zbxIfType == 2:
+        ifProps.update({'bulk':'0'})
+
+    result = zapi.do_request('host.create', {
+        &quot;host&quot;: serverName,
+        &quot;interfaces&quot;: [ifProps],
+        &quot;groups&quot;: hostGroups,
+        &quot;inventory_mode&quot;: 1,
+        &quot;inventory&quot;: {
+            &quot;tag&quot;: serverProduct
+        }
+    })
+    return result['result']['hostids'][0]
+
+def updateInterface():
+    result = zapi.do_request('hostinterface.get', {
+        &quot;hostids&quot;: hostID
+    })
+    intID = result['result'][0]['interfaceid']
+    ifProps = {
+        &quot;interfaceid&quot;: intID,
+        &quot;type&quot;: zbxIfType,
+        &quot;main&quot;: 1,
+        &quot;useip&quot;: 1,
+        &quot;ip&quot;: serverIp,
+        &quot;dns&quot;: &quot;&quot;,
+        &quot;port&quot;: zbxPort
+    }
+    if zbxIfType == 2:
+        ifProps.update({'bulk':'0'})
+    result = zapi.do_request('hostinterface.update', ifProps)
+
+def updateGroups():
+    result = zapi.do_request('host.update', {
+        &quot;hostid&quot;: hostID,
+        &quot;groups&quot;: hostGroups
+    })
+
+def addToProxy(hostID, proxyID):
+    result = zapi.do_request('host.update', {
+        &quot;hostid&quot;: hostID,
+        &quot;proxy_hostid&quot;: proxyID
+    })
+
+def addMacro(hostID, macro, value):
+    result = zapi.do_request('usermacro.create',{
+        &quot;hostid&quot;: str(hostID),
+        &quot;macro&quot;: str(macro),
+        &quot;value&quot;: str(value)
+    })
+
+def updateHostMacros():
+    result = zapi.do_request('usermacro.get', {
+        &quot;hostids&quot;: hostID
+    })
+    r_macros = [[r_macro['macro'], r_macro['hostmacroid'], r_macro['value']] for r_macro in result['result']]
+    r_macrosN = [r_macro['macro'] for r_macro in result['result']]
+    
+    for macro in macros:
+        if macro['name'] in r_macrosN:
+            for r_macro in r_macros:
+                if r_macro[0] == macro['name']:
+                    result = zapi.do_request('usermacro.update', {
+                        'hostmacroid': r_macro[1],
+                        &quot;value&quot;: macro['value']
+                    })
+        else:
+            addMacro(hostID, macro['name'], macro['value'])
+
+
+_exists = False
+result = zapi.host.get()
+hostnames = [[host['host'], host['name'], host['hostid']] for host in result]
+
+# Build hostGroups object
+proxyID = getProxyID(proxyName)
+groupID = getGroupID(groupName)
+hostGroups = [{'groupid':groupID}]
+for _group in groups:
+    hostGroups.append({'groupid':getGroupID(_group['name'])})
+
+for k in hostnames:
+    for v in k:
+        if serverName in v:
+            _exists = True
+            hostID = k[2]
+            break
+
+if _exists is True:
+    try:
+        updateInterface()
+        addToProxy(hostID, proxyID)
+        addTemplates(hostID, templates)
+        updateHostMacros()
+        updateGroups()
+        print('1')
+    except Exception as e:
+        print(e)
+        print('2')
+else:
+    try:
+        hostID = createHost()
+        addToProxy(hostID, proxyID)
+        for macro in macros:
+            addMacro(hostID, macro['name'], macro['value'])
+        addTemplates(hostID, templates)
+        print('0')
+    except Exception as e:
+        print(e)
+        print('2')
+EOF</params>
+							<ipmi_sensor/>
+							<data_type>0</data_type>
+							<authtype>0</authtype>
+							<username>{$SSH_ID}</username>
+							<password>{$SSH_PASSWORD}</password>
+							<publickey/>
+							<privatekey/>
+							<port/>
+							<description/>
+							<inventory_link>0</inventory_link>
+							<applications>
+								<application>
+									<name>Discovered RHEL and CentOS Hosts</name>
+								</application>
+							</applications>
+							<valuemap/>
+							<logtimefmt/>
+							<application_prototypes/>
+						</item_prototype>
+						<item_prototype>
+							<name>{#FQDN} SNMP Status</name>
+							<type>13</type>
+							<snmp_community/>
+							<multiplier>0</multiplier>
+							<snmp_oid/>
+							<key>ssh.run[snmpStatus_rhelcentos:{#FQDN}]</key>
+							<delay>600</delay>
+							<history>1</history>
+							<trends>2</trends>
+							<status>0</status>
+							<value_type>3</value_type>
+							<allowed_hosts/>
+							<units/>
+							<delta>0</delta>
+							<snmpv3_contextname/>
+							<snmpv3_securityname/>
+							<snmpv3_securitylevel>0</snmpv3_securitylevel>
+							<snmpv3_authprotocol>0</snmpv3_authprotocol>
+							<snmpv3_authpassphrase/>
+							<snmpv3_privprotocol>0</snmpv3_privprotocol>
+							<snmpv3_privpassphrase/>
+							<formula>1</formula>
+							<delay_flex/>
+							<params>if nc -zu {#PRIVATE_IP} 161 &amp;&gt; /dev/null; then if timeout 5 snmpwalk -v2c -c ibm.gbluemix {#PRIVATE_IP} iso.3.6.1.2.1.1.1.0 &amp;&gt; /dev/null; then echo 1; else echo 3; fi; else echo 0;fi</params>
+							<ipmi_sensor/>
+							<data_type>0</data_type>
+							<authtype>0</authtype>
+							<username>{$SSH_ID}</username>
+							<password>{$SSH_PASSWORD}</password>
+							<publickey/>
+							<privatekey/>
+							<port/>
+							<description/>
+							<inventory_link>0</inventory_link>
+							<applications>
+								<application>
+									<name>Discovered RHEL and CentOS Hosts</name>
+								</application>
+							</applications>
+							<valuemap>
+								<name>Service state</name>
+							</valuemap>
+							<logtimefmt/>
+							<application_prototypes/>
+						</item_prototype>
+					</item_prototypes>
+					<trigger_prototypes>
+						<trigger_prototype>
+							<expression>{GTS-IS Sherlock for Ubuntu Xenial 16.04:ssh.run[snmpStatus_rhelcentos:{#FQDN}].last()}=0 or {GTS-IS Sherlock for Ubuntu Xenial 16.04:ssh.run[snmpStatus_rhelcentos:{#FQDN}].last()}=3</expression>
+							<recovery_mode>0</recovery_mode>
+							<recovery_expression/>
+							<name>SNMP Down/Error</name>
+							<correlation_mode>0</correlation_mode>
+							<correlation_tag/>
+							<url/>
+							<status>0</status>
+							<priority>1</priority>
+							<description/>
+							<type>0</type>
+							<manual_close>0</manual_close>
+							<dependencies/>
+							<tags/>
+						</trigger_prototype>
+					</trigger_prototypes>
+					<graph_prototypes/>
+					<host_prototypes/>
+				</discovery_rule>
+				<discovery_rule>
+					<name>VMware Hosts</name>
+					<type>13</type>
+					<snmp_community/>
+					<snmp_oid/>
+					<key>ssh.run[softlayerVMwareDiscovery]</key>
+					<delay>600</delay>
+					<status>0</status>
+					<allowed_hosts/>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<delay_flex/>
+					<params>#!/bin/bash
+cat &lt;&lt;EOF | python -
+#!/usr/bin/python
+
+import json
+
+### VARS ###
+sherlockDir = '/var/Collector/'
+devicesFile = sherlockDir + 'data/devices.json'
+############
+
+with open(devicesFile) as devices:
+    devicesJSON = json.loads(json.load(devices))
+
+first = 1
+print('{')
+print('&quot;data&quot;:[')
+
+for device in devicesJSON:
+    if device['product'] == 'VMware':
+        if first == 0:
+            print(',')
+        first = 0
+        print('    {')
+        print('        &quot;{#PRODUCT}&quot;:&quot;' + device['product'] + '&quot;,')
+        print('        &quot;{#PROXY}&quot;:&quot;{HOST.NAME}&quot;,')
+        print('        &quot;{#GROUP}&quot;:&quot;{$ZBX_CUSTOMERGROUP}&quot;,')
+        print('        &quot;{#PRIVATE_IP}&quot;:&quot;' + device['primaryBackendIpAddress'] + '&quot;,')
+        print('        &quot;{#FQDN}&quot;:&quot;' + device['fullyQualifiedDomainName'] + '&quot;,')
+        for user in device['users']:
+            if 'ibmvmadmin' in user:
+                print('        &quot;{#USER}&quot;:&quot;ibmvmadmin&quot;,')
+                print('        &quot;{#PASSWORD}&quot;:&quot;' + user['ibmvmadmin'] + '&quot;')
+        print('    }')
+print(&quot;]&quot;)
+print(&quot;}&quot;)
+
+EOF</params>
+					<ipmi_sensor/>
+					<authtype>0</authtype>
+					<username>{$SSH_ID}</username>
+					<password>{$SSH_PASSWORD}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<filter>
+						<evaltype>0</evaltype>
+						<formula/>
+						<conditions/>
+					</filter>
+					<lifetime>0</lifetime>
+					<description/>
+					<item_prototypes>
+						<item_prototype>
+							<name>{#FQDN} Add UUID as HOST.HOST</name>
+							<type>13</type>
+							<snmp_community/>
+							<multiplier>0</multiplier>
+							<snmp_oid/>
+							<key>ssh.run[addUUID_vmware:{#FQDN}]</key>
+							<delay>7200</delay>
+							<history>15</history>
+							<trends>0</trends>
+							<status>0</status>
+							<value_type>4</value_type>
+							<allowed_hosts/>
+							<units/>
+							<delta>0</delta>
+							<snmpv3_contextname/>
+							<snmpv3_securityname/>
+							<snmpv3_securitylevel>0</snmpv3_securitylevel>
+							<snmpv3_authprotocol>0</snmpv3_authprotocol>
+							<snmpv3_authpassphrase/>
+							<snmpv3_privprotocol>0</snmpv3_privprotocol>
+							<snmpv3_privpassphrase/>
+							<formula>1</formula>
+							<delay_flex/>
+							<params>sh -c 'cd /var/Collector/zbxScripts; nohup ./setEsxiUUIDinZbxServer.sh {#PRIVATE_IP} {#FQDN} {#USER} {#PASSWORD} &gt; /dev/null 2&gt;&amp;1 &amp;'</params>
+							<ipmi_sensor/>
+							<data_type>0</data_type>
+							<authtype>0</authtype>
+							<username>{$SSH_ID}</username>
+							<password>{$SSH_PASSWORD}</password>
+							<publickey/>
+							<privatekey/>
+							<port/>
+							<description/>
+							<inventory_link>0</inventory_link>
+							<applications>
+								<application>
+									<name>Discovered VMware Hosts</name>
+								</application>
+							</applications>
+							<valuemap/>
+							<logtimefmt/>
+							<application_prototypes/>
+						</item_prototype>
+						<item_prototype>
+							<name>{#FQDN} Configure SNMP</name>
+							<type>13</type>
+							<snmp_community/>
+							<multiplier>0</multiplier>
+							<snmp_oid/>
+							<key>ssh.run[configureSNMP_vmware:{#FQDN}]</key>
+							<delay>600</delay>
+							<history>15</history>
+							<trends>0</trends>
+							<status>1</status>
+							<value_type>4</value_type>
+							<allowed_hosts/>
+							<units/>
+							<delta>0</delta>
+							<snmpv3_contextname/>
+							<snmpv3_securityname/>
+							<snmpv3_securitylevel>0</snmpv3_securitylevel>
+							<snmpv3_authprotocol>0</snmpv3_authprotocol>
+							<snmpv3_authpassphrase/>
+							<snmpv3_privprotocol>0</snmpv3_privprotocol>
+							<snmpv3_privpassphrase/>
+							<formula>1</formula>
+							<delay_flex/>
+							<params>rm ~/.ssh/known_hosts
+cd /var/Collector/zbxScripts
+if timeout 5 snmpwalk -v2c -c ibm.gbluemix {#PRIVATE_IP} iso.3.6.1.2.1.1.1.0 &amp;&gt; /dev/null; then echo &quot;snmp OK&quot;; else esxcfg-snmp --server {#PRIVATE_IP} --username {#USER} --password {#PASSWORD} -c ibm.cloudbr,ibm.gbluemix --enable &amp;&amp; echo &quot;snmp reconfigured&quot;;fi</params>
+							<ipmi_sensor/>
+							<data_type>0</data_type>
+							<authtype>0</authtype>
+							<username>{$SSH_ID}</username>
+							<password>{$SSH_PASSWORD}</password>
+							<publickey/>
+							<privatekey/>
+							<port/>
+							<description/>
+							<inventory_link>0</inventory_link>
+							<applications>
+								<application>
+									<name>Discovered VMware Hosts</name>
+								</application>
+							</applications>
+							<valuemap/>
+							<logtimefmt/>
+							<application_prototypes/>
+						</item_prototype>
+						<item_prototype>
+							<name>{#FQDN} Registration Status</name>
+							<type>13</type>
+							<snmp_community/>
+							<multiplier>0</multiplier>
+							<snmp_oid/>
+							<key>ssh.run[vmware_RegistrationStatus:{#FQDN}]</key>
+							<delay>600</delay>
+							<history>15</history>
+							<trends>0</trends>
+							<status>0</status>
+							<value_type>4</value_type>
+							<allowed_hosts/>
+							<units/>
+							<delta>0</delta>
+							<snmpv3_contextname/>
+							<snmpv3_securityname/>
+							<snmpv3_securitylevel>0</snmpv3_securitylevel>
+							<snmpv3_authprotocol>0</snmpv3_authprotocol>
+							<snmpv3_authpassphrase/>
+							<snmpv3_privprotocol>0</snmpv3_privprotocol>
+							<snmpv3_privpassphrase/>
+							<formula>1</formula>
+							<delay_flex/>
+							<params>#!/bin/bash
+cat &lt;&lt;EOF | python -
+
+#!/usr/bin/python
+
+from pyzabbix import ZabbixAPI
+
+zapi = ZabbixAPI(url='http://192.168.10.15/zabbix/', user='Admin', password='dqm@50vnc')
+
+serverName = &quot;{#FQDN}&quot;
+serverIp = &quot;{#PRIVATE_IP}&quot;
+# zbxIfType = [1 for zabbix agent, 2 for SNMP]
+zbxIfType = 2
+# zbxPort = [10050 for zabbix agent (default), 161 for SNMP (default)
+zbxPort = 161
+serverProduct = &quot;{#PRODUCT}&quot;
+groupName = &quot;{#GROUP}&quot;
+proxyName = &quot;{#PROXY}&quot;
+templates = [
+    {'name':'Template ICMP Ping'},
+    {'name':'GTS-IS Template Virt VMware Hypervisor standalone'}
+]
+# Macro names need to send $ as utf8 char \x24 like u'{\x24MacroName}
+# This will avoid confusion in Zabbix variable parsing
+macros = [
+    {'name':u'{\x24SSH_ID}','value':'{#USER}'},
+    {'name':u'{\x24SSH_PASSWORD}','value':'{#PASSWORD}'},
+    {'name':u'{\x24URL}','value':'https://{#PRIVATE_IP}/sdk'},
+    {'name':u'{\x24USERNAME}','value':'{#USER}'},
+    {'name':u'{\x24PASSWORD}','value':'{#PASSWORD}'}
+]
+#additional group to add
+groups = [
+    {'name':'VMware'},
+    {'name':'ESXi'}
+]
+groupID = None
+proxyID = None
+
+def getGroupID(groupName):
+    result = zapi.do_request('hostgroup.get', {
+        &quot;output&quot;: &quot;extend&quot;,
+        &quot;filter&quot;: {
+            &quot;name&quot;: [
+                groupName
+            ]
+        }
+    })
+    return result['result'][0]['groupid']
+
+def getTemplateID(templateName):
+    result = zapi.do_request('template.get', {
+        &quot;output&quot;: &quot;extend&quot;,
+        &quot;filter&quot;: {
+            &quot;name&quot;: [
+                templateName
+            ]
+        }
+    })
+    return result['result'][0]['templateid']
+
+def addTemplates(hostID, templates):
+    templateIDs = [ ]
+    for template in templates:
+        x = { }
+        x['templateid'] = getTemplateID(template['name'])
+        templateIDs.append(x)
+    result = zapi.do_request('host.update', {
+        &quot;hostid&quot;: hostID,
+        &quot;templates&quot;: templateIDs
+    })
+
+def getProxyID(proxyName):
+    result = zapi.do_request('proxy.get', {
+        &quot;output&quot;: &quot;extend&quot;,
+        &quot;filter&quot;: {
+            &quot;host&quot;: [
+               proxyName
+            ]
+        }
+    })
+    return result['result'][0]['proxyid']
+
+def createHost():
+    ifProps = {
+                &quot;type&quot;: zbxIfType,
+                &quot;main&quot;: 1,
+                &quot;useip&quot;: 1,
+                &quot;ip&quot;: serverIp,
+                &quot;dns&quot;: &quot;&quot;,
+                &quot;port&quot;: zbxPort
+            }
+    if zbxIfType == 2:
+        ifProps.update({'bulk':'0'})
+
+    result = zapi.do_request('host.create', {
+        &quot;host&quot;: serverName,
+        &quot;interfaces&quot;: [ifProps],
+        &quot;groups&quot;: hostGroups,
+        &quot;inventory_mode&quot;: 1,
+        &quot;inventory&quot;: {
+            &quot;tag&quot;: serverProduct
+        }
+    })
+    return result['result']['hostids'][0]
+
+def updateInterface():
+    result = zapi.do_request('hostinterface.get', {
+        &quot;hostids&quot;: hostID
+    })
+    intID = result['result'][0]['interfaceid']
+    ifProps = {
+        &quot;interfaceid&quot;: intID,
+        &quot;type&quot;: zbxIfType,
+        &quot;main&quot;: 1,
+        &quot;useip&quot;: 1,
+        &quot;ip&quot;: serverIp,
+        &quot;dns&quot;: &quot;&quot;,
+        &quot;port&quot;: zbxPort
+    }
+    if zbxIfType == 2:
+        ifProps.update({'bulk':'0'})
+    result = zapi.do_request('hostinterface.update', ifProps)
+
+def updateGroups():
+    result = zapi.do_request('host.update', {
+        &quot;hostid&quot;: hostID,
+        &quot;groups&quot;: hostGroups
+    })
+
+def addToProxy(hostID, proxyID):
+    result = zapi.do_request('host.update', {
+        &quot;hostid&quot;: hostID,
+        &quot;proxy_hostid&quot;: proxyID
+    })
+
+def addMacro(hostID, macro, value):
+    result = zapi.do_request('usermacro.create',{
+        &quot;hostid&quot;: str(hostID),
+        &quot;macro&quot;: str(macro),
+        &quot;value&quot;: str(value)
+    })
+
+def updateHostMacros():
+    result = zapi.do_request('usermacro.get', {
+        &quot;hostids&quot;: hostID
+    })
+    r_macros = [[r_macro['macro'], r_macro['hostmacroid'], r_macro['value']] for r_macro in result['result']]
+    r_macrosN = [r_macro['macro'] for r_macro in result['result']]
+    
+    for macro in macros:
+        if macro['name'] in r_macrosN:
+            for r_macro in r_macros:
+                if r_macro[0] == macro['name']:
+                    result = zapi.do_request('usermacro.update', {
+                        'hostmacroid': r_macro[1],
+                        &quot;value&quot;: macro['value']
+                    })
+        else:
+            addMacro(hostID, macro['name'], macro['value'])
+
+
+_exists = False
+result = zapi.host.get()
+hostnames = [[host['host'], host['name'], host['hostid']] for host in result]
+
+# Build hostGroups object
+proxyID = getProxyID(proxyName)
+groupID = getGroupID(groupName)
+hostGroups = [{'groupid':groupID}]
+for _group in groups:
+    hostGroups.append({'groupid':getGroupID(_group['name'])})
+
+for k in hostnames:
+    for v in k:
+        if serverName in v:
+            _exists = True
+            hostID = k[2]
+            break
+
+if _exists is True:
+    try:
+        updateInterface()
+        addToProxy(hostID, proxyID)
+        addTemplates(hostID, templates)
+        updateHostMacros()
+        updateGroups()
+        print('1')
+    except Exception as e:
+        print(e)
+        print('2')
+else:
+    try:
+        hostID = createHost()
+        addToProxy(hostID, proxyID)
+        for macro in macros:
+            addMacro(hostID, macro['name'], macro['value'])
+        addTemplates(hostID, templates)
+        print('0')
+    except Exception as e:
+        print(e)
+        print('2')
+EOF</params>
+							<ipmi_sensor/>
+							<data_type>0</data_type>
+							<authtype>0</authtype>
+							<username>{$SSH_ID}</username>
+							<password>{$SSH_PASSWORD}</password>
+							<publickey/>
+							<privatekey/>
+							<port/>
+							<description/>
+							<inventory_link>0</inventory_link>
+							<applications>
+								<application>
+									<name>Discovered VMware Hosts</name>
+								</application>
+							</applications>
+							<valuemap/>
+							<logtimefmt/>
+							<application_prototypes/>
+						</item_prototype>
+					</item_prototypes>
+					<trigger_prototypes/>
+					<graph_prototypes/>
+					<host_prototypes/>
+				</discovery_rule>
+				<discovery_rule>
+					<name>Vyatta 5600 Hosts</name>
+					<type>13</type>
+					<snmp_community/>
+					<snmp_oid/>
+					<key>ssh.run[softlayerVyatta5600Discovery]</key>
+					<delay>600</delay>
+					<status>0</status>
+					<allowed_hosts/>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<delay_flex/>
+					<params>#!/bin/bash
+cat &lt;&lt;EOF | python -
+
+#!/usr/bin/python
+
+import json
+
+### VARS ###
+sherlockDir = '/var/Collector/'
+devicesFile = sherlockDir + 'data/devices.json'
+############
+
+with open(devicesFile) as devices:
+    devicesJSON = json.loads(json.load(devices))
+
+first = 1
+print('{')
+print('&quot;data&quot;:[')
+
+for device in devicesJSON:
+    if device['product'] == 'Brocade':
+        if first == 0:
+            print(',')
+        first = 0
+        print('    {')
+        print('        &quot;{#PRODUCT}&quot;:&quot;' + device['product'] + '&quot;,')
+        print('        &quot;{#PROXY}&quot;:&quot;{HOST.NAME}&quot;,')
+        print('        &quot;{#GROUP}&quot;:&quot;{$ZBX_CUSTOMERGROUP}&quot;,')
+        print('        &quot;{#PRIVATE_IP}&quot;:&quot;' + device['primaryBackendIpAddress'] + '&quot;,')
+        print('        &quot;{#FQDN}&quot;:&quot;' + device['fullyQualifiedDomainName'] + '&quot;,')
+        for user in device['users']:
+            if (device['product'] == 'Brocade') and ('vyatta' in user):
+                print('        &quot;{#USER}&quot;:&quot;vyatta&quot;,')
+                # if 'vyatta' in user:
+                print('        &quot;{#PASSWORD}&quot;:&quot;' + user['vyatta'] + '&quot;')
+        print('    }')
+print(&quot;]&quot;)
+print(&quot;}&quot;)
+
+EOF</params>
+					<ipmi_sensor/>
+					<authtype>0</authtype>
+					<username>{$SSH_ID}</username>
+					<password>{$SSH_PASSWORD}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<filter>
+						<evaltype>0</evaltype>
+						<formula/>
+						<conditions/>
+					</filter>
+					<lifetime>0</lifetime>
+					<description/>
+					<item_prototypes>
+						<item_prototype>
+							<name>{#FQDN} Install/Reconfigure Zabbix Agent</name>
+							<type>13</type>
+							<snmp_community/>
+							<multiplier>0</multiplier>
+							<snmp_oid/>
+							<key>ssh.run[installVya5600Agent:{#PRIVATE_IP}]</key>
+							<delay>240</delay>
+							<history>1</history>
+							<trends>0</trends>
+							<status>0</status>
+							<value_type>4</value_type>
+							<allowed_hosts/>
+							<units/>
+							<delta>0</delta>
+							<snmpv3_contextname/>
+							<snmpv3_securityname/>
+							<snmpv3_securitylevel>0</snmpv3_securitylevel>
+							<snmpv3_authprotocol>0</snmpv3_authprotocol>
+							<snmpv3_authpassphrase/>
+							<snmpv3_privprotocol>0</snmpv3_privprotocol>
+							<snmpv3_privpassphrase/>
+							<formula>1</formula>
+							<delay_flex/>
+							<params>rm ~/.ssh/known_hosts
+cd /var/Collector/zbxScripts
+if netstat -l|grep 8000 &gt; /dev/null; then echo 0 &gt; /dev/null; else echo &quot;waiting for simpleHTTPserver&quot; &amp;&amp; exit; fi
+if curl -s http://{#PRIVATE_IP}:10050 &gt; /dev/null; then echo &quot;agent is listening&quot;; else ./installZbxAgentVyatta5600.exp {#PRIVATE_IP} {#USER} '{#PASSWORD}' &amp;&amp; echo &quot;installZbxAgentVyatta5600.exp executed&quot;; fi</params>
+							<ipmi_sensor/>
+							<data_type>0</data_type>
+							<authtype>0</authtype>
+							<username>{$SSH_ID}</username>
+							<password>{$SSH_PASSWORD}</password>
+							<publickey/>
+							<privatekey/>
+							<port/>
+							<description/>
+							<inventory_link>0</inventory_link>
+							<applications>
+								<application>
+									<name>Discovered Vyatta Hosts</name>
+								</application>
+							</applications>
+							<valuemap/>
+							<logtimefmt/>
+							<application_prototypes/>
+						</item_prototype>
+						<item_prototype>
+							<name>{#FQDN} Update Proxy IP on Agent upon change</name>
+							<type>13</type>
+							<snmp_community/>
+							<multiplier>0</multiplier>
+							<snmp_oid/>
+							<key>ssh.run[updateVyatta5600ProxyIP:{#PRIVATE_IP}]</key>
+							<delay>30</delay>
+							<history>1</history>
+							<trends>0</trends>
+							<status>0</status>
+							<value_type>4</value_type>
+							<allowed_hosts/>
+							<units/>
+							<delta>0</delta>
+							<snmpv3_contextname/>
+							<snmpv3_securityname/>
+							<snmpv3_securitylevel>0</snmpv3_securitylevel>
+							<snmpv3_authprotocol>0</snmpv3_authprotocol>
+							<snmpv3_authpassphrase/>
+							<snmpv3_privprotocol>0</snmpv3_privprotocol>
+							<snmpv3_privpassphrase/>
+							<formula>1</formula>
+							<delay_flex/>
+							<params>cd /var/Collector/zbxScripts &amp;&amp; ./detectProxyIpChange.sh {#PRIVATE_IP} {#USER} {#PASSWORD}</params>
+							<ipmi_sensor/>
+							<data_type>0</data_type>
+							<authtype>0</authtype>
+							<username>{$SSH_ID}</username>
+							<password>{$SSH_PASSWORD}</password>
+							<publickey/>
+							<privatekey/>
+							<port/>
+							<description>This routine will be executed when the SL Management VPN IP change is detected on Zabbix proxy</description>
+							<inventory_link>0</inventory_link>
+							<applications>
+								<application>
+									<name>Discovered Vyatta Hosts</name>
+								</application>
+							</applications>
+							<valuemap/>
+							<logtimefmt/>
+							<application_prototypes/>
+						</item_prototype>
+						<item_prototype>
+							<name>{#FQDN} Update Agent Config (24h)</name>
+							<type>13</type>
+							<snmp_community/>
+							<multiplier>0</multiplier>
+							<snmp_oid/>
+							<key>ssh.run[updateVyatta5600ZbxConfig:{#PRIVATE_IP}]</key>
+							<delay>86400</delay>
+							<history>5</history>
+							<trends>0</trends>
+							<status>0</status>
+							<value_type>4</value_type>
+							<allowed_hosts/>
+							<units/>
+							<delta>0</delta>
+							<snmpv3_contextname/>
+							<snmpv3_securityname/>
+							<snmpv3_securitylevel>0</snmpv3_securitylevel>
+							<snmpv3_authprotocol>0</snmpv3_authprotocol>
+							<snmpv3_authpassphrase/>
+							<snmpv3_privprotocol>0</snmpv3_privprotocol>
+							<snmpv3_privpassphrase/>
+							<formula>1</formula>
+							<delay_flex/>
+							<params>rm ~/.ssh/known_hosts
+cd /var/Collector/zbxScripts
+if netstat -l|grep 8000 &gt; /dev/null; then echo 0 &gt; /dev/null; else echo &quot;waiting for simpleHTTPserver&quot; &amp;&amp; exit; fi
+/var/Collector/zbxScripts/updateZbxConfig.exp {#PRIVATE_IP} {#USER} {#PASSWORD}</params>
+							<ipmi_sensor/>
+							<data_type>0</data_type>
+							<authtype>0</authtype>
+							<username>{$SSH_ID}</username>
+							<password>{$SSH_PASSWORD}</password>
+							<publickey/>
+							<privatekey/>
+							<port/>
+							<description/>
+							<inventory_link>0</inventory_link>
+							<applications>
+								<application>
+									<name>Discovered Vyatta Hosts</name>
+								</application>
+							</applications>
+							<valuemap/>
+							<logtimefmt/>
+							<application_prototypes/>
+						</item_prototype>
+						<item_prototype>
+							<name>{#FQDN} Registration Status</name>
+							<type>13</type>
+							<snmp_community/>
+							<multiplier>0</multiplier>
+							<snmp_oid/>
+							<key>ssh.run[vyatta5600RegistrationStatus:{#FQDN}]</key>
+							<delay>600</delay>
+							<history>1</history>
+							<trends>0</trends>
+							<status>0</status>
+							<value_type>4</value_type>
+							<allowed_hosts/>
+							<units/>
+							<delta>0</delta>
+							<snmpv3_contextname/>
+							<snmpv3_securityname/>
+							<snmpv3_securitylevel>0</snmpv3_securitylevel>
+							<snmpv3_authprotocol>0</snmpv3_authprotocol>
+							<snmpv3_authpassphrase/>
+							<snmpv3_privprotocol>0</snmpv3_privprotocol>
+							<snmpv3_privpassphrase/>
+							<formula>1</formula>
+							<delay_flex/>
+							<params>#!/bin/bash
+cat &lt;&lt;EOF | python -
+
+#!/usr/bin/python
+
+from pyzabbix import ZabbixAPI
+
+zapi = ZabbixAPI(url='http://192.168.10.15/zabbix/', user='Admin', password='dqm@50vnc')
+
+serverName = &quot;{#FQDN}&quot;
+serverIp = &quot;{#PRIVATE_IP}&quot;
+# zbxIfType = [1 for zabbix agent, 2 for SNMP]
+zbxIfType = 1
+# zbxPort = [10050 for zabbix agent (default), 161 for SNMP (default)
+zbxPort = 10050
+serverProduct = &quot;{#PRODUCT}&quot;
+groupName = &quot;{#GROUP}&quot;
+proxyName = &quot;{#PROXY}&quot;
+templates = [
+    {'name':'Template ICMP Ping'},
+    {'name':'GTS-IS Template Vyatta 5600 - Zabbix'},
+    {'name':'GTS-IS Template OS Linux'}
+]
+# Macro names need to send $ as utf8 char \x24 like u'{\x24MacroName}
+# This will avoid confusion in Zabbix variable parsing
+macros = [
+    {'name':u'{\x24SSH_ID}','value':'{#USER}'},
+    {'name':u'{\x24SSH_PASSWORD}','value':'{#PASSWORD}'}
+]
+#additional groups to add
+groups = [
+    {'name':'Vyatta'}
+]
+groupID = None
+proxyID = None
+
+def getGroupID(groupName):
+    result = zapi.do_request('hostgroup.get', {
+        &quot;output&quot;: &quot;extend&quot;,
+        &quot;filter&quot;: {
+            &quot;name&quot;: [
+                groupName
+            ]
+        }
+    })
+    return result['result'][0]['groupid']
+
+def getTemplateID(templateName):
+    result = zapi.do_request('template.get', {
+        &quot;output&quot;: &quot;extend&quot;,
+        &quot;filter&quot;: {
+            &quot;name&quot;: [
+                templateName
+            ]
+        }
+    })
+    return result['result'][0]['templateid']
+
+def addTemplates(hostID, templates):
+    templateIDs = [ ]
+    for template in templates:
+        x = { }
+        x['templateid'] = getTemplateID(template['name'])
+        templateIDs.append(x)
+    result = zapi.do_request('host.update', {
+        &quot;hostid&quot;: hostID,
+        &quot;templates&quot;: templateIDs
+    })
+
+def getProxyID(proxyName):
+    result = zapi.do_request('proxy.get', {
+        &quot;output&quot;: &quot;extend&quot;,
+        &quot;filter&quot;: {
+            &quot;host&quot;: [
+               proxyName
+            ]
+        }
+    })
+    return result['result'][0]['proxyid']
+
+def createHost():
+    ifProps = {
+                &quot;type&quot;: zbxIfType,
+                &quot;main&quot;: 1,
+                &quot;useip&quot;: 1,
+                &quot;ip&quot;: serverIp,
+                &quot;dns&quot;: &quot;&quot;,
+                &quot;port&quot;: zbxPort
+            }
+    if zbxIfType == 2:
+        ifProps.update({'bulk':'0'})
+
+    result = zapi.do_request('host.create', {
+        &quot;host&quot;: serverName,
+        &quot;interfaces&quot;: [ifProps],
+        &quot;groups&quot;: hostGroups,
+        &quot;inventory_mode&quot;: 1,
+        &quot;inventory&quot;: {
+            &quot;tag&quot;: serverProduct
+        }
+    })
+    return result['result']['hostids'][0]
+
+def updateInterface():
+    result = zapi.do_request('hostinterface.get', {
+        &quot;hostids&quot;: hostID
+    })
+    intID = result['result'][0]['interfaceid']
+    ifProps = {
+        &quot;interfaceid&quot;: intID,
+        &quot;type&quot;: zbxIfType,
+        &quot;main&quot;: 1,
+        &quot;useip&quot;: 1,
+        &quot;ip&quot;: serverIp,
+        &quot;dns&quot;: &quot;&quot;,
+        &quot;port&quot;: zbxPort
+    }
+    if zbxIfType == 2:
+        ifProps.update({'bulk':'0'})
+    result = zapi.do_request('hostinterface.update', ifProps)
+
+def updateGroups():
+    result = zapi.do_request('host.update', {
+        &quot;hostid&quot;: hostID,
+        &quot;groups&quot;: hostGroups
+    })
+
+def addToProxy(hostID, proxyID):
+    result = zapi.do_request('host.update', {
+        &quot;hostid&quot;: hostID,
+        &quot;proxy_hostid&quot;: proxyID
+    })
+
+def addMacro(hostID, macro, value):
+    result = zapi.do_request('usermacro.create',{
+        &quot;hostid&quot;: str(hostID),
+        &quot;macro&quot;: str(macro),
+        &quot;value&quot;: str(value)
+    })
+
+def updateHostMacros():
+    result = zapi.do_request('usermacro.get', {
+        &quot;hostids&quot;: hostID
+    })
+    r_macros = [[r_macro['macro'], r_macro['hostmacroid'], r_macro['value']] for r_macro in result['result']]
+    r_macrosN = [r_macro['macro'] for r_macro in result['result']]
+    
+    for macro in macros:
+        if macro['name'] in r_macrosN:
+            for r_macro in r_macros:
+                if r_macro[0] == macro['name']:
+                    result = zapi.do_request('usermacro.update', {
+                        'hostmacroid': r_macro[1],
+                        &quot;value&quot;: macro['value']
+                    })
+        else:
+            addMacro(hostID, macro['name'], macro['value'])
+
+
+_exists = False
+result = zapi.host.get()
+hostnames = [[host['host'], host['name'], host['hostid']] for host in result]
+
+# Build hostGroups object
+proxyID = getProxyID(proxyName)
+groupID = getGroupID(groupName)
+hostGroups = [{'groupid':groupID}]
+for _group in groups:
+    hostGroups.append({'groupid':getGroupID(_group['name'])})
+
+for k in hostnames:
+    for v in k:
+        if serverName in v:
+            _exists = True
+            hostID = k[2]
+            break
+
+if _exists is True:
+    try:
+        updateInterface()
+        addToProxy(hostID, proxyID)
+        addTemplates(hostID, templates)
+        updateHostMacros()
+        updateGroups()
+        print('1')
+    except Exception as e:
+        print(e)
+        print('2')
+else:
+    try:
+        hostID = createHost()
+        addToProxy(hostID, proxyID)
+        for macro in macros:
+            addMacro(hostID, macro['name'], macro['value'])
+        addTemplates(hostID, templates)
+        print('0')
+    except Exception as e:
+        print(e)
+        print('2')
+EOF</params>
+							<ipmi_sensor/>
+							<data_type>0</data_type>
+							<authtype>0</authtype>
+							<username>{$SSH_ID}</username>
+							<password>{$SSH_PASSWORD}</password>
+							<publickey/>
+							<privatekey/>
+							<port/>
+							<description/>
+							<inventory_link>0</inventory_link>
+							<applications>
+								<application>
+									<name>Discovered Vyatta Hosts</name>
+								</application>
+							</applications>
+							<valuemap/>
+							<logtimefmt/>
+							<application_prototypes/>
+						</item_prototype>
+					</item_prototypes>
+					<trigger_prototypes/>
+					<graph_prototypes/>
+					<host_prototypes/>
+				</discovery_rule>
+				<discovery_rule>
+					<name>Vyatta 5400 Hosts</name>
+					<type>13</type>
+					<snmp_community/>
+					<snmp_oid/>
+					<key>ssh.run[softlayerVyattaDiscovery]</key>
+					<delay>600</delay>
+					<status>0</status>
+					<allowed_hosts/>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<delay_flex/>
+					<params>#!/bin/bash
+cat &lt;&lt;EOF | python -
+
+#!/usr/bin/python
+
+import json
+
+### VARS ###
+sherlockDir = '/var/Collector/'
+devicesFile = sherlockDir + 'data/devices.json'
+############
+
+with open(devicesFile) as devices:
+    devicesJSON = json.loads(json.load(devices))
+
+first = 1
+print('{')
+print('&quot;data&quot;:[')
+
+for device in devicesJSON:
+    if device['product'] == 'Vyatta':
+        if first == 0:
+            print(',')
+        first = 0
+        print('    {')
+        print('        &quot;{#PRODUCT}&quot;:&quot;' + device['product'] + '&quot;,')
+        print('        &quot;{#PROXY}&quot;:&quot;{HOST.NAME}&quot;,')
+        print('        &quot;{#GROUP}&quot;:&quot;{$ZBX_CUSTOMERGROUP}&quot;,')
+        print('        &quot;{#PRIVATE_IP}&quot;:&quot;' + device['primaryBackendIpAddress'] + '&quot;,')
+        print('        &quot;{#FQDN}&quot;:&quot;' + device['fullyQualifiedDomainName'] + '&quot;,')
+        for user in device['users']:
+            if (device['product'] == 'Vyatta') and ('vyatta' in user):
+                print('        &quot;{#USER}&quot;:&quot;vyatta&quot;,')
+                # if 'vyatta' in user:
+                print('        &quot;{#PASSWORD}&quot;:&quot;' + user['vyatta'] + '&quot;')
+        print('    }')
+print(&quot;]&quot;)
+print(&quot;}&quot;)
+
+EOF</params>
+					<ipmi_sensor/>
+					<authtype>0</authtype>
+					<username>{$SSH_ID}</username>
+					<password>{$SSH_PASSWORD}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<filter>
+						<evaltype>0</evaltype>
+						<formula/>
+						<conditions/>
+					</filter>
+					<lifetime>0</lifetime>
+					<description/>
+					<item_prototypes>
+						<item_prototype>
+							<name>{#FQDN} Install/Reconfigure Zabbix Agent</name>
+							<type>13</type>
+							<snmp_community/>
+							<multiplier>0</multiplier>
+							<snmp_oid/>
+							<key>ssh.run[installAgent:{#PRIVATE_IP}]</key>
+							<delay>240</delay>
+							<history>1</history>
+							<trends>0</trends>
+							<status>0</status>
+							<value_type>4</value_type>
+							<allowed_hosts/>
+							<units/>
+							<delta>0</delta>
+							<snmpv3_contextname/>
+							<snmpv3_securityname/>
+							<snmpv3_securitylevel>0</snmpv3_securitylevel>
+							<snmpv3_authprotocol>0</snmpv3_authprotocol>
+							<snmpv3_authpassphrase/>
+							<snmpv3_privprotocol>0</snmpv3_privprotocol>
+							<snmpv3_privpassphrase/>
+							<formula>1</formula>
+							<delay_flex/>
+							<params>rm ~/.ssh/known_hosts
+cd /var/Collector/zbxScripts
+if netstat -l|grep 8000 &gt; /dev/null; then echo 0 &gt; /dev/null; else echo &quot;waiting for simpleHTTPserver&quot; &amp;&amp; exit; fi
+if curl -s http://{#PRIVATE_IP}:10050 &gt; /dev/null; then echo &quot;agent is listening&quot;; else ./installZbxAgent.exp {#PRIVATE_IP} {#USER} '{#PASSWORD}' &amp;&amp; echo &quot;installZbxAgent.exp executed&quot;; fi</params>
+							<ipmi_sensor/>
+							<data_type>0</data_type>
+							<authtype>0</authtype>
+							<username>{$SSH_ID}</username>
+							<password>{$SSH_PASSWORD}</password>
+							<publickey/>
+							<privatekey/>
+							<port/>
+							<description/>
+							<inventory_link>0</inventory_link>
+							<applications>
+								<application>
+									<name>Discovered Vyatta Hosts</name>
+								</application>
+							</applications>
+							<valuemap/>
+							<logtimefmt/>
+							<application_prototypes/>
+						</item_prototype>
+						<item_prototype>
+							<name>{#FQDN} Update Proxy IP on Agent upon change</name>
+							<type>13</type>
+							<snmp_community/>
+							<multiplier>0</multiplier>
+							<snmp_oid/>
+							<key>ssh.run[updateProxyIP2:{#PRIVATE_IP}]</key>
+							<delay>30</delay>
+							<history>1</history>
+							<trends>0</trends>
+							<status>0</status>
+							<value_type>4</value_type>
+							<allowed_hosts/>
+							<units/>
+							<delta>0</delta>
+							<snmpv3_contextname/>
+							<snmpv3_securityname/>
+							<snmpv3_securitylevel>0</snmpv3_securitylevel>
+							<snmpv3_authprotocol>0</snmpv3_authprotocol>
+							<snmpv3_authpassphrase/>
+							<snmpv3_privprotocol>0</snmpv3_privprotocol>
+							<snmpv3_privpassphrase/>
+							<formula>1</formula>
+							<delay_flex/>
+							<params>cd /var/Collector/zbxScripts &amp;&amp; ./detectProxyIpChange.sh {#PRIVATE_IP} {#USER} {#PASSWORD}</params>
+							<ipmi_sensor/>
+							<data_type>0</data_type>
+							<authtype>0</authtype>
+							<username>{$SSH_ID}</username>
+							<password>{$SSH_PASSWORD}</password>
+							<publickey/>
+							<privatekey/>
+							<port/>
+							<description>This routine will be executed when the SL Management VPN IP change is detected on Zabbix proxy</description>
+							<inventory_link>0</inventory_link>
+							<applications>
+								<application>
+									<name>Discovered Vyatta Hosts</name>
+								</application>
+							</applications>
+							<valuemap/>
+							<logtimefmt/>
+							<application_prototypes/>
+						</item_prototype>
+						<item_prototype>
+							<name>{#FQDN} Update Agent Config (24h)</name>
+							<type>13</type>
+							<snmp_community/>
+							<multiplier>0</multiplier>
+							<snmp_oid/>
+							<key>ssh.run[updateZbxConfig:{#PRIVATE_IP}]</key>
+							<delay>86400</delay>
+							<history>5</history>
+							<trends>0</trends>
+							<status>0</status>
+							<value_type>4</value_type>
+							<allowed_hosts/>
+							<units/>
+							<delta>0</delta>
+							<snmpv3_contextname/>
+							<snmpv3_securityname/>
+							<snmpv3_securitylevel>0</snmpv3_securitylevel>
+							<snmpv3_authprotocol>0</snmpv3_authprotocol>
+							<snmpv3_authpassphrase/>
+							<snmpv3_privprotocol>0</snmpv3_privprotocol>
+							<snmpv3_privpassphrase/>
+							<formula>1</formula>
+							<delay_flex/>
+							<params>rm ~/.ssh/known_hosts
+cd /var/Collector/zbxScripts
+if netstat -l|grep 8000 &gt; /dev/null; then echo 0 &gt; /dev/null; else echo &quot;waiting for simpleHTTPserver&quot; &amp;&amp; exit; fi
+/var/Collector/zbxScripts/updateZbxConfig.exp {#PRIVATE_IP} {#USER} {#PASSWORD}</params>
+							<ipmi_sensor/>
+							<data_type>0</data_type>
+							<authtype>0</authtype>
+							<username>{$SSH_ID}</username>
+							<password>{$SSH_PASSWORD}</password>
+							<publickey/>
+							<privatekey/>
+							<port/>
+							<description>Suggested interval: 86400 (24h)</description>
+							<inventory_link>0</inventory_link>
+							<applications>
+								<application>
+									<name>Discovered Vyatta Hosts</name>
+								</application>
+							</applications>
+							<valuemap/>
+							<logtimefmt/>
+							<application_prototypes/>
+						</item_prototype>
+						<item_prototype>
+							<name>{#FQDN} Registration Status</name>
+							<type>13</type>
+							<snmp_community/>
+							<multiplier>0</multiplier>
+							<snmp_oid/>
+							<key>ssh.run[vyattaRegistrationStatus:{#FQDN}]</key>
+							<delay>600</delay>
+							<history>3</history>
+							<trends>0</trends>
+							<status>0</status>
+							<value_type>4</value_type>
+							<allowed_hosts/>
+							<units/>
+							<delta>0</delta>
+							<snmpv3_contextname/>
+							<snmpv3_securityname/>
+							<snmpv3_securitylevel>0</snmpv3_securitylevel>
+							<snmpv3_authprotocol>0</snmpv3_authprotocol>
+							<snmpv3_authpassphrase/>
+							<snmpv3_privprotocol>0</snmpv3_privprotocol>
+							<snmpv3_privpassphrase/>
+							<formula>1</formula>
+							<delay_flex/>
+							<params>#!/bin/bash
+cat &lt;&lt;EOF | python -
+
+#!/usr/bin/python
+
+from pyzabbix import ZabbixAPI
+
+zapi = ZabbixAPI(url='http://192.168.10.15/zabbix/', user='Admin', password='dqm@50vnc')
+
+serverName = &quot;{#FQDN}&quot;
+serverIp = &quot;{#PRIVATE_IP}&quot;
+# zbxIfType = [1 for zabbix agent, 2 for SNMP]
+zbxIfType = 1
+# zbxPort = [10050 for zabbix agent (default), 161 for SNMP (default)
+zbxPort = 10050
+serverProduct = &quot;{#PRODUCT}&quot;
+groupName = &quot;{#GROUP}&quot;
+proxyName = &quot;{#PROXY}&quot;
+templates = [
+    {'name':'Template ICMP Ping'},
+    {'name':'GTS-IS Template Vyatta 5400 - Zabbix'},
+    {'name':'GTS-IS Template OS Linux'}
+]
+# Macro names need to send $ as utf8 char \x24 like u'{\x24MacroName}
+# This will avoid confusion in Zabbix variable parsing
+macros = [
+    {'name':u'{\x24SSH_ID}','value':'{#USER}'},
+    {'name':u'{\x24SSH_PASSWORD}','value':'{#PASSWORD}'}
+]
+#additional groups to add
+groups = [
+    {'name':'Vyatta'}
+]
+groupID = None
+proxyID = None
+
+def getGroupID(groupName):
+    result = zapi.do_request('hostgroup.get', {
+        &quot;output&quot;: &quot;extend&quot;,
+        &quot;filter&quot;: {
+            &quot;name&quot;: [
+                groupName
+            ]
+        }
+    })
+    return result['result'][0]['groupid']
+
+def getTemplateID(templateName):
+    result = zapi.do_request('template.get', {
+        &quot;output&quot;: &quot;extend&quot;,
+        &quot;filter&quot;: {
+            &quot;name&quot;: [
+                templateName
+            ]
+        }
+    })
+    return result['result'][0]['templateid']
+
+def addTemplates(hostID, templates):
+    templateIDs = [ ]
+    for template in templates:
+        x = { }
+        x['templateid'] = getTemplateID(template['name'])
+        templateIDs.append(x)
+    result = zapi.do_request('host.update', {
+        &quot;hostid&quot;: hostID,
+        &quot;templates&quot;: templateIDs
+    })
+
+def getProxyID(proxyName):
+    result = zapi.do_request('proxy.get', {
+        &quot;output&quot;: &quot;extend&quot;,
+        &quot;filter&quot;: {
+            &quot;host&quot;: [
+               proxyName
+            ]
+        }
+    })
+    return result['result'][0]['proxyid']
+
+def createHost():
+    ifProps = {
+                &quot;type&quot;: zbxIfType,
+                &quot;main&quot;: 1,
+                &quot;useip&quot;: 1,
+                &quot;ip&quot;: serverIp,
+                &quot;dns&quot;: &quot;&quot;,
+                &quot;port&quot;: zbxPort
+            }
+    if zbxIfType == 2:
+        ifProps.update({'bulk':'0'})
+
+    result = zapi.do_request('host.create', {
+        &quot;host&quot;: serverName,
+        &quot;interfaces&quot;: [ifProps],
+        &quot;groups&quot;: hostGroups,
+        &quot;inventory_mode&quot;: 1,
+        &quot;inventory&quot;: {
+            &quot;tag&quot;: serverProduct
+        }
+    })
+    return result['result']['hostids'][0]
+
+def updateInterface():
+    result = zapi.do_request('hostinterface.get', {
+        &quot;hostids&quot;: hostID
+    })
+    intID = result['result'][0]['interfaceid']
+    ifProps = {
+        &quot;interfaceid&quot;: intID,
+        &quot;type&quot;: zbxIfType,
+        &quot;main&quot;: 1,
+        &quot;useip&quot;: 1,
+        &quot;ip&quot;: serverIp,
+        &quot;dns&quot;: &quot;&quot;,
+        &quot;port&quot;: zbxPort
+    }
+    if zbxIfType == 2:
+        ifProps.update({'bulk':'0'})
+    result = zapi.do_request('hostinterface.update', ifProps)
+
+def updateGroups():
+    result = zapi.do_request('host.update', {
+        &quot;hostid&quot;: hostID,
+        &quot;groups&quot;: hostGroups
+    })
+
+def addToProxy(hostID, proxyID):
+    result = zapi.do_request('host.update', {
+        &quot;hostid&quot;: hostID,
+        &quot;proxy_hostid&quot;: proxyID
+    })
+
+def addMacro(hostID, macro, value):
+    result = zapi.do_request('usermacro.create',{
+        &quot;hostid&quot;: str(hostID),
+        &quot;macro&quot;: str(macro),
+        &quot;value&quot;: str(value)
+    })
+
+def updateHostMacros():
+    result = zapi.do_request('usermacro.get', {
+        &quot;hostids&quot;: hostID
+    })
+    r_macros = [[r_macro['macro'], r_macro['hostmacroid'], r_macro['value']] for r_macro in result['result']]
+    r_macrosN = [r_macro['macro'] for r_macro in result['result']]
+    
+    for macro in macros:
+        if macro['name'] in r_macrosN:
+            for r_macro in r_macros:
+                if r_macro[0] == macro['name']:
+                    result = zapi.do_request('usermacro.update', {
+                        'hostmacroid': r_macro[1],
+                        &quot;value&quot;: macro['value']
+                    })
+        else:
+            addMacro(hostID, macro['name'], macro['value'])
+
+
+_exists = False
+result = zapi.host.get()
+hostnames = [[host['host'], host['name'], host['hostid']] for host in result]
+
+# Build hostGroups object
+proxyID = getProxyID(proxyName)
+groupID = getGroupID(groupName)
+hostGroups = [{'groupid':groupID}]
+for _group in groups:
+    hostGroups.append({'groupid':getGroupID(_group['name'])})
+
+for k in hostnames:
+    for v in k:
+        if serverName in v:
+            _exists = True
+            hostID = k[2]
+            break
+
+if _exists is True:
+    try:
+        updateInterface()
+        addToProxy(hostID, proxyID)
+        addTemplates(hostID, templates)
+        updateHostMacros()
+        updateGroups()
+        print('1')
+    except Exception as e:
+        print(e)
+        print('2')
+else:
+    try:
+        hostID = createHost()
+        addToProxy(hostID, proxyID)
+        for macro in macros:
+            addMacro(hostID, macro['name'], macro['value'])
+        addTemplates(hostID, templates)
+        print('0')
+    except Exception as e:
+        print(e)
+        print('2')
+EOF</params>
+							<ipmi_sensor/>
+							<data_type>0</data_type>
+							<authtype>0</authtype>
+							<username>{$SSH_ID}</username>
+							<password>{$SSH_PASSWORD}</password>
+							<publickey/>
+							<privatekey/>
+							<port/>
+							<description/>
+							<inventory_link>0</inventory_link>
+							<applications>
+								<application>
+									<name>Discovered Vyatta Hosts</name>
+								</application>
+							</applications>
+							<valuemap/>
+							<logtimefmt/>
+							<application_prototypes/>
+						</item_prototype>
+					</item_prototypes>
+					<trigger_prototypes/>
+					<graph_prototypes/>
+					<host_prototypes/>
+				</discovery_rule>
+			</discovery_rules>
+			<httptests/>
+			<macros>
+				<macro>
+					<macro>{$SL_APIKEY}</macro>
+					<value/>
+				</macro>
+				<macro>
+					<macro>{$SL_PORTALID}</macro>
+					<value/>
+				</macro>
+				<macro>
+					<macro>{$SL_VPNHOST}</macro>
+					<value>vpn.sao01.softlayer.com</value>
+				</macro>
+				<macro>
+					<macro>{$SL_VPNID}</macro>
+					<value/>
+				</macro>
+				<macro>
+					<macro>{$SL_VPNPW}</macro>
+					<value/>
+				</macro>
+				<macro>
+					<macro>{$SSH_ID}</macro>
+					<value>cloudbr</value>
+				</macro>
+				<macro>
+					<macro>{$SSH_PASSWORD}</macro>
+					<value>dqm@50vnc</value>
+				</macro>
+				<macro>
+					<macro>{$ZBX_ADITIONALSERVERS}</macro>
+					<value/>
+				</macro>
+				<macro>
+					<macro>{$ZBX_CUSTOMERGROUP}</macro>
+					<value/>
+				</macro>
+				<macro>
+					<macro>{$ZBX_SERVERIP}</macro>
+					<value>192.168.10.15</value>
+				</macro>
+				<macro>
+					<macro>{$ZBX_SERVERSSHID}</macro>
+					<value>appliance</value>
+				</macro>
+				<macro>
+					<macro>{$ZBX_SERVERSSHPW}</macro>
+					<value>dqm@50vnc</value>
+				</macro>
+			</macros>
+			<templates/>
+			<screens/>
+		</template>
+	</templates>
+	<triggers>
+		<trigger>
+			<expression>{GTS-IS Sherlock for Ubuntu Xenial 16.04:ssh.run[SLVpnWatchdog].max(#8)}=0</expression>
+			<recovery_mode>0</recovery_mode>
+			<recovery_expression/>
+			<name>Array VPN is not running</name>
+			<correlation_mode>0</correlation_mode>
+			<correlation_tag/>
+			<url/>
+			<status>0</status>
+			<priority>4</priority>
+			<description/>
+			<type>0</type>
+			<manual_close>0</manual_close>
+			<dependencies/>
+			<tags/>
+		</trigger>
+		<trigger>
+			<expression>{GTS-IS Sherlock for Ubuntu Xenial 16.04:SoftLayerPrivateApiEndpointAlive.max(#5)}=0</expression>
+			<recovery_mode>0</recovery_mode>
+			<recovery_expression/>
+			<name>SoftLayer Unreachable from Proxy</name>
+			<correlation_mode>0</correlation_mode>
+			<correlation_tag/>
+			<url/>
+			<status>0</status>
+			<priority>2</priority>
+			<description/>
+			<type>0</type>
+			<manual_close>0</manual_close>
+			<dependencies>
+				<dependency>
+					<name>Array VPN is not running</name>
+					<expression>{GTS-IS Sherlock for Ubuntu Xenial 16.04:ssh.run[SLVpnWatchdog].max(#8)}=0</expression>
+					<recovery_expression/>
+				</dependency>
+			</dependencies>
+			<tags/>
+		</trigger>
+	</triggers>
+	<value_maps>
+		<value_map>
+			<name>Application Availability</name>
+			<mappings>
+				<mapping>
+					<value>0</value>
+					<newvalue>not installed</newvalue>
+				</mapping>
+				<mapping>
+					<value>1</value>
+					<newvalue>installed</newvalue>
+				</mapping>
+			</mappings>
+		</value_map>
+		<value_map>
+			<name>Host availability</name>
+			<mappings>
+				<mapping>
+					<value>0</value>
+					<newvalue>Not available</newvalue>
+				</mapping>
+				<mapping>
+					<value>1</value>
+					<newvalue>Available</newvalue>
+				</mapping>
+				<mapping>
+					<value>2</value>
+					<newvalue>Unknown</newvalue>
+				</mapping>
+			</mappings>
+		</value_map>
+		<value_map>
+			<name>Service state</name>
+			<mappings>
+				<mapping>
+					<value>0</value>
+					<newvalue>Down</newvalue>
+				</mapping>
+				<mapping>
+					<value>1</value>
+					<newvalue>Up</newvalue>
+				</mapping>
+				<mapping>
+					<value>3</value>
+					<newvalue>Error</newvalue>
+				</mapping>
+			</mappings>
+		</value_map>
+	</value_maps>
+</zabbix_export>

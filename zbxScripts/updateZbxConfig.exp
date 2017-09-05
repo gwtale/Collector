@@ -1,0 +1,82 @@
+#!/usr/bin/expect -f
+log_user 1
+set timeout 28
+set HOSTIP [lindex $argv 0]
+set HOSTID [lindex $argv 1]
+set HOSTPW [lindex $argv 2]
+set PROXYIP [exec ifconfig tun0 | grep "inet addr:" | cut -d: -f2 | awk {{print $1}}]
+
+spawn ssh -q -o StrictHostKeyChecking=no $HOSTID@$HOSTIP
+expect "password"
+send $HOSTPW\r
+expect \\\$
+send "echo \"Starting Zabbix update script. For details contact gts-is-sl@wwpdl.vnet.ibm.com.\"\r"
+expect \\\$
+send "sudo -s\r"
+expect \\\#
+send "cd /tmp\r"
+expect \\\#
+send "if wget http://$PROXYIP:8000/vyatta.base; then rm -f /etc/zabbix/zabbix_agentd.conf && mv vyatta.base /etc/zabbix/zabbix_agentd.conf; else echo \"error downloading vyatta.base\" && exit; fi\r"
+expect {
+    "#" {
+    }
+    "$" {
+        exit
+    }
+}
+send "if wget http://$PROXYIP:8000/vyatta_userparams.conf; then mv vyatta_userparams.conf /etc/zabbix/zabbix_agentd.d/vyatta_userparams.conf; else echo \"error downloading vyatta_userparams.conf\" && exit; fi\r"
+expect {
+    "#" {
+    }
+    "$" {
+        exit
+    }
+}
+send "if wget http://$PROXYIP:8000/peer_discovery.sh; then mv peer_discovery.sh /etc/zabbix/peer_discovery.sh && chmod +x /etc/zabbix/peer_discovery.sh; else echo \"error downloading peer_discovery.sh\" && exit; fi\r"
+expect {
+    "#" {
+    }
+    "$" {
+        exit
+    }
+}
+send "if wget http://$PROXYIP:8000/peer_discoveryv2.sh; then mv peer_discoveryv2.sh /etc/zabbix/peer_discoveryv2.sh && chmod +x /etc/zabbix/peer_discoveryv2.sh; else echo \"error downloading peer_discoveryv2.sh\" && exit; fi\r"
+expect {
+    "#" {
+    }
+    "$" {
+        exit
+    }
+}
+send "if wget http://$PROXYIP:8000/gre_discovery.sh; then mv gre_discovery.sh /etc/zabbix/gre_discovery.sh && chmod +x /etc/zabbix/gre_discovery.sh; else echo \"error downloading gre_discovery.sh\" && exit; fi\r"
+expect {
+    "#" {
+    }
+    "$" {
+        exit
+    }
+}
+send "if wget http://$PROXYIP:8000/vyatta_ipsectunstatus.sh; then mv vyatta_ipsectunstatus.sh /etc/zabbix/vyatta_ipsectunstatus.sh && chmod +x /etc/zabbix/vyatta_ipsectunstatus.sh; else echo \"error downloading vyatta_ipsectunstatus.sh\" && exit; fi\r"
+expect {
+    "#" {
+    }
+    "$" {
+        exit
+    }
+}
+send "if wget http://$PROXYIP:8000/script-template; then mv script-template /etc/zabbix/script-template && chmod +x /etc/zabbix/script-template; else echo \"error downloading script-template\" && exit; fi\r"
+expect {
+    "#" {
+    }
+    "$" {
+        exit
+    }
+}
+send "awk '!/Server=/' /etc/zabbix/zabbix_agentd.conf> /tmp/zbx_tmp.conf && mv /tmp/zbx_tmp.conf /etc/zabbix/zabbix_agentd.conf && echo Server=$PROXYIP >> /etc/zabbix/zabbix_agentd.conf\r"
+expect \\\#
+send "service zabbix-agent restart\r"
+expect \\\#
+send "exit\r"
+expect \\\$
+send "exit\r"
+

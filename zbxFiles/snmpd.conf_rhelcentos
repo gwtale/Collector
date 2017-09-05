@@ -1,0 +1,12 @@
+# Map 'ibm.gbluemix' community to the 'AllUser'
+#       sec.name        source          community
+com2sec AllUser         default         ibm.gbluemix
+# Map 'AllUser' to 'AllGroup' for SNMP Version 2c
+#                       sec.model       sec.name
+group   AllGroup        v2c             AllUser
+# Define 'AllView', which includes everything under .1
+#                       incl/excl       subtree
+view    AllView         included        .1
+# Give 'AllGroup' read access to objects in the view 'AllView'
+#                       context model   level   prefix  read            write   notify
+access  AllGroup        ""      any     noauth  exact   AllView         none    none

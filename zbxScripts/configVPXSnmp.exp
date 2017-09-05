@@ -1,0 +1,38 @@
+#!/usr/bin/expect -f
+log_user 1
+set timeout 120
+set HOSTIP [lindex $argv 0]
+set HOSTID [lindex $argv 1]
+set HOSTPW [lindex $argv 2]
+if {[file exists /tmp/vpxHaPeer_$HOSTIP]} {
+    set HOSTPW2 [exec cat /tmp/vpxHaPeer_$HOSTIP]
+} else {
+    set HOSTPW2 DUMMYPASS
+}
+set PROXYIP [exec ifconfig tun0 | grep "inet addr:" | cut -d: -f2 | awk {{print $1}}]
+
+spawn ssh -q -o StrictHostKeyChecking=no $HOSTID@$HOSTIP
+expect "assword"
+send $HOSTPW\r
+expect {
+    ">" {
+    }
+    "assword" {
+        send $HOSTPW2\r
+    }
+}
+expect {
+    ">" {
+    }
+    "assword" {
+        exit
+    }
+}
+send "add snmp manager 10.0.0.0 -netmask 255.0.0.0\r"
+expect ">"
+send "add snmp community ibm.cloudbr all\r"
+expect ">"
+send "save config\r"
+expect ">"
+send "exit\r"
+

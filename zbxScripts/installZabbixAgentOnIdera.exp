@@ -1,0 +1,119 @@
+#!/usr/bin/expect -f
+log_user 1
+set timeout 28
+set HOSTIP [lindex $argv 0]
+set HOSTID [lindex $argv 1]
+set HOSTPW [lindex $argv 2]
+set HOSTOS [lindex $argv 3]
+set PROXYIP [exec ifconfig tun0 | grep "inet addr:" | cut -d: -f2 | awk {{print $1}}]
+
+### CHANGE BY RCASTRIL ###
+
+set ADD_SERVERS [lindex $argv 4]
+
+# IF ADD_SERVERS NOT EMPTY, make PROXYIP = <proxy ip>,<additional ips>  
+
+### CHANGE END ###
+
+if {"$HOSTOS" == "LIN"} {
+	spawn ssh -q -o StrictHostKeyChecking=no $HOSTID@$HOSTIP
+	expect {
+		"password: " { send $HOSTPW\r }
+		default { 
+			send_user "Erro accessing SSH\r\n" 
+			exit
+		}
+	}
+	expect \\\#
+	send "echo \"Starting Zabbix automated maintenance script. For details contact gts-is-sl@wwpdl.vnet.ibm.com.\"\r"
+	expect \\\#
+	send "service zabbix-agent stop\r"
+	expect \\\#
+	#send "killall zabbix_agentd\r"
+	#expect \\\#
+	send "rm -f /etc/zabbix/\r"
+	expect \\\#
+	send "rm -f /etc/init.d/zabbix-agent\r"
+	expect \\\#
+	send "rm -f /etc/rc.d/init.d/zabbix-agent\r"
+	expect \\\#
+	send "rm -f /bin/zabbix_get\r"
+	expect \\\#
+	send "rm -f /bin/zabbix_sender\r"
+	expect \\\#
+	send "rm -f /usr/sbin/zabbix_agentd\r"
+	expect \\\#
+	send "rm -f /run/systemd/generator.late/zabbix-agent.service\r"
+	expect \\\#
+	send "rm -f /run/systemd/generator.late/runlevel2.target.wants/zabbix-agent.service\r"
+	expect \\\#
+	send "rm -f /run/systemd/generator.late/runlevel3.target.wants/zabbix-agent.service\r"
+	expect \\\#
+	send "rm -f /run/systemd/generator.late/runlevel4.target.wants/zabbix-agent.service\r"
+	expect \\\#
+	send "rm -f /run/systemd/generator.late/runlevel5.target.wants/zabbix-agent.service\r"
+	expect \\\#
+	send "rm -Rf /usr/local/zabbix/\r"
+	expect \\\#
+	send "cd /usr/local\r"
+	expect {
+		"# " { 
+			send "if wget http://$PROXYIP:8000/zabbix-agent.tar.gz; then echo ok; else echo error; fi\r"
+		}
+		default { 
+			send_user "Error downloading zabbix-agent.tar.gz\r\n" 
+			exit
+		}
+	}
+	expect {
+		"ok" { }
+		"erro" { 
+			send_user "Error downloading zabbix-agent.tar.gz\r\n" 
+			exit }
+		default { 
+			send_user "Error downloading zabbix-agent.tar.gz\r\n" 
+			exit
+		}
+	}
+	send "tar -xvzf zabbix-agent.tar.gz\r"
+	expect \\\#
+	send "rm -f zabbix-agent.tar.gz\r"
+	expect \\\#
+	send "echo Server=$PROXYIP >> /usr/local/zabbix/etc/zabbix/zabbix_agentd.conf\r"
+	expect \\\#
+	send "ln -s -d /usr/local/zabbix/etc/zabbix/ /etc/zabbix && chown root.root /etc/zabbix\r"
+	expect \\\#
+	send "ln -s /usr/local/zabbix/etc/init.d/zabbix-agent /etc/init.d/zabbix-agent && chown root.root /etc/init.d/zabbix-agent\r"
+	expect \\\#
+	send "ln -s /usr/local/zabbix/etc/init.d/zabbix-agent /etc/rc.d/init.d/zabbix-agent && chown root.root /etc/rc.d/init.d/zabbix-agent\r"
+	expect \\\#
+	send "cp /usr/local/zabbix/etc/init.d/zabbix-agent.service /run/systemd/generator.late/ && chown root.root /run/systemd/generator.late/zabbix-agent.service\r"
+	expect \\\#
+	send "cp /usr/local/zabbix/etc/init.d/zabbix-agent.service /run/systemd/generator.late/runlevel2.target.wants/ && chown root.root /run/systemd/generator.late/runlevel2.target.wants/zabbix-agent.service\r"
+	expect \\\#
+	send "cp /usr/local/zabbix/etc/init.d/zabbix-agent.service /run/systemd/generator.late/runlevel3.target.wants/ && chown root.root /run/systemd/generator.late/runlevel3.target.wants/zabbix-agent.service\r"
+	expect \\\#
+	send "cp /usr/local/zabbix/etc/init.d/zabbix-agent.service /run/systemd/generator.late/runlevel4.target.wants/ && chown root.root /run/systemd/generator.late/runlevel4.target.wants/zabbix-agent.service\r"
+	expect \\\#
+	send "cp /usr/local/zabbix/etc/init.d/zabbix-agent.service /run/systemd/generator.late/runlevel5.target.wants/ && chown root.root /run/systemd/generator.late/runlevel5.target.wants/zabbix-agent.service\r"
+	expect \\\#
+	send "ln -s /usr/local/zabbix/bin/zabbix_get /bin/zabbix_get && chown root.root /bin/zabbix_get\r"
+	expect \\\#
+	send "ln -s /usr/local/zabbix/bin/zabbix_sender /bin/zabbix_sender && chown root.root /bin/zabbix_sender\r"
+	expect \\\#
+	send "ln -s /usr/local/zabbix/sbin/zabbix_agentd /usr/sbin/zabbix_agentd && chown root.root /usr/sbin/zabbix_agentd\r"
+	expect \\\#
+	send "mkdir /usr/local/zabbix/etc/zabbix/zabbix_agentd.d && chown root.root /usr/local/zabbix/ -R\r"
+	expect \\\#
+	send "service zabbix-agent restart\r"
+	expect \\\#
+	send "echo \"Zabbix automated maintenance script finished.\"\r\n"
+	expect \\\#
+	send "exit\r"
+	send_user "Installed.\r\n"
+	exit
+} elseif {"$HOSTOS" == "WIN"} {
+	send_user "Agent deploy on Windows not exist.\r\n"
+	exit
+}
+send_user "Agent deploy failed.\r\n"

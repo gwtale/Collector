@@ -1,0 +1,21 @@
+#!/usr/bin/expect -f
+log_user 0
+set timeout 25
+set prompt "(%|#|\\\$) $"
+set HOSTIP [lindex $argv 0]
+set HOSTID [lindex $argv 1]
+set HOSTPW [lindex $argv 2]
+set REMPORT [lindex $argv 3]
+set LOCPORT [lindex $argv 4]
+
+spawn nc -vz localhost $LOCPORT
+expect {
+    "succeeded" {
+        send_user "1\n"
+        exit
+    }
+    "refused" {
+        send_user "0\n"
+        exit
+    }
+}

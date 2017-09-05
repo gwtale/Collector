@@ -1,0 +1,46 @@
+#!/usr/bin/expect -f
+log_user 1
+set timeout 120
+set HOSTIP [lindex $argv 0]
+set HOSTID [lindex $argv 1]
+set HOSTPW [lindex $argv 2]
+set PROXYIP [exec ifconfig tun0 | grep "inet addr:" | cut -d: -f2 | awk {{print $1}}]
+
+spawn ssh -q -o StrictHostKeyChecking=no $HOSTID@$HOSTIP
+expect "password"
+send $HOSTPW\r
+expect {
+    \\\# {
+        send "echo Whooray! I got root access! \r"
+    }
+    \\\$ {
+        send "sudo -s \r"
+    }
+}
+expect {
+    \\\# {
+        send "echo root access OK, continuing... \r"
+    }
+    \\\$ {
+        exit
+    }
+}
+send "test -d '/etc/snmp' && 'SNMPd already installed' || test -d '/etc/sysconfig' &&  yum install -y net-snmp || apt install -y snmpd \r"
+expect \\\#
+send "cd /tmp\r"
+expect \\\#
+send "rm -f snmpd* \r"
+expect \\\#
+send "if wget http://$PROXYIP:8000/snmpd.conf; then rm -f /etc/snmp/snmpd.conf; mv snmpd.conf /etc/snmp/snmpd.conf; else echo \"error downloading snmpd.conf\" && exit; fi\r"
+expect {
+    \\\# {
+    }
+    \\\$ {
+        exit
+    }
+}
+send "nohup service snmpd restart &\r"
+sleep 2
+expect "#"
+send "exit\r"
+

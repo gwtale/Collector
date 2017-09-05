@@ -1,0 +1,33 @@
+#!/usr/bin/expect -f
+exit
+
+log_user 1
+set timeout 120
+set HOSTIP [lindex $argv 0]
+set HOSTID [lindex $argv 1]
+set HOSTPW [lindex $argv 2]
+
+spawn ssh -q -o StrictHostKeyChecking=no $HOSTID@$HOSTIP
+expect "assword"
+send $HOSTPW\r
+expect {
+    ">" {
+    }
+    "assword" {
+        send $HOSTPW2\r
+    }
+}
+expect {
+    ">" {
+    }
+    "assword" {
+        exit
+    }
+}
+send "add snmp manager 208.43.238.157 -netmask 255.255.255.255\r"
+expect ">"
+send "add snmp community ibm.cloudbr all\r"
+expect ">"
+send "save config\r"
+expect ">"
+send "exit\r"

@@ -1,0 +1,64 @@
+#!/usr/bin/expect -f
+log_user 1
+set timeout 120
+set HOSTIP [lindex $argv 0]
+set HOSTID [lindex $argv 1]
+set HOSTPW [lindex $argv 2]
+set PROXYIP [exec ifconfig tun0 | grep "inet addr:" | cut -d: -f2 | awk {{print $1}}]
+
+spawn ssh -q -o StrictHostKeyChecking=no $HOSTID@$HOSTIP
+expect "password"
+send $HOSTPW\r
+expect {
+    \\\]# {
+        send "echo Whooray! I got root access! \r"
+    }
+    \\\$ {
+        send "sudo -s \r"
+    }
+}
+expect {
+    \\\]# {
+        send "echo root access OK, continuing... \r"
+    }
+    \\\$ {
+        exit
+    }
+}
+send "test -d '/etc/snmp' && echo 'SNMPd already installed' || yum install -y net-snmp \r"
+#expect {
+#    "Complete!" {
+#        send "echo install OK, continuing... \r"
+#    }
+#    "Nothing to do" {
+#        send "echo already installed...\r"
+#    }
+#    "SNMPd already installed" {
+#    }
+#}
+expect \\\]#
+send "cd /tmp\r"
+expect \\\]#
+send "rm -f snmpd* \r"
+expect \\\#
+send "if wget http://$PROXYIP:8000/snmpd.conf_rhelcentos; then mv -f /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf.bkp; mv -f snmpd.conf_rhelcentos /etc/snmp/snmpd.conf; else echo \"error downloading snmpd.conf\" && exit; fi\r"
+expect {
+    \\\]# {
+    }
+    \\\$ {
+        exit
+    }
+}
+send "if wget http://$PROXYIP:8000/snmpd_rhelcentos; then mv -f /etc/sysconfig/snmpd /etc/sysconfig/snmpd.bkp; mv -f snmpd_rhelcentos /etc/sysconfig/snmpd; else echo \"error downloading snmpd.conf\" && exit; fi\r"
+expect {
+    \\\]# {
+    }
+    \\\$ {
+        exit
+    }
+}
+send "chkconfig snmpd on && sleep 1 && service snmpd restart\r"
+expect \\\]#
+send "service snmpd status\r"
+expect \\\]#
+send "exit\r"

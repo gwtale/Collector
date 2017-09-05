@@ -1,0 +1,24 @@
+#!/usr/bin/expect -f
+log_user 1
+set timeout 120
+set HOSTIP [lindex $argv 0]
+set HOSTID [lindex $argv 1]
+set HOSTPW [lindex $argv 2]
+set PROXYIP [exec ifconfig tun0 | grep "inet addr:" | cut -d: -f2 | awk {{print $1}}]
+
+spawn ssh -q -o StrictHostKeyChecking=no $HOSTID@$HOSTIP
+expect "password"
+send $HOSTPW\r
+expect \\\#
+send "cp /etc/default/snmpd /etc/default/snmpd.bkp\r"
+expect \\\#
+send "cp /etc/snmp/snmpd.conf /etc/snmp/snmpd.conf.bkp\r"
+expect \\\#
+send "awk '!/SNMPDOPTS=/' /etc/default/snmpd> /tmp/snmpd.tmp && mv /tmp/snmpd.tmp /etc/default/snmpd && echo \"SNMPDOPTS='-Lsd -Lf /dev/null -u snmp -I -smux -p /var/run/snmpd.pid -c /etc/snmp/snmpd.conf'\" >> /etc/default/snmpd\r"
+expect \\\#
+send "echo \"rocommunity ibm.cloudbr\" > /etc/snmp/snmpd.conf\r"
+expect \\\#
+send "nohup service snmpd restart &\r"
+sleep 2
+expect \\\#
+send "exit\r"

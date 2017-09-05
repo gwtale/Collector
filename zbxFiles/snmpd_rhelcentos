@@ -1,0 +1,6 @@
+export MIBS=UCD-SNMP-MIB
+SNMPDRUN=yes
+SNMPDOPTS='-Lsd -Lf /dev/null -u snmp -I -smux -p /var/run/snmpd.pid -c /etc/snmp/snmpd.conf'
+TRAPDRUN=no
+TRAPDOPTS='-LS6d -p /var/run/snmptrapd.pid'
+SNMPDCOMPAT=yes

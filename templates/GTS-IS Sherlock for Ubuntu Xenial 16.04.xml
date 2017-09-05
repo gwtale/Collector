@@ -606,10 +606,10 @@ then
     then
         echo &quot;Zabbix proxy already configured&quot;
     else
-        sudo echo &quot;create database zabbix_proxy character set utf8 collate utf8_bin;&quot; | mysql -uroot -pdqm50vnc
-        sudo echo &quot;grant all privileges on zabbix_proxy.* to zabbix@localhost identified by 'dqm50vnc';&quot;| mysql -uroot -pdqm50vnc
+        sudo echo &quot;create database zabbix_proxy character set utf8 collate utf8_bin;&quot; | mysql -uroot -p{$ZBX_SERVERSQLPW}
+        sudo echo &quot;grant all privileges on zabbix_proxy.* to zabbix@localhost identified by '{$ZBX_SERVERSQLPW}';&quot;| mysql -uroot -p{$ZBX_SERVERSQLPW}
         sudo gunzip /usr/share/doc/zabbix-proxy-mysql/schema.sql.gz
-        sudo mysql -uzabbix -pdqm50vnc zabbix_proxy &lt; /usr/share/doc/zabbix-proxy-mysql/schema.sql
+        sudo mysql -uzabbix -p{$ZBX_SERVERSQLPW} zabbix_proxy &lt; /usr/share/doc/zabbix-proxy-mysql/schema.sql
         sudo chmod 666 $zbxProxyConfig
         sudo echo &quot;
 Hostname={HOST.NAME}
@@ -618,7 +618,7 @@ LogFileSize=0
 PidFile=/var/run/zabbix/zabbix_proxy.pid
 DBName=zabbix_proxy
 DBUser=zabbix
-DBPassword=dqm50vnc
+DBPassword={$ZBX_SERVERSQLPW}
 ExternalScripts=/var/Collector/zbxScripts
 FpingLocation=/usr/bin/fping
 Fping6Location=/usr/bin/fping6
@@ -1312,8 +1312,8 @@ else
         exit
     else
         echo &quot;mysql-server&quot; &gt; $lockfile
-        sudo debconf-set-selections &lt;&lt;&lt; 'mysql-server mysql-server/root_password password dqm50vnc'
-        sudo debconf-set-selections &lt;&lt;&lt; 'mysql-server mysql-server/root_password_again password dqm50vnc'
+        sudo debconf-set-selections &lt;&lt;&lt; 'mysql-server mysql-server/root_password password {$ZBX_SERVERSQLPW}'
+        sudo debconf-set-selections &lt;&lt;&lt; 'mysql-server mysql-server/root_password_again password {$ZBX_SERVERSQLPW}'
         if sudo apt-get -qq --assume-yes install mysql-server &gt; /dev/null; then echo &quot;installed&quot;; else echo &quot;not installed&quot;;fi
         rm -f $lockfile
     fi
@@ -5833,6 +5833,10 @@ EOF</params>
 				<macro>
 					<macro>{$ZBX_SERVERIP}</macro>
 					<value>192.168.10.15</value>
+				</macro>
+				<macro>
+					<macro>{$ZBX_SERVERSQLPW}</macro>
+					<value>dqm50vnc</value>
 				</macro>
 				<macro>
 					<macro>{$ZBX_SERVERSSHID}</macro>

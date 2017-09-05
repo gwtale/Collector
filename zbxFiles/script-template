@@ -1,5 +1,4 @@
 #!/bin/vbash
-#
 # Set up aliases and functions for running Vyatta commands from scripts
 #
 # Copyright (C) 2012 Vyatta, Inc.

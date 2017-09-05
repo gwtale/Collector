@@ -1,4 +1,4 @@
-<h1><strong>Installation</strong></h1>
+<h1><span class="css-truncate css-truncate-target">Installation</span></h1>
 <ol>
 <li>In Zabbix server, create a proxy;</li>
 <li>Assign the template <span class="css-truncate css-truncate-target">GTS-IS Sherlock for Ubuntu Xenial 16.04.xml to the proxy;</span></li>

@@ -20,6 +20,7 @@ if (os.path.exists(configFile)):
     #Device list inventory
     deviceListSL.updateDeviceListFromSL(credentials)
 else:
+    print("Error loading SL credentials")
     logger.error("Error loading SL credentials")
 
 #End    

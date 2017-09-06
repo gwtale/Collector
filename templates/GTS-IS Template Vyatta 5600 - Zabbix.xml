@@ -527,6 +527,92 @@
 					<logtimefmt/>
 				</item>
 				<item>
+					<name>Memory usage of IPSec</name>
+					<type>0</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>proc.mem[charon]</key>
+					<delay>600</delay>
+					<history>7</history>
+					<trends>180</trends>
+					<status>0</status>
+					<value_type>3</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params/>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username/>
+					<password/>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description>This Monitoring is supported Vyatta 6.5 R1 Zabbix agent version 2.0.5.</description>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Services</name>
+						</application>
+					</applications>
+					<valuemap/>
+					<logtimefmt/>
+				</item>
+				<item>
+					<name>Memory usage of $1</name>
+					<type>0</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>proc.mem[dataplane]</key>
+					<delay>600</delay>
+					<history>7</history>
+					<trends>180</trends>
+					<status>0</status>
+					<value_type>3</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params/>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username/>
+					<password/>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description>This Monitoring is supported Vyatta 6.5 R1 Zabbix agent version 2.0.5.</description>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Services</name>
+						</application>
+					</applications>
+					<valuemap/>
+					<logtimefmt/>
+				</item>
+				<item>
 					<name>Memory usage of $1</name>
 					<type>0</type>
 					<snmp_community/>
@@ -2294,7 +2380,7 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 			<ymax_item_1>0</ymax_item_1>
 			<graph_items>
 				<graph_item>
-					<sortorder>1</sortorder>
+					<sortorder>0</sortorder>
 					<drawtype>0</drawtype>
 					<color>00C800</color>
 					<yaxisside>0</yaxisside>
@@ -2306,7 +2392,7 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					</item>
 				</graph_item>
 				<graph_item>
-					<sortorder>3</sortorder>
+					<sortorder>1</sortorder>
 					<drawtype>0</drawtype>
 					<color>C800C8</color>
 					<yaxisside>0</yaxisside>
@@ -2318,7 +2404,7 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					</item>
 				</graph_item>
 				<graph_item>
-					<sortorder>4</sortorder>
+					<sortorder>2</sortorder>
 					<drawtype>0</drawtype>
 					<color>00C8C8</color>
 					<yaxisside>0</yaxisside>
@@ -2330,7 +2416,7 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					</item>
 				</graph_item>
 				<graph_item>
-					<sortorder>8</sortorder>
+					<sortorder>3</sortorder>
 					<drawtype>0</drawtype>
 					<color>99FF99</color>
 					<yaxisside>0</yaxisside>
@@ -2342,7 +2428,7 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					</item>
 				</graph_item>
 				<graph_item>
-					<sortorder>9</sortorder>
+					<sortorder>4</sortorder>
 					<drawtype>0</drawtype>
 					<color>9999FF</color>
 					<yaxisside>0</yaxisside>
@@ -2351,6 +2437,30 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					<item>
 						<host>GTS-IS Template Vyatta 5600 - Zabbix</host>
 						<key>proc.mem[squid3]</key>
+					</item>
+				</graph_item>
+				<graph_item>
+					<sortorder>5</sortorder>
+					<drawtype>0</drawtype>
+					<color>6C59DC</color>
+					<yaxisside>0</yaxisside>
+					<calc_fnc>2</calc_fnc>
+					<type>0</type>
+					<item>
+						<host>GTS-IS Template Vyatta 5600 - Zabbix</host>
+						<key>proc.mem[charon]</key>
+					</item>
+				</graph_item>
+				<graph_item>
+					<sortorder>6</sortorder>
+					<drawtype>0</drawtype>
+					<color>AC8C14</color>
+					<yaxisside>0</yaxisside>
+					<calc_fnc>2</calc_fnc>
+					<type>0</type>
+					<item>
+						<host>GTS-IS Template Vyatta 5600 - Zabbix</host>
+						<key>proc.mem[dataplane]</key>
 					</item>
 				</graph_item>
 			</graph_items>
@@ -2374,7 +2484,7 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 			<ymax_item_1>0</ymax_item_1>
 			<graph_items>
 				<graph_item>
-					<sortorder>1</sortorder>
+					<sortorder>0</sortorder>
 					<drawtype>0</drawtype>
 					<color>00C800</color>
 					<yaxisside>0</yaxisside>
@@ -2386,7 +2496,7 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					</item>
 				</graph_item>
 				<graph_item>
-					<sortorder>3</sortorder>
+					<sortorder>1</sortorder>
 					<drawtype>0</drawtype>
 					<color>C800C8</color>
 					<yaxisside>0</yaxisside>
@@ -2398,7 +2508,7 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					</item>
 				</graph_item>
 				<graph_item>
-					<sortorder>4</sortorder>
+					<sortorder>2</sortorder>
 					<drawtype>0</drawtype>
 					<color>00C8C8</color>
 					<yaxisside>0</yaxisside>
@@ -2410,7 +2520,7 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					</item>
 				</graph_item>
 				<graph_item>
-					<sortorder>8</sortorder>
+					<sortorder>3</sortorder>
 					<drawtype>0</drawtype>
 					<color>99FF99</color>
 					<yaxisside>0</yaxisside>
@@ -2422,7 +2532,7 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					</item>
 				</graph_item>
 				<graph_item>
-					<sortorder>9</sortorder>
+					<sortorder>4</sortorder>
 					<drawtype>0</drawtype>
 					<color>9999FF</color>
 					<yaxisside>0</yaxisside>
@@ -2431,6 +2541,30 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					<item>
 						<host>GTS-IS Template Vyatta 5600 - Zabbix</host>
 						<key>proc.mem[squid3]</key>
+					</item>
+				</graph_item>
+				<graph_item>
+					<sortorder>5</sortorder>
+					<drawtype>0</drawtype>
+					<color>6C59DC</color>
+					<yaxisside>0</yaxisside>
+					<calc_fnc>2</calc_fnc>
+					<type>0</type>
+					<item>
+						<host>GTS-IS Template Vyatta 5600 - Zabbix</host>
+						<key>proc.mem[charon]</key>
+					</item>
+				</graph_item>
+				<graph_item>
+					<sortorder>6</sortorder>
+					<drawtype>0</drawtype>
+					<color>AC8C14</color>
+					<yaxisside>0</yaxisside>
+					<calc_fnc>2</calc_fnc>
+					<type>0</type>
+					<item>
+						<host>GTS-IS Template Vyatta 5600 - Zabbix</host>
+						<key>proc.mem[dataplane]</key>
 					</item>
 				</graph_item>
 			</graph_items>

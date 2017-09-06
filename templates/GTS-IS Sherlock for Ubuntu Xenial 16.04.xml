@@ -4550,7 +4550,7 @@ EOF</params>
 							<snmpv3_privpassphrase/>
 							<formula>1</formula>
 							<delay_flex/>
-							<params>sh -c 'cd /var/Collector/zbxScripts; nohup ./setEsxiUUIDinZbxServer.sh {#PRIVATE_IP} {#FQDN} {#USER} {#PASSWORD} {$ZBX_SERVERAPIID} {$ZBX_SERVERAPIPW}&gt; /dev/null 2&gt;&amp;1 &amp;'</params>
+							<params>sh -c 'cd /var/Collector/zbxScripts; nohup ./setEsxiUUIDinZbxServer.sh {#PRIVATE_IP} {#FQDN} {#USER} {#PASSWORD} {$ZBX_SERVERIP} {$ZBX_SERVERAPIID} {$ZBX_SERVERAPIPW}&gt; /dev/null 2&gt;&amp;1 &amp;'</params>
 							<ipmi_sensor/>
 							<data_type>0</data_type>
 							<authtype>0</authtype>

@@ -1932,22 +1932,22 @@
 									<color>26A69A</color>
 									<yaxisside>0</yaxisside>
 									<calc_fnc>2</calc_fnc>
-									<type>2</type>
+									<type>0</type>
 									<item>
 										<host>GTS-IS Template OS Linux</host>
-										<key>vfs.fs.size[{#FSNAME},total]</key>
+										<key>vfs.fs.size[{#FSNAME},free]</key>
 									</item>
 								</graph_item>
 								<graph_item>
 									<sortorder>1</sortorder>
 									<drawtype>0</drawtype>
-									<color>B71C1C</color>
+									<color>2774A4</color>
 									<yaxisside>0</yaxisside>
 									<calc_fnc>2</calc_fnc>
 									<type>0</type>
 									<item>
 										<host>GTS-IS Template OS Linux</host>
-										<key>vfs.fs.size[{#FSNAME},free]</key>
+										<key>vfs.fs.size[{#FSNAME},used]</key>
 									</item>
 								</graph_item>
 							</graph_items>

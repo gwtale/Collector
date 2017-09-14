@@ -11,7 +11,25 @@
 		<template>
 			<template>GTS-IS Template Virt VMware VROPS</template>
 			<name>GTS-IS Template Virt VMware VROPS</name>
-			<description>WARNING!!! This template MUST be associated with a ZABBIX PROXY who will access the VROPS server. Data collection is done entirely via API.</description>
+			<description>WARNING!!! This template MUST be associated with a ZABBIX PROXY who will access the VROPS server. Data collection is done entirely via API.
+=============================================================
+About the macros:
+{$IGNORE_ALERT_LEVEL}:
+ - Add as value a comma separated list of the level names to ignore when processing alerts discoveries. 
+ - Values are found in VROPS API URL &quot;http://&lt;VROPS&gt;/suite-api/api/alerts&quot;
+ - E.g. (contains all available levels): INFORMATIONAL, WARNING, IMMEDIATE, CRITICAL
+{$IGNORE_ALERT_TYPE}:
+ - Add as value a comma separated list of the type names to ignore when processing alerts discoveries. 
+ - Values are found in VROPS API URL &quot;http://&lt;VROPS&gt;/suite-api/api/alerts/types&quot;
+ - E.g. (contains all available types): Application Alerts, Network Alerts, Storage Alerts, Virtualization/Hypervisor Alerts, Hardware (OSI) Alerts
+{$IGNORE_ALERT_SUBTYPE}:
+ - Add as value a comma separated list of the subtype names to ignore when processing alerts discoveries. 
+ - Values are found in VROPS API URL &quot;http://&lt;VROPS&gt;/suite-api/api/alerts/types&quot;
+ - E.g. (contains all available subtypes): Availability, Capacity, Compliance, Configuration, Performance
+{$IGNORE_ALERT_RESTYPE}:
+ - Add as value a comma separated list of the resource/resourceKey/resourceKindKey values to ignore when processing alerts discoveries. 
+ - Values are found in VROPS API URL &quot;http://&lt;VROPS&gt;/suite-api/api/alerts/resources&quot;
+ - E.g. (check API for all values): VirtualMachine, Datastore, LogicalRouter, VirtualSANDCCluster, L2VPNEdgeService</description>
 			<groups>
 				<group>
 					<name>Templates</name>
@@ -321,6 +339,14 @@ import time
 import datetime
 
 ### VARS ###
+IGNORE_ALERT_LEVEL = &quot;{$IGNORE_ALERT_LEVEL}&quot;
+IGNORE_ALERT_TYPE = &quot;{$IGNORE_ALERT_TYPE}&quot;
+IGNORE_ALERT_SUBTYPE = &quot;{$IGNORE_ALERT_SUBTYPE}&quot;
+IGNORE_ALERT_RESTYPE = &quot;{$IGNORE_ALERT_RESTYPE}&quot;
+IGNORE_ALERT_LEVEL = map(str.strip, IGNORE_ALERT_LEVEL.split(','))
+IGNORE_ALERT_TYPE = map(str.strip, IGNORE_ALERT_TYPE.split(','))
+IGNORE_ALERT_SUBTYPE = map(str.strip, IGNORE_ALERT_SUBTYPE.split(','))
+IGNORE_ALERT_RESTYPE = map(str.strip, IGNORE_ALERT_RESTYPE.split(','))
 sherlockDir = '/var/Collector/'
 alertsFile = sherlockDir + 'data/vrops_alerts_{$VROPS_IP}.xml'
 resourcesFile = sherlockDir + 'data/vrops_resources_{$VROPS_IP}.xml'
@@ -360,7 +386,6 @@ print('{')
 print('&quot;data&quot;:[')
 
 for alert in alertsRoot.findall('ops:alert', ns):
-    ######################################################
     status = alert.find('ops:status', ns)
     if status.text == &quot;CANCELED&quot;:
         updateTimeUTC = alert.find('ops:updateTimeUTC', ns)
@@ -369,17 +394,25 @@ for alert in alertsRoot.findall('ops:alert', ns):
         if delta &gt;= ignoreOlderThanSeconds:
             continue
     alertLevel = alert.find('ops:alertLevel', ns)
-    if not (alertLevel.text == &quot;CRITICAL&quot; or alertLevel.text == &quot;IMMEDIATE&quot;):
+    if alertLevel.text in IGNORE_ALERT_LEVEL:
         continue
-    ######################################################
-
     alertId = alert.find('ops:alertId', ns)
     resourceId = alert.find('ops:resourceId', ns)
     _type = alert.find('ops:type', ns)
     subType = alert.find('ops:subType', ns)
     alertDefinitionName = alert.find('ops:alertDefinitionName', ns)
-    resourceName, resourceKindKey = returnResName(resourceId.text)
+    try:
+        resourceName, resourceKindKey = returnResName(resourceId.text)
+        if resourceKindKey in IGNORE_ALERT_RESTYPE:
+            continue
+    except:
+        resourceName = &quot;Resource ID not found in API&quot;
+        resourceKindKey = &quot;&quot;
     typeName, subTypeName = returntypeData(_type.text, subType.text)
+    if typeName in IGNORE_ALERT_TYPE:
+        continue
+    if subTypeName in IGNORE_ALERT_SUBTYPE:
+        continue
     startTimeUTC = alert.find('ops:startTimeUTC', ns)
     startTimeStr = datetime.datetime.fromtimestamp(int(startTimeUTC.text) / 1000).strftime('%Y-%m-%d %H:%M:%S')
     
@@ -412,11 +445,11 @@ EOF</params>
 						<formula/>
 						<conditions/>
 					</filter>
-					<lifetime>7</lifetime>
+					<lifetime>0</lifetime>
 					<description/>
 					<item_prototypes>
 						<item_prototype>
-							<name>{#RESTYPE} - {#RESNAME}: {#DEF} - Severity</name>
+							<name>{#RESNAME} ({#RESTYPE}) [{#TYPE}/{#SUBTYPE}] {#DEF} - Severity</name>
 							<type>0</type>
 							<snmp_community/>
 							<multiplier>0</multiplier>
@@ -460,7 +493,7 @@ EOF</params>
 							<application_prototypes/>
 						</item_prototype>
 						<item_prototype>
-							<name>{#RESTYPE} - {#RESNAME}: {#DEF} - Start Time</name>
+							<name>{#RESNAME} ({#RESTYPE}) [{#TYPE}/{#SUBTYPE}] {#DEF} - Start Time</name>
 							<type>0</type>
 							<snmp_community/>
 							<multiplier>0</multiplier>
@@ -504,7 +537,7 @@ EOF</params>
 							<application_prototypes/>
 						</item_prototype>
 						<item_prototype>
-							<name>{#RESTYPE} - {#RESNAME}: {#DEF} - Status</name>
+							<name>{#RESNAME} ({#RESTYPE}) [{#TYPE}/{#SUBTYPE}] {#DEF} - Status</name>
 							<type>0</type>
 							<snmp_community/>
 							<multiplier>0</multiplier>
@@ -553,7 +586,7 @@ EOF</params>
 							<expression>{GTS-IS Template Virt VMware VROPS:vropsAlertInfo[{$VROPS_IP}, {#ALERTID}, status].str(ACTIVE)}=1 and {GTS-IS Template Virt VMware VROPS:vropsAlertInfo[{$VROPS_IP}, {#ALERTID}, severity].str(CRITICAL)}=1</expression>
 							<recovery_mode>0</recovery_mode>
 							<recovery_expression/>
-							<name>{#RESTYPE} - {#RESNAME}: {#DEF}</name>
+							<name>{#RESNAME} ({#RESTYPE}) [{#TYPE}/{#SUBTYPE}] {#DEF}</name>
 							<correlation_mode>0</correlation_mode>
 							<correlation_tag/>
 							<url/>
@@ -569,7 +602,7 @@ EOF</params>
 							<expression>{GTS-IS Template Virt VMware VROPS:vropsAlertInfo[{$VROPS_IP}, {#ALERTID}, status].str(ACTIVE)}=1 and {GTS-IS Template Virt VMware VROPS:vropsAlertInfo[{$VROPS_IP}, {#ALERTID}, severity].str(IMMEDIATE)}=1</expression>
 							<recovery_mode>0</recovery_mode>
 							<recovery_expression/>
-							<name>{#RESTYPE} - {#RESNAME}: {#DEF}</name>
+							<name>{#RESNAME} ({#RESTYPE}) [{#TYPE}/{#SUBTYPE}] {#DEF}</name>
 							<correlation_mode>0</correlation_mode>
 							<correlation_tag/>
 							<url/>
@@ -585,7 +618,7 @@ EOF</params>
 							<expression>{GTS-IS Template Virt VMware VROPS:vropsAlertInfo[{$VROPS_IP}, {#ALERTID}, status].str(ACTIVE)}=1 and {GTS-IS Template Virt VMware VROPS:vropsAlertInfo[{$VROPS_IP}, {#ALERTID}, severity].str(WARNING)}=1</expression>
 							<recovery_mode>0</recovery_mode>
 							<recovery_expression/>
-							<name>{#RESTYPE} - {#RESNAME}: {#DEF}</name>
+							<name>{#RESNAME} ({#RESTYPE}) [{#TYPE}/{#SUBTYPE}] {#DEF}</name>
 							<correlation_mode>0</correlation_mode>
 							<correlation_tag/>
 							<url/>
@@ -604,6 +637,22 @@ EOF</params>
 			</discovery_rules>
 			<httptests/>
 			<macros>
+				<macro>
+					<macro>{$IGNORE_ALERT_LEVEL}</macro>
+					<value/>
+				</macro>
+				<macro>
+					<macro>{$IGNORE_ALERT_RESTYPE}</macro>
+					<value/>
+				</macro>
+				<macro>
+					<macro>{$IGNORE_ALERT_SUBTYPE}</macro>
+					<value/>
+				</macro>
+				<macro>
+					<macro>{$IGNORE_ALERT_TYPE}</macro>
+					<value/>
+				</macro>
 				<macro>
 					<macro>{$PROXY_SSH_ID}</macro>
 					<value/>

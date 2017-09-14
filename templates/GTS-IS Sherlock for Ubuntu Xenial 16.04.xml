@@ -547,7 +547,7 @@ then
     sudo echo &quot;UserParameter=installSoftlayerLibs,if pip install softlayer -q --upgrade &gt; /dev/null; then echo 1; else echo 0;fi&quot; &gt;&gt; $zbxClientConfig
     sudo echo &quot;UserParameter=installRequestsLibs,if pip install requests -q --upgrade &gt; /dev/null; then echo 1; else echo 0;fi&quot; &gt;&gt; $zbxClientConfig
     sudo echo &quot;UserParameter=installSudsLibs,if pip install suds -q --upgrade &gt; /dev/null; then echo 1; else echo 0;fi&quot; &gt;&gt; $zbxClientConfig
-    sudo echo &quot;UserParameter=ping_ip[*],if fping -u $1 &gt; /dev/null ;then echo 1; else echo 0; fi&quot; &gt;&gt; $zbxClientConfig
+    sudo echo &quot;UserParameter=ping_ip[*],if fping -u \$1 &gt; /dev/null ;then echo 1; else echo 0; fi&quot; &gt;&gt; $zbxClientConfig
     sudo service zabbix-agent restart
 else
     echo &quot;$zbxClientConfig not present. Skipping config.&quot;

@@ -21,8 +21,59 @@
 				<application>
 					<name>Data Collection</name>
 				</application>
+				<application>
+					<name>Host Status</name>
+				</application>
+				<application>
+					<name>VROPS Alerts</name>
+				</application>
 			</applications>
 			<items>
+				<item>
+					<name>VROPS host status (ping to {$VROPS_IP})</name>
+					<type>0</type>
+					<snmp_community/>
+					<multiplier>0</multiplier>
+					<snmp_oid/>
+					<key>ping_ip[{$VROPS_IP}]</key>
+					<delay>30</delay>
+					<history>7</history>
+					<trends>60</trends>
+					<status>0</status>
+					<value_type>3</value_type>
+					<allowed_hosts/>
+					<units/>
+					<delta>0</delta>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<formula>1</formula>
+					<delay_flex/>
+					<params/>
+					<ipmi_sensor/>
+					<data_type>0</data_type>
+					<authtype>0</authtype>
+					<username/>
+					<password/>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description/>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Host Status</name>
+						</application>
+					</applications>
+					<valuemap>
+						<name>Host availability</name>
+					</valuemap>
+					<logtimefmt/>
+				</item>
 				<item>
 					<name>Create alerts datafile</name>
 					<type>13</type>
@@ -243,7 +294,314 @@ EOF</params>
 					<logtimefmt/>
 				</item>
 			</items>
-			<discovery_rules/>
+			<discovery_rules>
+				<discovery_rule>
+					<name>Alerts</name>
+					<type>13</type>
+					<snmp_community/>
+					<snmp_oid/>
+					<key>ssh.run[discoverAlerts]</key>
+					<delay>60</delay>
+					<status>0</status>
+					<allowed_hosts/>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<delay_flex/>
+					<params>#!/bin/bash
+cat &lt;&lt;EOF | python -
+#!/usr/bin/python
+import xml.etree.ElementTree as et
+import json
+import time
+import datetime
+
+### VARS ###
+sherlockDir = '/var/Collector/'
+alertsFile = sherlockDir + 'data/vrops_alerts_{$VROPS_IP}.xml'
+resourcesFile = sherlockDir + 'data/vrops_resources_{$VROPS_IP}.xml'
+typesFile = sherlockDir + 'data/vrops_types_{$VROPS_IP}.xml'
+# Blelow VAR will ignore from alerts discovery alerts with status CANCELED and older than X hours.
+ignoreCanceledOlderThanHours = 2
+
+ns = {'ops': 'http://webservice.vmware.com/vRealizeOpsMgr/1.0/'}
+first = 1
+############
+
+ignoreOlderThanSeconds = ignoreCanceledOlderThanHours * 60 * 60
+alertsTree = et.parse(alertsFile)
+alertsRoot = alertsTree.getroot()
+resourcesTree = et.parse(resourcesFile)
+resourcesRoot = resourcesTree.getroot()
+typesTree = et.parse(typesFile)
+typesRoot = typesTree.getroot()
+
+def returnResName(resId):
+    for resource in resourcesRoot.findall('ops:resource', ns):
+        if resource.attrib['identifier'] == resId:
+            resourceName = resource.find('ops:resourceKey/ops:name', ns)
+            resourceKindKey = resource.find('ops:resourceKey/ops:resourceKindKey', ns)
+            return resourceName.text, resourceKindKey.text
+
+def returntypeData(typeID, subType):
+    for _type in typesRoot.findall('ops:alert-type', ns):
+        if _type.attrib['id'] == typeID:
+            typeName = _type.find('ops:name', ns)
+        for _subType in _type.findall('ops:subTypes', ns):
+            if _subType.attrib['id'] == subType:
+                subTypeName = _subType.find('ops:name', ns)
+    return typeName.text, subTypeName.text
+
+print('{')
+print('&quot;data&quot;:[')
+
+for alert in alertsRoot.findall('ops:alert', ns):
+    ######################################################
+    status = alert.find('ops:status', ns)
+    if status.text == &quot;CANCELED&quot;:
+        updateTimeUTC = alert.find('ops:updateTimeUTC', ns)
+        now = time.time()
+        delta =  now - (int(updateTimeUTC.text) / 1000)
+        if delta &gt;= ignoreOlderThanSeconds:
+            continue
+    alertLevel = alert.find('ops:alertLevel', ns)
+    if not (alertLevel.text == &quot;CRITICAL&quot; or alertLevel.text == &quot;IMMEDIATE&quot;):
+        continue
+    ######################################################
+
+    alertId = alert.find('ops:alertId', ns)
+    resourceId = alert.find('ops:resourceId', ns)
+    _type = alert.find('ops:type', ns)
+    subType = alert.find('ops:subType', ns)
+    alertDefinitionName = alert.find('ops:alertDefinitionName', ns)
+    resourceName, resourceKindKey = returnResName(resourceId.text)
+    typeName, subTypeName = returntypeData(_type.text, subType.text)
+    startTimeUTC = alert.find('ops:startTimeUTC', ns)
+    startTimeStr = datetime.datetime.fromtimestamp(int(startTimeUTC.text) / 1000).strftime('%Y-%m-%d %H:%M:%S')
+    
+    if first == 0:
+        print(',')
+    first = 0
+    print('    {')
+    print('        &quot;{#ALERTID}&quot;:&quot;' + alertId.text + '&quot;,')
+    print('        &quot;{#RESNAME}&quot;:&quot;' + resourceName + '&quot;,')
+    print('        &quot;{#RESTYPE}&quot;:&quot;' + resourceKindKey + '&quot;,')
+    print('        &quot;{#LEVEL}&quot;:&quot;' + alertLevel.text + '&quot;,')
+    print('        &quot;{#TIME}&quot;:&quot;' + startTimeStr + '&quot;,')
+    print('        &quot;{#TYPE}&quot;:&quot;' + typeName + '&quot;,')
+    print('        &quot;{#SUBTYPE}&quot;:&quot;' + subTypeName + '&quot;,')
+    print('        &quot;{#DEF}&quot;:&quot;' + alertDefinitionName.text + '&quot;')
+    print('    }')
+print(&quot;]&quot;)
+print(&quot;}&quot;)
+
+EOF</params>
+					<ipmi_sensor/>
+					<authtype>0</authtype>
+					<username>{$PROXY_SSH_ID}</username>
+					<password>{$PROXY_SSH_PW}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<filter>
+						<evaltype>0</evaltype>
+						<formula/>
+						<conditions/>
+					</filter>
+					<lifetime>7</lifetime>
+					<description/>
+					<item_prototypes>
+						<item_prototype>
+							<name>{#RESTYPE} - {#RESNAME}: {#DEF} - Severity</name>
+							<type>0</type>
+							<snmp_community/>
+							<multiplier>0</multiplier>
+							<snmp_oid/>
+							<key>vropsAlertInfo[{$VROPS_IP}, {#ALERTID}, severity]</key>
+							<delay>60</delay>
+							<history>60</history>
+							<trends>0</trends>
+							<status>0</status>
+							<value_type>4</value_type>
+							<allowed_hosts/>
+							<units/>
+							<delta>0</delta>
+							<snmpv3_contextname/>
+							<snmpv3_securityname/>
+							<snmpv3_securitylevel>0</snmpv3_securitylevel>
+							<snmpv3_authprotocol>0</snmpv3_authprotocol>
+							<snmpv3_authpassphrase/>
+							<snmpv3_privprotocol>0</snmpv3_privprotocol>
+							<snmpv3_privpassphrase/>
+							<formula>1</formula>
+							<delay_flex/>
+							<params/>
+							<ipmi_sensor/>
+							<data_type>0</data_type>
+							<authtype>0</authtype>
+							<username/>
+							<password/>
+							<publickey/>
+							<privatekey/>
+							<port/>
+							<description/>
+							<inventory_link>0</inventory_link>
+							<applications>
+								<application>
+									<name>VROPS Alerts</name>
+								</application>
+							</applications>
+							<valuemap/>
+							<logtimefmt/>
+							<application_prototypes/>
+						</item_prototype>
+						<item_prototype>
+							<name>{#RESTYPE} - {#RESNAME}: {#DEF} - Start Time</name>
+							<type>0</type>
+							<snmp_community/>
+							<multiplier>0</multiplier>
+							<snmp_oid/>
+							<key>vropsAlertInfo[{$VROPS_IP}, {#ALERTID}, startTime]</key>
+							<delay>60</delay>
+							<history>60</history>
+							<trends>0</trends>
+							<status>0</status>
+							<value_type>4</value_type>
+							<allowed_hosts/>
+							<units/>
+							<delta>0</delta>
+							<snmpv3_contextname/>
+							<snmpv3_securityname/>
+							<snmpv3_securitylevel>0</snmpv3_securitylevel>
+							<snmpv3_authprotocol>0</snmpv3_authprotocol>
+							<snmpv3_authpassphrase/>
+							<snmpv3_privprotocol>0</snmpv3_privprotocol>
+							<snmpv3_privpassphrase/>
+							<formula>1</formula>
+							<delay_flex/>
+							<params/>
+							<ipmi_sensor/>
+							<data_type>0</data_type>
+							<authtype>0</authtype>
+							<username/>
+							<password/>
+							<publickey/>
+							<privatekey/>
+							<port/>
+							<description/>
+							<inventory_link>0</inventory_link>
+							<applications>
+								<application>
+									<name>VROPS Alerts</name>
+								</application>
+							</applications>
+							<valuemap/>
+							<logtimefmt/>
+							<application_prototypes/>
+						</item_prototype>
+						<item_prototype>
+							<name>{#RESTYPE} - {#RESNAME}: {#DEF} - Status</name>
+							<type>0</type>
+							<snmp_community/>
+							<multiplier>0</multiplier>
+							<snmp_oid/>
+							<key>vropsAlertInfo[{$VROPS_IP}, {#ALERTID}, status]</key>
+							<delay>60</delay>
+							<history>60</history>
+							<trends>0</trends>
+							<status>0</status>
+							<value_type>4</value_type>
+							<allowed_hosts/>
+							<units/>
+							<delta>0</delta>
+							<snmpv3_contextname/>
+							<snmpv3_securityname/>
+							<snmpv3_securitylevel>0</snmpv3_securitylevel>
+							<snmpv3_authprotocol>0</snmpv3_authprotocol>
+							<snmpv3_authpassphrase/>
+							<snmpv3_privprotocol>0</snmpv3_privprotocol>
+							<snmpv3_privpassphrase/>
+							<formula>1</formula>
+							<delay_flex/>
+							<params/>
+							<ipmi_sensor/>
+							<data_type>0</data_type>
+							<authtype>0</authtype>
+							<username/>
+							<password/>
+							<publickey/>
+							<privatekey/>
+							<port/>
+							<description/>
+							<inventory_link>0</inventory_link>
+							<applications>
+								<application>
+									<name>VROPS Alerts</name>
+								</application>
+							</applications>
+							<valuemap/>
+							<logtimefmt/>
+							<application_prototypes/>
+						</item_prototype>
+					</item_prototypes>
+					<trigger_prototypes>
+						<trigger_prototype>
+							<expression>{GTS-IS Template Virt VMware VROPS:vropsAlertInfo[{$VROPS_IP}, {#ALERTID}, status].str(ACTIVE)}=1 and {GTS-IS Template Virt VMware VROPS:vropsAlertInfo[{$VROPS_IP}, {#ALERTID}, severity].str(CRITICAL)}=1</expression>
+							<recovery_mode>0</recovery_mode>
+							<recovery_expression/>
+							<name>{#RESTYPE} - {#RESNAME}: {#DEF}</name>
+							<correlation_mode>0</correlation_mode>
+							<correlation_tag/>
+							<url/>
+							<status>0</status>
+							<priority>4</priority>
+							<description/>
+							<type>0</type>
+							<manual_close>0</manual_close>
+							<dependencies/>
+							<tags/>
+						</trigger_prototype>
+						<trigger_prototype>
+							<expression>{GTS-IS Template Virt VMware VROPS:vropsAlertInfo[{$VROPS_IP}, {#ALERTID}, status].str(ACTIVE)}=1 and {GTS-IS Template Virt VMware VROPS:vropsAlertInfo[{$VROPS_IP}, {#ALERTID}, severity].str(IMMEDIATE)}=1</expression>
+							<recovery_mode>0</recovery_mode>
+							<recovery_expression/>
+							<name>{#RESTYPE} - {#RESNAME}: {#DEF}</name>
+							<correlation_mode>0</correlation_mode>
+							<correlation_tag/>
+							<url/>
+							<status>0</status>
+							<priority>3</priority>
+							<description/>
+							<type>0</type>
+							<manual_close>0</manual_close>
+							<dependencies/>
+							<tags/>
+						</trigger_prototype>
+						<trigger_prototype>
+							<expression>{GTS-IS Template Virt VMware VROPS:vropsAlertInfo[{$VROPS_IP}, {#ALERTID}, status].str(ACTIVE)}=1 and {GTS-IS Template Virt VMware VROPS:vropsAlertInfo[{$VROPS_IP}, {#ALERTID}, severity].str(WARNING)}=1</expression>
+							<recovery_mode>0</recovery_mode>
+							<recovery_expression/>
+							<name>{#RESTYPE} - {#RESNAME}: {#DEF}</name>
+							<correlation_mode>0</correlation_mode>
+							<correlation_tag/>
+							<url/>
+							<status>0</status>
+							<priority>2</priority>
+							<description/>
+							<type>0</type>
+							<manual_close>0</manual_close>
+							<dependencies/>
+							<tags/>
+						</trigger_prototype>
+					</trigger_prototypes>
+					<graph_prototypes/>
+					<host_prototypes/>
+				</discovery_rule>
+			</discovery_rules>
 			<httptests/>
 			<macros>
 				<macro>
@@ -271,4 +629,41 @@ EOF</params>
 			<screens/>
 		</template>
 	</templates>
+	<triggers>
+		<trigger>
+			<expression>{GTS-IS Template Virt VMware VROPS:ping_ip[{$VROPS_IP}].min(#5)}=0</expression>
+			<recovery_mode>0</recovery_mode>
+			<recovery_expression/>
+			<name>VROPS server unavailable (failed 5 times)</name>
+			<correlation_mode>0</correlation_mode>
+			<correlation_tag/>
+			<url/>
+			<status>0</status>
+			<priority>4</priority>
+			<description/>
+			<type>0</type>
+			<manual_close>0</manual_close>
+			<dependencies/>
+			<tags/>
+		</trigger>
+	</triggers>
+	<value_maps>
+		<value_map>
+			<name>Host availability</name>
+			<mappings>
+				<mapping>
+					<value>0</value>
+					<newvalue>Not available</newvalue>
+				</mapping>
+				<mapping>
+					<value>1</value>
+					<newvalue>Available</newvalue>
+				</mapping>
+				<mapping>
+					<value>2</value>
+					<newvalue>Unknown</newvalue>
+				</mapping>
+			</mappings>
+		</value_map>
+	</value_maps>
 </zabbix_export>

@@ -506,7 +506,7 @@ echo &quot;done configuring snmp&quot;</params>
 					<logtimefmt/>
 				</item>
 				<item>
-					<name>Configure Zabbix Agent</name>
+					<name>Configure Zabbix Agent - Enforced</name>
 					<type>13</type>
 					<snmp_community/>
 					<multiplier>0</multiplier>
@@ -533,26 +533,22 @@ echo &quot;done configuring snmp&quot;</params>
 zbxClientConfig=&quot;/etc/zabbix/zabbix_agentd.conf&quot;
 if [ -f &quot;$zbxClientConfig&quot; ]
 then
-    if cat $zbxClientConfig|grep {$ZBX_SERVERIP}&gt;&amp; /dev/null
-    then
-        echo &quot;Zabbix agent already configured&quot;
-    else
-        sudo chmod 666 $zbxClientConfig
-        sudo echo &quot;AllowRoot=1&quot; &gt; $zbxClientConfig
-        sudo echo &quot;PidFile=/var/run/zabbix/zabbix_agentd.pid&quot; &gt;&gt; $zbxClientConfig
-        sudo echo &quot;LogFile=/var/log/zabbix/zabbix_agentd.log&quot; &gt;&gt; $zbxClientConfig
-        sudo echo &quot;LogFileSize=0&quot; &gt;&gt; $zbxClientConfig
-        sudo echo &quot;Server={$ZBX_SERVERIP}&quot; &gt;&gt; $zbxClientConfig
-        sudo echo &quot;Include=/etc/zabbix/zabbix_agentd.d/&quot; &gt;&gt; $zbxClientConfig
-        sudo echo &quot;UserParameter=array_vpnc64Status[*],if pgrep array_vpnc64 &gt; /dev/null; then echo 1; else echo 0; fi&quot; &gt;&gt; $zbxClientConfig
-        sudo echo &quot;UserParameter=SoftLayerPrivateApiEndpointAlive[*],if dpkg -l| grep &quot;fping &quot; &gt; /dev/null; then if fping -ur 1 api.service.softlayer.com &gt; /dev/null ;then echo 1; else echo 0; fi; else echo 0; fi&quot; &gt;&gt; $zbxClientConfig
-        sudo echo &quot;UserParameter=connectedSSHsessions,ps auxwww | grep sshd:|grep -v grep| wc -l&quot; &gt;&gt; $zbxClientConfig
-        sudo echo &quot;UserParameter=installPyzabbixLibs,if pip install py-zabbix -q --upgrade &gt; /dev/null; then echo 1; else echo 0;fi&quot; &gt;&gt; $zbxClientConfig
-        sudo echo &quot;UserParameter=installSoftlayerLibs,if pip install softlayer -q --upgrade &gt; /dev/null; then echo 1; else echo 0;fi&quot; &gt;&gt; $zbxClientConfig
-        sudo echo &quot;UserParameter=installRequestsLibs,if pip install requests -q --upgrade &gt; /dev/null; then echo 1; else echo 0;fi&quot; &gt;&gt; $zbxClientConfig
-        sudo echo &quot;UserParameter=installSudsLibs,if pip install suds -q --upgrade &gt; /dev/null; then echo 1; else echo 0;fi&quot; &gt;&gt; $zbxClientConfig
-        sudo service zabbix-agent restart
-    fi
+    sudo chmod 666 $zbxClientConfig
+    sudo echo &quot;AllowRoot=1&quot; &gt; $zbxClientConfig
+    sudo echo &quot;PidFile=/var/run/zabbix/zabbix_agentd.pid&quot; &gt;&gt; $zbxClientConfig
+    sudo echo &quot;LogFile=/var/log/zabbix/zabbix_agentd.log&quot; &gt;&gt; $zbxClientConfig
+    sudo echo &quot;LogFileSize=0&quot; &gt;&gt; $zbxClientConfig
+    sudo echo &quot;Server={$ZBX_SERVERIP}&quot; &gt;&gt; $zbxClientConfig
+    sudo echo &quot;Include=/etc/zabbix/zabbix_agentd.d/&quot; &gt;&gt; $zbxClientConfig
+    sudo echo &quot;UserParameter=array_vpnc64Status[*],if pgrep array_vpnc64 &gt; /dev/null; then echo 1; else echo 0; fi&quot; &gt;&gt; $zbxClientConfig
+    sudo echo &quot;UserParameter=SoftLayerPrivateApiEndpointAlive[*],if dpkg -l| grep &quot;fping &quot; &gt; /dev/null; then if fping -ur 1 api.service.softlayer.com &gt; /dev/null ;then echo 1; else echo 0; fi; else echo 0; fi&quot; &gt;&gt; $zbxClientConfig
+    sudo echo &quot;UserParameter=connectedSSHsessions,ps auxwww | grep sshd:|grep -v grep| wc -l&quot; &gt;&gt; $zbxClientConfig
+    sudo echo &quot;UserParameter=installPyzabbixLibs,if pip install py-zabbix -q --upgrade &gt; /dev/null; then echo 1; else echo 0;fi&quot; &gt;&gt; $zbxClientConfig
+    sudo echo &quot;UserParameter=installSoftlayerLibs,if pip install softlayer -q --upgrade &gt; /dev/null; then echo 1; else echo 0;fi&quot; &gt;&gt; $zbxClientConfig
+    sudo echo &quot;UserParameter=installRequestsLibs,if pip install requests -q --upgrade &gt; /dev/null; then echo 1; else echo 0;fi&quot; &gt;&gt; $zbxClientConfig
+    sudo echo &quot;UserParameter=installSudsLibs,if pip install suds -q --upgrade &gt; /dev/null; then echo 1; else echo 0;fi&quot; &gt;&gt; $zbxClientConfig
+    sudo echo &quot;UserParameter=ping_ip[*],if fping -u $1 &gt; /dev/null ;then echo 1; else echo 0; fi&quot; &gt;&gt; $zbxClientConfig
+    sudo service zabbix-agent restart
 else
     echo &quot;$zbxClientConfig not present. Skipping config.&quot;
 fi</params>
@@ -564,7 +560,8 @@ fi</params>
 					<publickey/>
 					<privatekey/>
 					<port/>
-					<description/>
+					<description>WARNING
+All changes in proxies agent configuration will be overwritten by the configuration above.</description>
 					<inventory_link>0</inventory_link>
 					<applications>
 						<application>
@@ -575,7 +572,7 @@ fi</params>
 					<logtimefmt/>
 				</item>
 				<item>
-					<name>Configure Zabbix Proxy</name>
+					<name>Configure Zabbix Proxy - NOT Enforced</name>
 					<type>13</type>
 					<snmp_community/>
 					<multiplier>0</multiplier>
@@ -658,7 +655,8 @@ fi</params>
 					<publickey/>
 					<privatekey/>
 					<port/>
-					<description/>
+					<description>WARNING
+The configuration above will not be applied every 10 minutes. It will be only applied once, during a new proxy bootstrap.</description>
 					<inventory_link>0</inventory_link>
 					<applications>
 						<application>
@@ -1090,6 +1088,15 @@ then
     expect -c &quot;
         log_user 1
         spawn sudo rsync -a -e \&quot;ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no\&quot; {$ZBX_SERVERSSHID}@{$ZBX_SERVERIP}:/var/Collector/Collector_source/Collector/* /var/Collector
+        expect \&quot;password\&quot;
+        sleep 1
+        send \&quot;{$ZBX_SERVERSSHPW}\r\&quot;
+        expect \&quot;$\&quot;
+        exit
+    &quot;
+    expect -c &quot;
+        log_user 1
+        spawn sudo rsync -a -e \&quot;ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no\&quot; {$ZBX_SERVERSSHID}@{$ZBX_SERVERIP}:/var/Collector/Collector_source/Collector/zbxFiles/proxy_userparams/* /etc/zabbix/zabbix_agentd.d/
         expect \&quot;password\&quot;
         sleep 1
         send \&quot;{$ZBX_SERVERSSHPW}\r\&quot;

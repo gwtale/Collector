@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <zabbix_export>
-	<version>3.2</version>
-	<date>2016-01-01T01:01:01Z</date>
+	<version>3.4</version>
+	<date>2017-01-01T01:01:01Z</date>
 	<groups>
 		<group>
 			<name>Templates</name>
@@ -48,17 +48,15 @@
 					<name>File read bytes per second</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>perf_counter[\2\16]</key>
-					<delay>60</delay>
-					<history>7</history>
-					<trends>365</trends>
+					<delay>1m</delay>
+					<history>1w</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>0</value_type>
 					<allowed_hosts/>
 					<units>Bps</units>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -66,11 +64,8 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -89,22 +84,23 @@
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>File write bytes per second</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>perf_counter[\2\18]</key>
-					<delay>60</delay>
-					<history>7</history>
-					<trends>365</trends>
+					<delay>1m</delay>
+					<history>1w</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>0</value_type>
 					<allowed_hosts/>
 					<units>Bps</units>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -112,11 +108,8 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -135,22 +128,23 @@
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Number of threads</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>perf_counter[\2\250]</key>
-					<delay>60</delay>
-					<history>7</history>
-					<trends>365</trends>
+					<delay>1m</delay>
+					<history>1w</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -158,11 +152,8 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -178,22 +169,23 @@
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Average disk read queue length</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>perf_counter[\234(_Total)\1402]</key>
-					<delay>60</delay>
-					<history>7</history>
-					<trends>365</trends>
+					<delay>1m</delay>
+					<history>1w</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>0</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -201,11 +193,8 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -224,22 +213,23 @@
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Average disk write queue length</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>perf_counter[\234(_Total)\1404]</key>
-					<delay>60</delay>
-					<history>7</history>
-					<trends>365</trends>
+					<delay>1m</delay>
+					<history>1w</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>0</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -247,11 +237,8 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -270,22 +257,23 @@
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Number of processes</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>proc.num[]</key>
-					<delay>60</delay>
-					<history>7</history>
-					<trends>365</trends>
+					<delay>1m</delay>
+					<history>1w</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -293,11 +281,8 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -313,22 +298,23 @@
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Processor load (1 min average)</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>system.cpu.load[percpu,avg1]</key>
-					<delay>60</delay>
-					<history>7</history>
-					<trends>365</trends>
+					<delay>1m</delay>
+					<history>1w</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>0</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -336,11 +322,8 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -359,22 +342,23 @@
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Processor load (5 min average)</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>system.cpu.load[percpu,avg5]</key>
-					<delay>60</delay>
-					<history>7</history>
-					<trends>365</trends>
+					<delay>1m</delay>
+					<history>1w</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>0</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -382,11 +366,8 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -405,22 +386,23 @@
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Processor load (15 min average)</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>system.cpu.load[percpu,avg15]</key>
-					<delay>60</delay>
-					<history>7</history>
-					<trends>365</trends>
+					<delay>1m</delay>
+					<history>1w</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>0</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -428,11 +410,8 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -451,22 +430,23 @@
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Free swap space</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>system.swap.size[,free]</key>
-					<delay>60</delay>
-					<history>7</history>
-					<trends>365</trends>
+					<delay>1m</delay>
+					<history>1w</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>B</units>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -474,11 +454,8 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -494,22 +471,23 @@
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Total swap space</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>system.swap.size[,total]</key>
-					<delay>3600</delay>
-					<history>7</history>
-					<trends>365</trends>
+					<delay>1h</delay>
+					<history>1w</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>B</units>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -517,11 +495,8 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -537,22 +512,23 @@
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>System information</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>system.uname</key>
-					<delay>3600</delay>
-					<history>7</history>
+					<delay>1h</delay>
+					<history>1w</history>
 					<trends>0</trends>
 					<status>0</status>
 					<value_type>1</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -560,11 +536,8 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -583,22 +556,23 @@
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>System uptime</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>system.uptime</key>
-					<delay>60</delay>
-					<history>7</history>
-					<trends>365</trends>
+					<delay>1m</delay>
+					<history>1w</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>uptime</units>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -606,11 +580,8 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -626,22 +597,23 @@
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Free memory</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>vm.memory.size[free]</key>
-					<delay>60</delay>
-					<history>7</history>
-					<trends>365</trends>
+					<delay>1m</delay>
+					<history>1w</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>B</units>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -649,11 +621,8 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -669,22 +638,23 @@
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Total memory</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>vm.memory.size[total]</key>
-					<delay>3600</delay>
-					<history>7</history>
-					<trends>365</trends>
+					<delay>1h</delay>
+					<history>1w</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>B</units>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -692,11 +662,8 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -712,6 +679,9 @@
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 			</items>
 			<discovery_rules>
@@ -721,7 +691,7 @@
 					<snmp_community/>
 					<snmp_oid/>
 					<key>net.if.discovery</key>
-					<delay>3600</delay>
+					<delay>1h</delay>
 					<status>0</status>
 					<allowed_hosts/>
 					<snmpv3_contextname/>
@@ -731,7 +701,6 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
 					<authtype>0</authtype>
@@ -752,24 +721,22 @@
 							</condition>
 						</conditions>
 					</filter>
-					<lifetime>30</lifetime>
+					<lifetime>30d</lifetime>
 					<description>Discovery of network interfaces as defined in global regular expression &quot;Network interfaces for discovery&quot;.</description>
 					<item_prototypes>
 						<item_prototype>
 							<name>Incoming network traffic on $1</name>
 							<type>0</type>
 							<snmp_community/>
-							<multiplier>1</multiplier>
 							<snmp_oid/>
 							<key>net.if.in[{#IFNAME}]</key>
-							<delay>60</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>1m</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>bps</units>
-							<delta>1</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -777,11 +744,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>8</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -797,23 +761,33 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing>
+								<step>
+									<type>10</type>
+									<params/>
+								</step>
+								<step>
+									<type>1</type>
+									<params>8</params>
+								</step>
+							</preprocessing>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Outgoing network traffic on $1</name>
 							<type>0</type>
 							<snmp_community/>
-							<multiplier>1</multiplier>
 							<snmp_oid/>
 							<key>net.if.out[{#IFNAME}]</key>
-							<delay>60</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>1m</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>bps</units>
-							<delta>1</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -821,11 +795,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>8</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -841,7 +812,19 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing>
+								<step>
+									<type>10</type>
+									<params/>
+								</step>
+								<step>
+									<type>1</type>
+									<params>8</params>
+								</step>
+							</preprocessing>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 					</item_prototypes>
 					<trigger_prototypes/>
@@ -892,6 +875,7 @@
 						</graph_prototype>
 					</graph_prototypes>
 					<host_prototypes/>
+					<jmx_endpoint/>
 				</discovery_rule>
 				<discovery_rule>
 					<name>Mounted filesystem discovery</name>
@@ -899,7 +883,7 @@
 					<snmp_community/>
 					<snmp_oid/>
 					<key>vfs.fs.discovery</key>
-					<delay>3600</delay>
+					<delay>1h</delay>
 					<status>0</status>
 					<allowed_hosts/>
 					<snmpv3_contextname/>
@@ -909,7 +893,6 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
 					<authtype>0</authtype>
@@ -930,24 +913,22 @@
 							</condition>
 						</conditions>
 					</filter>
-					<lifetime>30</lifetime>
+					<lifetime>30d</lifetime>
 					<description>Discovery of file systems of different types as defined in global regular expression &quot;File systems for discovery&quot;.</description>
 					<item_prototypes>
 						<item_prototype>
 							<name>Free disk space on $1</name>
 							<type>0</type>
 							<snmp_community/>
-							<multiplier>0</multiplier>
 							<snmp_oid/>
 							<key>vfs.fs.size[{#FSNAME},free]</key>
-							<delay>60</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>1m</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>B</units>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -955,11 +936,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -975,23 +953,24 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Free disk space on $1 (percentage)</name>
 							<type>0</type>
 							<snmp_community/>
-							<multiplier>0</multiplier>
 							<snmp_oid/>
 							<key>vfs.fs.size[{#FSNAME},pfree]</key>
-							<delay>60</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>1m</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>0</value_type>
 							<allowed_hosts/>
 							<units>%</units>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -999,11 +978,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -1019,23 +995,24 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Total disk space on $1</name>
 							<type>0</type>
 							<snmp_community/>
-							<multiplier>0</multiplier>
 							<snmp_oid/>
 							<key>vfs.fs.size[{#FSNAME},total]</key>
-							<delay>3600</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>1h</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>B</units>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1043,11 +1020,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -1063,23 +1037,24 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Used disk space on $1</name>
 							<type>0</type>
 							<snmp_community/>
-							<multiplier>0</multiplier>
 							<snmp_oid/>
 							<key>vfs.fs.size[{#FSNAME},used]</key>
-							<delay>60</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>1m</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>B</units>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1087,11 +1062,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -1107,7 +1079,10 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 					</item_prototypes>
 					<trigger_prototypes>
@@ -1175,6 +1150,7 @@
 						</graph_prototype>
 					</graph_prototypes>
 					<host_prototypes/>
+					<jmx_endpoint/>
 				</discovery_rule>
 			</discovery_rules>
 			<httptests/>

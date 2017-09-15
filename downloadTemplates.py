@@ -88,7 +88,7 @@ class ZabbixTemplates:
       date = template.getElementsByTagName("date")[0]
       # We are backing these up to git, steralize date so it doesn't appear to change 
       # each time we export the templates
-      date.firstChild.replaceWholeText('2016-01-01T01:01:01Z')
+      date.firstChild.replaceWholeText('2017-01-01T01:01:01Z')
       f = open(oput, 'w+')
       f.write(template.toprettyxml().encode('utf-8'))
       f.close()

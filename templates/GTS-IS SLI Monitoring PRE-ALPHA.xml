@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <zabbix_export>
-	<version>3.2</version>
-	<date>2016-01-01T01:01:01Z</date>
+	<version>3.4</version>
+	<date>2017-01-01T01:01:01Z</date>
 	<groups>
 		<group>
 			<name>Templates</name>
@@ -27,17 +27,15 @@
 					<name>SLI Latency</name>
 					<type>15</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>sli_latency</key>
-					<delay>30</delay>
-					<history>90</history>
-					<trends>365</trends>
+					<delay>30s</delay>
+					<history>90d</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>ms</units>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -45,14 +43,11 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params>(last(&quot;dc12slgtw.adp.com.br:gre_peer_latency[tun1]&quot;) + last(&quot;fwvytsao101.brf.com.br:gre_peer_latency[tun1]&quot;) +
 last(&quot;fwvytsao102.brf.com.br:gre_peer_latency[tun1]&quot;) +
 last(&quot;SFL-NTW-PRDVYATTA2.onofre.com.br:gre_peer_latency[tun1]&quot;) +
 last(&quot;SFL-NTW-PRDVYATTA1.onofre.com.br:gre_peer_latency[tun1]&quot;)) / 5</params>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -68,22 +63,23 @@ last(&quot;SFL-NTW-PRDVYATTA1.onofre.com.br:gre_peer_latency[tun1]&quot;)) / 5</
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>SLI Status</name>
 					<type>15</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>sli_status</key>
-					<delay>30</delay>
-					<history>90</history>
-					<trends>365</trends>
+					<delay>30s</delay>
+					<history>90d</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -91,14 +87,11 @@ last(&quot;SFL-NTW-PRDVYATTA1.onofre.com.br:gre_peer_latency[tun1]&quot;)) / 5</
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params>last(&quot;dc12slgtw.adp.com.br:gre_peer_alive[tun1]&quot;) + last(&quot;fwvytsao101.brf.com.br:gre_peer_alive[tun1]&quot;) +
 last(&quot;fwvytsao102.brf.com.br:gre_peer_alive[tun1]&quot;) +
 last(&quot;SFL-NTW-PRDVYATTA2.onofre.com.br:gre_peer_alive[tun1]&quot;) +
 last(&quot;SFL-NTW-PRDVYATTA1.onofre.com.br:gre_peer_alive[tun1]&quot;)</params>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -114,6 +107,9 @@ last(&quot;SFL-NTW-PRDVYATTA1.onofre.com.br:gre_peer_alive[tun1]&quot;)</params>
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 			</items>
 			<discovery_rules/>

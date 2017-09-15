@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <zabbix_export>
-	<version>3.2</version>
-	<date>2016-01-01T01:01:01Z</date>
+	<version>3.4</version>
+	<date>2017-01-01T01:01:01Z</date>
 	<groups>
 		<group>
 			<name>Templates</name>
@@ -57,17 +57,15 @@
 					<name>Web Interface is running</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>net.tcp.service[tcp,,80]</key>
-					<delay>600</delay>
-					<history>90</history>
-					<trends>365</trends>
+					<delay>10m</delay>
+					<history>90d</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>0</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -75,11 +73,8 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -95,22 +90,23 @@
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>WebProxy service is running</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>net.tcp.service[tcp,,3128]</key>
-					<delay>600</delay>
-					<history>90</history>
-					<trends>365</trends>
+					<delay>10m</delay>
+					<history>90d</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -118,11 +114,8 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -138,22 +131,23 @@
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>DHCP service is running</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>net.udp.listen[67]</key>
-					<delay>600</delay>
-					<history>90</history>
-					<trends>365</trends>
+					<delay>10m</delay>
+					<history>90d</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -161,11 +155,8 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -181,22 +172,23 @@
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>UDP NTP service is running</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>net.udp.listen[123]</key>
-					<delay>600</delay>
-					<history>90</history>
-					<trends>365</trends>
+					<delay>10m</delay>
+					<history>90d</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -204,11 +196,8 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -224,22 +213,23 @@
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>SNMP service is running</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>net.udp.listen[161]</key>
-					<delay>600</delay>
-					<history>90</history>
-					<trends>365</trends>
+					<delay>10m</delay>
+					<history>90d</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -247,11 +237,8 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -267,22 +254,23 @@
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>OpenVPN port is LISTEN</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>net.udp.listen[1194]</key>
-					<delay>600</delay>
-					<history>90</history>
-					<trends>365</trends>
+					<delay>10m</delay>
+					<history>90d</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -290,11 +278,8 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -310,22 +295,23 @@
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>L2TP VPN service is running</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>net.udp.listen[1701]</key>
-					<delay>600</delay>
-					<history>90</history>
-					<trends>365</trends>
+					<delay>10m</delay>
+					<history>90d</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -333,11 +319,8 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -353,22 +336,23 @@
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Memory usage of $1</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>proc.mem[dhcpd3]</key>
-					<delay>600</delay>
-					<history>90</history>
-					<trends>365</trends>
+					<delay>10m</delay>
+					<history>90d</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -376,11 +360,8 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -396,22 +377,23 @@
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Memory usage of $1</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>proc.mem[netplugd]</key>
-					<delay>600</delay>
-					<history>90</history>
-					<trends>365</trends>
+					<delay>10m</delay>
+					<history>90d</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -419,11 +401,8 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -439,22 +418,23 @@
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Memory usage of $1</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>proc.mem[openvpn]</key>
-					<delay>600</delay>
-					<history>90</history>
-					<trends>365</trends>
+					<delay>10m</delay>
+					<history>90d</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -462,11 +442,8 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -482,22 +459,23 @@
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Memory usage of $1</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>proc.mem[snmpd]</key>
-					<delay>600</delay>
-					<history>90</history>
-					<trends>365</trends>
+					<delay>10m</delay>
+					<history>90d</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -505,11 +483,8 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -525,22 +500,23 @@
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Memory usage of $1</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>proc.mem[squid3]</key>
-					<delay>600</delay>
-					<history>90</history>
-					<trends>365</trends>
+					<delay>10m</delay>
+					<history>90d</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -548,11 +524,8 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -568,22 +541,23 @@
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Number of processes of $1</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>proc.num[netplugd]</key>
-					<delay>600</delay>
-					<history>90</history>
-					<trends>365</trends>
+					<delay>10m</delay>
+					<history>90d</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -591,11 +565,8 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -611,22 +582,23 @@
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>OpenVPN service is running</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>process_status[openvpn]</key>
-					<delay>120</delay>
-					<history>90</history>
-					<trends>365</trends>
+					<delay>2m</delay>
+					<history>90d</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -634,11 +606,8 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -657,22 +626,23 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 						<name>Service state</name>
 					</valuemap>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>IPSec service is running</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>process_status[pluto]</key>
-					<delay>60</delay>
-					<history>90</history>
-					<trends>365</trends>
+					<delay>1m</delay>
+					<history>90d</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -680,11 +650,8 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -703,22 +670,23 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 						<name>Service state</name>
 					</valuemap>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Contents of config.boot</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>read[/config/config.boot]</key>
-					<delay>28800</delay>
-					<history>90</history>
+					<delay>8h</delay>
+					<history>90d</history>
 					<trends>0</trends>
 					<status>1</status>
 					<value_type>4</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -726,11 +694,8 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -746,22 +711,23 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Conntrack count</name>
 					<type>13</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>ssh.run[conntrack_count]</key>
-					<delay>120</delay>
-					<history>90</history>
-					<trends>365</trends>
+					<delay>2m</delay>
+					<history>90d</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>entries</units>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -769,11 +735,8 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params>cat /proc/sys/net/ipv4/netfilter/ip_conntrack_count</params>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username>{$SSH_ID}</username>
 					<password>{$SSH_PASSWORD}</password>
@@ -789,22 +752,23 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Conntrack MAX</name>
 					<type>13</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>ssh.run[conntrack_max]</key>
-					<delay>600</delay>
-					<history>90</history>
-					<trends>365</trends>
+					<delay>10m</delay>
+					<history>90d</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>entries</units>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -812,11 +776,8 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params>cat /proc/sys/net/ipv4/netfilter/ip_conntrack_max</params>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username>{$SSH_ID}</username>
 					<password>{$SSH_PASSWORD}</password>
@@ -832,22 +793,23 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Ping IP</name>
 					<type>13</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>ssh.run[ping_ip]</key>
-					<delay>60</delay>
-					<history>90</history>
-					<trends>365</trends>
+					<delay>1m</delay>
+					<history>90d</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -855,11 +817,8 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params>if fping -u 8.8.8.8 &gt;&amp; /dev/null ;then echo 0; else echo 2; fi</params>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username>{$SSH_ID}</username>
 					<password>{$SSH_PASSWORD}</password>
@@ -875,22 +834,23 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>VRRP process status</name>
 					<type>13</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>ssh.run[process_status.keepalived]</key>
-					<delay>60</delay>
-					<history>90</history>
-					<trends>365</trends>
+					<delay>1m</delay>
+					<history>90d</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -898,11 +858,8 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params>if pgrep keepalived &gt; /dev/null; then echo 1; else echo 0; fi</params>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username>{$SSH_ID}</username>
 					<password>{$SSH_PASSWORD}</password>
@@ -920,22 +877,23 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 						<name>Service state</name>
 					</valuemap>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Routing table</name>
 					<type>13</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>ssh.run[routing_table]</key>
-					<delay>86400</delay>
-					<history>90</history>
+					<delay>1d</delay>
+					<history>90d</history>
 					<trends>0</trends>
 					<status>0</status>
 					<value_type>4</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -943,11 +901,8 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params>/opt/vyatta/bin/vyatta-op-cmd-wrapper show ip route</params>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username>{$SSH_ID}</username>
 					<password>{$SSH_PASSWORD}</password>
@@ -963,22 +918,23 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Vyatta version</name>
 					<type>13</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>ssh.run[show_version]</key>
-					<delay>600</delay>
-					<history>90</history>
+					<delay>10m</delay>
+					<history>90d</history>
 					<trends>0</trends>
 					<status>0</status>
 					<value_type>4</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -986,11 +942,8 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params>/opt/vyatta/bin/vyatta-op-cmd-wrapper show version|grep Version| awk '{ print $2 }'</params>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username>{$SSH_ID}</username>
 					<password>{$SSH_PASSWORD}</password>
@@ -1006,22 +959,23 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>VRRP last transition (bond0)</name>
 					<type>13</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>ssh.run[vrrp_lasttransition.bond0]</key>
-					<delay>600</delay>
-					<history>90</history>
+					<delay>10m</delay>
+					<history>90d</history>
 					<trends>0</trends>
 					<status>0</status>
 					<value_type>4</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1029,11 +983,8 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params>/opt/vyatta/bin/vyatta-op-cmd-wrapper show vrrp |grep &quot;bond0 &quot; | awk '{ print $6 }'</params>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username>{$SSH_ID}</username>
 					<password>{$SSH_PASSWORD}</password>
@@ -1051,22 +1002,23 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>VRRP status (bond0)</name>
 					<type>13</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>ssh.run[vrrp_status.bond0]</key>
-					<delay>60</delay>
-					<history>90</history>
+					<delay>1m</delay>
+					<history>90d</history>
 					<trends>0</trends>
 					<status>0</status>
 					<value_type>4</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1074,11 +1026,8 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params>/opt/vyatta/bin/vyatta-op-cmd-wrapper show vrrp |grep bond0 | awk '{ print $3 }'</params>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username>{$SSH_ID}</username>
 					<password>{$SSH_PASSWORD}</password>
@@ -1096,22 +1045,23 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Zones</name>
 					<type>13</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>ssh.run[zones]</key>
-					<delay>86400</delay>
-					<history>90</history>
+					<delay>1d</delay>
+					<history>90d</history>
 					<trends>0</trends>
 					<status>0</status>
 					<value_type>4</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1119,11 +1069,8 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params>/opt/vyatta/bin/vyatta-op-cmd-wrapper show zone policy</params>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username>{$SSH_ID}</username>
 					<password>{$SSH_PASSWORD}</password>
@@ -1139,22 +1086,23 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Checksum of $1</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>vfs.file.cksum[/config/config.boot]</key>
-					<delay>3600</delay>
-					<history>7</history>
-					<trends>365</trends>
+					<delay>1h</delay>
+					<history>1w</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1162,11 +1110,8 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -1182,22 +1127,23 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>IPSec routing table threshold</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>xfrm4_gc_thresh</key>
-					<delay>600</delay>
-					<history>90</history>
-					<trends>365</trends>
+					<delay>10m</delay>
+					<history>90d</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1205,11 +1151,8 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -1225,22 +1168,23 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Xfrm OutBundleGenError (IPSec related)</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>xfrm_stat[XfrmOutBundleGenError]</key>
-					<delay>60</delay>
-					<history>90</history>
-					<trends>365</trends>
+					<delay>1m</delay>
+					<history>90d</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1248,11 +1192,8 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -1268,6 +1209,9 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 			</items>
 			<discovery_rules>
@@ -1277,7 +1221,7 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					<snmp_community/>
 					<snmp_oid/>
 					<key>ssh.run[discovery.gre_tunnels]</key>
-					<delay>60</delay>
+					<delay>1m</delay>
 					<status>0</status>
 					<allowed_hosts/>
 					<snmpv3_contextname/>
@@ -1287,7 +1231,6 @@ Using process method instead (custom, inside zabbix_agent.conf), which monitors 
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<delay_flex/>
 					<params>#!/bin/vbash
 tunnels=`/opt/vyatta/bin/vyatta-op-cmd-wrapper show interfaces tunnel|grep 'tun'|awk '{print $1}'`
 first=1
@@ -1321,17 +1264,15 @@ echo &quot;}&quot;</params>
 							<name>GRE {#TUN_INT} Local IP</name>
 							<type>13</type>
 							<snmp_community/>
-							<multiplier>0</multiplier>
 							<snmp_oid/>
 							<key>ssh.run[gre_local.{#TUN_INT}]</key>
-							<delay>600</delay>
-							<history>90</history>
+							<delay>10m</delay>
+							<history>90d</history>
 							<trends>0</trends>
 							<status>0</status>
 							<value_type>4</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1339,11 +1280,8 @@ echo &quot;}&quot;</params>
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params>/opt/vyatta/bin/vyatta-op-cmd-wrapper show interfaces tunnel {#TUN_INT} |grep peer|awk '{ print $2 }'</params>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username>{$SSH_ID}</username>
 							<password>{$SSH_PASSWORD}</password>
@@ -1359,23 +1297,24 @@ echo &quot;}&quot;</params>
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>GRE {#TUN_INT} Peer IP</name>
 							<type>13</type>
 							<snmp_community/>
-							<multiplier>0</multiplier>
 							<snmp_oid/>
 							<key>ssh.run[gre_peer.{#TUN_INT}]</key>
-							<delay>600</delay>
-							<history>90</history>
+							<delay>10m</delay>
+							<history>90d</history>
 							<trends>0</trends>
 							<status>0</status>
 							<value_type>4</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1383,11 +1322,8 @@ echo &quot;}&quot;</params>
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params>/opt/vyatta/bin/vyatta-op-cmd-wrapper show interfaces tunnel {#TUN_INT} |grep peer|awk '{ print $4 }'</params>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username>{$SSH_ID}</username>
 							<password>{$SSH_PASSWORD}</password>
@@ -1403,23 +1339,24 @@ echo &quot;}&quot;</params>
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>GRE {#TUN_INT} Peer Status</name>
 							<type>13</type>
 							<snmp_community/>
-							<multiplier>0</multiplier>
 							<snmp_oid/>
 							<key>ssh.run[gre_peer_alive.{#TUN_INT}]</key>
-							<delay>60</delay>
-							<history>90</history>
-							<trends>365</trends>
+							<delay>1m</delay>
+							<history>90d</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1427,11 +1364,8 @@ echo &quot;}&quot;</params>
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params>peer=`/opt/vyatta/bin/vyatta-op-cmd-wrapper show interfaces tunnel {#TUN_INT} |grep peer|awk '{ print $4 }'`;if fping -u $peer &gt;&amp; /dev/null ;then echo 1; else echo 0; fi</params>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username>{$SSH_ID}</username>
 							<password>{$SSH_PASSWORD}</password>
@@ -1449,23 +1383,24 @@ echo &quot;}&quot;</params>
 								<name>Host availability</name>
 							</valuemap>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>GRE {#TUN_INT} Peer Latency</name>
 							<type>13</type>
 							<snmp_community/>
-							<multiplier>0</multiplier>
 							<snmp_oid/>
 							<key>ssh.run[gre_peer_latency.{#TUN_INT}]</key>
-							<delay>60</delay>
-							<history>90</history>
-							<trends>365</trends>
+							<delay>1m</delay>
+							<history>90d</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>0</value_type>
 							<allowed_hosts/>
 							<units>ms</units>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1473,11 +1408,8 @@ echo &quot;}&quot;</params>
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params>peer=`/opt/vyatta/bin/vyatta-op-cmd-wrapper show interfaces tunnel {#TUN_INT} |grep peer|awk '{ print $4 }'`;if fping -u $peer &gt;&amp; /dev/null ;then fping -e $peer|awk '{print substr($4,2); }'; else echo 0; fi</params>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username>{$SSH_ID}</username>
 							<password>{$SSH_PASSWORD}</password>
@@ -1493,7 +1425,10 @@ echo &quot;}&quot;</params>
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 					</item_prototypes>
 					<trigger_prototypes>
@@ -1577,6 +1512,7 @@ echo &quot;}&quot;</params>
 						</graph_prototype>
 					</graph_prototypes>
 					<host_prototypes/>
+					<jmx_endpoint/>
 				</discovery_rule>
 				<discovery_rule>
 					<name>VPN discovery</name>
@@ -1584,7 +1520,7 @@ echo &quot;}&quot;</params>
 					<snmp_community/>
 					<snmp_oid/>
 					<key>ssh.run[discovery.vpn_peers]</key>
-					<delay>60</delay>
+					<delay>1m</delay>
 					<status>0</status>
 					<allowed_hosts/>
 					<snmpv3_contextname/>
@@ -1594,7 +1530,6 @@ echo &quot;}&quot;</params>
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<delay_flex/>
 					<params>#!/bin/vbash
 peers=`/opt/vyatta/bin/vyatta-op-cmd-wrapper show vpn ipsec sa detail |grep 'Peer IP'|awk '{print $3}'`
 first=1
@@ -1631,17 +1566,15 @@ echo &quot;}&quot;</params>
 							<name>VPN peer {#VPN_PEER} tunnel {#VPN_TUNNELS} - total bytes IN</name>
 							<type>13</type>
 							<snmp_community/>
-							<multiplier>0</multiplier>
 							<snmp_oid/>
 							<key>ssh.run[vpn_tunnel_bytesin.{#VPN_PEER}:{#VPN_TUNNEL}]</key>
-							<delay>60</delay>
-							<history>90</history>
-							<trends>365</trends>
+							<delay>1m</delay>
+							<history>90d</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>bytes</units>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1649,11 +1582,8 @@ echo &quot;}&quot;</params>
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params>result=`/opt/vyatta/bin/vyatta-op-cmd-wrapper show vpn ipsec sa statistics peer {#VPN_PEER} tunnel {#VPN_TUNNEL} |tail -n 4|grep in|awk '{print $5}'`;if [ &quot;$result&quot; == &quot;n/a&quot; ] ;then echo 0; else echo $result; fi</params>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username>{$SSH_ID}</username>
 							<password>{$SSH_PASSWORD}</password>
@@ -1669,23 +1599,24 @@ echo &quot;}&quot;</params>
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>VPN peer {#VPN_PEER} tunnel {#VPN_TUNNEL} - total bytes OUT</name>
 							<type>13</type>
 							<snmp_community/>
-							<multiplier>0</multiplier>
 							<snmp_oid/>
 							<key>ssh.run[vpn_tunnel_bytesout.{#VPN_PEER}:{#VPN_TUNNEL}]</key>
-							<delay>60</delay>
-							<history>90</history>
-							<trends>365</trends>
+							<delay>1m</delay>
+							<history>90d</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>bytes</units>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1693,11 +1624,8 @@ echo &quot;}&quot;</params>
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params>result=`/opt/vyatta/bin/vyatta-op-cmd-wrapper show vpn ipsec sa statistics peer {#VPN_PEER} tunnel {#VPN_TUNNEL} |tail -n 4|grep out|awk '{print $5}'`;if [ &quot;$result&quot; == &quot;n/a&quot; ] ;then echo 0; else echo $result; fi</params>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username>{$SSH_ID}</username>
 							<password>{$SSH_PASSWORD}</password>
@@ -1713,23 +1641,24 @@ echo &quot;}&quot;</params>
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>VPN peer {#VPN_PEER} tunnel {#VPN_TUNNEL} status</name>
 							<type>13</type>
 							<snmp_community/>
-							<multiplier>0</multiplier>
 							<snmp_oid/>
 							<key>ssh.run[vpn_tunnel_status.{#VPN_PEER}:{#VPN_TUNNEL}]</key>
-							<delay>60</delay>
-							<history>90</history>
-							<trends>365</trends>
+							<delay>1m</delay>
+							<history>90d</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1737,11 +1666,8 @@ echo &quot;}&quot;</params>
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params>TUNSTATUS=&quot;$(/opt/vyatta/bin/vyatta-op-cmd-wrapper show vpn ipsec sa peer {#VPN_PEER} tunnel {#VPN_TUNNEL} |tail -n 3|head -n 1|awk '{ print $2 }')&quot; &amp;&amp; if [ &quot;$TUNSTATUS&quot; == &quot;up&quot; ]; then echo 1; else echo 0; fi</params>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username>{$SSH_ID}</username>
 							<password>{$SSH_PASSWORD}</password>
@@ -1759,7 +1685,10 @@ echo &quot;}&quot;</params>
 								<name>Service state</name>
 							</valuemap>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 					</item_prototypes>
 					<trigger_prototypes>
@@ -1859,6 +1788,7 @@ echo &quot;}&quot;</params>
 						</graph_prototype>
 					</graph_prototypes>
 					<host_prototypes/>
+					<jmx_endpoint/>
 				</discovery_rule>
 			</discovery_rules>
 			<httptests/>

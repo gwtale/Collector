@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <zabbix_export>
-	<version>3.2</version>
-	<date>2016-01-01T01:01:01Z</date>
+	<version>3.4</version>
+	<date>2017-01-01T01:01:01Z</date>
 	<groups>
 		<group>
 			<name>Hypervisors</name>
@@ -39,17 +39,15 @@
 					<name>Event log</name>
 					<type>3</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>vmware.eventlog[{$URL}]</key>
-					<delay>60</delay>
-					<history>90</history>
+					<delay>1m</delay>
+					<history>90d</history>
 					<trends>0</trends>
 					<status>0</status>
 					<value_type>2</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -57,11 +55,8 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username>{$USERNAME}</username>
 					<password>{$PASSWORD}</password>
@@ -77,22 +72,23 @@
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Full name</name>
 					<type>3</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>vmware.fullname[{$URL}]</key>
-					<delay>3600</delay>
-					<history>90</history>
+					<delay>1h</delay>
+					<history>90d</history>
 					<trends>0</trends>
 					<status>0</status>
 					<value_type>1</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -100,11 +96,8 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username>{$USERNAME}</username>
 					<password>{$PASSWORD}</password>
@@ -120,22 +113,23 @@
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Version</name>
 					<type>3</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>vmware.version[{$URL}]</key>
-					<delay>3600</delay>
-					<history>90</history>
+					<delay>1h</delay>
+					<history>90d</history>
 					<trends>0</trends>
 					<status>0</status>
 					<value_type>1</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -143,11 +137,8 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username>{$USERNAME}</username>
 					<password>{$PASSWORD}</password>
@@ -163,6 +154,9 @@
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 			</items>
 			<discovery_rules>
@@ -172,7 +166,7 @@
 					<snmp_community/>
 					<snmp_oid/>
 					<key>vmware.cluster.discovery[{$URL}]</key>
-					<delay>3600</delay>
+					<delay>1h</delay>
 					<status>0</status>
 					<allowed_hosts/>
 					<snmpv3_contextname/>
@@ -182,7 +176,6 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
 					<authtype>0</authtype>
@@ -196,24 +189,22 @@
 						<formula/>
 						<conditions/>
 					</filter>
-					<lifetime>30</lifetime>
+					<lifetime>30d</lifetime>
 					<description>Discovery of clusters</description>
 					<item_prototypes>
 						<item_prototype>
 							<name>Status of &quot;$2&quot; cluster</name>
 							<type>3</type>
 							<snmp_community/>
-							<multiplier>0</multiplier>
 							<snmp_oid/>
 							<key>vmware.cluster.status[{$URL},{#CLUSTER.NAME}]</key>
-							<delay>60</delay>
-							<history>90</history>
-							<trends>365</trends>
+							<delay>1m</delay>
+							<history>90d</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -221,11 +212,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username>{$USERNAME}</username>
 							<password>{$PASSWORD}</password>
@@ -243,7 +231,10 @@
 								<name>VMware status</name>
 							</valuemap>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 					</item_prototypes>
 					<trigger_prototypes>
@@ -266,6 +257,7 @@
 					</trigger_prototypes>
 					<graph_prototypes/>
 					<host_prototypes/>
+					<jmx_endpoint/>
 				</discovery_rule>
 				<discovery_rule>
 					<name>Discover VMware hypervisors</name>
@@ -273,7 +265,7 @@
 					<snmp_community/>
 					<snmp_oid/>
 					<key>vmware.hv.discovery[{$URL}]</key>
-					<delay>3600</delay>
+					<delay>1h</delay>
 					<status>0</status>
 					<allowed_hosts/>
 					<snmpv3_contextname/>
@@ -283,7 +275,6 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
 					<authtype>0</authtype>
@@ -297,7 +288,7 @@
 						<formula/>
 						<conditions/>
 					</filter>
-					<lifetime>30</lifetime>
+					<lifetime>30d</lifetime>
 					<description>Discovery of hypervisors.</description>
 					<item_prototypes/>
 					<trigger_prototypes/>
@@ -332,6 +323,7 @@
 							</templates>
 						</host_prototype>
 					</host_prototypes>
+					<jmx_endpoint/>
 				</discovery_rule>
 				<discovery_rule>
 					<name>Discover Special VMware VMs</name>
@@ -339,7 +331,7 @@
 					<snmp_community/>
 					<snmp_oid/>
 					<key>vmware.vm.discovery[{$URL}]</key>
-					<delay>3600</delay>
+					<delay>1h</delay>
 					<status>0</status>
 					<allowed_hosts/>
 					<snmpv3_contextname/>
@@ -349,7 +341,6 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
 					<authtype>0</authtype>
@@ -370,7 +361,7 @@
 							</condition>
 						</conditions>
 					</filter>
-					<lifetime>30</lifetime>
+					<lifetime>30d</lifetime>
 					<description>Discovery of guest virtual machines matching REGEX. See &quot;filters&quot;.</description>
 					<item_prototypes/>
 					<trigger_prototypes/>
@@ -405,6 +396,7 @@
 							</templates>
 						</host_prototype>
 					</host_prototypes>
+					<jmx_endpoint/>
 				</discovery_rule>
 			</discovery_rules>
 			<httptests/>

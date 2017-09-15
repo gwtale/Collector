@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <zabbix_export>
-	<version>3.2</version>
-	<date>2016-01-01T01:01:01Z</date>
+	<version>3.4</version>
+	<date>2017-01-01T01:01:01Z</date>
 	<groups>
 		<group>
 			<name>Templates</name>
@@ -27,17 +27,15 @@
 					<name>Install/Reconfigure Zabbix Agent</name>
 					<type>13</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>ssh.run[installAgent,127.0.0.1,22,utf8]</key>
-					<delay>30</delay>
-					<history>90</history>
-					<trends>365</trends>
+					<delay>30s</delay>
+					<history>90d</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -45,14 +43,11 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params>rm ~/.ssh/known_hosts
 cd /var/Collector/zbxScripts
 if netstat -l|grep 8000 &gt; /dev/null; then echo 0 &gt; /dev/null; else echo &quot;waiting for simpleHTTPserver&quot; &amp;&amp; exit; fi
 if curl -s http://{HOST.IP}:10050 &gt; /dev/null; then echo &quot;agent is listening&quot;; else ./installZbxAgent.exp {HOST.IP} {$SSH_ID} {$SSH_PASSWORD} &amp;&amp; echo &quot;installZbxAgent.exp executed&quot;; fi</params>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username>{$ZBXSVR_ID}</username>
 					<password>{$ZBXSVR_PASSWORD}</password>
@@ -68,22 +63,23 @@ if curl -s http://{HOST.IP}:10050 &gt; /dev/null; then echo &quot;agent is liste
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Install/Reconfigure Zabbix Agent2</name>
 					<type>13</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>ssh.run[installAgent2,127.0.0.1,22,utf8]</key>
-					<delay>30</delay>
-					<history>90</history>
-					<trends>365</trends>
+					<delay>30s</delay>
+					<history>90d</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -91,14 +87,11 @@ if curl -s http://{HOST.IP}:10050 &gt; /dev/null; then echo &quot;agent is liste
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params>rm ~/.ssh/known_hosts
 cd /var/Collector/zbxScripts
 if netstat -l|grep 8000 &gt; /dev/null; then echo 0 &gt; /dev/null; else echo &quot;waiting for simpleHTTPserver&quot; &amp;&amp; exit; fi
 if curl -s http://{HOST.IP}:10050 &gt; /dev/null; then echo &quot;agent is listening&quot;; else ./installZbxAgent.exp {HOST.IP} {$SSH_ID} {$SSH_PASSWORD} &amp;&amp; echo &quot;installZbxAgent.exp executed&quot;; fi</params>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username>{$ZBXSVR_ID}</username>
 					<password>{$ZBXSVR_PASSWORD}</password>
@@ -114,6 +107,9 @@ if curl -s http://{HOST.IP}:10050 &gt; /dev/null; then echo &quot;agent is liste
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 			</items>
 			<discovery_rules/>

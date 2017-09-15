@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <zabbix_export>
-	<version>3.2</version>
-	<date>2016-01-01T01:01:01Z</date>
+	<version>3.4</version>
+	<date>2017-01-01T01:01:01Z</date>
 	<groups>
 		<group>
 			<name>ZBX-FORTINET-TEMPLATES</name>
@@ -30,7 +30,7 @@
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
 					<snmp_oid>.1.3.6.1.4.1.12356.101.3.2.1.1.2</snmp_oid>
 					<key>fgAvVdEntName</key>
-					<delay>300</delay>
+					<delay>5m</delay>
 					<status>0</status>
 					<allowed_hosts/>
 					<snmpv3_contextname/>
@@ -40,7 +40,6 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
 					<authtype>0</authtype>
@@ -54,24 +53,22 @@
 						<formula/>
 						<conditions/>
 					</filter>
-					<lifetime>7</lifetime>
+					<lifetime>1w</lifetime>
 					<description/>
 					<item_prototypes>
 						<item_prototype>
 							<name>Number of virus transmissions over FTP blocked in the virtual domain $1</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.12356.101.8.2.1.1.12.{#SNMPVALUE}</snmp_oid>
 							<key>fgAvFTPVirusBlocked[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -79,11 +76,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -99,23 +93,24 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Number of virus transmissions over FTP detected in the virtual domain $1</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.12356.101.8.2.1.1.11.{#SNMPVALUE}</snmp_oid>
 							<key>fgAvFTPVirusDetected[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -123,11 +118,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -143,23 +135,24 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Number of virus transmissions over HTTP blocked in the virtual domain $1</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.12356.101.8.2.1.1.4.{#SNMPVALUE}</snmp_oid>
 							<key>fgAvHTTPVirusBlocked[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -167,11 +160,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -187,23 +177,24 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Number of virus transmissions over HTTP detected in the virtual domain $1</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.12356.101.8.2.1.1.3.{#SNMPVALUE}</snmp_oid>
 							<key>fgAvHTTPVirusDetected[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -211,11 +202,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -231,23 +219,24 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Number of virus transmissions over IMAP blocked in the virtual domain $1</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.12356.101.8.2.1.1.10.{#SNMPVALUE}</snmp_oid>
 							<key>fgAvIMAPVirusBlocked[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -255,11 +244,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -275,23 +261,24 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Number of virus transmissions over IMAP detected in the virtual domain $1</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.12356.101.8.2.1.1.9.{#SNMPVALUE}</snmp_oid>
 							<key>fgAvIMAPVirusDetected[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -299,11 +286,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -319,23 +303,24 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Number of virus transmissions over IM protocols blocked in the virtual domain $1</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.12356.101.8.2.1.1.14.{#SNMPVALUE}</snmp_oid>
 							<key>fgAvIMVirusBlocked[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -343,11 +328,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -363,23 +345,24 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Number of virus transmissions over IM protocols detected in the virtual domain $1</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.12356.101.8.2.1.1.13.{#SNMPVALUE}</snmp_oid>
 							<key>fgAvIMVirusDetected[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -387,11 +370,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -407,23 +387,24 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Number of virus transmissions over NNTP blocked in the virtual domain $1</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.12356.101.8.2.1.1.16.{#SNMPVALUE}</snmp_oid>
 							<key>fgAvNNTPVirusBlocked[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -431,11 +412,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -451,23 +429,24 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Number of virus transmissions over NNTP detected in the virtual domain $1</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.12356.101.8.2.1.1.15.{#SNMPVALUE}</snmp_oid>
 							<key>fgAvNNTPVirusDetected[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -475,11 +454,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -495,23 +471,24 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Number of over-sized file transmissions blocked in the virtual domain $1</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.12356.101.8.2.1.1.18.{#SNMPVALUE}</snmp_oid>
 							<key>fgAvOversizedBlocked[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -519,11 +496,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -539,23 +513,24 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Number of over-sized file transmissions detected in the virtual domain $1</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.12356.101.8.2.1.1.17.{#SNMPVALUE}</snmp_oid>
 							<key>fgAvOversizedDetected[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -563,11 +538,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -583,23 +555,24 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Number of virus transmissions over POP3 blocked in the virtual domain $1</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.12356.101.8.2.1.1.8.{#SNMPVALUE}</snmp_oid>
 							<key>fgAvPOP3VirusBlocked[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -607,11 +580,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -627,23 +597,24 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Number of virus transmissions over POP3 detected in the virtual domain $1</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.12356.101.8.2.1.1.7.{#SNMPVALUE}</snmp_oid>
 							<key>fgAvPOP3VirusDetected[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -651,11 +622,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -671,23 +639,24 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Number of virus transmissions over SMTP blocked in the virtual domain $1</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.12356.101.8.2.1.1.6.{#SNMPVALUE}</snmp_oid>
 							<key>fgAvSMTPVirusBlocked[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -695,11 +664,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -715,23 +681,24 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Number of virus transmissions over SMTP detected in the virtual domain $1</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.12356.101.8.2.1.1.5.{#SNMPVALUE}</snmp_oid>
 							<key>fgAvSMTPVirusDetected[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -739,11 +706,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -759,23 +723,24 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Number of virus transmissions blocked in the virtual domain $1</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.12356.101.8.2.1.1.2.{#SNMPINDEX}</snmp_oid>
 							<key>fgAvVirusBlocked[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -783,11 +748,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -803,23 +765,24 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Number of virus transmissions detected in the virtual domain $1</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.12356.101.8.2.1.1.1.{#SNMPINDEX}</snmp_oid>
 							<key>fgAvVirusDetected[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -827,11 +790,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -847,7 +807,10 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 					</item_prototypes>
 					<trigger_prototypes>
@@ -2071,6 +2034,7 @@
 						</graph_prototype>
 					</graph_prototypes>
 					<host_prototypes/>
+					<jmx_endpoint/>
 				</discovery_rule>
 			</discovery_rules>
 			<httptests/>

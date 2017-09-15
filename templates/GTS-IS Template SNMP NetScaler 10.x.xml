@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <zabbix_export>
-	<version>3.2</version>
-	<date>2016-01-01T01:01:01Z</date>
+	<version>3.4</version>
+	<date>2017-01-01T01:01:01Z</date>
 	<groups>
 		<group>
 			<name>Templates</name>
@@ -64,17 +64,15 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<name>AppFirewall Requests Returning HTTP 4xx (delta)</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.64.1.26.0</snmp_oid>
 					<key>appFirewallDeltaRet4xx</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>req/s</units>
-					<delta>1</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -82,11 +80,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -102,22 +97,28 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>10</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>AppFirewall Requests Returning HTTP 5xx (delta)</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.64.1.27.0</snmp_oid>
 					<key>appFirewallDeltaRet5xx</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>req/s</units>
-					<delta>1</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -125,11 +126,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -145,22 +143,28 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>10</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>AppFirewall Violations (delta)</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.64.1.15.0</snmp_oid>
 					<key>appFirewallDeltaViol</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>vps</units>
-					<delta>1</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -168,11 +172,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -188,22 +189,28 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>10</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>AppFirewall Requests (delta)</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.64.1.1.0</snmp_oid>
 					<key>appFirewallRequests</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>req/s</units>
-					<delta>1</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -211,11 +218,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -231,22 +235,28 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>10</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>AppFirewall Responses (delta)</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.64.1.2.0</snmp_oid>
 					<key>appFirewallResponses</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>resp/s</units>
-					<delta>1</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -254,11 +264,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -274,22 +281,28 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>10</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>HA node state</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>.1.3.6.1.4.1.5951.4.1.1.23.24.0</snmp_oid>
 					<key>haCurState</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -297,11 +310,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -319,22 +329,23 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 						<name>Netscaler haCurState</name>
 					</valuemap>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>HA enabled</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>.1.3.6.1.4.1.5951.4.1.1.23.23.0</snmp_oid>
 					<key>haCurStatus</key>
-					<delay>1800</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>30m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -342,11 +353,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -364,22 +372,23 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 						<name>Netscaler haCurStatus</name>
 					</valuemap>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>HA master disputes</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.23.20.0</snmp_oid>
 					<key>haErrMasterDispute</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>times</units>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -387,11 +396,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -407,22 +413,23 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Memory allocation failures while sending heartbeats</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>.1.3.6.1.4.1.5951.4.1.1.23.10.0</snmp_oid>
 					<key>haErrNsbMemFail</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>failures</units>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -430,11 +437,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -450,22 +454,23 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Heartbeat packets missed</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>.1.3.6.1.4.1.5951.4.1.1.23.11.0</snmp_oid>
 					<key>haErrPortSilent</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>times</units>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -473,11 +478,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -493,22 +495,23 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Memory allocation failures during command propagation</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>.1.3.6.1.4.1.5951.4.1.1.23.9.0</snmp_oid>
 					<key>haErrPropMemFail</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>failures</units>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -516,11 +519,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -536,22 +536,23 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Number of times propagation timed out</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.23.17.0</snmp_oid>
 					<key>haErrPropTimeout</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>timeouts</units>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -559,11 +560,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -579,22 +577,23 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Sync errors since last transition</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>.1.3.6.1.4.1.5951.4.1.1.23.7.0</snmp_oid>
 					<key>haErrSyncFailure</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -602,11 +601,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -622,22 +618,23 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>State transition reason (last)</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>.1.3.6.1.4.1.5951.4.1.1.23.15.0</snmp_oid>
 					<key>haLastMasterStateTransitionReason</key>
-					<delay>180</delay>
-					<history>7</history>
+					<delay>3m</delay>
+					<history>1w</history>
 					<trends>0</trends>
 					<status>0</status>
 					<value_type>1</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -645,11 +642,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -665,22 +659,23 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Heartbeats not seen on (interfaces)</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>.1.3.6.1.4.1.5951.4.1.1.23.14.0</snmp_oid>
 					<key>haNicsMonitorFailed</key>
-					<delay>180</delay>
-					<history>7</history>
+					<delay>3m</delay>
+					<history>1w</history>
 					<trends>0</trends>
 					<status>0</status>
 					<value_type>4</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -688,11 +683,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -708,22 +700,23 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Failover peer's unique identifier</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>.1.3.6.1.4.1.5951.4.1.1.23.1.0</snmp_oid>
 					<key>haPeerId</key>
-					<delay>180</delay>
-					<history>7</history>
+					<delay>3m</delay>
+					<history>1w</history>
 					<trends>0</trends>
 					<status>0</status>
 					<value_type>4</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -731,11 +724,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -751,22 +741,23 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>HA peer IPv4 address</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>.1.3.6.1.4.1.5951.4.1.1.23.2.0</snmp_oid>
 					<key>haPeerIpAddress</key>
-					<delay>1800</delay>
-					<history>7</history>
+					<delay>30m</delay>
+					<history>1w</history>
 					<trends>0</trends>
 					<status>0</status>
 					<value_type>4</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -774,11 +765,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -794,22 +782,23 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>HA peer state</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>.1.3.6.1.4.1.5951.4.1.1.23.3.0</snmp_oid>
 					<key>haPeerState</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -817,11 +806,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -839,22 +825,23 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 						<name>Netscaler haPeerState</name>
 					</valuemap>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>State transiton time</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>1</multiplier>
 					<snmp_oid>.1.3.6.1.4.1.5951.4.1.1.23.5.0</snmp_oid>
 					<key>haTimeofLastStateTransition</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>uptime</units>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -862,11 +849,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>0.01</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -882,22 +866,28 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>1</type>
+							<params>0.01</params>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Heartbeat packets received</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.23.22.0</snmp_oid>
 					<key>haTotPktRx</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -905,11 +895,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -925,22 +912,23 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Heartbeat packets sent</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.23.21.0</snmp_oid>
 					<key>haTotPktTx</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -948,11 +936,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -968,22 +953,23 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Times state changed to FAIL</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>.1.3.6.1.4.1.5951.4.1.1.23.6.0</snmp_oid>
 					<key>haTotStateFail</key>
-					<delay>180</delay>
-					<history>7</history>
+					<delay>3m</delay>
+					<history>1w</history>
 					<trends>0</trends>
 					<status>0</status>
 					<value_type>4</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -991,11 +977,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -1011,22 +994,23 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>HTTP Errors (HTTP500~505)</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.48.61.0</snmp_oid>
 					<key>httpErrServerBusy</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>err/s</units>
-					<delta>1</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1034,11 +1018,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -1054,22 +1035,28 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>10</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>HTTP 1.0 Requests</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.48.52.0</snmp_oid>
 					<key>httpTot10Requests</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>req/s</units>
-					<delta>1</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1077,11 +1064,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -1097,22 +1081,28 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>10</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>HTTP 1.0 Responses</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.48.54.0</snmp_oid>
 					<key>httpTot10Responses</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>resp/s</units>
-					<delta>1</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1120,11 +1110,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -1140,22 +1127,28 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>10</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>HTTP 1.1 Requests</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.48.68.0</snmp_oid>
 					<key>httpTot11Requests</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>req/s</units>
-					<delta>1</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1163,11 +1156,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -1183,22 +1173,28 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>10</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>HTTP 1.1 Responses</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.48.69.0</snmp_oid>
 					<key>httpTot11Responses</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>resp/s</units>
-					<delta>1</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1206,11 +1202,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -1226,22 +1219,28 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>10</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>HTTP Requests</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.48.67.0</snmp_oid>
 					<key>httpTotRequests</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>req/s</units>
-					<delta>1</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1249,11 +1248,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -1269,22 +1265,28 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>10</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>HTTP Responses</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.48.53.0</snmp_oid>
 					<key>httpTotResponses</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>resp/s</units>
-					<delta>1</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1292,11 +1294,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -1312,22 +1311,28 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>10</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>memSizeMB</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>.1.3.6.1.4.1.5951.4.1.1.41.4.0</snmp_oid>
 					<key>memSizeMB</key>
-					<delay>1800</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>30m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>Mb</units>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1335,11 +1340,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -1355,22 +1357,23 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>numCPUs</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>.1.3.6.1.4.1.5951.4.1.1.41.3.0</snmp_oid>
 					<key>numCPUs</key>
-					<delay>1800</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>30m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1378,11 +1381,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -1398,22 +1398,23 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>resCpuUsage</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>.1.3.6.1.4.1.5951.4.1.1.41.1.0</snmp_oid>
 					<key>resCpuUsage</key>
-					<delay>60</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>1m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>%</units>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1421,11 +1422,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -1441,22 +1439,23 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>resMemUsage</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>.1.3.6.1.4.1.5951.4.1.1.41.2.0</snmp_oid>
 					<key>resMemUsage</key>
-					<delay>60</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>1m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>%</units>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1464,11 +1463,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -1484,22 +1480,23 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Generic SNMP Trap</name>
 					<type>17</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>snmptrap.fallback</key>
 					<delay>0</delay>
-					<history>7</history>
+					<history>1w</history>
 					<trends>0</trends>
 					<status>0</status>
 					<value_type>2</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1507,11 +1504,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -1527,22 +1521,23 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt>hh:mm:ss yyyy/MM/dd</logtimefmt>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>SNMP authenticationFailure trap</name>
 					<type>17</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>snmptrap[authenticationFailure]</key>
 					<delay>0</delay>
-					<history>7</history>
+					<history>1w</history>
 					<trends>0</trends>
 					<status>0</status>
 					<value_type>2</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1550,11 +1545,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -1570,22 +1562,23 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt>hh:mm:ss yyyy/MM/dd</logtimefmt>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>SSL Card Status</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.47.1.0</snmp_oid>
 					<key>sslCardStatus</key>
-					<delay>7200</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>2h</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1593,11 +1586,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -1615,22 +1605,23 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 						<name>Host availability</name>
 					</valuemap>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>SSL Current Sessions</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.47.296.0</snmp_oid>
 					<key>sslCurSessions</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1638,11 +1629,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -1658,22 +1646,23 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>SSL Decrypted Bytes (delta)</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.47.309.0</snmp_oid>
 					<key>sslDeltaDec</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>Bps</units>
-					<delta>1</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1681,11 +1670,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -1701,22 +1687,28 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>10</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>SSL Decrypted Bytes (Backend - delta)</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.47.322.0</snmp_oid>
 					<key>sslDeltaDecBE</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>Bps</units>
-					<delta>1</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1724,11 +1716,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -1744,22 +1733,28 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>10</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>SSL Decrypted Bytes (Frontend - delta)</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.47.324.0</snmp_oid>
 					<key>sslDeltaDecFE</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>Bps</units>
-					<delta>1</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1767,11 +1762,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -1787,22 +1779,28 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>10</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>SSL Encrypted Bytes (delta)</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.47.312.0</snmp_oid>
 					<key>sslDeltaEnc</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>Bps</units>
-					<delta>1</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1810,11 +1808,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -1830,22 +1825,28 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>10</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>SSL Encrypted Bytes (Frontend - delta)</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.47.311.0</snmp_oid>
 					<key>sslDeltaEncFE</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>Bps</units>
-					<delta>1</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1853,11 +1854,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -1873,22 +1871,28 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>10</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>SSL Transactions (delta)</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.47.200.0</snmp_oid>
 					<key>sslDeltaSSLTransactions</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>tps</units>
-					<delta>1</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1896,11 +1900,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -1916,22 +1917,28 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>10</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>SSL v2 Sessions (delta)</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.47.205.0</snmp_oid>
 					<key>sslDeltaSSLv2Sessions</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>2</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1939,11 +1946,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -1959,22 +1963,28 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>9</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>SSL v2 Transactions (delta)</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.47.201.0</snmp_oid>
 					<key>sslDeltaSSLv2Transactions</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>tps</units>
-					<delta>1</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -1982,11 +1992,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -2002,22 +2009,28 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>10</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>SSL v3 Sessions (delta)</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.47.206.0</snmp_oid>
 					<key>sslDeltaSSLv3Sessions</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>2</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -2025,11 +2038,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -2045,22 +2055,28 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>9</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>SSL v3 Transactions (delta)</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.47.202.0</snmp_oid>
 					<key>sslDeltaSSLv3Transactions</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>tps</units>
-					<delta>1</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -2068,11 +2084,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -2088,22 +2101,28 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>10</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>SSL v1 Sessions (delta)</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.47.207.0</snmp_oid>
 					<key>sslDeltaTLSv1Sessions</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>2</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -2111,11 +2130,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -2131,22 +2147,28 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>9</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>SSL v1 Transactions (delta)</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.47.203.0</snmp_oid>
 					<key>sslDeltaTLSv1Transactions</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>tps</units>
-					<delta>1</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -2154,11 +2176,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -2174,22 +2193,28 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>10</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>SSL Engine Status</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.47.2.0</snmp_oid>
 					<key>sslEngineStatus</key>
-					<delay>1800</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>30m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -2197,11 +2222,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -2219,22 +2241,23 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 						<name>Service state</name>
 					</valuemap>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>SSL Sessions/s</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.47.3.0</snmp_oid>
 					<key>sslSessionsPerSec</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>sessions/s</units>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -2242,11 +2265,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -2262,22 +2282,23 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>SSL Encrypted Bytes (Backend - delta)</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.47.321.0</snmp_oid>
 					<key>sslTotEncBE</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>Bps</units>
-					<delta>1</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -2285,11 +2306,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -2305,22 +2323,28 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>10</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>SSL Total Sessions</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.47.204.0</snmp_oid>
 					<key>sslTotSessions</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -2328,11 +2352,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -2348,22 +2369,23 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>SSL Total Transactions</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.47.200.0</snmp_oid>
 					<key>sslTotSSLTransactions</key>
-					<delay>1800</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>30m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -2371,11 +2393,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -2391,22 +2410,23 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>Build Version</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.1.0</snmp_oid>
 					<key>sysBuildVersion</key>
-					<delay>7200</delay>
-					<history>7</history>
+					<delay>2h</delay>
+					<history>1w</history>
 					<trends>0</trends>
 					<status>0</status>
 					<value_type>4</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -2414,11 +2434,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -2434,22 +2451,23 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>UpTime</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>1</multiplier>
 					<snmp_oid>.1.3.6.1.2.1.1.3.0</snmp_oid>
 					<key>sysUpTime</key>
-					<delay>3600</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>1h</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>uptime</units>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -2457,11 +2475,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>0.01</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -2477,22 +2492,28 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>1</type>
+							<params>0.01</params>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>TCP Active Server Connections</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.46.8.0</snmp_oid>
 					<key>tcpActiveServerConn</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -2500,11 +2521,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -2520,22 +2538,23 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>TCP Current Client Connections</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.46.2.0</snmp_oid>
 					<key>tcpCurClientConn.ns</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -2543,11 +2562,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -2563,22 +2579,23 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>TCP Current Server Connections</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.46.1.0</snmp_oid>
 					<key>tcpCurServerConn.ns</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -2586,11 +2603,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -2606,22 +2620,23 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>TCP Checksum Error</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.46.34.0</snmp_oid>
 					<key>tcpErrBadCheckSum</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>2</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -2629,11 +2644,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -2649,22 +2661,28 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>9</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>TCP Spare connections</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.46.14.0</snmp_oid>
 					<key>tcpSpareConn</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -2672,11 +2690,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -2692,22 +2707,23 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>TCP Surge Queue Length</name>
 					<type>4</type>
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-					<multiplier>0</multiplier>
 					<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.46.15.0</snmp_oid>
 					<key>tcpSurgeQueueLen</key>
-					<delay>180</delay>
-					<history>7</history>
-					<trends>180</trends>
+					<delay>3m</delay>
+					<history>1w</history>
+					<trends>180d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -2715,11 +2731,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -2735,6 +2748,9 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 			</items>
 			<discovery_rules>
@@ -2744,7 +2760,7 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
 					<snmp_oid>.1.3.6.1.4.1.5951.4.1.1.23.2.0</snmp_oid>
 					<key>haPeerIp</key>
-					<delay>120</delay>
+					<delay>2m</delay>
 					<status>0</status>
 					<allowed_hosts/>
 					<snmpv3_contextname/>
@@ -2754,7 +2770,6 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
 					<authtype>0</authtype>
@@ -2768,12 +2783,13 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 						<formula/>
 						<conditions/>
 					</filter>
-					<lifetime>7</lifetime>
+					<lifetime>1w</lifetime>
 					<description/>
 					<item_prototypes/>
 					<trigger_prototypes/>
 					<graph_prototypes/>
 					<host_prototypes/>
+					<jmx_endpoint/>
 				</discovery_rule>
 				<discovery_rule>
 					<name>NetScaler CPUs</name>
@@ -2781,7 +2797,7 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
 					<snmp_oid>discovery[{#SNMPVALUE},iso.3.6.1.4.1.5951.4.1.1.41.6.1.1]</snmp_oid>
 					<key>nscpu.discovery</key>
-					<delay>3600</delay>
+					<delay>1h</delay>
 					<status>0</status>
 					<allowed_hosts/>
 					<snmpv3_contextname/>
@@ -2791,7 +2807,6 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
 					<authtype>0</authtype>
@@ -2805,24 +2820,22 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 						<formula/>
 						<conditions/>
 					</filter>
-					<lifetime>30</lifetime>
+					<lifetime>30d</lifetime>
 					<description/>
 					<item_prototypes>
 						<item_prototype>
 							<name>{#SNMPVALUE} Usage(%)</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.41.6.1.2.{#SNMPINDEX}</snmp_oid>
 							<key>nsCPUusage.[{#SNMPVALUE}]</key>
-							<delay>60</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>1m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>%</units>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -2830,11 +2843,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -2850,7 +2860,10 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 					</item_prototypes>
 					<trigger_prototypes>
@@ -2922,6 +2935,7 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 						</graph_prototype>
 					</graph_prototypes>
 					<host_prototypes/>
+					<jmx_endpoint/>
 				</discovery_rule>
 				<discovery_rule>
 					<name>IP addresses</name>
@@ -2929,7 +2943,7 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
 					<snmp_oid>discovery[{#SNMPVALUE},SNMPv2-SMI::enterprises.5951.4.1.1.26.1.1]</snmp_oid>
 					<key>nsIpAddrTable</key>
-					<delay>7200</delay>
+					<delay>2h</delay>
 					<status>0</status>
 					<allowed_hosts/>
 					<snmpv3_contextname/>
@@ -2939,7 +2953,6 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
 					<authtype>0</authtype>
@@ -2960,17 +2973,15 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<name>{#SNMPVALUE} Netmask</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.1.26.1.2.{#SNMPINDEX}</snmp_oid>
 							<key>ipNetmask.[{#SNMPVALUE}]</key>
-							<delay>3600</delay>
-							<history>7</history>
+							<delay>1h</delay>
+							<history>1w</history>
 							<trends>0</trends>
 							<status>0</status>
 							<value_type>4</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -2978,11 +2989,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -2998,23 +3006,24 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>{#SNMPVALUE} Type</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.1.26.1.3.{#SNMPINDEX}</snmp_oid>
 							<key>ipType.[{#SNMPVALUE}]</key>
-							<delay>3600</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>1h</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -3022,11 +3031,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -3044,23 +3050,24 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 								<name>Netscaler IP Type</name>
 							</valuemap>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>{#SNMPVALUE} VLAN</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.1.26.1.6.{#SNMPINDEX}</snmp_oid>
 							<key>ipVlan.[{#SNMPVALUE}]</key>
-							<delay>3600</delay>
-							<history>7</history>
+							<delay>1h</delay>
+							<history>1w</history>
 							<trends>0</trends>
 							<status>0</status>
 							<value_type>4</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -3068,11 +3075,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -3088,12 +3092,16 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 					</item_prototypes>
 					<trigger_prototypes/>
 					<graph_prototypes/>
 					<host_prototypes/>
+					<jmx_endpoint/>
 				</discovery_rule>
 				<discovery_rule>
 					<name>Svc Group Members</name>
@@ -3101,7 +3109,7 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
 					<snmp_oid>discovery[{#SNMPVALUE}, 1.3.6.1.4.1.5951.4.1.2.7.1.2, {#GROUPNAME}, 1.3.6.1.4.1.5951.4.1.2.7.1.1, {#MEMBERNAME}, 1.3.6.1.4.1.5951.4.1.2.7.1.36, {#MEMBERIP}, 1.3.6.1.4.1.5951.4.1.2.7.1.3, {#MEMBERPORT}, 1.3.6.1.4.1.5951.4.1.2.7.1.4]</snmp_oid>
 					<key>serviceGroupMemberTable</key>
-					<delay>3600</delay>
+					<delay>1h</delay>
 					<status>0</status>
 					<allowed_hosts/>
 					<snmpv3_contextname/>
@@ -3111,7 +3119,6 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
 					<authtype>0</authtype>
@@ -3132,17 +3139,15 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<name>{#GROUPNAME} member {#MEMBERNAME} ({#MEMBERIP}:{#MEMBERPORT}) Active Connections</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.2.7.1.11.{#SNMPINDEX}</snmp_oid>
 							<key>svcGrpMemberActiveConn.[{#GROUPNAME}::{#MEMBERNAME}::{#MEMBERIP}:{#MEMBERPORT}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -3150,11 +3155,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -3170,23 +3172,24 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>{#GROUPNAME} member {#MEMBERNAME} ({#MEMBERIP}:{#MEMBERPORT}) Avg Transaction Time</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.2.7.1.9.{#SNMPINDEX}</snmp_oid>
 							<key>svcGrpMemberAvgTransactionTime.[{#GROUPNAME}::{#MEMBERNAME}::{#MEMBERIP}:{#MEMBERPORT}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>30</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>30d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -3194,11 +3197,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -3214,23 +3214,24 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>{#GROUPNAME} member {#MEMBERNAME} ({#MEMBERIP}:{#MEMBERPORT}) Client Connections</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.2.7.1.24.{#SNMPINDEX}</snmp_oid>
 							<key>svcGrpMemberCurClntConnections.[{#GROUPNAME}::{#MEMBERNAME}::{#MEMBERIP}:{#MEMBERPORT}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -3238,11 +3239,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -3258,23 +3256,24 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>{#GROUPNAME} member {#MEMBERNAME} ({#MEMBERIP}:{#MEMBERPORT}) Established Connections</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.2.7.1.10.{#SNMPINDEX}</snmp_oid>
 							<key>svcGrpMemberEstablishedConn.[{#GROUPNAME}::{#MEMBERNAME}::{#MEMBERIP}:{#MEMBERPORT}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -3282,11 +3281,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -3302,23 +3298,24 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>{#GROUPNAME} member {#MEMBERNAME} ({#MEMBERIP}:{#MEMBERPORT}) Requests Rate</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.2.7.1.25.{#SNMPINDEX}</snmp_oid>
 							<key>svcGrpMemberRequestRate.[{#GROUPNAME}::{#MEMBERNAME}::{#MEMBERIP}:{#MEMBERPORT}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>req/s</units>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -3326,11 +3323,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -3346,23 +3340,24 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>{#GROUPNAME} member {#MEMBERNAME} ({#MEMBERIP}:{#MEMBERPORT}) State</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.2.7.1.6.{#SNMPINDEX}</snmp_oid>
 							<key>svcGrpMemberState.[{#GROUPNAME}::{#MEMBERNAME}::{#MEMBERIP}:{#MEMBERPORT}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>30</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>30d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -3370,11 +3365,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -3392,7 +3384,10 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 								<name>Netscaler Entity State</name>
 							</valuemap>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 					</item_prototypes>
 					<trigger_prototypes/>
@@ -3467,6 +3462,7 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 						</graph_prototype>
 					</graph_prototypes>
 					<host_prototypes/>
+					<jmx_endpoint/>
 				</discovery_rule>
 				<discovery_rule>
 					<name>ServiceGroups</name>
@@ -3474,7 +3470,7 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
 					<snmp_oid>discovery[{#SNMPVALUE},SNMPv2-SMI::enterprises.5951.4.1.2.11.1.1]</snmp_oid>
 					<key>serviceGroupTable</key>
-					<delay>3600</delay>
+					<delay>1h</delay>
 					<status>0</status>
 					<allowed_hosts/>
 					<snmpv3_contextname/>
@@ -3484,7 +3480,6 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
 					<authtype>0</authtype>
@@ -3505,17 +3500,15 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<name>{#SNMPVALUE} state</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.2.11.1.3.{#SNMPINDEX}</snmp_oid>
 							<key>svcgrpSvcGroupState.[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>30</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>30d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -3523,11 +3516,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -3545,23 +3535,24 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 								<name>Netscaler Entity State</name>
 							</valuemap>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>{#SNMPVALUE} type</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.2.11.1.2.{#SNMPINDEX}</snmp_oid>
 							<key>svcgrpSvcGroupType.[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>30</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>30d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -3569,11 +3560,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -3591,12 +3579,16 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 								<name>Netscaler Protocol Type</name>
 							</valuemap>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 					</item_prototypes>
 					<trigger_prototypes/>
 					<graph_prototypes/>
 					<host_prototypes/>
+					<jmx_endpoint/>
 				</discovery_rule>
 				<discovery_rule>
 					<name>Interfaces</name>
@@ -3604,7 +3596,7 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
 					<snmp_oid>discovery[{#SNMPVALUE},1.3.6.1.4.1.5951.4.1.1.54.1.1]</snmp_oid>
 					<key>snmp.interfaces.discovery</key>
-					<delay>3600</delay>
+					<delay>1h</delay>
 					<status>0</status>
 					<allowed_hosts/>
 					<snmpv3_contextname/>
@@ -3614,7 +3606,6 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
 					<authtype>0</authtype>
@@ -3628,24 +3619,22 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 						<formula/>
 						<conditions/>
 					</filter>
-					<lifetime>30</lifetime>
+					<lifetime>30d</lifetime>
 					<description/>
 					<item_prototypes>
 						<item_prototype>
 							<name>Interface {#SNMPVALUE} Dropped RX Packets (delta)</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.54.1.22.{#SNMPINDEX}</snmp_oid>
 							<key>ifErrDeltaDroppedRxPkts.[{#SNMPVALUE}]</key>
-							<delay>120</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>2m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>pps</units>
-							<delta>1</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -3653,11 +3642,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -3673,23 +3659,29 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing>
+								<step>
+									<type>10</type>
+									<params/>
+								</step>
+							</preprocessing>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Interface {#SNMPVALUE} Dropped TX Packets (delta)</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>iso.3.6.1.4.1.5951.4.1.1.54.1.38.{#SNMPINDEX}</snmp_oid>
 							<key>ifErrDeltaDroppedTxPkts.[{#SNMPVALUE}]</key>
-							<delay>120</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>2m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>pps</units>
-							<delta>1</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -3697,11 +3689,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -3717,23 +3706,29 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing>
+								<step>
+									<type>10</type>
+									<params/>
+								</step>
+							</preprocessing>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Packets dropped on {#SNMPVALUE} due to license limit</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.1.54.1.50.{#SNMPINDEX}</snmp_oid>
 							<key>ifErrDroppedRxPktsRl.[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>1</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -3741,11 +3736,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -3761,23 +3753,29 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing>
+								<step>
+									<type>10</type>
+									<params/>
+								</step>
+							</preprocessing>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Interface {#SNMPVALUE} throughput</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.1.54.1.48.{#SNMPINDEX}</snmp_oid>
 							<key>ifThroughput.[{#SNMPVALUE}]</key>
-							<delay>60</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>1m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>Mbps</units>
-							<delta>1</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -3785,11 +3783,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -3805,23 +3800,29 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing>
+								<step>
+									<type>10</type>
+									<params/>
+								</step>
+							</preprocessing>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Interface {#SNMPVALUE} received bytes</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.1.54.1.3.{#SNMPINDEX}</snmp_oid>
 							<key>r_bytes.[{#SNMPVALUE}]</key>
-							<delay>60</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>1m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>bps</units>
-							<delta>1</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -3829,11 +3830,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -3849,23 +3847,29 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing>
+								<step>
+									<type>10</type>
+									<params/>
+								</step>
+							</preprocessing>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Interface {#SNMPVALUE} received packets</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.1.54.1.5.{#SNMPINDEX}</snmp_oid>
 							<key>r_pks.[{#SNMPVALUE}]</key>
-							<delay>60</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>1m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>pps</units>
-							<delta>1</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -3873,11 +3877,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -3893,23 +3894,29 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing>
+								<step>
+									<type>10</type>
+									<params/>
+								</step>
+							</preprocessing>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Interface {#SNMPVALUE} type</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.1.54.1.2.{#SNMPINDEX}</snmp_oid>
 							<key>type.[{#SNMPVALUE}]</key>
-							<delay>3600</delay>
-							<history>7</history>
+							<delay>1h</delay>
+							<history>1w</history>
 							<trends>0</trends>
 							<status>0</status>
 							<value_type>1</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -3917,11 +3924,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -3937,23 +3941,24 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Interface {#SNMPVALUE} transmitted bytes</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.1.54.1.7.{#SNMPINDEX}</snmp_oid>
 							<key>t_bytes.[{#SNMPVALUE}]</key>
-							<delay>60</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>1m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>bps</units>
-							<delta>1</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -3961,11 +3966,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -3981,23 +3983,29 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing>
+								<step>
+									<type>10</type>
+									<params/>
+								</step>
+							</preprocessing>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Interface {#SNMPVALUE} transmitted packets</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.1.54.1.9.{#SNMPINDEX}</snmp_oid>
 							<key>t_pks.[{#SNMPVALUE}]</key>
-							<delay>60</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>1m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>pps</units>
-							<delta>1</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -4005,11 +4013,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -4025,7 +4030,15 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing>
+								<step>
+									<type>10</type>
+									<params/>
+								</step>
+							</preprocessing>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 					</item_prototypes>
 					<trigger_prototypes/>
@@ -4156,6 +4169,7 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 						</graph_prototype>
 					</graph_prototypes>
 					<host_prototypes/>
+					<jmx_endpoint/>
 				</discovery_rule>
 				<discovery_rule>
 					<name>Interfaces_defMib</name>
@@ -4163,7 +4177,7 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
 					<snmp_oid>discovery[{#SNMPVALUE},IF-MIB::ifDescr]</snmp_oid>
 					<key>snmp.interfaces.discovery2</key>
-					<delay>3600</delay>
+					<delay>1h</delay>
 					<status>0</status>
 					<allowed_hosts/>
 					<snmpv3_contextname/>
@@ -4173,7 +4187,6 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
 					<authtype>0</authtype>
@@ -4187,24 +4200,22 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 						<formula/>
 						<conditions/>
 					</filter>
-					<lifetime>30</lifetime>
+					<lifetime>30d</lifetime>
 					<description/>
 					<item_prototypes>
 						<item_prototype>
 							<name>Interface $1 Admin Status</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>IF-MIB::ifAdminStatus.{#SNMPINDEX}</snmp_oid>
 							<key>ifAdminStatus[{#SNMPVALUE}]</key>
-							<delay>60</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>1m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -4212,11 +4223,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -4234,23 +4242,24 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 								<name>SNMP interface status (ifAdminStatus)</name>
 							</valuemap>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Interface $1 Operational Status</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>IF-MIB::ifOperStatus.{#SNMPINDEX}</snmp_oid>
 							<key>ifOperStatus[{#SNMPVALUE}]</key>
-							<delay>60</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>1m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -4258,11 +4267,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -4280,7 +4286,10 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 								<name>SNMP interface status (ifOperStatus)</name>
 							</valuemap>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 					</item_prototypes>
 					<trigger_prototypes>
@@ -4303,6 +4312,7 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					</trigger_prototypes>
 					<graph_prototypes/>
 					<host_prototypes/>
+					<jmx_endpoint/>
 				</discovery_rule>
 				<discovery_rule>
 					<name>Servers</name>
@@ -4310,7 +4320,7 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
 					<snmp_oid>discovery[{#SNMPVALUE},1.3.6.1.4.1.5951.4.1.2.2.1.1]</snmp_oid>
 					<key>snmp.servers.discovery</key>
-					<delay>3600</delay>
+					<delay>1h</delay>
 					<status>0</status>
 					<allowed_hosts/>
 					<snmpv3_contextname/>
@@ -4320,7 +4330,6 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
 					<authtype>0</authtype>
@@ -4341,17 +4350,15 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<name>{#SNMPVALUE} IP Address</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.2.2.1.2.{#SNMPINDEX}</snmp_oid>
 							<key>serverIpAddress.[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
+							<delay>5m</delay>
+							<history>1w</history>
 							<trends>0</trends>
 							<status>0</status>
 							<value_type>4</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -4359,11 +4366,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -4379,23 +4383,24 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>{#SNMPVALUE} State</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.2.2.1.3.{#SNMPINDEX}</snmp_oid>
 							<key>serverState.[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>30</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>30d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -4403,11 +4408,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -4425,12 +4427,16 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 								<name>Netscaler Entity State</name>
 							</valuemap>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 					</item_prototypes>
 					<trigger_prototypes/>
 					<graph_prototypes/>
 					<host_prototypes/>
+					<jmx_endpoint/>
 				</discovery_rule>
 				<discovery_rule>
 					<name>Services</name>
@@ -4438,7 +4444,7 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
 					<snmp_oid>discovery[{#SNMPVALUE},1.3.6.1.4.1.5951.4.1.2.1.1.1]</snmp_oid>
 					<key>snmp.services.discovery</key>
-					<delay>3600</delay>
+					<delay>1h</delay>
 					<status>0</status>
 					<allowed_hosts/>
 					<snmpv3_contextname/>
@@ -4448,7 +4454,6 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
 					<authtype>0</authtype>
@@ -4469,17 +4474,15 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<name>Service {#SNMPVALUE} Act conn</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.2.1.1.9.{#SNMPINDEX}</snmp_oid>
 							<key>service.actconn.[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -4487,11 +4490,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -4507,23 +4507,24 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Service {#SNMPVALUE} Est conn</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.2.1.1.8.{#SNMPINDEX}</snmp_oid>
 							<key>service.estconn.[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -4531,11 +4532,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -4551,23 +4549,24 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Service {#SNMPVALUE} IP</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.2.1.1.2.{#SNMPINDEX}</snmp_oid>
 							<key>service.ip.[{#SNMPVALUE}]</key>
-							<delay>3600</delay>
-							<history>7</history>
+							<delay>1h</delay>
+							<history>1w</history>
 							<trends>0</trends>
 							<status>0</status>
 							<value_type>1</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -4575,11 +4574,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -4595,23 +4591,24 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Service {#SNMPVALUE} port</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.2.1.1.3.{#SNMPINDEX}</snmp_oid>
 							<key>service.port.[{#SNMPVALUE}]</key>
-							<delay>3600</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>1h</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -4619,11 +4616,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -4639,23 +4633,24 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Service {#SNMPVALUE} Total req</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.2.1.1.30.{#SNMPINDEX}</snmp_oid>
 							<key>service.totreq.[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>1</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -4663,11 +4658,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -4683,23 +4675,29 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing>
+								<step>
+									<type>10</type>
+									<params/>
+								</step>
+							</preprocessing>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Service {#SNMPVALUE} Total req bytes</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.2.1.1.31.{#SNMPINDEX}</snmp_oid>
 							<key>service.totreqb.[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>bps</units>
-							<delta>1</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -4707,11 +4705,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -4727,23 +4722,29 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing>
+								<step>
+									<type>10</type>
+									<params/>
+								</step>
+							</preprocessing>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Service {#SNMPVALUE} Total resp</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.2.1.1.32.{#SNMPINDEX}</snmp_oid>
 							<key>service.totresp.[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>1</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -4751,11 +4752,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -4771,23 +4769,29 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing>
+								<step>
+									<type>10</type>
+									<params/>
+								</step>
+							</preprocessing>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Service {#SNMPVALUE} Total resp bytes</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.2.1.1.33.{#SNMPINDEX}</snmp_oid>
 							<key>service.totrespb.[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>bps</units>
-							<delta>1</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -4795,11 +4799,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -4815,23 +4816,29 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing>
+								<step>
+									<type>10</type>
+									<params/>
+								</step>
+							</preprocessing>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Service {#SNMPVALUE} Total recvd pkts</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.2.1.1.34.{#SNMPINDEX}</snmp_oid>
 							<key>service.totresvdpkts.[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>pps</units>
-							<delta>1</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -4839,11 +4846,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -4859,23 +4863,29 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing>
+								<step>
+									<type>10</type>
+									<params/>
+								</step>
+							</preprocessing>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Service {#SNMPVALUE} Total sent pkts</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.2.1.1.35.{#SNMPINDEX}</snmp_oid>
 							<key>service.totrsentpkts.[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>pps</units>
-							<delta>1</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -4883,11 +4893,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -4903,7 +4910,15 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing>
+								<step>
+									<type>10</type>
+									<params/>
+								</step>
+							</preprocessing>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 					</item_prototypes>
 					<trigger_prototypes/>
@@ -5042,6 +5057,7 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 						</graph_prototype>
 					</graph_prototypes>
 					<host_prototypes/>
+					<jmx_endpoint/>
 				</discovery_rule>
 				<discovery_rule>
 					<name>Vservers</name>
@@ -5049,7 +5065,7 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
 					<snmp_oid>discovery[{#SNMPVALUE},SNMPv2-SMI::enterprises.5951.4.1.3.1.1.59]</snmp_oid>
 					<key>vsvrFullName</key>
-					<delay>5400</delay>
+					<delay>90m</delay>
 					<status>0</status>
 					<allowed_hosts/>
 					<snmpv3_contextname/>
@@ -5059,7 +5075,6 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
 					<authtype>0</authtype>
@@ -5080,17 +5095,15 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<name>Vserver {#SNMPVALUE} Client Connections</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.3.1.1.7.{#SNMPINDEX}</snmp_oid>
 							<key>vsvr.cl_conn.[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -5098,11 +5111,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -5118,23 +5128,24 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Vserver {#SNMPVALUE} Health</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.3.1.1.62.{#SNMPINDEX}</snmp_oid>
 							<key>vsvr.health.[{#SNMPVALUE}]</key>
-							<delay>600</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>10m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>%</units>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -5142,11 +5153,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -5162,23 +5170,24 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Vserver {#SNMPVALUE} Server Connections</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.3.1.1.8.{#SNMPINDEX}</snmp_oid>
 							<key>vsvr.sr_conn.[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>connections</units>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -5186,11 +5195,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -5206,23 +5212,24 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Vserver {#SNMPVALUE} State</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.3.1.1.5.{#SNMPINDEX}</snmp_oid>
 							<key>vsvr.state.[{#SNMPVALUE}]</key>
-							<delay>600</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>10m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -5230,11 +5237,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -5252,23 +5256,24 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 								<name>Netscaler Entity State</name>
 							</valuemap>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Vserver {#SNMPVALUE} Total Clients</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.3.1.1.56.{#SNMPINDEX}</snmp_oid>
 							<key>vsvr.TotalClients.[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -5276,11 +5281,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -5296,23 +5298,24 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Vserver {#SNMPVALUE} Total Servers</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.3.1.1.65.{#SNMPINDEX}</snmp_oid>
 							<key>vsvr.TotalServers.[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>connections</units>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -5320,11 +5323,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -5340,23 +5340,24 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Vserver {#SNMPVALUE} vsvrCurServicesDown</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.3.1.1.37.{#SNMPINDEX}</snmp_oid>
 							<key>vsvr.vsvrCurServicesDown.[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -5364,11 +5365,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -5384,23 +5382,24 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Vserver {#SNMPVALUE} vsvrCurServicesOutOfSvc</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.3.1.1.39.{#SNMPINDEX}</snmp_oid>
 							<key>vsvr.vsvrCurServicesOutOfSvc.[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -5408,11 +5407,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -5428,23 +5424,24 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Vserver {#SNMPVALUE} vsvrCurServicesTransToOutOfSvc</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.3.1.1.40.{#SNMPINDEX}</snmp_oid>
 							<key>vsvr.vsvrCurServicesTransToOutOfSvc.[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -5452,11 +5449,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -5472,23 +5466,24 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Vserver {#SNMPVALUE} vsvrCurServicesUnKnown</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.3.1.1.38.{#SNMPINDEX}</snmp_oid>
 							<key>vsvr.vsvrCurServicesUnKnown.[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -5496,11 +5491,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -5516,23 +5508,24 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Vserver {#SNMPVALUE} vsvrCurServicesUp</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.3.1.1.41.{#SNMPINDEX}</snmp_oid>
 							<key>vsvr.vsvrCurServicesUp.[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -5540,11 +5533,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -5560,23 +5550,24 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Vserver {#SNMPVALUE} RxBytesRate</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>1</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.3.1.1.44.{#SNMPINDEX}</snmp_oid>
 							<key>vsvr.vsvrRxBytesRate.[{#SNMPVALUE}]</key>
-							<delay>120</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>2m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>bps</units>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -5584,11 +5575,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>8</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -5604,23 +5592,29 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing>
+								<step>
+									<type>1</type>
+									<params>8</params>
+								</step>
+							</preprocessing>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Vserver {#SNMPVALUE} TxBytesRate</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>1</multiplier>
 							<snmp_oid>.1.3.6.1.4.1.5951.4.1.3.1.1.45.{#SNMPINDEX}</snmp_oid>
 							<key>vsvr.vsvrTxBytesRate.[{#SNMPVALUE}]</key>
-							<delay>120</delay>
-							<history>7</history>
-							<trends>180</trends>
+							<delay>2m</delay>
+							<history>1w</history>
+							<trends>180d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>bps</units>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -5628,11 +5622,8 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>8</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -5648,7 +5639,15 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing>
+								<step>
+									<type>1</type>
+									<params>8</params>
+								</step>
+							</preprocessing>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 					</item_prototypes>
 					<trigger_prototypes>
@@ -5816,6 +5815,7 @@ http://docs.citrix.com/content/dam/docs/en-us/netscaler/10/downloads/ctx132381.h
 						</graph_prototype>
 					</graph_prototypes>
 					<host_prototypes/>
+					<jmx_endpoint/>
 				</discovery_rule>
 			</discovery_rules>
 			<httptests/>

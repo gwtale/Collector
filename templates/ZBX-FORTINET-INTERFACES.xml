@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <zabbix_export>
-	<version>3.2</version>
-	<date>2016-01-01T01:01:01Z</date>
+	<version>3.4</version>
+	<date>2017-01-01T01:01:01Z</date>
 	<groups>
 		<group>
 			<name>ZBX-FORTINET-TEMPLATES</name>
@@ -30,7 +30,7 @@
 					<snmp_community>SL348836_df05.fcr01.sao01</snmp_community>
 					<snmp_oid>discovery[{#SNMPVALUE},IF-MIB::ifDescr]</snmp_oid>
 					<key>ifDescr</key>
-					<delay>30</delay>
+					<delay>30s</delay>
 					<status>0</status>
 					<allowed_hosts/>
 					<snmpv3_contextname/>
@@ -40,7 +40,6 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
 					<authtype>0</authtype>
@@ -54,24 +53,22 @@
 						<formula/>
 						<conditions/>
 					</filter>
-					<lifetime>7</lifetime>
+					<lifetime>1w</lifetime>
 					<description/>
 					<item_prototypes>
 						<item_prototype>
 							<name>Speed of interface {#SNMPVALUE}</name>
 							<type>10</type>
 							<snmp_community/>
-							<multiplier>0</multiplier>
 							<snmp_oid/>
 							<key>if.speed[&quot;-d&quot;,&quot;{HOST.HOST}&quot;,&quot;-c&quot;,&quot;{$SNMP_COMMUNITY}&quot;,&quot;-s&quot;,&quot;{#SNMPINDEX}&quot;]</key>
-							<delay>300</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>5m</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>bps</units>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -79,11 +76,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -99,23 +93,24 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Associated virtual domain for interface {#SNMPVALUE}</name>
 							<type>10</type>
 							<snmp_community/>
-							<multiplier>0</multiplier>
 							<snmp_oid/>
 							<key>if.vdom[&quot;-d&quot;,&quot;{HOST.HOST}&quot;,&quot;-c&quot;,&quot;{$SNMP_COMMUNITY}&quot;,&quot;-s&quot;,&quot;{#SNMPINDEX}&quot;]</key>
-							<delay>300</delay>
-							<history>7</history>
+							<delay>5m</delay>
+							<history>1w</history>
 							<trends>0</trends>
 							<status>0</status>
 							<value_type>1</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -123,11 +118,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -143,23 +135,24 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Admin status of interface $1</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>IF-MIB::ifAdminStatus.{#SNMPINDEX}</snmp_oid>
 							<key>ifAdminStatus[{#SNMPVALUE}]</key>
-							<delay>60</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>1m</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -167,11 +160,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -189,23 +179,24 @@
 								<name>SNMP interface status (ifAdminStatus)</name>
 							</valuemap>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Alias of interface $1</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>IF-MIB::ifAlias.{#SNMPINDEX}</snmp_oid>
 							<key>ifAlias[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
+							<delay>5m</delay>
+							<history>1w</history>
 							<trends>0</trends>
 							<status>0</status>
 							<value_type>1</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -213,11 +204,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -233,23 +221,24 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Description of interface $1</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>IF-MIB::ifDescr.{#SNMPINDEX}</snmp_oid>
 							<key>ifDescr[{#SNMPVALUE}]</key>
-							<delay>300</delay>
-							<history>7</history>
+							<delay>5m</delay>
+							<history>1w</history>
 							<trends>0</trends>
 							<status>0</status>
 							<value_type>1</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -257,11 +246,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -277,23 +263,24 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Incoming discarded packets on interface $1</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>IF-MIB::ifInDiscards.{#SNMPINDEX}</snmp_oid>
 							<key>ifInDiscards[{#SNMPVALUE}]</key>
-							<delay>60</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>1m</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>2</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -301,11 +288,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -321,23 +305,29 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing>
+								<step>
+									<type>9</type>
+									<params/>
+								</step>
+							</preprocessing>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Inbound errors on interface $1</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>IF-MIB::ifInErrors.{#SNMPINDEX}</snmp_oid>
 							<key>ifInErrors[{#SNMPVALUE}]</key>
-							<delay>60</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>1m</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>2</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -345,11 +335,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -365,23 +352,29 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing>
+								<step>
+									<type>9</type>
+									<params/>
+								</step>
+							</preprocessing>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Incoming traffic on interface $1</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>1</multiplier>
 							<snmp_oid>IF-MIB::ifInOctets.{#SNMPINDEX}</snmp_oid>
 							<key>ifInOctets[{#SNMPVALUE}]</key>
-							<delay>60</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>1m</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>bps</units>
-							<delta>1</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -389,11 +382,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>8</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -409,23 +399,33 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing>
+								<step>
+									<type>10</type>
+									<params/>
+								</step>
+								<step>
+									<type>1</type>
+									<params>8</params>
+								</step>
+							</preprocessing>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Operational status of interface $1</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>IF-MIB::ifOperStatus.{#SNMPINDEX}</snmp_oid>
 							<key>ifOperStatus[{#SNMPVALUE}]</key>
-							<delay>60</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>1m</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -433,11 +433,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -455,23 +452,24 @@
 								<name>SNMP interface status (ifOperStatus)</name>
 							</valuemap>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Outgoing discarded packets on interface  $1</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>IF-MIB::ifOutDiscards.{#SNMPINDEX}</snmp_oid>
 							<key>ifOutDiscards[{#SNMPVALUE}]</key>
-							<delay>60</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>1m</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>2</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -479,11 +477,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -499,23 +494,29 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing>
+								<step>
+									<type>9</type>
+									<params/>
+								</step>
+							</preprocessing>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Outbound errors on interface $1</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>IF-MIB::ifOutErrors.{#SNMPINDEX}</snmp_oid>
 							<key>ifOutErrors[{#SNMPVALUE}]</key>
-							<delay>60</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>1m</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>2</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -523,11 +524,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -543,23 +541,29 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing>
+								<step>
+									<type>9</type>
+									<params/>
+								</step>
+							</preprocessing>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Outgoing traffic on interface $1</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>1</multiplier>
 							<snmp_oid>IF-MIB::ifOutOctets.{#SNMPINDEX}</snmp_oid>
 							<key>ifOutOctets[{#SNMPVALUE}]</key>
-							<delay>60</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>1m</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>bps</units>
-							<delta>1</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -567,11 +571,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>8</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -587,23 +588,33 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing>
+								<step>
+									<type>10</type>
+									<params/>
+								</step>
+								<step>
+									<type>1</type>
+									<params>8</params>
+								</step>
+							</preprocessing>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Length of the output packets queue on interface {#SNMPVALUE}</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>.1.3.6.1.2.1.2.2.1.21.{#SNMPINDEX}</snmp_oid>
 							<key>ifOutQLen[{#SNMPVALUE}]</key>
-							<delay>60</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>1m</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>Packets</units>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -611,11 +622,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -631,7 +639,10 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 					</item_prototypes>
 					<trigger_prototypes>
@@ -863,6 +874,7 @@
 						</graph_prototype>
 					</graph_prototypes>
 					<host_prototypes/>
+					<jmx_endpoint/>
 				</discovery_rule>
 			</discovery_rules>
 			<httptests/>

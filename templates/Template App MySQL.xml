@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <zabbix_export>
-	<version>3.2</version>
-	<date>2016-01-01T01:01:01Z</date>
+	<version>3.4</version>
+	<date>2017-01-01T01:01:01Z</date>
 	<groups>
 		<group>
 			<name>Templates</name>
@@ -27,17 +27,15 @@
 					<name>MySQL status</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>mysql.ping</key>
-					<delay>60</delay>
-					<history>7</history>
-					<trends>365</trends>
+					<delay>1m</delay>
+					<history>1w</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -45,11 +43,8 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -70,22 +65,23 @@
 						<name>Service state</name>
 					</valuemap>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>MySQL bytes received per second</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>mysql.status[Bytes_received]</key>
-					<delay>60</delay>
-					<history>7</history>
-					<trends>365</trends>
+					<delay>1m</delay>
+					<history>1w</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>0</value_type>
 					<allowed_hosts/>
 					<units>Bps</units>
-					<delta>1</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -93,11 +89,8 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -116,22 +109,28 @@ userparameter_mysql.conf.</description>
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>10</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>MySQL bytes sent per second</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>mysql.status[Bytes_sent]</key>
-					<delay>60</delay>
-					<history>7</history>
-					<trends>365</trends>
+					<delay>1m</delay>
+					<history>1w</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>0</value_type>
 					<allowed_hosts/>
 					<units>Bps</units>
-					<delta>1</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -139,11 +138,8 @@ userparameter_mysql.conf.</description>
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -161,22 +157,28 @@ It requires user parameter mysql.status[*], which is defined in userparameter_my
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>10</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>MySQL begin operations per second</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>mysql.status[Com_begin]</key>
-					<delay>60</delay>
-					<history>7</history>
-					<trends>365</trends>
+					<delay>1m</delay>
+					<history>1w</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>0</value_type>
 					<allowed_hosts/>
 					<units>qps</units>
-					<delta>1</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -184,11 +186,8 @@ It requires user parameter mysql.status[*], which is defined in userparameter_my
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -204,22 +203,28 @@ It requires user parameter mysql.status[*], which is defined in userparameter_my
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>10</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>MySQL commit operations per second</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>mysql.status[Com_commit]</key>
-					<delay>60</delay>
-					<history>7</history>
-					<trends>365</trends>
+					<delay>1m</delay>
+					<history>1w</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>0</value_type>
 					<allowed_hosts/>
 					<units>qps</units>
-					<delta>1</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -227,11 +232,8 @@ It requires user parameter mysql.status[*], which is defined in userparameter_my
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -247,22 +249,28 @@ It requires user parameter mysql.status[*], which is defined in userparameter_my
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>10</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>MySQL delete operations per second</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>mysql.status[Com_delete]</key>
-					<delay>60</delay>
-					<history>7</history>
-					<trends>365</trends>
+					<delay>1m</delay>
+					<history>1w</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>0</value_type>
 					<allowed_hosts/>
 					<units>qps</units>
-					<delta>1</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -270,11 +278,8 @@ It requires user parameter mysql.status[*], which is defined in userparameter_my
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -290,22 +295,28 @@ It requires user parameter mysql.status[*], which is defined in userparameter_my
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>10</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>MySQL insert operations per second</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>mysql.status[Com_insert]</key>
-					<delay>60</delay>
-					<history>7</history>
-					<trends>365</trends>
+					<delay>1m</delay>
+					<history>1w</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>0</value_type>
 					<allowed_hosts/>
 					<units>qps</units>
-					<delta>1</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -313,11 +324,8 @@ It requires user parameter mysql.status[*], which is defined in userparameter_my
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -333,22 +341,28 @@ It requires user parameter mysql.status[*], which is defined in userparameter_my
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>10</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>MySQL rollback operations per second</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>mysql.status[Com_rollback]</key>
-					<delay>60</delay>
-					<history>7</history>
-					<trends>365</trends>
+					<delay>1m</delay>
+					<history>1w</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>0</value_type>
 					<allowed_hosts/>
 					<units>qps</units>
-					<delta>1</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -356,11 +370,8 @@ It requires user parameter mysql.status[*], which is defined in userparameter_my
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -376,22 +387,28 @@ It requires user parameter mysql.status[*], which is defined in userparameter_my
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>10</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>MySQL select operations per second</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>mysql.status[Com_select]</key>
-					<delay>60</delay>
-					<history>7</history>
-					<trends>365</trends>
+					<delay>1m</delay>
+					<history>1w</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>0</value_type>
 					<allowed_hosts/>
 					<units>qps</units>
-					<delta>1</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -399,11 +416,8 @@ It requires user parameter mysql.status[*], which is defined in userparameter_my
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -419,22 +433,28 @@ It requires user parameter mysql.status[*], which is defined in userparameter_my
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>10</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>MySQL update operations per second</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>mysql.status[Com_update]</key>
-					<delay>60</delay>
-					<history>7</history>
-					<trends>365</trends>
+					<delay>1m</delay>
+					<history>1w</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>0</value_type>
 					<allowed_hosts/>
 					<units>qps</units>
-					<delta>1</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -442,11 +462,8 @@ It requires user parameter mysql.status[*], which is defined in userparameter_my
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -462,22 +479,28 @@ It requires user parameter mysql.status[*], which is defined in userparameter_my
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>10</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>MySQL queries per second</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>mysql.status[Questions]</key>
-					<delay>60</delay>
-					<history>7</history>
-					<trends>365</trends>
+					<delay>1m</delay>
+					<history>1w</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>0</value_type>
 					<allowed_hosts/>
 					<units>qps</units>
-					<delta>1</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -485,11 +508,8 @@ It requires user parameter mysql.status[*], which is defined in userparameter_my
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -505,22 +525,28 @@ It requires user parameter mysql.status[*], which is defined in userparameter_my
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing>
+						<step>
+							<type>10</type>
+							<params/>
+						</step>
+					</preprocessing>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>MySQL slow queries</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>mysql.status[Slow_queries]</key>
-					<delay>60</delay>
-					<history>7</history>
-					<trends>365</trends>
+					<delay>1m</delay>
+					<history>1w</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -528,11 +554,8 @@ It requires user parameter mysql.status[*], which is defined in userparameter_my
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -548,22 +571,23 @@ It requires user parameter mysql.status[*], which is defined in userparameter_my
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>MySQL uptime</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>mysql.status[Uptime]</key>
-					<delay>60</delay>
-					<history>7</history>
-					<trends>365</trends>
+					<delay>1m</delay>
+					<history>1w</history>
+					<trends>365d</trends>
 					<status>0</status>
 					<value_type>3</value_type>
 					<allowed_hosts/>
 					<units>uptime</units>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -571,11 +595,8 @@ It requires user parameter mysql.status[*], which is defined in userparameter_my
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -591,22 +612,23 @@ It requires user parameter mysql.status[*], which is defined in userparameter_my
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 				<item>
 					<name>MySQL version</name>
 					<type>0</type>
 					<snmp_community/>
-					<multiplier>0</multiplier>
 					<snmp_oid/>
 					<key>mysql.version</key>
-					<delay>3600</delay>
-					<history>7</history>
+					<delay>1h</delay>
+					<history>1w</history>
 					<trends>0</trends>
 					<status>0</status>
 					<value_type>1</value_type>
 					<allowed_hosts/>
 					<units/>
-					<delta>0</delta>
 					<snmpv3_contextname/>
 					<snmpv3_securityname/>
 					<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -614,11 +636,8 @@ It requires user parameter mysql.status[*], which is defined in userparameter_my
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<formula>1</formula>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
-					<data_type>0</data_type>
 					<authtype>0</authtype>
 					<username/>
 					<password/>
@@ -634,6 +653,9 @@ It requires user parameter mysql.status[*], which is defined in userparameter_my
 					</applications>
 					<valuemap/>
 					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
 				</item>
 			</items>
 			<discovery_rules/>

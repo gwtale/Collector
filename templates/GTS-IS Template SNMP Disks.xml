@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <zabbix_export>
-	<version>3.2</version>
-	<date>2016-01-01T01:01:01Z</date>
+	<version>3.4</version>
+	<date>2017-01-01T01:01:01Z</date>
 	<groups>
 		<group>
 			<name>Templates</name>
@@ -30,7 +30,7 @@
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
 					<snmp_oid>discovery[{#SNMPVALUE},HOST-RESOURCES-MIB::hrStorageDescr]</snmp_oid>
 					<key>hrStorageDescr</key>
-					<delay>600</delay>
+					<delay>10m</delay>
 					<status>0</status>
 					<allowed_hosts/>
 					<snmpv3_contextname/>
@@ -40,7 +40,6 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
 					<authtype>0</authtype>
@@ -51,7 +50,7 @@
 					<port/>
 					<filter>
 						<evaltype>0</evaltype>
-						<formula>1</formula>
+						<formula/>
 						<conditions>
 							<condition>
 								<macro>{#SNMPVALUE}</macro>
@@ -61,7 +60,7 @@
 							</condition>
 						</conditions>
 					</filter>
-					<lifetime>30</lifetime>
+					<lifetime>30d</lifetime>
 					<description>The rule will discover all disk partitions matching the global regexp &quot;Storage devices for SNMP discovery&quot;.
 
 {$SNMP_COMMUNITY} is a global macro.</description>
@@ -70,17 +69,15 @@
 							<name>Allocation units for storage $1</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>HOST-RESOURCES-MIB::hrStorageAllocationUnits.{#SNMPINDEX}</snmp_oid>
 							<key>hrStorageAllocationUnits[{#SNMPVALUE}]</key>
-							<delay>3600</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>1h</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>B</units>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -88,11 +85,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -108,23 +102,24 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Description of storage $1</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>HOST-RESOURCES-MIB::hrStorageDescr.{#SNMPINDEX}</snmp_oid>
 							<key>hrStorageDescr[{#SNMPVALUE}]</key>
-							<delay>3600</delay>
-							<history>7</history>
+							<delay>1h</delay>
+							<history>1w</history>
 							<trends>0</trends>
 							<status>0</status>
 							<value_type>1</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -132,11 +127,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -152,23 +144,24 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Total disk space on $1</name>
 							<type>15</type>
 							<snmp_community/>
-							<multiplier>0</multiplier>
 							<snmp_oid/>
 							<key>hrStorageSizeInBytes[{#SNMPVALUE}]</key>
-							<delay>3600</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>1h</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>B</units>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -176,11 +169,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params>last(&quot;hrStorageSize[{#SNMPVALUE}]&quot;) * last(&quot;hrStorageAllocationUnits[{#SNMPVALUE}]&quot;)</params>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -196,23 +186,24 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Total disk space on $1 in units</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>HOST-RESOURCES-MIB::hrStorageSize.{#SNMPINDEX}</snmp_oid>
 							<key>hrStorageSize[{#SNMPVALUE}]</key>
-							<delay>3600</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>1h</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>units</units>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -220,11 +211,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -240,23 +228,24 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Used disk space on $1</name>
 							<type>15</type>
 							<snmp_community/>
-							<multiplier>0</multiplier>
 							<snmp_oid/>
 							<key>hrStorageUsedInBytes[{#SNMPVALUE}]</key>
-							<delay>60</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>1m</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>B</units>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -264,11 +253,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params>last(&quot;hrStorageUsed[{#SNMPVALUE}]&quot;) * last(&quot;hrStorageAllocationUnits[{#SNMPVALUE}]&quot;)</params>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -284,23 +270,24 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Used disk space on $1 in units</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>HOST-RESOURCES-MIB::hrStorageUsed.{#SNMPINDEX}</snmp_oid>
 							<key>hrStorageUsed[{#SNMPVALUE}]</key>
-							<delay>60</delay>
-							<history>7</history>
-							<trends>365</trends>
+							<delay>1m</delay>
+							<history>1w</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>units</units>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -308,11 +295,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -328,7 +312,10 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 					</item_prototypes>
 					<trigger_prototypes>
@@ -418,6 +405,7 @@
 						</graph_prototype>
 					</graph_prototypes>
 					<host_prototypes/>
+					<jmx_endpoint/>
 				</discovery_rule>
 			</discovery_rules>
 			<httptests/>

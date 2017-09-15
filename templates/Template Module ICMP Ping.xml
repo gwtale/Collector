@@ -4,22 +4,22 @@
 	<date>2017-01-01T01:01:01Z</date>
 	<groups>
 		<group>
-			<name>Templates</name>
+			<name>Templates/Modules</name>
 		</group>
 	</groups>
 	<templates>
 		<template>
-			<template>Template ICMP Ping</template>
-			<name>Template ICMP Ping</name>
-			<description/>
+			<template>Template Module ICMP Ping</template>
+			<name>Template Module ICMP Ping</name>
+			<description>Template Module ICMP Ping version: 0.13</description>
 			<groups>
 				<group>
-					<name>Templates</name>
+					<name>Templates/Modules</name>
 				</group>
 			</groups>
 			<applications>
 				<application>
-					<name>ICMP</name>
+					<name>Status</name>
 				</application>
 			</applications>
 			<items>
@@ -29,7 +29,7 @@
 					<snmp_community/>
 					<snmp_oid/>
 					<key>icmpping</key>
-					<delay>1m</delay>
+					<delay>60</delay>
 					<history>1w</history>
 					<trends>365d</trends>
 					<status>0</status>
@@ -55,7 +55,7 @@
 					<inventory_link>0</inventory_link>
 					<applications>
 						<application>
-							<name>ICMP</name>
+							<name>Status</name>
 						</application>
 					</applications>
 					<valuemap>
@@ -72,7 +72,7 @@
 					<snmp_community/>
 					<snmp_oid/>
 					<key>icmppingloss</key>
-					<delay>1m</delay>
+					<delay>60</delay>
 					<history>1w</history>
 					<trends>365d</trends>
 					<status>0</status>
@@ -98,7 +98,7 @@
 					<inventory_link>0</inventory_link>
 					<applications>
 						<application>
-							<name>ICMP</name>
+							<name>Status</name>
 						</application>
 					</applications>
 					<valuemap/>
@@ -113,7 +113,7 @@
 					<snmp_community/>
 					<snmp_oid/>
 					<key>icmppingsec</key>
-					<delay>1m</delay>
+					<delay>60</delay>
 					<history>1w</history>
 					<trends>365d</trends>
 					<status>0</status>
@@ -139,7 +139,7 @@
 					<inventory_link>0</inventory_link>
 					<applications>
 						<application>
-							<name>ICMP</name>
+							<name>Status</name>
 						</application>
 					</applications>
 					<valuemap/>
@@ -151,67 +151,82 @@
 			</items>
 			<discovery_rules/>
 			<httptests/>
-			<macros/>
+			<macros>
+				<macro>
+					<macro>{$ICMP_LOSS_WARN}</macro>
+					<value>20</value>
+				</macro>
+				<macro>
+					<macro>{$ICMP_RESPONSE_TIME_WARN}</macro>
+					<value>0.15</value>
+				</macro>
+			</macros>
 			<templates/>
 			<screens/>
 		</template>
 	</templates>
 	<triggers>
 		<trigger>
-			<expression>{Template ICMP Ping:icmppingloss.min(5m)}&gt;20</expression>
+			<expression>{Template Module ICMP Ping:icmppingloss.min(5m)}&gt;{$ICMP_LOSS_WARN} and {Template Module ICMP Ping:icmppingloss.min(5m)}&lt;100</expression>
 			<recovery_mode>0</recovery_mode>
 			<recovery_expression/>
-			<name>Ping loss is too high on {HOST.NAME}</name>
+			<name>High ICMP ping loss</name>
 			<correlation_mode>0</correlation_mode>
 			<correlation_tag/>
 			<url/>
 			<status>0</status>
-			<priority>1</priority>
+			<priority>2</priority>
 			<description/>
 			<type>0</type>
 			<manual_close>0</manual_close>
 			<dependencies>
 				<dependency>
-					<name>{HOST.NAME} is unavailable by ICMP</name>
-					<expression>{Template ICMP Ping:icmpping.max(#3)}=0</expression>
+					<name>Unavailable by ICMP ping</name>
+					<expression>{Template Module ICMP Ping:icmpping.max(#3)}=0</expression>
 					<recovery_expression/>
 				</dependency>
 			</dependencies>
 			<tags/>
 		</trigger>
 		<trigger>
-			<expression>{Template ICMP Ping:icmppingsec.avg(5m)}&gt;0.9</expression>
+			<expression>{Template Module ICMP Ping:icmppingsec.avg(5m)}&gt;{$ICMP_RESPONSE_TIME_WARN}</expression>
 			<recovery_mode>0</recovery_mode>
 			<recovery_expression/>
-			<name>Response time is too high on {HOST.NAME}</name>
+			<name>High ICMP ping response time</name>
 			<correlation_mode>0</correlation_mode>
 			<correlation_tag/>
 			<url/>
 			<status>0</status>
-			<priority>1</priority>
+			<priority>2</priority>
 			<description/>
 			<type>0</type>
 			<manual_close>0</manual_close>
 			<dependencies>
 				<dependency>
-					<name>{HOST.NAME} is unavailable by ICMP</name>
-					<expression>{Template ICMP Ping:icmpping.max(#3)}=0</expression>
+					<name>High ICMP ping loss</name>
+					<expression>{Template Module ICMP Ping:icmppingloss.min(5m)}&gt;{$ICMP_LOSS_WARN} and {Template Module ICMP Ping:icmppingloss.min(5m)}&lt;100</expression>
+					<recovery_expression/>
+				</dependency>
+				<dependency>
+					<name>Unavailable by ICMP ping</name>
+					<expression>{Template Module ICMP Ping:icmpping.max(#3)}=0</expression>
 					<recovery_expression/>
 				</dependency>
 			</dependencies>
 			<tags/>
 		</trigger>
 		<trigger>
-			<expression>{Template ICMP Ping:icmpping.max(#3)}=0</expression>
+			<expression>{Template Module ICMP Ping:icmpping.max(#3)}=0</expression>
 			<recovery_mode>0</recovery_mode>
 			<recovery_expression/>
-			<name>{HOST.NAME} is unavailable by ICMP</name>
+			<name>Unavailable by ICMP ping</name>
 			<correlation_mode>0</correlation_mode>
 			<correlation_tag/>
 			<url/>
 			<status>0</status>
 			<priority>4</priority>
-			<description/>
+			<description>Last value: {ITEM.LASTVALUE1}.
+Last three attempts returned timeout.  Please check device connectivity.</description>
 			<type>0</type>
 			<manual_close>0</manual_close>
 			<dependencies/>

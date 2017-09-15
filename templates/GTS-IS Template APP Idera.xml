@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <zabbix_export>
-	<version>3.2</version>
-	<date>2016-01-01T01:01:01Z</date>
+	<version>3.4</version>
+	<date>2017-01-01T01:01:01Z</date>
 	<groups>
 		<group>
 			<name>Templates</name>
@@ -31,7 +31,7 @@ Despite proxy/agent better performance, SOAP can support both Windows and Linux 
 					<snmp_community/>
 					<snmp_oid/>
 					<key>gtsis_template_app_idera.py[-s {HOST.IP} -u admin -p {$SSH_PASSWORD} -m getPolicies]</key>
-					<delay>120</delay>
+					<delay>2m</delay>
 					<status>0</status>
 					<allowed_hosts/>
 					<snmpv3_contextname/>
@@ -41,7 +41,6 @@ Despite proxy/agent better performance, SOAP can support both Windows and Linux 
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
 					<authtype>0</authtype>
@@ -55,24 +54,22 @@ Despite proxy/agent better performance, SOAP can support both Windows and Linux 
 						<formula/>
 						<conditions/>
 					</filter>
-					<lifetime>7</lifetime>
+					<lifetime>1w</lifetime>
 					<description/>
 					<item_prototypes>
 						<item_prototype>
 							<name>{#POLICY_NAME} - State</name>
 							<type>10</type>
 							<snmp_community/>
-							<multiplier>0</multiplier>
 							<snmp_oid/>
 							<key>gtsis_template_app_idera.py[-s {HOST.IP} -u admin -p {$SSH_PASSWORD} -m getPolicyState -e {#POLICY_ID}]</key>
-							<delay>300</delay>
-							<history>90</history>
+							<delay>5m</delay>
+							<history>90d</history>
 							<trends>0</trends>
 							<status>0</status>
 							<value_type>4</value_type>
 							<allowed_hosts/>
 							<units/>
-							<delta>0</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -80,11 +77,8 @@ Despite proxy/agent better performance, SOAP can support both Windows and Linux 
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -100,7 +94,10 @@ Despite proxy/agent better performance, SOAP can support both Windows and Linux 
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 					</item_prototypes>
 					<trigger_prototypes>
@@ -149,6 +146,7 @@ Despite proxy/agent better performance, SOAP can support both Windows and Linux 
 					</trigger_prototypes>
 					<graph_prototypes/>
 					<host_prototypes/>
+					<jmx_endpoint/>
 				</discovery_rule>
 			</discovery_rules>
 			<httptests/>

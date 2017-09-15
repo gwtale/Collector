@@ -1,7 +1,7 @@
 <?xml version="1.0" ?>
 <zabbix_export>
-	<version>3.2</version>
-	<date>2016-01-01T01:01:01Z</date>
+	<version>3.4</version>
+	<date>2017-01-01T01:01:01Z</date>
 	<groups>
 		<group>
 			<name>Templates</name>
@@ -30,7 +30,7 @@
 					<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
 					<snmp_oid>discovery[{#SNMPVALUE},UCD-DISKIO-MIB::diskIODevice]</snmp_oid>
 					<key>diskIODevice</key>
-					<delay>600</delay>
+					<delay>10m</delay>
 					<status>0</status>
 					<allowed_hosts/>
 					<snmpv3_contextname/>
@@ -40,7 +40,6 @@
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<delay_flex/>
 					<params/>
 					<ipmi_sensor/>
 					<authtype>0</authtype>
@@ -61,7 +60,7 @@
 							</condition>
 						</conditions>
 					</filter>
-					<lifetime>30</lifetime>
+					<lifetime>30d</lifetime>
 					<description>The rule will discover all disk devices matching the global regexp &quot;Disk devices for IO Discovery&quot;.
 
 {$SNMP_COMMUNITY} is a global macro.</description>
@@ -70,17 +69,15 @@
 							<name>Read Bytes/s on $1 (calculated)</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>UCD-DISKIO-MIB::diskIONReadX.{#SNMPINDEX}</snmp_oid>
 							<key>diskIONReadX[{#SNMPVALUE}]</key>
-							<delay>60</delay>
-							<history>90</history>
-							<trends>365</trends>
+							<delay>1m</delay>
+							<history>90d</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>Bps</units>
-							<delta>1</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -88,11 +85,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -108,23 +102,29 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing>
+								<step>
+									<type>10</type>
+									<params/>
+								</step>
+							</preprocessing>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Write Bytes/s on $1 (calculated)</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>UCD-DISKIO-MIB::diskIONWrittenX.{#SNMPINDEX}</snmp_oid>
 							<key>diskIONWrittenX[{#SNMPVALUE}]</key>
-							<delay>60</delay>
-							<history>90</history>
-							<trends>365</trends>
+							<delay>1m</delay>
+							<history>90d</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>Bps</units>
-							<delta>1</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -132,11 +132,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -152,23 +149,29 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing>
+								<step>
+									<type>10</type>
+									<params/>
+								</step>
+							</preprocessing>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Read accesses/s on $1 (calculated)</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>UCD-DISKIO-MIB::diskIOReads.{#SNMPINDEX}</snmp_oid>
 							<key>diskIOReads[{#SNMPVALUE}]</key>
-							<delay>60</delay>
-							<history>90</history>
-							<trends>365</trends>
+							<delay>1m</delay>
+							<history>90d</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>IOR</units>
-							<delta>1</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -176,11 +179,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -196,23 +196,29 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing>
+								<step>
+									<type>10</type>
+									<params/>
+								</step>
+							</preprocessing>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
 							<name>Write accesses/s on $1 (calculated)</name>
 							<type>4</type>
 							<snmp_community>{$SNMP_COMMUNITY}</snmp_community>
-							<multiplier>0</multiplier>
 							<snmp_oid>UCD-DISKIO-MIB::diskIOWrites.{#SNMPINDEX}</snmp_oid>
 							<key>diskIOWrites[{#SNMPVALUE}]</key>
-							<delay>60</delay>
-							<history>90</history>
-							<trends>365</trends>
+							<delay>1m</delay>
+							<history>90d</history>
+							<trends>365d</trends>
 							<status>0</status>
 							<value_type>3</value_type>
 							<allowed_hosts/>
 							<units>IOW</units>
-							<delta>1</delta>
 							<snmpv3_contextname/>
 							<snmpv3_securityname/>
 							<snmpv3_securitylevel>0</snmpv3_securitylevel>
@@ -220,11 +226,8 @@
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<formula>1</formula>
-							<delay_flex/>
 							<params/>
 							<ipmi_sensor/>
-							<data_type>0</data_type>
 							<authtype>0</authtype>
 							<username/>
 							<password/>
@@ -240,7 +243,15 @@
 							</applications>
 							<valuemap/>
 							<logtimefmt/>
+							<preprocessing>
+								<step>
+									<type>10</type>
+									<params/>
+								</step>
+							</preprocessing>
+							<jmx_endpoint/>
 							<application_prototypes/>
+							<master_item_prototype/>
 						</item_prototype>
 					</item_prototypes>
 					<trigger_prototypes/>
@@ -335,6 +346,7 @@
 						</graph_prototype>
 					</graph_prototypes>
 					<host_prototypes/>
+					<jmx_endpoint/>
 				</discovery_rule>
 			</discovery_rules>
 			<httptests/>

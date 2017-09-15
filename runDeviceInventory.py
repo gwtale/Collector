@@ -14,9 +14,8 @@ logger.info('Colector started.')
 if (os.path.exists(configFile)):
     with open(configFile) as infile:    
         credentials = json.load(infile)
-
     logger.info('Starting inventory from customer '+credentials['CUSTOMER'])
-
+    print('Starting inventory from customer '+credentials['CUSTOMER'])
     #Device list inventory
     deviceListSL.updateDeviceListFromSL(credentials)
 else:
@@ -24,4 +23,5 @@ else:
     logger.error("Error loading SL credentials")
 
 #End    
-logger.info('Colector finished.')
+logger.info('Collector finished.')
+print('Collector finished')

@@ -47,6 +47,7 @@ def updateDeviceListFromSL(config):
                 deviceSL['fullyQualifiedDomainName']=hardwareSL['fullyQualifiedDomainName']
                 #print hardwareSL
                 deviceSL['primaryBackendIpAddress']=hardwareSL['primaryBackendIpAddress']
+                deviceSL['networkManagementIpAddress']=hardwareSL['networkManagementIpAddress']
                 
                 isIdera = False
                 softwareComponents = hardwareSL['softwareComponents']
@@ -74,6 +75,15 @@ def updateDeviceListFromSL(config):
                         users.append({username: password})
                         #logger.debug(hardwareSL['fullyQualifiedDomainName']+" "+username+" "+password)
                 deviceSL['users']=users
+                
+                mgt_users = []
+                if (len(hardwareSL['remoteManagementAccounts'])<>0):
+                    for acct in hardwareSL['remoteManagementAccounts']:
+                        username = acct['username']
+                        password = acct['password']
+                        mgt_users.append({username: password})
+                deviceSL['mgt_users']=mgt_users
+
                 deviceListSL.append(deviceSL)
     else:
         logger.error('Error loading Hardware list from SoftLayer. Devices list is out of date!')
@@ -201,6 +211,14 @@ def updateDeviceListFromSL(config):
     else:
         logger.error('Error loading VLAN list from SoftLayer. Devices list is out of date!')
         inError = True
+
+    # PATCHED BY RCASTRIL
+    #Salva arquivo de configuracoes     
+    with open(devicesFile, 'w') as outfile:
+        json.dump( json.dumps(deviceListSL) , outfile)
+
+    return
+    # PATCH END. CODE BELOW WONT BE EXECUTED
 
     #Update local list
     if (not inError):

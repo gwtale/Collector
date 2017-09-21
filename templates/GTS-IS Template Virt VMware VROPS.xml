@@ -96,7 +96,7 @@ About the macros:
 					<snmp_community/>
 					<snmp_oid/>
 					<key>ssh.run[createAlertsDatafile]</key>
-					<delay>61s</delay>
+					<delay>60s;m0-59s0</delay>
 					<history>1d</history>
 					<trends>0</trends>
 					<status>0</status>
@@ -135,8 +135,8 @@ def getResponse(server, opt=None, userId=None, userPw=None):
 
 rawResponse = getResponse(&quot;{$VROPS_IP}&quot;, &quot;suite-api/api/alerts&quot;, &quot;{$VROPS_ID}&quot;, &quot;{$VROPS_PW}&quot;)
 xmlResponse = xml.dom.minidom.parseString(rawResponse)
-#f = open(&quot;/var/Collector/data/vrops_alerts_{$VROPS_IP}.xml&quot;, 'w+')
-f = open(&quot;/var/Collector/data/vrops_alerts_{$VROPS_IP}.xml&quot;, os.O_SHLOCK|os.O_WRONLY)
+f = open(&quot;/var/Collector/data/vrops_alerts_{$VROPS_IP}.xml&quot;, 'w+')
+#f = open(&quot;/var/Collector/data/vrops_alerts_{$VROPS_IP}.xml&quot;, os.O_SHLOCK|os.O_WRONLY)
 f.write(xmlResponse.toprettyxml().encode('utf-8'))
 f.close()
 print(&quot;Alert collection complete&quot;)
@@ -168,7 +168,7 @@ EOF</params>
 					<snmp_community/>
 					<snmp_oid/>
 					<key>ssh.run[createResourcesDatafile]</key>
-					<delay>603s</delay>
+					<delay>10m;m/10s0</delay>
 					<history>1d</history>
 					<trends>0</trends>
 					<status>0</status>
@@ -207,8 +207,8 @@ def getResponse(server, opt=None, userId=None, userPw=None):
 
 rawResponse = getResponse(&quot;{$VROPS_IP}&quot;, &quot;suite-api/api/resources&quot;, &quot;{$VROPS_ID}&quot;, &quot;{$VROPS_PW}&quot;)
 xmlResponse = xml.dom.minidom.parseString(rawResponse)
-#f = open(&quot;/var/Collector/data/vrops_resources_{$VROPS_IP}.xml&quot;, 'w+')
-f = open(&quot;/var/Collector/data/vrops_resources_{$VROPS_IP}.xml&quot;, os.O_SHLOCK|os.O_WRONLY)
+f = open(&quot;/var/Collector/data/vrops_resources_{$VROPS_IP}.xml&quot;, 'w+')
+#f = open(&quot;/var/Collector/data/vrops_resources_{$VROPS_IP}.xml&quot;, os.O_SHLOCK|os.O_WRONLY)
 f.write(xmlResponse.toprettyxml().encode('utf-8'))
 f.close()
 print(&quot;Resources collection complete&quot;)
@@ -240,7 +240,7 @@ EOF</params>
 					<snmp_community/>
 					<snmp_oid/>
 					<key>ssh.run[createTypeDatafile]</key>
-					<delay>3601s</delay>
+					<delay>1h;h/1s0</delay>
 					<history>1d</history>
 					<trends>0</trends>
 					<status>0</status>
@@ -313,7 +313,7 @@ EOF</params>
 					<snmp_community/>
 					<snmp_oid/>
 					<key>ssh.run[discoverAlerts]</key>
-					<delay>1m</delay>
+					<delay>1m;m0-59s30</delay>
 					<status>0</status>
 					<allowed_hosts/>
 					<snmpv3_contextname/>
@@ -447,7 +447,7 @@ EOF</params>
 							<snmp_community/>
 							<snmp_oid/>
 							<key>vropsAlertInfo[{$VROPS_IP}, {#ALERTID}, severity]</key>
-							<delay>1m</delay>
+							<delay>5m;m/5s30</delay>
 							<history>60d</history>
 							<trends>0</trends>
 							<status>0</status>
@@ -489,7 +489,7 @@ EOF</params>
 							<snmp_community/>
 							<snmp_oid/>
 							<key>vropsAlertInfo[{$VROPS_IP}, {#ALERTID}, startTime]</key>
-							<delay>1m</delay>
+							<delay>10m;m/10s30</delay>
 							<history>60d</history>
 							<trends>0</trends>
 							<status>0</status>
@@ -531,7 +531,7 @@ EOF</params>
 							<snmp_community/>
 							<snmp_oid/>
 							<key>vropsAlertInfo[{$VROPS_IP}, {#ALERTID}, status]</key>
-							<delay>1m</delay>
+							<delay>1m;m0-59s30</delay>
 							<history>60d</history>
 							<trends>0</trends>
 							<status>0</status>
@@ -667,6 +667,22 @@ EOF</params>
 		</template>
 	</templates>
 	<triggers>
+		<trigger>
+			<expression>{GTS-IS Template Virt VMware VROPS:ssh.run[createAlertsDatafile].nodata(1h)}=1</expression>
+			<recovery_mode>0</recovery_mode>
+			<recovery_expression/>
+			<name>Not collecting alerts from VROPs server  {HOST.HOST}</name>
+			<correlation_mode>0</correlation_mode>
+			<correlation_tag/>
+			<url/>
+			<status>0</status>
+			<priority>4</priority>
+			<description/>
+			<type>0</type>
+			<manual_close>0</manual_close>
+			<dependencies/>
+			<tags/>
+		</trigger>
 		<trigger>
 			<expression>{GTS-IS Template Virt VMware VROPS:ping_ip[{$VROPS_IP}].min(#5)}=0</expression>
 			<recovery_mode>0</recovery_mode>

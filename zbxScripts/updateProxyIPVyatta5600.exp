@@ -1,0 +1,23 @@
+#!/usr/bin/expect -f
+log_user 1
+set HOSTIP [lindex $argv 0]
+set HOSTID [lindex $argv 1]
+set HOSTPW [lindex $argv 2]
+#set HOSTIP "10.150.135.25"
+#set HOSTID "vyatta"
+#set HOSTPW "WnMwrm52fW9c"
+set PROXYIP [exec ifconfig tun0 | grep "inet addr:" | cut -d: -f2 | awk {{print $1}}]
+
+spawn ssh -q -o StrictHostKeyChecking=no $HOSTID@$HOSTIP
+expect "assword"
+send $HOSTPW\r
+expect \\\$
+send "su -\r"
+expect "assword"
+send $HOSTPW\r
+expect \\\#
+send "if cat /etc/zabbix/zabbix_agentd.conf|grep $PROXYIP ;then echo 0; else awk '!/Server=/' /etc/zabbix/zabbix_agentd.conf> /tmp/zbx_tmp.conf && mv /tmp/zbx_tmp.conf /etc/zabbix/zabbix_agentd.conf && echo Server=$PROXYIP >> /etc/zabbix/zabbix_agentd.conf && service zabbix-agent restart; fi\r"
+expect \\\#
+send "exit\r"
+expect \\\$
+send "exit\r"

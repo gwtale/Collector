@@ -1321,6 +1321,22 @@
 	</templates>
 	<triggers>
 		<trigger>
+			<expression>{GTS-IS Template Virt VMware Hypervisor standalone:vmware.hv.cpu.usage[{$URL},{HOST.HOST}].nodata(60m)}=1</expression>
+			<recovery_mode>0</recovery_mode>
+			<recovery_expression/>
+			<name>ESXi host not collecting data</name>
+			<correlation_mode>0</correlation_mode>
+			<correlation_tag/>
+			<url/>
+			<status>0</status>
+			<priority>2</priority>
+			<description/>
+			<type>0</type>
+			<manual_close>0</manual_close>
+			<dependencies/>
+			<tags/>
+		</trigger>
+		<trigger>
 			<expression>{GTS-IS Template Virt VMware Hypervisor standalone:vmware.hv.cpu.usagePerc[{$URL},{HOST.HOST}].min(5m)}&gt;94</expression>
 			<recovery_mode>0</recovery_mode>
 			<recovery_expression/>

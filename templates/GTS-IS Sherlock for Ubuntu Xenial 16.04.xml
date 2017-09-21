@@ -140,7 +140,7 @@
 					<snmp_community/>
 					<snmp_oid/>
 					<key>installPyzabbixLibs</key>
-					<delay>10m</delay>
+					<delay>11m</delay>
 					<history>1d</history>
 					<trends>2d</trends>
 					<status>0</status>
@@ -226,7 +226,7 @@
 					<snmp_community/>
 					<snmp_oid/>
 					<key>installSoftlayerLibs</key>
-					<delay>10m</delay>
+					<delay>12m</delay>
 					<history>1d</history>
 					<trends>2d</trends>
 					<status>0</status>
@@ -269,7 +269,7 @@
 					<snmp_community/>
 					<snmp_oid/>
 					<key>installSudsLibs</key>
-					<delay>10m</delay>
+					<delay>13m</delay>
 					<history>1d</history>
 					<trends>2d</trends>
 					<status>0</status>
@@ -560,7 +560,7 @@ All changes in proxies agent configuration will be overwritten by the configurat
 					<snmp_community/>
 					<snmp_oid/>
 					<key>ssh.run[configureZbxProxy]</key>
-					<delay>10m</delay>
+					<delay>2h</delay>
 					<history>1d</history>
 					<trends>0</trends>
 					<status>0</status>
@@ -607,6 +607,7 @@ VMwareTimeout=120
 VMwareCacheSize={$PROXY_CONF_VMCACHESIZE}
 
 StartPollersUnreachable=10
+StartIPMIPollers=5
 StartPingers=10
 ProxyOfflineBuffer=5
 StartPollers=25
@@ -623,9 +624,13 @@ then
     if cat $zbxProxyConfig|grep {$ZBX_SERVERIP}&gt;&amp; /dev/null
     then
         echo &quot;Zabbix proxy already configured. Applying enforced configuration...&quot;
+        sudo rm -f $zbxProxyConfig
+        sudo touch $zbxProxyConfig
         sudo chmod 666 $zbxProxyConfig
         sudo echo &quot;$zbxProxyConfigContents&quot; &gt; $zbxProxyConfig
-        sudo service zabbix-proxy restart
+        sleep 1
+        sudo service zabbix-proxy stop
+        sudo service zabbix-proxy start
         echo &quot;Done enforcing configuration&quot;
     else
         sudo echo &quot;create database zabbix_proxy character set utf8 collate utf8_bin;&quot; | mysql -uroot -p{$ZBX_SERVERSQLPW}
@@ -634,7 +639,9 @@ then
         sudo mysql -uzabbix -p{$ZBX_SERVERSQLPW} zabbix_proxy &lt; /usr/share/doc/zabbix-proxy-mysql/schema.sql
         sudo chmod 666 $zbxProxyConfig
         sudo echo &quot;$zbxProxyConfigContents&quot; &gt; $zbxProxyConfig
-        sudo service zabbix-proxy restart
+        sleep 1
+        sudo service zabbix-proxy stop
+        sudo service zabbix-proxy start
         echo &quot;Done first configuration&quot;
     fi
 else
@@ -762,7 +769,7 @@ read -r -d '' slapiconfig &lt;&lt; EOM
         &quot;_comment1&quot;:&quot;private server - api.service.softlayer.com&quot;,
         &quot;_comment2&quot;:&quot;public server - api.softlayer.com&quot;,
         &quot;SERVER&quot;:&quot;api.softlayer.com&quot;,
-        &quot;REST_HARDWARE&quot;:&quot;/rest/v3/SoftLayer_Account/Hardware.json?objectMask=id;fullyQualifiedDomainName;operatingSystem;softwareComponents;primaryBackendIpAddress;operatingSystem.passwords&quot;,
+        &quot;REST_HARDWARE&quot;:&quot;/rest/v3/SoftLayer_Account/Hardware.json?objectMask=id;fullyQualifiedDomainName;operatingSystem;softwareComponents;primaryBackendIpAddress;operatingSystem.passwords;networkManagementIpAddress;remoteManagementAccounts.username;remoteManagementAccounts.password&quot;,
         &quot;REST_VIRTUAL_GUESTS&quot;:&quot;/rest/v3/SoftLayer_Account/VirtualGuests.json?objectMask=id;fullyQualifiedDomainName;operatingSystem;softwareComponents;primaryBackendIpAddress;operatingSystem.passwords&quot;,
         &quot;REST_NETSCALER&quot;:&quot;/rest/v3/SoftLayer_Account/getApplicationDeliveryControllers.json?objectMask=id;managementIpAddress;name;password.password;password.username&quot;,
         &quot;REST_PUBLIC_VLANS&quot;:&quot;/rest/v3/SoftLayer_Account/AvailablePublicNetworkVlans.json&quot;,
@@ -1798,18 +1805,25 @@ fi</params>
 					<snmpv3_authpassphrase/>
 					<snmpv3_privprotocol>0</snmpv3_privprotocol>
 					<snmpv3_privpassphrase/>
-					<params>if [ -d &quot;/etc/vmware-vcli&quot; ]; then
-    echo &quot;Directory /etc/vmware-vcli exists. Skipping installation.&quot;
+					<params>if [ -e &quot;/usr/bin/esxcli&quot; ]; then
+    echo &quot;VCLI already installed&quot;
 else
-    echo &quot;Directory /etc/vmware-vcli does not exist. Installing VCLI&quot;
-    apt install libssl-dev perl-doc -y
-    cp /var/Collector/zbxFiles/VMware-vSphere-CLI-*.tar.gz /tmp/
+    echo &quot;VCLI NOT INSTALLED&quot;
+    sudo apt install uuid-dev libxml2-dev libssl-dev perl-doc libxml-libxml-perl -y &gt; /dev/null
+    sudo cp /var/Collector/zbxFiles/VMware-vSphere-CLI-*.tar.gz /tmp/
     cd /tmp
-    tar -xvzf VMware-vSphere-CLI-*.tar.gz &gt; /dev/null
-    cd vmware-vsphere-cli-distrib
-    yes | PAGER=cat ./vmware-install.pl default
-    echo &quot;Done&quot;
-fi</params>
+    sudo tar -xvzf VMware-vSphere-CLI-*.tar.gz &gt; /dev/null
+    #cd vmware-vsphere-cli-distrib
+    #expect -c &quot;
+    #    log_user 1
+    #    spawn PAGER=cat sudo ./vmware-install.pl
+    #    expect \&quot;yes\&quot;
+    #    send \&quot;yes\r\&quot;
+    #&quot;
+    #echo &quot;Done&quot;
+fi
+
+# Manually install CPAN modules: perl -MCPAN -e 'install UUID'</params>
 					<ipmi_sensor/>
 					<authtype>0</authtype>
 					<username>{$SSH_ID}</username>
@@ -2366,6 +2380,13 @@ for device in devicesJSON:
         print('        &quot;{#GROUP}&quot;:&quot;{$ZBX_CUSTOMERGROUP}&quot;,')
         print('        &quot;{#PRIVATE_IP}&quot;:&quot;' + device['primaryBackendIpAddress'] + '&quot;,')
         print('        &quot;{#FQDN}&quot;:&quot;' + device['fullyQualifiedDomainName'] + '&quot;,')
+        print('        &quot;{#TYPE}&quot;:&quot;' + device['type'] + '&quot;,')
+        if 'networkManagementIpAddress' in device:
+            print('        &quot;{#MGT_IP}&quot;:&quot;' + device['networkManagementIpAddress'] + '&quot;,')
+        if 'mgt_users' in device:
+            for mgt_user in device['mgt_users']:
+                print('        &quot;{#MGT_USER}&quot;:&quot;root&quot;,')
+                print('        &quot;{#MGT_PASSWORD}&quot;:&quot;' + mgt_user['root'] + '&quot;,')
         for user in device['users'][0].keys():
             print('        &quot;{#USER}&quot;:&quot;'+user+'&quot;,')
             print('        &quot;{#PASSWORD}&quot;:&quot;' + device['users'][0][user] + '&quot;')
@@ -2463,6 +2484,10 @@ from pyzabbix import ZabbixAPI
 zapi = ZabbixAPI(url='http://{$ZBX_SERVERIP}/zabbix/', user='{$ZBX_SERVERAPIID}', password='{$ZBX_SERVERAPIPW}')
 
 serverName = &quot;{#FQDN}&quot;
+serverType = &quot;{#TYPE}&quot;
+ipmi_username = {#MGT_USER}
+ipmi_password = {#MGT_PASSWORD}
+mgtIp = &quot;{#MGT_IP}&quot;
 serverIp = &quot;{#PRIVATE_IP}&quot;
 # zbxIfType = [1 for zabbix agent, 2 for SNMP]
 zbxIfType = 2
@@ -2479,7 +2504,9 @@ templates = [
 macros = [
     {'name':u'{\x24SSH_ID}','value':'{#USER}'},
     {'name':u'{\x24SSH_PASSWORD}','value':'{#PASSWORD}'},
-    {'name':u'{\x24SNMP_COMMUNITY}','value':'ibm.cloudbr'}
+    {'name':u'{\x24SNMP_COMMUNITY}','value':'ibm.cloudbr'},
+    {'name':u'{\x24MGT_USER}','value':'{#MGT_USER}'},
+    {'name':u'{\x24MGT_PASSWORD}','value':'{#MGT_PASSWORD}'}
 ]
 #additional group to add
 groups = [
@@ -2533,6 +2560,16 @@ def getProxyID(proxyName):
     return result['result'][0]['proxyid']
 
 def createHost():
+    interfaces = []
+    serverProps = {
+        &quot;host&quot;: serverName,
+        &quot;interfaces&quot;: interfaces,
+        &quot;groups&quot;: hostGroups,
+        &quot;inventory_mode&quot;: 1,
+        &quot;inventory&quot;: {
+            &quot;tag&quot;: serverProduct
+        }
+    }
     ifProps = {
                 &quot;type&quot;: zbxIfType,
                 &quot;main&quot;: 1,
@@ -2543,41 +2580,84 @@ def createHost():
             }
     if zbxIfType == 2:
         ifProps.update({'bulk':'0'})
-
-    result = zapi.do_request('host.create', {
-        &quot;host&quot;: serverName,
-        &quot;interfaces&quot;: [ifProps],
-        &quot;groups&quot;: hostGroups,
-        &quot;inventory_mode&quot;: 1,
-        &quot;inventory&quot;: {
-            &quot;tag&quot;: serverProduct
+    interfaces.append(ifProps)
+    if serverType == 'BareMetal':
+        ifProps2 = {
+            &quot;type&quot;: 3,
+            &quot;main&quot;: 1,
+            &quot;useip&quot;: 1,
+            &quot;ip&quot;: mgtIp,
+            &quot;dns&quot;: &quot;&quot;,
+            &quot;port&quot;: 623
         }
-    })
+        interfaces.append(ifProps2)
+        serverProps[&quot;ipmi_authtype&quot;] = 4
+        serverProps[&quot;ipmi_privilege&quot;] = 3
+        serverProps[&quot;ipmi_username&quot;] = ipmi_username
+        serverProps[&quot;ipmi_password&quot;] = ipmi_password
+    result = zapi.do_request('host.create', serverProps)
     return result['result']['hostids'][0]
 
 def updateInterface():
+    alreadyHaveIpmiInt = False
     result = zapi.do_request('hostinterface.get', {
         &quot;hostids&quot;: hostID
     })
-    intID = result['result'][0]['interfaceid']
-    ifProps = {
-        &quot;interfaceid&quot;: intID,
-        &quot;type&quot;: zbxIfType,
-        &quot;main&quot;: 1,
-        &quot;useip&quot;: 1,
-        &quot;ip&quot;: serverIp,
-        &quot;dns&quot;: &quot;&quot;,
-        &quot;port&quot;: zbxPort
-    }
-    if zbxIfType == 2:
-        ifProps.update({'bulk':'0'})
-    result = zapi.do_request('hostinterface.update', ifProps)
+    for int in result['result']:
+        if int['type'] == str(zbxIfType):
+            intID = int['interfaceid']
+            ifProps = {
+                &quot;interfaceid&quot;: intID,
+                &quot;type&quot;: zbxIfType,
+                &quot;main&quot;: 1,
+                &quot;useip&quot;: 1,
+                &quot;ip&quot;: serverIp,
+                &quot;dns&quot;: &quot;&quot;,
+                &quot;port&quot;: zbxPort
+            }
+            if zbxIfType == 2:
+                ifProps.update({'bulk':'0'})
+            result = zapi.do_request('hostinterface.update', ifProps)
+        elif int['type'] == '3':
+            alreadyHaveIpmiInt = True
+            intID = int['interfaceid']
+            ifProps = {
+                &quot;interfaceid&quot;: intID,
+                &quot;type&quot;: 3,
+                &quot;main&quot;: 1,
+                &quot;useip&quot;: 1,
+                &quot;ip&quot;: mgtIp,
+                &quot;dns&quot;: &quot;&quot;,
+                &quot;port&quot;: 623
+            }
+            result = zapi.do_request('hostinterface.update', ifProps)
+    if alreadyHaveIpmiInt == False:
+        if serverType == 'BareMetal':
+            result = zapi.do_request('hostinterface.create', {
+                &quot;hostid&quot;: hostID,
+                &quot;type&quot;: 3,
+                &quot;main&quot;: 1,
+                &quot;useip&quot;: 1,
+                &quot;ip&quot;: mgtIp,
+                &quot;dns&quot;: &quot;&quot;,
+                &quot;port&quot;: 623
+            })
 
 def updateGroups():
     result = zapi.do_request('host.update', {
         &quot;hostid&quot;: hostID,
         &quot;groups&quot;: hostGroups
     })
+
+def updateIpmi():
+    if serverType == 'BareMetal':
+        result = zapi.do_request('host.update', {
+            &quot;hostid&quot;: hostID,
+            &quot;ipmi_authtype&quot;: 4,
+            &quot;ipmi_privilege&quot;: 3,
+            &quot;ipmi_username&quot;: ipmi_username,
+            &quot;ipmi_password&quot;: ipmi_password
+        })
 
 def addToProxy(hostID, proxyID):
     result = zapi.do_request('host.update', {
@@ -2636,6 +2716,7 @@ if _exists is True:
         addTemplates(hostID, templates)
         updateHostMacros()
         updateGroups()
+        updateIpmi()
         print('1')
     except Exception as e:
         print(e)
@@ -2769,6 +2850,13 @@ for device in devicesJSON:
         print('        &quot;{#GROUP}&quot;:&quot;{$ZBX_CUSTOMERGROUP}&quot;,')
         print('        &quot;{#PRIVATE_IP}&quot;:&quot;' + device['primaryBackendIpAddress'] + '&quot;,')
         print('        &quot;{#FQDN}&quot;:&quot;' + device['fullyQualifiedDomainName'] + '&quot;,')
+        print('        &quot;{#TYPE}&quot;:&quot;' + device['type'] + '&quot;,')
+        if 'networkManagementIpAddress' in device:
+            print('        &quot;{#MGT_IP}&quot;:&quot;' + device['networkManagementIpAddress'] + '&quot;,')
+        if 'mgt_users' in device:
+            for mgt_user in device['mgt_users']:
+                print('        &quot;{#MGT_USER}&quot;:&quot;root&quot;,')
+                print('        &quot;{#MGT_PASSWORD}&quot;:&quot;' + mgt_user['root'] + '&quot;,')
         for user in device['users']:
             if 'Administrator' in user:
                 print('        &quot;{#USER}&quot;:&quot;Administrator&quot;,')
@@ -2872,6 +2960,10 @@ from pyzabbix import ZabbixAPI
 zapi = ZabbixAPI(url='http://{$ZBX_SERVERIP}/zabbix/', user='{$ZBX_SERVERAPIID}', password='{$ZBX_SERVERAPIPW}')
 
 serverName = &quot;{#FQDN}&quot;
+serverType = &quot;{#TYPE}&quot;	
+ipmi_username = {#MGT_USER}
+ipmi_password = {#MGT_PASSWORD}
+mgtIp = &quot;{#MGT_IP}&quot;
 serverIp = &quot;{#PRIVATE_IP}&quot;
 # zbxIfType = [1 for zabbix agent, 2 for SNMP]
 zbxIfType = 2
@@ -2884,20 +2976,24 @@ templatesLIN = [
     {'name':'Template ICMP Ping'},
     {'name':'GTS-IS Template SNMP OS Linux'},
     {'name':'GTS-IS Template APP Idera'},
-    {'name':'Template SNMP Disk IO'}
+    {'name':'Template SNMP Disk IO'},
+    {'name':'GTS-IS Template IPMI SuperMicro'}
 ]
 templatesWIN = [
     {'name':'Template ICMP Ping'},
     {'name':'Template OS Windows'},
     {'name':'GTS-IS Template APP Idera'},
-    {'name':'GTS-IS Template APP Idera Windows'}
+    {'name':'GTS-IS Template APP Idera Windows'},
+    {'name':'GTS-IS Template IPMI SuperMicro'}
 ]
 # Macro names need to send $ as utf8 char \x24 like u'{\x24MacroName}
 # This will avoid confusion in Zabbix variable parsing
 macros = [
     {'name':u'{\x24SSH_ID}','value':'{#USER}'},
     {'name':u'{\x24SSH_PASSWORD}','value':'{#PASSWORD}'},
-    {'name':u'{\x24SNMP_COMMUNITY}','value':'ibm.cloudbr'}
+    {'name':u'{\x24SNMP_COMMUNITY}','value':'ibm.cloudbr'},
+    {'name':u'{\x24MGT_USER}','value':'{#MGT_USER}'},
+    {'name':u'{\x24MGT_PASSWORD}','value':'{#MGT_PASSWORD}'}
 ]
 #additional group to add
 # CODE IS BELOW, ON OS DETECTION
@@ -2950,6 +3046,16 @@ def getProxyID(proxyName):
     return result['result'][0]['proxyid']
 
 def createHost():
+    interfaces = []
+    serverProps = {
+        &quot;host&quot;: serverName,
+        &quot;interfaces&quot;: interfaces,
+        &quot;groups&quot;: hostGroups,
+        &quot;inventory_mode&quot;: 1,
+        &quot;inventory&quot;: {
+            &quot;tag&quot;: serverProduct
+        }
+    }
     ifProps = {
                 &quot;type&quot;: zbxIfType,
                 &quot;main&quot;: 1,
@@ -2960,41 +3066,84 @@ def createHost():
             }
     if zbxIfType == 2:
         ifProps.update({'bulk':'0'})
-
-    result = zapi.do_request('host.create', {
-        &quot;host&quot;: serverName,
-        &quot;interfaces&quot;: [ifProps],
-        &quot;groups&quot;: hostGroups,
-        &quot;inventory_mode&quot;: 1,
-        &quot;inventory&quot;: {
-            &quot;tag&quot;: serverProduct
+    interfaces.append(ifProps)
+    if serverType == 'BareMetal':
+        ifProps2 = {
+            &quot;type&quot;: 3,
+            &quot;main&quot;: 1,
+            &quot;useip&quot;: 1,
+            &quot;ip&quot;: mgtIp,
+            &quot;dns&quot;: &quot;&quot;,
+            &quot;port&quot;: 623
         }
-    })
+        interfaces.append(ifProps2)
+        serverProps[&quot;ipmi_authtype&quot;] = 4
+        serverProps[&quot;ipmi_privilege&quot;] = 3
+        serverProps[&quot;ipmi_username&quot;] = ipmi_username
+        serverProps[&quot;ipmi_password&quot;] = ipmi_password
+    result = zapi.do_request('host.create', serverProps)
     return result['result']['hostids'][0]
 
 def updateInterface():
+    alreadyHaveIpmiInt = False
     result = zapi.do_request('hostinterface.get', {
         &quot;hostids&quot;: hostID
     })
-    intID = result['result'][0]['interfaceid']
-    ifProps = {
-        &quot;interfaceid&quot;: intID,
-        &quot;type&quot;: zbxIfType,
-        &quot;main&quot;: 1,
-        &quot;useip&quot;: 1,
-        &quot;ip&quot;: serverIp,
-        &quot;dns&quot;: &quot;&quot;,
-        &quot;port&quot;: zbxPort
-    }
-    if zbxIfType == 2:
-        ifProps.update({'bulk':'0'})
-    result = zapi.do_request('hostinterface.update', ifProps)
+    for int in result['result']:
+        if int['type'] == str(zbxIfType):
+            intID = int['interfaceid']
+            ifProps = {
+                &quot;interfaceid&quot;: intID,
+                &quot;type&quot;: zbxIfType,
+                &quot;main&quot;: 1,
+                &quot;useip&quot;: 1,
+                &quot;ip&quot;: serverIp,
+                &quot;dns&quot;: &quot;&quot;,
+                &quot;port&quot;: zbxPort
+            }
+            if zbxIfType == 2:
+                ifProps.update({'bulk':'0'})
+            result = zapi.do_request('hostinterface.update', ifProps)
+        elif int['type'] == '3':
+            alreadyHaveIpmiInt = True
+            intID = int['interfaceid']
+            ifProps = {
+                &quot;interfaceid&quot;: intID,
+                &quot;type&quot;: 3,
+                &quot;main&quot;: 1,
+                &quot;useip&quot;: 1,
+                &quot;ip&quot;: mgtIp,
+                &quot;dns&quot;: &quot;&quot;,
+                &quot;port&quot;: 623
+            }
+            result = zapi.do_request('hostinterface.update', ifProps)
+    if alreadyHaveIpmiInt == False:
+        if serverType == 'BareMetal':
+            result = zapi.do_request('hostinterface.create', {
+                &quot;hostid&quot;: hostID,
+                &quot;type&quot;: 3,
+                &quot;main&quot;: 1,
+                &quot;useip&quot;: 1,
+                &quot;ip&quot;: mgtIp,
+                &quot;dns&quot;: &quot;&quot;,
+                &quot;port&quot;: 623
+            })
 
 def updateGroups():
     result = zapi.do_request('host.update', {
         &quot;hostid&quot;: hostID,
         &quot;groups&quot;: hostGroups
     })
+
+def updateIpmi():
+    if serverType == 'BareMetal':
+        result = zapi.do_request('host.update', {
+            &quot;hostid&quot;: hostID,
+            &quot;ipmi_authtype&quot;: 4,
+            &quot;ipmi_privilege&quot;: 3,
+            &quot;ipmi_username&quot;: ipmi_username,
+            &quot;ipmi_password&quot;: ipmi_password
+        })
 
 def addToProxy(hostID, proxyID):
     result = zapi.do_request('host.update', {
@@ -3061,6 +3210,7 @@ if _exists is True:
         addTemplates(hostID, templates)
         updateHostMacros()
         updateGroups()
+        updateIpmi()
         print('1')
     except Exception as e:
         print(e)
@@ -3287,6 +3437,13 @@ for device in devicesJSON:
         print('        &quot;{#GROUP}&quot;:&quot;{$ZBX_CUSTOMERGROUP}&quot;,')
         print('        &quot;{#PRIVATE_IP}&quot;:&quot;' + device['primaryBackendIpAddress'] + '&quot;,')
         print('        &quot;{#FQDN}&quot;:&quot;' + device['fullyQualifiedDomainName'] + '&quot;,')
+        print('        &quot;{#TYPE}&quot;:&quot;' + device['type'] + '&quot;,')
+        if 'networkManagementIpAddress' in device:
+            print('        &quot;{#MGT_IP}&quot;:&quot;' + device['networkManagementIpAddress'] + '&quot;,')
+        if 'mgt_users' in device:
+            for mgt_user in device['mgt_users']:
+                print('        &quot;{#MGT_USER}&quot;:&quot;root&quot;,')
+                print('        &quot;{#MGT_PASSWORD}&quot;:&quot;' + mgt_user['root'] + '&quot;,')
         for user in device['users']:
             print('        &quot;{#USER}&quot;:&quot;root&quot;,')
             print('        &quot;{#PASSWORD}&quot;:&quot;' + user['root'] + '&quot;')
@@ -3384,6 +3541,10 @@ from pyzabbix import ZabbixAPI
 zapi = ZabbixAPI(url='http://{$ZBX_SERVERIP}/zabbix/', user='{$ZBX_SERVERAPIID}', password='{$ZBX_SERVERAPIPW}')
 
 serverName = &quot;{#FQDN}&quot;
+serverType = &quot;{#TYPE}&quot;
+ipmi_username = {#MGT_USER}
+ipmi_password = {#MGT_PASSWORD}
+mgtIp = &quot;{#MGT_IP}&quot;
 serverIp = &quot;{#PRIVATE_IP}&quot;
 # zbxIfType = [1 for zabbix agent, 2 for SNMP]
 zbxIfType = 2
@@ -3401,7 +3562,9 @@ templates = [
 macros = [
     {'name':u'{\x24SSH_ID}','value':'{#USER}'},
     {'name':u'{\x24SSH_PASSWORD}','value':'{#PASSWORD}'},
-    {'name':u'{\x24SNMP_COMMUNITY}','value':'ibm.cloudbr'}
+    {'name':u'{\x24SNMP_COMMUNITY}','value':'ibm.cloudbr'},
+    {'name':u'{\x24MGT_USER}','value':'{#MGT_USER}'},
+    {'name':u'{\x24MGT_PASSWORD}','value':'{#MGT_PASSWORD}'}
 ]
 #additional group to add
 groups = [
@@ -3455,6 +3618,16 @@ def getProxyID(proxyName):
     return result['result'][0]['proxyid']
 
 def createHost():
+    interfaces = []
+    serverProps = {
+        &quot;host&quot;: serverName,
+        &quot;interfaces&quot;: interfaces,
+        &quot;groups&quot;: hostGroups,
+        &quot;inventory_mode&quot;: 1,
+        &quot;inventory&quot;: {
+            &quot;tag&quot;: serverProduct
+        }
+    }
     ifProps = {
                 &quot;type&quot;: zbxIfType,
                 &quot;main&quot;: 1,
@@ -3465,41 +3638,85 @@ def createHost():
             }
     if zbxIfType == 2:
         ifProps.update({'bulk':'0'})
-
-    result = zapi.do_request('host.create', {
-        &quot;host&quot;: serverName,
-        &quot;interfaces&quot;: [ifProps],
-        &quot;groups&quot;: hostGroups,
-        &quot;inventory_mode&quot;: 1,
-        &quot;inventory&quot;: {
-            &quot;tag&quot;: serverProduct
+    interfaces.append(ifProps)
+    if serverType == 'BareMetal':
+        ifProps2 = {
+            &quot;type&quot;: 3,
+            &quot;main&quot;: 1,
+            &quot;useip&quot;: 1,
+            &quot;ip&quot;: mgtIp,
+            &quot;dns&quot;: &quot;&quot;,
+            &quot;port&quot;: 623
         }
-    })
+        interfaces.append(ifProps2)
+        serverProps[&quot;ipmi_authtype&quot;] = 4
+        serverProps[&quot;ipmi_privilege&quot;] = 3
+        serverProps[&quot;ipmi_username&quot;] = ipmi_username
+        serverProps[&quot;ipmi_password&quot;] = ipmi_password
+    result = zapi.do_request('host.create', serverProps)
     return result['result']['hostids'][0]
 
 def updateInterface():
+    alreadyHaveIpmiInt = False
     result = zapi.do_request('hostinterface.get', {
         &quot;hostids&quot;: hostID
     })
-    intID = result['result'][0]['interfaceid']
-    ifProps = {
-        &quot;interfaceid&quot;: intID,
-        &quot;type&quot;: zbxIfType,
-        &quot;main&quot;: 1,
-        &quot;useip&quot;: 1,
-        &quot;ip&quot;: serverIp,
-        &quot;dns&quot;: &quot;&quot;,
-        &quot;port&quot;: zbxPort
-    }
-    if zbxIfType == 2:
-        ifProps.update({'bulk':'0'})
-    result = zapi.do_request('hostinterface.update', ifProps)
+    for int in result['result']:
+        if int['type'] == str(zbxIfType):
+            intID = int['interfaceid']
+            ifProps = {
+                &quot;interfaceid&quot;: intID,
+                &quot;type&quot;: zbxIfType,
+                &quot;main&quot;: 1,
+                &quot;useip&quot;: 1,
+                &quot;ip&quot;: serverIp,
+                &quot;dns&quot;: &quot;&quot;,
+                &quot;port&quot;: zbxPort
+            }
+            if zbxIfType == 2:
+                ifProps.update({'bulk':'0'})
+            result = zapi.do_request('hostinterface.update', ifProps)
+        elif int['type'] == '3':
+            alreadyHaveIpmiInt = True
+            intID = int['interfaceid']
+            ifProps = {
+                &quot;interfaceid&quot;: intID,
+                &quot;type&quot;: 3,
+                &quot;main&quot;: 1,
+                &quot;useip&quot;: 1,
+                &quot;ip&quot;: mgtIp,
+                &quot;dns&quot;: &quot;&quot;,
+                &quot;port&quot;: 623
+            }
+            result = zapi.do_request('hostinterface.update', ifProps)
+    if alreadyHaveIpmiInt == False:
+        if serverType == 'BareMetal':
+            result = zapi.do_request('hostinterface.create', {
+                &quot;hostid&quot;: hostID,
+                &quot;type&quot;: 3,
+                &quot;main&quot;: 1,
+                &quot;useip&quot;: 1,
+                &quot;ip&quot;: mgtIp,
+                &quot;dns&quot;: &quot;&quot;,
+                &quot;port&quot;: 623
+            })
 
 def updateGroups():
     result = zapi.do_request('host.update', {
         &quot;hostid&quot;: hostID,
         &quot;groups&quot;: hostGroups
     })
+
+def updateIpmi():
+    if serverType == 'BareMetal':
+        result = zapi.do_request('host.update', {
+            &quot;hostid&quot;: hostID,
+            &quot;ipmi_authtype&quot;: 4,
+            &quot;ipmi_privilege&quot;: 3,
+            &quot;ipmi_username&quot;: ipmi_username,
+            &quot;ipmi_password&quot;: ipmi_password
+        })
+
 
 def addToProxy(hostID, proxyID):
     result = zapi.do_request('host.update', {
@@ -3558,6 +3775,7 @@ if _exists is True:
         addTemplates(hostID, templates)
         updateHostMacros()
         updateGroups()
+        updateIpmi()
         print('1')
     except Exception as e:
         print(e)
@@ -3691,6 +3909,13 @@ for device in devicesJSON:
         print('        &quot;{#GROUP}&quot;:&quot;{$ZBX_CUSTOMERGROUP}&quot;,')
         print('        &quot;{#PRIVATE_IP}&quot;:&quot;' + device['primaryBackendIpAddress'] + '&quot;,')
         print('        &quot;{#FQDN}&quot;:&quot;' + device['fullyQualifiedDomainName'] + '&quot;,')
+        print('        &quot;{#TYPE}&quot;:&quot;' + device['type'] + '&quot;,')
+        if 'networkManagementIpAddress' in device:
+            print('        &quot;{#MGT_IP}&quot;:&quot;' + device['networkManagementIpAddress'] + '&quot;,')
+        if 'mgt_users' in device:
+            for mgt_user in device['mgt_users']:
+                print('        &quot;{#MGT_USER}&quot;:&quot;root&quot;,')
+                print('        &quot;{#MGT_PASSWORD}&quot;:&quot;' + mgt_user['root'] + '&quot;,')
         for user in device['users']:
             if 'Administrator' in user:
                 print('        &quot;{#USER}&quot;:&quot;Administrator&quot;,')
@@ -3792,6 +4017,10 @@ from pyzabbix import ZabbixAPI
 zapi = ZabbixAPI(url='http://{$ZBX_SERVERIP}/zabbix/', user='{$ZBX_SERVERAPIID}', password='{$ZBX_SERVERAPIPW}')
 
 serverName = &quot;{#FQDN}&quot;
+serverType = &quot;{#TYPE}&quot;
+ipmi_username = {#MGT_USER}
+ipmi_password = {#MGT_PASSWORD}
+mgtIp = &quot;{#MGT_IP}&quot;
 serverIp = &quot;{#PRIVATE_IP}&quot;
 # zbxIfType = [1 for zabbix agent, 2 for SNMP]
 zbxIfType = 2
@@ -3803,14 +4032,17 @@ proxyName = &quot;{#PROXY}&quot;
 templates = [
     {'name':'Template ICMP Ping'},
     {'name':'Template SNMP Disk IO'},
-    {'name':'GTS-IS Template SNMP OS Linux'}
+    {'name':'GTS-IS Template SNMP OS Linux'},
+    {'name':'GTS-IS Template IPMI SuperMicro'}
 ]
 # Macro names need to send $ as utf8 char \x24 like u'{\x24MacroName}
 # This will avoid confusion in Zabbix variable parsing
 macros = [
     {'name':u'{\x24SSH_ID}','value':'{#USER}'},
     {'name':u'{\x24SSH_PASSWORD}','value':'{#PASSWORD}'},
-    {'name':u'{\x24SNMP_COMMUNITY}','value':'ibm.cloudbr'}
+    {'name':u'{\x24SNMP_COMMUNITY}','value':'ibm.cloudbr'},
+    {'name':u'{\x24MGT_USER}','value':'{#MGT_USER}'},
+    {'name':u'{\x24MGT_PASSWORD}','value':'{#MGT_PASSWORD}'}
 ]
 #additional group to add
 groups = [
@@ -3865,6 +4097,16 @@ def getProxyID(proxyName):
     return result['result'][0]['proxyid']
 
 def createHost():
+    interfaces = []
+    serverProps = {
+        &quot;host&quot;: serverName,
+        &quot;interfaces&quot;: interfaces,
+        &quot;groups&quot;: hostGroups,
+        &quot;inventory_mode&quot;: 1,
+        &quot;inventory&quot;: {
+            &quot;tag&quot;: serverProduct
+        }
+    }
     ifProps = {
                 &quot;type&quot;: zbxIfType,
                 &quot;main&quot;: 1,
@@ -3875,41 +4117,84 @@ def createHost():
             }
     if zbxIfType == 2:
         ifProps.update({'bulk':'0'})
-
-    result = zapi.do_request('host.create', {
-        &quot;host&quot;: serverName,
-        &quot;interfaces&quot;: [ifProps],
-        &quot;groups&quot;: hostGroups,
-        &quot;inventory_mode&quot;: 1,
-        &quot;inventory&quot;: {
-            &quot;tag&quot;: serverProduct
+    interfaces.append(ifProps)
+    if serverType == 'BareMetal':
+        ifProps2 = {
+            &quot;type&quot;: 3,
+            &quot;main&quot;: 1,
+            &quot;useip&quot;: 1,
+            &quot;ip&quot;: mgtIp,
+            &quot;dns&quot;: &quot;&quot;,
+            &quot;port&quot;: 623
         }
-    })
+        interfaces.append(ifProps2)
+        serverProps[&quot;ipmi_authtype&quot;] = 4
+        serverProps[&quot;ipmi_privilege&quot;] = 3
+        serverProps[&quot;ipmi_username&quot;] = ipmi_username
+        serverProps[&quot;ipmi_password&quot;] = ipmi_password
+    result = zapi.do_request('host.create', serverProps)
     return result['result']['hostids'][0]
 
 def updateInterface():
+    alreadyHaveIpmiInt = False
     result = zapi.do_request('hostinterface.get', {
         &quot;hostids&quot;: hostID
     })
-    intID = result['result'][0]['interfaceid']
-    ifProps = {
-        &quot;interfaceid&quot;: intID,
-        &quot;type&quot;: zbxIfType,
-        &quot;main&quot;: 1,
-        &quot;useip&quot;: 1,
-        &quot;ip&quot;: serverIp,
-        &quot;dns&quot;: &quot;&quot;,
-        &quot;port&quot;: zbxPort
-    }
-    if zbxIfType == 2:
-        ifProps.update({'bulk':'0'})
-    result = zapi.do_request('hostinterface.update', ifProps)
+    for int in result['result']:
+        if int['type'] == str(zbxIfType):
+            intID = int['interfaceid']
+            ifProps = {
+                &quot;interfaceid&quot;: intID,
+                &quot;type&quot;: zbxIfType,
+                &quot;main&quot;: 1,
+                &quot;useip&quot;: 1,
+                &quot;ip&quot;: serverIp,
+                &quot;dns&quot;: &quot;&quot;,
+                &quot;port&quot;: zbxPort
+            }
+            if zbxIfType == 2:
+                ifProps.update({'bulk':'0'})
+            result = zapi.do_request('hostinterface.update', ifProps)
+        elif int['type'] == '3':
+            alreadyHaveIpmiInt = True
+            intID = int['interfaceid']
+            ifProps = {
+                &quot;interfaceid&quot;: intID,
+                &quot;type&quot;: 3,
+                &quot;main&quot;: 1,
+                &quot;useip&quot;: 1,
+                &quot;ip&quot;: mgtIp,
+                &quot;dns&quot;: &quot;&quot;,
+                &quot;port&quot;: 623
+            }
+            result = zapi.do_request('hostinterface.update', ifProps)
+    if alreadyHaveIpmiInt == False:
+        if serverType == 'BareMetal':
+            result = zapi.do_request('hostinterface.create', {
+                &quot;hostid&quot;: hostID,
+                &quot;type&quot;: 3,
+                &quot;main&quot;: 1,
+                &quot;useip&quot;: 1,
+                &quot;ip&quot;: mgtIp,
+                &quot;dns&quot;: &quot;&quot;,
+                &quot;port&quot;: 623
+            })
 
 def updateGroups():
     result = zapi.do_request('host.update', {
         &quot;hostid&quot;: hostID,
         &quot;groups&quot;: hostGroups
     })
+
+def updateIpmi():
+    if serverType == 'BareMetal':
+        result = zapi.do_request('host.update', {
+            &quot;hostid&quot;: hostID,
+            &quot;ipmi_authtype&quot;: 4,
+            &quot;ipmi_privilege&quot;: 3,
+            &quot;ipmi_username&quot;: ipmi_username,
+            &quot;ipmi_password&quot;: ipmi_password
+        })
 
 def addToProxy(hostID, proxyID):
     result = zapi.do_request('host.update', {
@@ -3968,6 +4253,7 @@ if _exists is True:
         addTemplates(hostID, templates)
         updateHostMacros()
         updateGroups()
+        updateIpmi()
         print('1')
     except Exception as e:
         print(e)
@@ -4101,6 +4387,13 @@ for device in devicesJSON:
         print('        &quot;{#GROUP}&quot;:&quot;{$ZBX_CUSTOMERGROUP}&quot;,')
         print('        &quot;{#PRIVATE_IP}&quot;:&quot;' + device['primaryBackendIpAddress'] + '&quot;,')
         print('        &quot;{#FQDN}&quot;:&quot;' + device['fullyQualifiedDomainName'] + '&quot;,')
+        print('        &quot;{#TYPE}&quot;:&quot;' + device['type'] + '&quot;,')
+        if 'networkManagementIpAddress' in device:
+            print('        &quot;{#MGT_IP}&quot;:&quot;' + device['networkManagementIpAddress'] + '&quot;,')
+        if 'mgt_users' in device:
+            for mgt_user in device['mgt_users']:
+                print('        &quot;{#MGT_USER}&quot;:&quot;root&quot;,')
+                print('        &quot;{#MGT_PASSWORD}&quot;:&quot;' + mgt_user['root'] + '&quot;,')
         for user in device['users']:
             if 'root' in user:
                 print('        &quot;{#USER}&quot;:&quot;root&quot;,')
@@ -4199,6 +4492,10 @@ from pyzabbix import ZabbixAPI
 zapi = ZabbixAPI(url='http://{$ZBX_SERVERIP}/zabbix/', user='{$ZBX_SERVERAPIID}', password='{$ZBX_SERVERAPIPW}')
 
 serverName = &quot;{#FQDN}&quot;
+serverType = &quot;{#TYPE}&quot;	
+ipmi_username = {#MGT_USER}
+ipmi_password = {#MGT_PASSWORD}
+mgtIp = &quot;{#MGT_IP}&quot;
 serverIp = &quot;{#PRIVATE_IP}&quot;
 # zbxIfType = [1 for zabbix agent, 2 for SNMP]
 zbxIfType = 2
@@ -4210,13 +4507,16 @@ proxyName = &quot;{#PROXY}&quot;
 templates = [
     {'name':'Template ICMP Ping'},
     {'name':'Template SNMP Disk IO'},
-    {'name':'GTS-IS Template SNMP OS Linux'}
+    {'name':'GTS-IS Template SNMP OS Linux'},
+    {'name':'GTS-IS Template IPMI SuperMicro'}
 ]
 # Macro names need to send $ as utf8 char \x24 like u'{\x24MacroName}
 # This will avoid confusion in Zabbix variable parsing
 macros = [
     {'name':u'{\x24SSH_ID}','value':'{#USER}'},
-    {'name':u'{\x24SSH_PASSWORD}','value':'{#PASSWORD}'}
+    {'name':u'{\x24SSH_PASSWORD}','value':'{#PASSWORD}'},
+    {'name':u'{\x24MGT_USER}','value':'{#MGT_USER}'},
+    {'name':u'{\x24MGT_PASSWORD}','value':'{#MGT_PASSWORD}'}
 ]
 #additional group to add
 groups = [
@@ -4270,6 +4570,16 @@ def getProxyID(proxyName):
     return result['result'][0]['proxyid']
 
 def createHost():
+    interfaces = []
+    serverProps = {
+        &quot;host&quot;: serverName,
+        &quot;interfaces&quot;: interfaces,
+        &quot;groups&quot;: hostGroups,
+        &quot;inventory_mode&quot;: 1,
+        &quot;inventory&quot;: {
+            &quot;tag&quot;: serverProduct
+        }
+    }
     ifProps = {
                 &quot;type&quot;: zbxIfType,
                 &quot;main&quot;: 1,
@@ -4280,41 +4590,84 @@ def createHost():
             }
     if zbxIfType == 2:
         ifProps.update({'bulk':'0'})
-
-    result = zapi.do_request('host.create', {
-        &quot;host&quot;: serverName,
-        &quot;interfaces&quot;: [ifProps],
-        &quot;groups&quot;: hostGroups,
-        &quot;inventory_mode&quot;: 1,
-        &quot;inventory&quot;: {
-            &quot;tag&quot;: serverProduct
+    interfaces.append(ifProps)
+    if serverType == 'BareMetal':
+        ifProps2 = {
+            &quot;type&quot;: 3,
+            &quot;main&quot;: 1,
+            &quot;useip&quot;: 1,
+            &quot;ip&quot;: mgtIp,
+            &quot;dns&quot;: &quot;&quot;,
+            &quot;port&quot;: 623
         }
-    })
+        interfaces.append(ifProps2)
+        serverProps[&quot;ipmi_authtype&quot;] = 4
+        serverProps[&quot;ipmi_privilege&quot;] = 3
+        serverProps[&quot;ipmi_username&quot;] = ipmi_username
+        serverProps[&quot;ipmi_password&quot;] = ipmi_password
+    result = zapi.do_request('host.create', serverProps)
     return result['result']['hostids'][0]
 
 def updateInterface():
+    alreadyHaveIpmiInt = False
     result = zapi.do_request('hostinterface.get', {
         &quot;hostids&quot;: hostID
     })
-    intID = result['result'][0]['interfaceid']
-    ifProps = {
-        &quot;interfaceid&quot;: intID,
-        &quot;type&quot;: zbxIfType,
-        &quot;main&quot;: 1,
-        &quot;useip&quot;: 1,
-        &quot;ip&quot;: serverIp,
-        &quot;dns&quot;: &quot;&quot;,
-        &quot;port&quot;: zbxPort
-    }
-    if zbxIfType == 2:
-        ifProps.update({'bulk':'0'})
-    result = zapi.do_request('hostinterface.update', ifProps)
+    for int in result['result']:
+        if int['type'] == str(zbxIfType):
+            intID = int['interfaceid']
+            ifProps = {
+                &quot;interfaceid&quot;: intID,
+                &quot;type&quot;: zbxIfType,
+                &quot;main&quot;: 1,
+                &quot;useip&quot;: 1,
+                &quot;ip&quot;: serverIp,
+                &quot;dns&quot;: &quot;&quot;,
+                &quot;port&quot;: zbxPort
+            }
+            if zbxIfType == 2:
+                ifProps.update({'bulk':'0'})
+            result = zapi.do_request('hostinterface.update', ifProps)
+        elif int['type'] == '3':
+            alreadyHaveIpmiInt = True
+            intID = int['interfaceid']
+            ifProps = {
+                &quot;interfaceid&quot;: intID,
+                &quot;type&quot;: 3,
+                &quot;main&quot;: 1,
+                &quot;useip&quot;: 1,
+                &quot;ip&quot;: mgtIp,
+                &quot;dns&quot;: &quot;&quot;,
+                &quot;port&quot;: 623
+            }
+            result = zapi.do_request('hostinterface.update', ifProps)
+    if alreadyHaveIpmiInt == False:
+        if serverType == 'BareMetal':
+            result = zapi.do_request('hostinterface.create', {
+                &quot;hostid&quot;: hostID,
+                &quot;type&quot;: 3,
+                &quot;main&quot;: 1,
+                &quot;useip&quot;: 1,
+                &quot;ip&quot;: mgtIp,
+                &quot;dns&quot;: &quot;&quot;,
+                &quot;port&quot;: 623
+            })
 
 def updateGroups():
     result = zapi.do_request('host.update', {
         &quot;hostid&quot;: hostID,
         &quot;groups&quot;: hostGroups
     })
+
+def updateIpmi():
+    if serverType == 'BareMetal':
+        result = zapi.do_request('host.update', {
+            &quot;hostid&quot;: hostID,
+            &quot;ipmi_authtype&quot;: 4,
+            &quot;ipmi_privilege&quot;: 3,
+            &quot;ipmi_username&quot;: ipmi_username,
+            &quot;ipmi_password&quot;: ipmi_password
+        })
 
 def addToProxy(hostID, proxyID):
     result = zapi.do_request('host.update', {
@@ -4373,6 +4726,7 @@ if _exists is True:
         addTemplates(hostID, templates)
         updateHostMacros()
         updateGroups()
+        updateIpmi()
         print('1')
     except Exception as e:
         print(e)
@@ -4522,6 +4876,13 @@ for device in devicesJSON:
         print('        &quot;{#GROUP}&quot;:&quot;{$ZBX_CUSTOMERGROUP}&quot;,')
         print('        &quot;{#PRIVATE_IP}&quot;:&quot;' + device['primaryBackendIpAddress'] + '&quot;,')
         print('        &quot;{#FQDN}&quot;:&quot;' + device['fullyQualifiedDomainName'] + '&quot;,')
+        print('        &quot;{#TYPE}&quot;:&quot;' + device['type'] + '&quot;,')
+        if 'networkManagementIpAddress' in device:
+            print('        &quot;{#MGT_IP}&quot;:&quot;' + device['networkManagementIpAddress'] + '&quot;,')
+        if 'mgt_users' in device:
+            for mgt_user in device['mgt_users']:
+                print('        &quot;{#MGT_USER}&quot;:&quot;root&quot;,')
+                print('        &quot;{#MGT_PASSWORD}&quot;:&quot;' + mgt_user['root'] + '&quot;,')
         for user in device['users']:
             if 'ibmvmadmin' in user:
                 print('        &quot;{#USER}&quot;:&quot;ibmvmadmin&quot;,')
@@ -4662,6 +5023,10 @@ from pyzabbix import ZabbixAPI
 zapi = ZabbixAPI(url='http://{$ZBX_SERVERIP}/zabbix/', user='{$ZBX_SERVERAPIID}', password='{$ZBX_SERVERAPIPW}')
 
 serverName = &quot;{#FQDN}&quot;
+serverType = &quot;{#TYPE}&quot;	
+ipmi_username = {#MGT_USER}
+ipmi_password = {#MGT_PASSWORD}
+mgtIp = &quot;{#MGT_IP}&quot;
 serverIp = &quot;{#PRIVATE_IP}&quot;
 # zbxIfType = [1 for zabbix agent, 2 for SNMP]
 zbxIfType = 2
@@ -4672,7 +5037,8 @@ groupName = &quot;{#GROUP}&quot;
 proxyName = &quot;{#PROXY}&quot;
 templates = [
     {'name':'Template ICMP Ping'},
-    {'name':'GTS-IS Template Virt VMware Hypervisor standalone'}
+    {'name':'GTS-IS Template Virt VMware Hypervisor standalone'},
+    {'name':'GTS-IS Template IPMI SuperMicro'}
 ]
 # Macro names need to send $ as utf8 char \x24 like u'{\x24MacroName}
 # This will avoid confusion in Zabbix variable parsing
@@ -4681,7 +5047,9 @@ macros = [
     {'name':u'{\x24SSH_PASSWORD}','value':'{#PASSWORD}'},
     {'name':u'{\x24URL}','value':'https://{#PRIVATE_IP}/sdk'},
     {'name':u'{\x24USERNAME}','value':'{#USER}'},
-    {'name':u'{\x24PASSWORD}','value':'{#PASSWORD}'}
+    {'name':u'{\x24PASSWORD}','value':'{#PASSWORD}'},
+    {'name':u'{\x24MGT_USER}','value':'{#MGT_USER}'},
+    {'name':u'{\x24MGT_PASSWORD}','value':'{#MGT_PASSWORD}'}
 ]
 #additional group to add
 groups = [
@@ -4736,6 +5104,16 @@ def getProxyID(proxyName):
     return result['result'][0]['proxyid']
 
 def createHost():
+    interfaces = []
+    serverProps = {
+        &quot;host&quot;: serverName,
+        &quot;interfaces&quot;: interfaces,
+        &quot;groups&quot;: hostGroups,
+        &quot;inventory_mode&quot;: 1,
+        &quot;inventory&quot;: {
+            &quot;tag&quot;: serverProduct
+        }
+    }
     ifProps = {
                 &quot;type&quot;: zbxIfType,
                 &quot;main&quot;: 1,
@@ -4746,41 +5124,84 @@ def createHost():
             }
     if zbxIfType == 2:
         ifProps.update({'bulk':'0'})
-
-    result = zapi.do_request('host.create', {
-        &quot;host&quot;: serverName,
-        &quot;interfaces&quot;: [ifProps],
-        &quot;groups&quot;: hostGroups,
-        &quot;inventory_mode&quot;: 1,
-        &quot;inventory&quot;: {
-            &quot;tag&quot;: serverProduct
+    interfaces.append(ifProps)
+    if serverType == 'BareMetal':
+        ifProps2 = {
+            &quot;type&quot;: 3,
+            &quot;main&quot;: 1,
+            &quot;useip&quot;: 1,
+            &quot;ip&quot;: mgtIp,
+            &quot;dns&quot;: &quot;&quot;,
+            &quot;port&quot;: 623
         }
-    })
+        interfaces.append(ifProps2)
+        serverProps[&quot;ipmi_authtype&quot;] = 4
+        serverProps[&quot;ipmi_privilege&quot;] = 3
+        serverProps[&quot;ipmi_username&quot;] = ipmi_username
+        serverProps[&quot;ipmi_password&quot;] = ipmi_password
+    result = zapi.do_request('host.create', serverProps)
     return result['result']['hostids'][0]
 
 def updateInterface():
+    alreadyHaveIpmiInt = False
     result = zapi.do_request('hostinterface.get', {
         &quot;hostids&quot;: hostID
     })
-    intID = result['result'][0]['interfaceid']
-    ifProps = {
-        &quot;interfaceid&quot;: intID,
-        &quot;type&quot;: zbxIfType,
-        &quot;main&quot;: 1,
-        &quot;useip&quot;: 1,
-        &quot;ip&quot;: serverIp,
-        &quot;dns&quot;: &quot;&quot;,
-        &quot;port&quot;: zbxPort
-    }
-    if zbxIfType == 2:
-        ifProps.update({'bulk':'0'})
-    result = zapi.do_request('hostinterface.update', ifProps)
+    for int in result['result']:
+        if int['type'] == str(zbxIfType):
+            intID = int['interfaceid']
+            ifProps = {
+                &quot;interfaceid&quot;: intID,
+                &quot;type&quot;: zbxIfType,
+                &quot;main&quot;: 1,
+                &quot;useip&quot;: 1,
+                &quot;ip&quot;: serverIp,
+                &quot;dns&quot;: &quot;&quot;,
+                &quot;port&quot;: zbxPort
+            }
+            if zbxIfType == 2:
+                ifProps.update({'bulk':'0'})
+            result = zapi.do_request('hostinterface.update', ifProps)
+        elif int['type'] == '3':
+            alreadyHaveIpmiInt = True
+            intID = int['interfaceid']
+            ifProps = {
+                &quot;interfaceid&quot;: intID,
+                &quot;type&quot;: 3,
+                &quot;main&quot;: 1,
+                &quot;useip&quot;: 1,
+                &quot;ip&quot;: mgtIp,
+                &quot;dns&quot;: &quot;&quot;,
+                &quot;port&quot;: 623
+            }
+            result = zapi.do_request('hostinterface.update', ifProps)
+    if alreadyHaveIpmiInt == False:
+        if serverType == 'BareMetal':
+            result = zapi.do_request('hostinterface.create', {
+                &quot;hostid&quot;: hostID,
+                &quot;type&quot;: 3,
+                &quot;main&quot;: 1,
+                &quot;useip&quot;: 1,
+                &quot;ip&quot;: mgtIp,
+                &quot;dns&quot;: &quot;&quot;,
+                &quot;port&quot;: 623
+            })
 
 def updateGroups():
     result = zapi.do_request('host.update', {
         &quot;hostid&quot;: hostID,
         &quot;groups&quot;: hostGroups
     })
+
+def updateIpmi():
+    if serverType == 'BareMetal':
+        result = zapi.do_request('host.update', {
+            &quot;hostid&quot;: hostID,
+            &quot;ipmi_authtype&quot;: 4,
+            &quot;ipmi_privilege&quot;: 3,
+            &quot;ipmi_username&quot;: ipmi_username,
+            &quot;ipmi_password&quot;: ipmi_password
+        })
 
 def addToProxy(hostID, proxyID):
     result = zapi.do_request('host.update', {
@@ -4839,6 +5260,7 @@ if _exists is True:
         addTemplates(hostID, templates)
         updateHostMacros()
         updateGroups()
+        updateIpmi()
         print('1')
     except Exception as e:
         print(e)
@@ -4928,6 +5350,13 @@ for device in devicesJSON:
         print('        &quot;{#GROUP}&quot;:&quot;{$ZBX_CUSTOMERGROUP}&quot;,')
         print('        &quot;{#PRIVATE_IP}&quot;:&quot;' + device['primaryBackendIpAddress'] + '&quot;,')
         print('        &quot;{#FQDN}&quot;:&quot;' + device['fullyQualifiedDomainName'] + '&quot;,')
+        print('        &quot;{#TYPE}&quot;:&quot;' + device['type'] + '&quot;,')
+        if 'networkManagementIpAddress' in device:
+            print('        &quot;{#MGT_IP}&quot;:&quot;' + device['networkManagementIpAddress'] + '&quot;,')
+        if 'mgt_users' in device:
+            for mgt_user in device['mgt_users']:
+                print('        &quot;{#MGT_USER}&quot;:&quot;root&quot;,')
+                print('        &quot;{#MGT_PASSWORD}&quot;:&quot;' + mgt_user['root'] + '&quot;,')
         for user in device['users']:
             if (device['product'] == 'Brocade') and ('vyatta' in user):
                 print('        &quot;{#USER}&quot;:&quot;vyatta&quot;,')
@@ -4975,7 +5404,7 @@ EOF</params>
 							<snmpv3_privpassphrase/>
 							<params>rm ~/.ssh/known_hosts
 cd /var/Collector/zbxScripts
-if netstat -l|grep 8000 &gt; /dev/null; then echo 0 &gt; /dev/null; else echo &quot;waiting for simpleHTTPserver&quot; &amp;&amp; exit; fi
+if netstat -l|grep &quot;0.0.0.0:8000&quot; &gt; /dev/null; then echo 0 &gt; /dev/null; else echo &quot;waiting for simpleHTTPserver&quot; &amp;&amp; exit; fi
 if curl -s http://{#PRIVATE_IP}:10050 &gt; /dev/null; then echo &quot;agent is listening&quot;; else ./installZbxAgentVyatta5600.exp {#PRIVATE_IP} {#USER} '{#PASSWORD}' &amp;&amp; echo &quot;installZbxAgentVyatta5600.exp executed&quot;; fi</params>
 							<ipmi_sensor/>
 							<authtype>0</authtype>
@@ -5018,7 +5447,7 @@ if curl -s http://{#PRIVATE_IP}:10050 &gt; /dev/null; then echo &quot;agent is l
 							<snmpv3_authpassphrase/>
 							<snmpv3_privprotocol>0</snmpv3_privprotocol>
 							<snmpv3_privpassphrase/>
-							<params>cd /var/Collector/zbxScripts &amp;&amp; ./detectProxyIpChange.sh {#PRIVATE_IP} {#USER} {#PASSWORD}</params>
+							<params>cd /var/Collector/zbxScripts &amp;&amp; ./detectProxyIpChangeVyatta5600.sh {#PRIVATE_IP} {#USER} {#PASSWORD}</params>
 							<ipmi_sensor/>
 							<authtype>0</authtype>
 							<username>{$SSH_ID}</username>
@@ -5062,8 +5491,8 @@ if curl -s http://{#PRIVATE_IP}:10050 &gt; /dev/null; then echo &quot;agent is l
 							<snmpv3_privpassphrase/>
 							<params>rm ~/.ssh/known_hosts
 cd /var/Collector/zbxScripts
-if netstat -l|grep 8000 &gt; /dev/null; then echo 0 &gt; /dev/null; else echo &quot;waiting for simpleHTTPserver&quot; &amp;&amp; exit; fi
-/var/Collector/zbxScripts/updateZbxConfig.exp {#PRIVATE_IP} {#USER} {#PASSWORD}</params>
+if netstat -l|grep &quot;0.0.0.0:8000&quot; &gt; /dev/null; then echo 0 &gt; /dev/null; else echo &quot;waiting for simpleHTTPserver&quot; &amp;&amp; exit; fi
+/var/Collector/zbxScripts/updateZbxConfigVyatta5600.exp {#PRIVATE_IP} {#USER} &quot;{#PASSWORD}&quot;</params>
 							<ipmi_sensor/>
 							<authtype>0</authtype>
 							<username>{$SSH_ID}</username>
@@ -5115,6 +5544,10 @@ from pyzabbix import ZabbixAPI
 zapi = ZabbixAPI(url='http://{$ZBX_SERVERIP}/zabbix/', user='{$ZBX_SERVERAPIID}', password='{$ZBX_SERVERAPIPW}')
 
 serverName = &quot;{#FQDN}&quot;
+serverType = &quot;{#TYPE}&quot;	
+ipmi_username = {#MGT_USER}
+ipmi_password = {#MGT_PASSWORD}
+mgtIp = &quot;{#MGT_IP}&quot;
 serverIp = &quot;{#PRIVATE_IP}&quot;
 # zbxIfType = [1 for zabbix agent, 2 for SNMP]
 zbxIfType = 1
@@ -5126,13 +5559,16 @@ proxyName = &quot;{#PROXY}&quot;
 templates = [
     {'name':'Template ICMP Ping'},
     {'name':'GTS-IS Template Vyatta 5600 - Zabbix'},
-    {'name':'GTS-IS Template OS Linux'}
+    {'name':'GTS-IS Template OS Linux'},
+    {'name':'GTS-IS Template IPMI SuperMicro'}
 ]
 # Macro names need to send $ as utf8 char \x24 like u'{\x24MacroName}
 # This will avoid confusion in Zabbix variable parsing
 macros = [
     {'name':u'{\x24SSH_ID}','value':'{#USER}'},
-    {'name':u'{\x24SSH_PASSWORD}','value':'{#PASSWORD}'}
+    {'name':u'{\x24SSH_PASSWORD}','value':'{#PASSWORD}'},
+    {'name':u'{\x24MGT_USER}','value':'{#MGT_USER}'},
+    {'name':u'{\x24MGT_PASSWORD}','value':'{#MGT_PASSWORD}'}
 ]
 #additional groups to add
 groups = [
@@ -5186,6 +5622,16 @@ def getProxyID(proxyName):
     return result['result'][0]['proxyid']
 
 def createHost():
+    interfaces = []
+    serverProps = {
+        &quot;host&quot;: serverName,
+        &quot;interfaces&quot;: interfaces,
+        &quot;groups&quot;: hostGroups,
+        &quot;inventory_mode&quot;: 1,
+        &quot;inventory&quot;: {
+            &quot;tag&quot;: serverProduct
+        }
+    }
     ifProps = {
                 &quot;type&quot;: zbxIfType,
                 &quot;main&quot;: 1,
@@ -5196,41 +5642,84 @@ def createHost():
             }
     if zbxIfType == 2:
         ifProps.update({'bulk':'0'})
-
-    result = zapi.do_request('host.create', {
-        &quot;host&quot;: serverName,
-        &quot;interfaces&quot;: [ifProps],
-        &quot;groups&quot;: hostGroups,
-        &quot;inventory_mode&quot;: 1,
-        &quot;inventory&quot;: {
-            &quot;tag&quot;: serverProduct
+    interfaces.append(ifProps)
+    if serverType == 'BareMetal':
+        ifProps2 = {
+            &quot;type&quot;: 3,
+            &quot;main&quot;: 1,
+            &quot;useip&quot;: 1,
+            &quot;ip&quot;: mgtIp,
+            &quot;dns&quot;: &quot;&quot;,
+            &quot;port&quot;: 623
         }
-    })
+        interfaces.append(ifProps2)
+        serverProps[&quot;ipmi_authtype&quot;] = 4
+        serverProps[&quot;ipmi_privilege&quot;] = 3
+        serverProps[&quot;ipmi_username&quot;] = ipmi_username
+        serverProps[&quot;ipmi_password&quot;] = ipmi_password
+    result = zapi.do_request('host.create', serverProps)
     return result['result']['hostids'][0]
 
 def updateInterface():
+    alreadyHaveIpmiInt = False
     result = zapi.do_request('hostinterface.get', {
         &quot;hostids&quot;: hostID
     })
-    intID = result['result'][0]['interfaceid']
-    ifProps = {
-        &quot;interfaceid&quot;: intID,
-        &quot;type&quot;: zbxIfType,
-        &quot;main&quot;: 1,
-        &quot;useip&quot;: 1,
-        &quot;ip&quot;: serverIp,
-        &quot;dns&quot;: &quot;&quot;,
-        &quot;port&quot;: zbxPort
-    }
-    if zbxIfType == 2:
-        ifProps.update({'bulk':'0'})
-    result = zapi.do_request('hostinterface.update', ifProps)
-
+    for int in result['result']:
+        if int['type'] == str(zbxIfType):
+            intID = int['interfaceid']
+            ifProps = {
+                &quot;interfaceid&quot;: intID,
+                &quot;type&quot;: zbxIfType,
+                &quot;main&quot;: 1,
+                &quot;useip&quot;: 1,
+                &quot;ip&quot;: serverIp,
+                &quot;dns&quot;: &quot;&quot;,
+                &quot;port&quot;: zbxPort
+            }
+            if zbxIfType == 2:
+                ifProps.update({'bulk':'0'})
+            result = zapi.do_request('hostinterface.update', ifProps)
+        elif int['type'] == '3':
+            alreadyHaveIpmiInt = True
+            intID = int['interfaceid']
+            ifProps = {
+                &quot;interfaceid&quot;: intID,
+                &quot;type&quot;: 3,
+                &quot;main&quot;: 1,
+                &quot;useip&quot;: 1,
+                &quot;ip&quot;: mgtIp,
+                &quot;dns&quot;: &quot;&quot;,
+                &quot;port&quot;: 623
+            }
+            result = zapi.do_request('hostinterface.update', ifProps)
+    if alreadyHaveIpmiInt == False:
+        if serverType == 'BareMetal':
+            result = zapi.do_request('hostinterface.create', {
+                &quot;hostid&quot;: hostID,
+                &quot;type&quot;: 3,
+                &quot;main&quot;: 1,
+                &quot;useip&quot;: 1,
+                &quot;ip&quot;: mgtIp,
+                &quot;dns&quot;: &quot;&quot;,
+                &quot;port&quot;: 623
+            })
 def updateGroups():
     result = zapi.do_request('host.update', {
         &quot;hostid&quot;: hostID,
         &quot;groups&quot;: hostGroups
     })
+
+def updateIpmi():
+    if serverType == 'BareMetal':
+        result = zapi.do_request('host.update', {
+            &quot;hostid&quot;: hostID,
+            &quot;ipmi_authtype&quot;: 4,
+            &quot;ipmi_privilege&quot;: 3,
+            &quot;ipmi_username&quot;: ipmi_username,
+            &quot;ipmi_password&quot;: ipmi_password
+        })
+
 
 def addToProxy(hostID, proxyID):
     result = zapi.do_request('host.update', {
@@ -5289,6 +5778,7 @@ if _exists is True:
         addTemplates(hostID, templates)
         updateHostMacros()
         updateGroups()
+        updateIpmi()
         print('1')
     except Exception as e:
         print(e)
@@ -5378,6 +5868,13 @@ for device in devicesJSON:
         print('        &quot;{#GROUP}&quot;:&quot;{$ZBX_CUSTOMERGROUP}&quot;,')
         print('        &quot;{#PRIVATE_IP}&quot;:&quot;' + device['primaryBackendIpAddress'] + '&quot;,')
         print('        &quot;{#FQDN}&quot;:&quot;' + device['fullyQualifiedDomainName'] + '&quot;,')
+        print('        &quot;{#TYPE}&quot;:&quot;' + device['type'] + '&quot;,')
+        if 'networkManagementIpAddress' in device:
+            print('        &quot;{#MGT_IP}&quot;:&quot;' + device['networkManagementIpAddress'] + '&quot;,')
+        if 'mgt_users' in device:
+            for mgt_user in device['mgt_users']:
+                print('        &quot;{#MGT_USER}&quot;:&quot;root&quot;,')
+                print('        &quot;{#MGT_PASSWORD}&quot;:&quot;' + mgt_user['root'] + '&quot;,')
         for user in device['users']:
             if (device['product'] == 'Vyatta') and ('vyatta' in user):
                 print('        &quot;{#USER}&quot;:&quot;vyatta&quot;,')
@@ -5565,6 +6062,10 @@ from pyzabbix import ZabbixAPI
 zapi = ZabbixAPI(url='http://{$ZBX_SERVERIP}/zabbix/', user='{$ZBX_SERVERAPIID}', password='{$ZBX_SERVERAPIPW}')
 
 serverName = &quot;{#FQDN}&quot;
+serverType = &quot;{#TYPE}&quot;
+ipmi_username = {#MGT_USER}
+ipmi_password = {#MGT_PASSWORD}
+mgtIp = &quot;{#MGT_IP}&quot;
 serverIp = &quot;{#PRIVATE_IP}&quot;
 # zbxIfType = [1 for zabbix agent, 2 for SNMP]
 zbxIfType = 1
@@ -5576,13 +6077,16 @@ proxyName = &quot;{#PROXY}&quot;
 templates = [
     {'name':'Template ICMP Ping'},
     {'name':'GTS-IS Template Vyatta 5400 - Zabbix'},
-    {'name':'GTS-IS Template OS Linux'}
+    {'name':'GTS-IS Template OS Linux'},
+    {'name':'GTS-IS Template IPMI SuperMicro'}
 ]
 # Macro names need to send $ as utf8 char \x24 like u'{\x24MacroName}
 # This will avoid confusion in Zabbix variable parsing
 macros = [
     {'name':u'{\x24SSH_ID}','value':'{#USER}'},
-    {'name':u'{\x24SSH_PASSWORD}','value':'{#PASSWORD}'}
+    {'name':u'{\x24SSH_PASSWORD}','value':'{#PASSWORD}'},
+    {'name':u'{\x24MGT_USER}','value':'{#MGT_USER}'},
+    {'name':u'{\x24MGT_PASSWORD}','value':'{#MGT_PASSWORD}'}
 ]
 #additional groups to add
 groups = [
@@ -5636,6 +6140,16 @@ def getProxyID(proxyName):
     return result['result'][0]['proxyid']
 
 def createHost():
+    interfaces = []
+    serverProps = {
+        &quot;host&quot;: serverName,
+        &quot;interfaces&quot;: interfaces,
+        &quot;groups&quot;: hostGroups,
+        &quot;inventory_mode&quot;: 1,
+        &quot;inventory&quot;: {
+            &quot;tag&quot;: serverProduct
+        }
+    }
     ifProps = {
                 &quot;type&quot;: zbxIfType,
                 &quot;main&quot;: 1,
@@ -5646,41 +6160,84 @@ def createHost():
             }
     if zbxIfType == 2:
         ifProps.update({'bulk':'0'})
-
-    result = zapi.do_request('host.create', {
-        &quot;host&quot;: serverName,
-        &quot;interfaces&quot;: [ifProps],
-        &quot;groups&quot;: hostGroups,
-        &quot;inventory_mode&quot;: 1,
-        &quot;inventory&quot;: {
-            &quot;tag&quot;: serverProduct
+    interfaces.append(ifProps)
+    if serverType == 'BareMetal':
+        ifProps2 = {
+            &quot;type&quot;: 3,
+            &quot;main&quot;: 1,
+            &quot;useip&quot;: 1,
+            &quot;ip&quot;: mgtIp,
+            &quot;dns&quot;: &quot;&quot;,
+            &quot;port&quot;: 623
         }
-    })
+        interfaces.append(ifProps2)
+        serverProps[&quot;ipmi_authtype&quot;] = 4
+        serverProps[&quot;ipmi_privilege&quot;] = 3
+        serverProps[&quot;ipmi_username&quot;] = ipmi_username
+        serverProps[&quot;ipmi_password&quot;] = ipmi_password
+    result = zapi.do_request('host.create', serverProps)
     return result['result']['hostids'][0]
 
 def updateInterface():
+    alreadyHaveIpmiInt = False
     result = zapi.do_request('hostinterface.get', {
         &quot;hostids&quot;: hostID
     })
-    intID = result['result'][0]['interfaceid']
-    ifProps = {
-        &quot;interfaceid&quot;: intID,
-        &quot;type&quot;: zbxIfType,
-        &quot;main&quot;: 1,
-        &quot;useip&quot;: 1,
-        &quot;ip&quot;: serverIp,
-        &quot;dns&quot;: &quot;&quot;,
-        &quot;port&quot;: zbxPort
-    }
-    if zbxIfType == 2:
-        ifProps.update({'bulk':'0'})
-    result = zapi.do_request('hostinterface.update', ifProps)
+    for int in result['result']:
+        if int['type'] == str(zbxIfType):
+            intID = int['interfaceid']
+            ifProps = {
+                &quot;interfaceid&quot;: intID,
+                &quot;type&quot;: zbxIfType,
+                &quot;main&quot;: 1,
+                &quot;useip&quot;: 1,
+                &quot;ip&quot;: serverIp,
+                &quot;dns&quot;: &quot;&quot;,
+                &quot;port&quot;: zbxPort
+            }
+            if zbxIfType == 2:
+                ifProps.update({'bulk':'0'})
+            result = zapi.do_request('hostinterface.update', ifProps)
+        elif int['type'] == '3':
+            alreadyHaveIpmiInt = True
+            intID = int['interfaceid']
+            ifProps = {
+                &quot;interfaceid&quot;: intID,
+                &quot;type&quot;: 3,
+                &quot;main&quot;: 1,
+                &quot;useip&quot;: 1,
+                &quot;ip&quot;: mgtIp,
+                &quot;dns&quot;: &quot;&quot;,
+                &quot;port&quot;: 623
+            }
+            result = zapi.do_request('hostinterface.update', ifProps)
+    if alreadyHaveIpmiInt == False:
+        if serverType == 'BareMetal':
+            result = zapi.do_request('hostinterface.create', {
+                &quot;hostid&quot;: hostID,
+                &quot;type&quot;: 3,
+                &quot;main&quot;: 1,
+                &quot;useip&quot;: 1,
+                &quot;ip&quot;: mgtIp,
+                &quot;dns&quot;: &quot;&quot;,
+                &quot;port&quot;: 623
+            })
 
 def updateGroups():
     result = zapi.do_request('host.update', {
         &quot;hostid&quot;: hostID,
         &quot;groups&quot;: hostGroups
     })
+
+def updateIpmi():
+    if serverType == 'BareMetal':
+        result = zapi.do_request('host.update', {
+            &quot;hostid&quot;: hostID,
+            &quot;ipmi_authtype&quot;: 4,
+            &quot;ipmi_privilege&quot;: 3,
+            &quot;ipmi_username&quot;: ipmi_username,
+            &quot;ipmi_password&quot;: ipmi_password
+        })
 
 def addToProxy(hostID, proxyID):
     result = zapi.do_request('host.update', {
@@ -5739,6 +6296,7 @@ if _exists is True:
         addTemplates(hostID, templates)
         updateHostMacros()
         updateGroups()
+        updateIpmi()
         print('1')
     except Exception as e:
         print(e)

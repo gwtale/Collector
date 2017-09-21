@@ -2106,7 +2106,7 @@
 			<tags/>
 		</trigger>
 		<trigger>
-			<expression>{GTS-IS Template OS Linux:system.cpu.util[,iowait].avg(5m)}&gt;20</expression>
+			<expression>{GTS-IS Template OS Linux:system.cpu.util[,iowait].avg(5m)}&gt;30</expression>
 			<recovery_mode>0</recovery_mode>
 			<recovery_expression/>
 			<name>Disk I/O is overloaded on {HOST.NAME}</name>

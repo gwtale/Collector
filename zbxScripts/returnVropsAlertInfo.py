@@ -13,9 +13,12 @@ alertsFile = sherlockDir + 'data/vrops_alerts_' +  VROPSIP + '.xml'
 
 ns = {'ops': 'http://webservice.vmware.com/vRealizeOpsMgr/1.0/'}
 ############
-
-alertsTree = et.parse(alertsFile)
-alertsRoot = alertsTree.getroot()
+try:
+    alertsTree = et.parse(alertsFile)
+    alertsRoot = alertsTree.getroot()
+except e:
+    print("ERROR: " + e)
+    sys.exit(2)
 
 for alert in alertsRoot.findall('ops:alert', ns):
     alertID = alert.find('ops:alertId', ns)

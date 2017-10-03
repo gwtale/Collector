@@ -1,0 +1,37 @@
+#!/usr/bin/python
+import logging
+import ast
+import sys
+import MySQLdb
+
+logging.basicConfig(filename='zbxMySqlAlertScript.log',level=logging.DEBUG)
+logging.debug('zbxMySqlAlertScript started')
+
+payload = None
+
+# Receive data from Zabbix
+try:
+    payload = sys.argv[1]
+    payload = ast.literal_eval(payload)
+    logging.debug('payload: ')
+    logging.debug(payload)
+except Exception as e:
+    logging.error("Error processing received payload: " + str(e))
+    logging.error("Payload contents: \n" + str(payload))
+
+# Connect to database
+try:
+    db = MySQLdb.connect(host=payload['host'], port=payload['port'], user=payload['mysqlID'], passwd=payload['mysqlPW'], db=payload['dbName'])
+except Exception as e:
+    logging.error("Error connecting to database: " + str(e))
+    sys.exit(1)
+
+try:
+    cursor = db.cursor()
+    cursor.execute(payload['query'])
+except Exception as e:
+    logging.error("Error executing query: " + str(e))
+finally:
+    db.commit()
+    cursor.close()
+    db.close()

@@ -1,0 +1,10 @@
+
+DEBUG:root:zbxMySqlAlertScript started
+DEBUG:root:payload: 
+DEBUG:root:{'mysqlPW': 'ibm@4now', 'dbName': 'dispatcher', 'host': '192.168.10.128', 'query': "INSERT INTO tb_work (tkt_number, severity, cod_user, cod_customer, info, cod_team, OpenDate, sender) VALUES ('111111', '3', '0', 'Drogaria Onofre', 'TESTSERVER (192.168.0.1) - TEST TRIGGER - PROBLEM - Zabbix link: http://208.43.238.157:9998/zabbix/tr_events.php?triggerid=TESTTRIGGER&eventid=111111', '0', '2016-08-17 08:38:50', 'zabbix')", 'port': 3306, 'mysqlID': 'root'}
+DEBUG:root:zbxMySqlAlertScript started
+DEBUG:root:payload: 
+DEBUG:root:{'mysqlPW': 'ibm@4now', 'dbName': 'dispatcher', 'host': '192.168.10.128', 'query': "INSERT INTO tb_work (tkt_number, severity, cod_user, cod_customer, info, cod_team, OpenDate, sender) VALUES ('111111', '3', '0', 'Drogaria Onofre', 'TESTSERVER (192.168.0.1) - TEST TRIGGER - PROBLEM - Zabbix link: http://208.43.238.157:9998/zabbix/tr_events.php?triggerid=TESTTRIGGER&eventid=111111', '0', '2016-08-17 08:38:50', 'zabbix')", 'port': 3306, 'mysqlID': 'root'}
+DEBUG:root:zbxMySqlAlertScript started
+DEBUG:root:payload: 
+DEBUG:root:{'mysqlPW': 'ibm@4now', 'dbName': 'dispatcher', 'host': '192.168.10.128', 'query': "UPDATE tb_work set resolution='TESTSERVER (192.168.0.1) - TEST TRIGGER - CLEAR - ZZabbix link: http://208.43.238.157:9998/zabbix/tr_events.php?triggerid=TESTTRIGGER&eventid=111111'", 'port': 3306, 'mysqlID': 'root'}

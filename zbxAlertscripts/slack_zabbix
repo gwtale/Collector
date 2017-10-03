@@ -1,0 +1,179 @@
+#!/usr/bin/python
+#
+# Python script to send incidents from Zabbix to Slack.
+#
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+# ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE
+# LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+# CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+# SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+# INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+# CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+# ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+# POSSIBILITY OF SUCH DAMAGE.
+#
+# INPUT: message, host.group, host.neme
+import syslog
+import getpass
+import requests
+import sys
+import ast
+import argparse
+import datetime, time, calendar
+import os.path
+import json
+from slacker import Slacker
+from datetime import datetime
+
+user = getpass.getuser()
+syslog.syslog(syslog.LOG_INFO, str(user) + ': Processing started')
+
+requests.packages.urllib3.disable_warnings()
+ 
+#tmpdir = 'slack_tmpstor/'
+tmpdir = '/tmp/'
+bot_token = None
+alertStatus = None
+alertSeverity = None
+alertEvtID = None
+epoch = None
+slack_url = 'https://slack.com/api/'
+as_user = 'false'
+
+slack_colors = {
+    "OK":"#00b200",
+    "Not_classified":"#7c858b",
+    "Information":"#16beeb",
+    "Warning":"#ffcc00",
+    "Average":"#ff8300",
+    "High":"#ff014e",
+    "Disaster":"#000000"
+}
+emoji = {
+    "OK":":sunny:",
+    "PROBLEM":":thunder_cloud_and_rain:",
+    "Not_classified":":mostly_sunny:",
+    "Information":":mostly_sunny:",
+    "Warning":":partly_sunny_rain:",
+    "Average":":rain_cloud:",
+    "High":":thunder_cloud_and_rain:",
+    "Disaster":":tornado:"
+}
+
+def _logger(message):
+    with open(tmpdir + 'slack_zabbix.log', 'a+') as fileappend:
+        fileappend.write(str(datetime.now()) + ' ' + message + '\n')
+
+def save_ts(eventId, msg_data):
+    try:
+        file = open(tmpdir + 'slack_zabbix.' + eventId, "w")
+        msg_data = json.dumps(msg_data)
+        file.write(msg_data)
+        file.close()
+    except Exception as e:
+        syslog.syslog(syslog.LOG_ERR, str(user) + ": Error writing " + tmpdir + 'slack_zabbix.' + eventId + ": " + str(e))
+    #_logger('SAVED TS TO FILE: ' + msg_data)
+
+def read_ts():
+    try:
+        contents = open(tmpdir + 'slack_zabbix.' + alertEvtID, 'r').read()
+        contents = json.loads(contents)
+        return contents
+    except Exception as e:
+        syslog.syslog(syslog.LOG_ERR, str(user) + ": Error reading contents of " + tmpdir + 'slack_zabbix.' + alertEvtID + ": " + str(e))
+    
+def sendAlert(message):
+    try:
+        # Append epoch as 'ts' so time shows on footer
+        message[0]['ts'] = epoch
+        slack = Slacker(bot_token)
+        slack_botId = message[0]['hostgroup'] + " - " + message[0]['hostname']
+        # Build object to save (if problem)
+        if alertStatus == "PROBLEM":
+            message[0]['color'] = slack_colors[alertSeverity]
+            response = slack.chat.post_message(slack_channel, "", attachments=message, username=slack_botId, as_user=as_user, icon_emoji=emoji[alertSeverity])
+            output = {}
+            output['ts'] = response.body['ts']
+            output['channel'] = response.body['channel']
+            output['apiToken'] = bot_token
+            save_ts(alertEvtID, output)    
+        else:
+            message[0]['color'] = slack_colors['OK']
+            response = slack.chat.post_message(slack_channel, "", attachments=message, username=slack_botId, as_user=as_user, icon_emoji=emoji['OK'])
+            syslog.syslog(syslog.LOG_DEBUG, str(user) + ": RESULT: Status code: " + str(response.status_code) + ", Message from server: " + str(response.text))
+    except Exception as e:
+        syslog.syslog(syslog.LOG_ERR, str(user) + ": Error sending message to Slack: " + str(e))
+
+def delAlert(message):
+    msg = read_ts()
+    ts = msg['ts']
+    channel = msg['channel']
+    token = msg['apiToken']
+    slack = Slacker(token)
+    slack.chat.delete(channel, ts)
+    # delete the temp file
+    os.remove(tmpdir + 'slack_zabbix.' + alertEvtID)    
+
+def editAlert(message):
+    msg = read_ts()
+    ts = msg['ts']
+    channel = msg['channel']
+    token = msg['apiToken']
+    slack = Slacker(token)
+    slack.chat.update(channel, ts, "", attachments=message, as_user=as_user)
+
+# MAIN CODE
+try:
+        input_message = ast.literal_eval(sys.argv[1])
+        slack_channel = str(sys.argv[2])
+        slack_token = str(sys.argv[3])
+        if sys.argv[4]:
+            slack_token2 = str(sys.argv[4])
+	alertStatus = input_message[0]["fields"][0]["value"]
+	alertSeverity = input_message[0]["fields"][1]["value"]
+	alertEvtID = input_message[0]["fields"][2]["value"]
+	epoch = calendar.timegm(time.gmtime())
+
+        syslog.syslog(syslog.LOG_DEBUG, str(user) + ": ########## Processing alert ##########")
+        syslog.syslog(syslog.LOG_DEBUG, str(user) + ": Slack channel: " + str(slack_channel))
+        syslog.syslog(syslog.LOG_DEBUG, str(user) + ": Slack message: " + str(input_message))
+        syslog.syslog(syslog.LOG_DEBUG, str(user) + ": ######################################")
+
+	# Do some hacks to display message data as Slack's bot name
+	if os.path.isfile(tmpdir + 'datfile'):
+	    input_message[0]['hostname'] = str(input_message[0]['hostname']) + '.'
+	    if slack_token2 is None:
+		bot_token = slack_token
+	    else:
+		bot_token = slack_token2
+	    os.remove(tmpdir + 'datfile')
+	else:
+	    bot_token = slack_token
+	    os.mknod(tmpdir + 'datfile')
+
+	# Process the alert
+	if alertStatus == "OK":
+	    #ditAlert(input_message)
+	    delAlert(input_message)
+            # Send new status
+            sendAlert(input_message)
+	else:
+	    sendAlert(input_message)
+
+	# chat.postMessage (post) chat.delete (delete) 
+	# pra fazer o delete tem que pegar o retorno da variavel response qdo faz o request.... 
+	#    vai precisar usar as variaveis "channel" e "ts" que ele responde pra montar o proximo payload assim: 
+	# payload = MultipartEncoder(
+	# fields={'token': 'xoxb-49553493588-6Fxbn38CaJft1OcARPzOP5il',
+	#     "channel": "C0RM6RMGF",  <=== exemplo
+	#     "username": "softlayermon",
+	#     "ts": "1465499684.000048"  <==== exemplo}
+	# 
+except Exception as e:
+	print('ERROR: ' + str(e))
+        syslog.syslog(syslog.LOG_ERR, str(user) + ": Error on main function: " + str(e))
+
+finally:
+    syslog.syslog(syslog.LOG_INFO, str(user) + ": Processing completed")

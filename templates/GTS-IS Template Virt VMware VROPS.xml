@@ -29,7 +29,11 @@ About the macros:
 {$IGNORE_ALERT_RESTYPE}:
  - Add as value a comma separated list of the resource/resourceKey/resourceKindKey values to ignore when processing alerts discoveries. 
  - Values are found in VROPS API URL &quot;http://&lt;VROPS&gt;/suite-api/api/alerts/resources&quot;
- - E.g. (check API for all values): VirtualMachine, Datastore, LogicalRouter, VirtualSANDCCluster, L2VPNEdgeService</description>
+ - E.g. (check API for all values): VirtualMachine, Datastore, LogicalRouter, VirtualSANDCCluster, L2VPNEdgeService
+{$IGNORE_ALERT_WITH_STRING}:
+ - Add as value a comma separated list of the strings to be ignored.
+ - E.g.: To filter out alerts like &quot;&lt;VMNAME&gt; (VirtualMachine) [Virtualization/Hypervisor Alerts/Capacity] One or more virtual machine guest file systems are running out of disk space&quot;, add to the macro the following text, NO quotes:
+ - &quot;virtual machine guest file systems&quot;</description>
 			<groups>
 				<group>
 					<name>Templates</name>
@@ -47,6 +51,129 @@ About the macros:
 				</application>
 			</applications>
 			<items>
+				<item>
+					<name>Create alerts datafile</name>
+					<type>0</type>
+					<snmp_community/>
+					<snmp_oid/>
+					<key>createAlertsDatafile[{$VROPS_IP},&quot;{$VROPS_ID}&quot;,&quot;{$VROPS_PW}&quot;]</key>
+					<delay>67s;h/1s0</delay>
+					<history>1d</history>
+					<trends>0</trends>
+					<status>0</status>
+					<value_type>4</value_type>
+					<allowed_hosts/>
+					<units/>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<params/>
+					<ipmi_sensor/>
+					<authtype>0</authtype>
+					<username/>
+					<password/>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description/>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Data Collection</name>
+						</application>
+					</applications>
+					<valuemap/>
+					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
+				</item>
+				<item>
+					<name>Create resources datafile</name>
+					<type>0</type>
+					<snmp_community/>
+					<snmp_oid/>
+					<key>createResourcesDatafile[{$VROPS_IP},&quot;{$VROPS_ID}&quot;,&quot;{$VROPS_PW}&quot;]</key>
+					<delay>67s;h/1s0</delay>
+					<history>1d</history>
+					<trends>0</trends>
+					<status>0</status>
+					<value_type>4</value_type>
+					<allowed_hosts/>
+					<units/>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<params/>
+					<ipmi_sensor/>
+					<authtype>0</authtype>
+					<username/>
+					<password/>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description/>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Data Collection</name>
+						</application>
+					</applications>
+					<valuemap/>
+					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
+				</item>
+				<item>
+					<name>Create type datafile</name>
+					<type>0</type>
+					<snmp_community/>
+					<snmp_oid/>
+					<key>createTypeDatafile[{$VROPS_IP},&quot;{$VROPS_ID}&quot;,&quot;{$VROPS_PW}&quot;]</key>
+					<delay>10m;h/1s0</delay>
+					<history>1d</history>
+					<trends>0</trends>
+					<status>0</status>
+					<value_type>4</value_type>
+					<allowed_hosts/>
+					<units/>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<params/>
+					<ipmi_sensor/>
+					<authtype>0</authtype>
+					<username/>
+					<password/>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description/>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Data Collection</name>
+						</application>
+					</applications>
+					<valuemap/>
+					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
+				</item>
 				<item>
 					<name>VROPS host status (ping to {$VROPS_IP})</name>
 					<type>0</type>
@@ -90,221 +217,6 @@ About the macros:
 					<jmx_endpoint/>
 					<master_item/>
 				</item>
-				<item>
-					<name>Create alerts datafile</name>
-					<type>13</type>
-					<snmp_community/>
-					<snmp_oid/>
-					<key>ssh.run[createAlertsDatafile]</key>
-					<delay>60s;m0-59s0</delay>
-					<history>1d</history>
-					<trends>0</trends>
-					<status>0</status>
-					<value_type>4</value_type>
-					<allowed_hosts/>
-					<units/>
-					<snmpv3_contextname/>
-					<snmpv3_securityname/>
-					<snmpv3_securitylevel>0</snmpv3_securitylevel>
-					<snmpv3_authprotocol>0</snmpv3_authprotocol>
-					<snmpv3_authpassphrase/>
-					<snmpv3_privprotocol>0</snmpv3_privprotocol>
-					<snmpv3_privpassphrase/>
-					<params>#!/bin/bash
-cd /var/Collector
-sudo cat &lt;&lt;EOF | sudo python -
-
-#!/usr/bin/python
-
-import requests
-import json
-import os.path
-import modules.log.syslog as syslog
-import xml.dom.minidom
-
-logger = syslog.getLogger(__name__)
-
-def getResponse(server, opt=None, userId=None, userPw=None):
-    logger.info(&quot;Starting getResponse()...&quot;)
-    session = requests.Session()
-    session.auth = (userId, userPw)
-    auth = session.post(&quot;https://&quot; + server, verify=False)
-    response = session.get(&quot;https://&quot; + server + &quot;/&quot; + opt, verify=False)
-    return response.content
-
-
-rawResponse = getResponse(&quot;{$VROPS_IP}&quot;, &quot;suite-api/api/alerts&quot;, &quot;{$VROPS_ID}&quot;, &quot;{$VROPS_PW}&quot;)
-xmlResponse = xml.dom.minidom.parseString(rawResponse)
-f = open(&quot;/var/Collector/data/vrops_alerts_{$VROPS_IP}.xml&quot;, 'w+')
-#f = open(&quot;/var/Collector/data/vrops_alerts_{$VROPS_IP}.xml&quot;, os.O_SHLOCK|os.O_WRONLY)
-f.write(xmlResponse.toprettyxml().encode('utf-8'))
-f.close()
-print(&quot;Alert collection complete&quot;)
-
-EOF</params>
-					<ipmi_sensor/>
-					<authtype>0</authtype>
-					<username>{$PROXY_SSH_ID}</username>
-					<password>{$PROXY_SSH_PW}</password>
-					<publickey/>
-					<privatekey/>
-					<port/>
-					<description/>
-					<inventory_link>0</inventory_link>
-					<applications>
-						<application>
-							<name>Data Collection</name>
-						</application>
-					</applications>
-					<valuemap/>
-					<logtimefmt/>
-					<preprocessing/>
-					<jmx_endpoint/>
-					<master_item/>
-				</item>
-				<item>
-					<name>Create resources datafile</name>
-					<type>13</type>
-					<snmp_community/>
-					<snmp_oid/>
-					<key>ssh.run[createResourcesDatafile]</key>
-					<delay>10m;m/10s0</delay>
-					<history>1d</history>
-					<trends>0</trends>
-					<status>0</status>
-					<value_type>4</value_type>
-					<allowed_hosts/>
-					<units/>
-					<snmpv3_contextname/>
-					<snmpv3_securityname/>
-					<snmpv3_securitylevel>0</snmpv3_securitylevel>
-					<snmpv3_authprotocol>0</snmpv3_authprotocol>
-					<snmpv3_authpassphrase/>
-					<snmpv3_privprotocol>0</snmpv3_privprotocol>
-					<snmpv3_privpassphrase/>
-					<params>#!/bin/bash
-cd /var/Collector
-sudo cat &lt;&lt;EOF | sudo python -
-
-#!/usr/bin/python
-
-import requests
-import json
-import os.path
-import modules.log.syslog as syslog
-import xml.dom.minidom
-
-logger = syslog.getLogger(__name__)
-
-def getResponse(server, opt=None, userId=None, userPw=None):
-    logger.info(&quot;Starting getResponse()...&quot;)
-    session = requests.Session()
-    session.auth = (userId, userPw)
-    auth = session.post(&quot;https://&quot; + server, verify=False)
-    response = session.get(&quot;https://&quot; + server + &quot;/&quot; + opt, verify=False)
-    return response.content
-
-
-rawResponse = getResponse(&quot;{$VROPS_IP}&quot;, &quot;suite-api/api/resources&quot;, &quot;{$VROPS_ID}&quot;, &quot;{$VROPS_PW}&quot;)
-xmlResponse = xml.dom.minidom.parseString(rawResponse)
-f = open(&quot;/var/Collector/data/vrops_resources_{$VROPS_IP}.xml&quot;, 'w+')
-#f = open(&quot;/var/Collector/data/vrops_resources_{$VROPS_IP}.xml&quot;, os.O_SHLOCK|os.O_WRONLY)
-f.write(xmlResponse.toprettyxml().encode('utf-8'))
-f.close()
-print(&quot;Resources collection complete&quot;)
-
-EOF</params>
-					<ipmi_sensor/>
-					<authtype>0</authtype>
-					<username>{$PROXY_SSH_ID}</username>
-					<password>{$PROXY_SSH_PW}</password>
-					<publickey/>
-					<privatekey/>
-					<port/>
-					<description/>
-					<inventory_link>0</inventory_link>
-					<applications>
-						<application>
-							<name>Data Collection</name>
-						</application>
-					</applications>
-					<valuemap/>
-					<logtimefmt/>
-					<preprocessing/>
-					<jmx_endpoint/>
-					<master_item/>
-				</item>
-				<item>
-					<name>Create type datafile</name>
-					<type>13</type>
-					<snmp_community/>
-					<snmp_oid/>
-					<key>ssh.run[createTypeDatafile]</key>
-					<delay>1h;h/1s0</delay>
-					<history>1d</history>
-					<trends>0</trends>
-					<status>0</status>
-					<value_type>4</value_type>
-					<allowed_hosts/>
-					<units/>
-					<snmpv3_contextname/>
-					<snmpv3_securityname/>
-					<snmpv3_securitylevel>0</snmpv3_securitylevel>
-					<snmpv3_authprotocol>0</snmpv3_authprotocol>
-					<snmpv3_authpassphrase/>
-					<snmpv3_privprotocol>0</snmpv3_privprotocol>
-					<snmpv3_privpassphrase/>
-					<params>#!/bin/bash
-cd /var/Collector
-sudo cat &lt;&lt;EOF | sudo python -
-
-#!/usr/bin/python
-
-import requests
-import json
-import os.path
-import modules.log.syslog as syslog
-import xml.dom.minidom
-
-logger = syslog.getLogger(__name__)
-
-def getResponse(server, opt=None, userId=None, userPw=None):
-    logger.info(&quot;Starting getResponse()...&quot;)
-    session = requests.Session()
-    session.auth = (userId, userPw)
-    auth = session.post(&quot;https://&quot; + server, verify=False)
-    response = session.get(&quot;https://&quot; + server + &quot;/&quot; + opt, verify=False)
-    return response.content
-
-
-rawResponse = getResponse(&quot;{$VROPS_IP}&quot;, &quot;/suite-api/api/alerts/types&quot;, &quot;{$VROPS_ID}&quot;, &quot;{$VROPS_PW}&quot;)
-xmlResponse = xml.dom.minidom.parseString(rawResponse)
-f = open(&quot;/var/Collector/data/vrops_types_{$VROPS_IP}.xml&quot;, 'w+')
-f.write(xmlResponse.toprettyxml().encode('utf-8'))
-f.close()
-print(&quot;Type collection complete&quot;)
-
-EOF</params>
-					<ipmi_sensor/>
-					<authtype>0</authtype>
-					<username>{$PROXY_SSH_ID}</username>
-					<password>{$PROXY_SSH_PW}</password>
-					<publickey/>
-					<privatekey/>
-					<port/>
-					<description/>
-					<inventory_link>0</inventory_link>
-					<applications>
-						<application>
-							<name>Data Collection</name>
-						</application>
-					</applications>
-					<valuemap/>
-					<logtimefmt/>
-					<preprocessing/>
-					<jmx_endpoint/>
-					<master_item/>
-				</item>
 			</items>
 			<discovery_rules>
 				<discovery_rule>
@@ -313,7 +225,7 @@ EOF</params>
 					<snmp_community/>
 					<snmp_oid/>
 					<key>ssh.run[discoverAlerts]</key>
-					<delay>1m;m0-59s30</delay>
+					<delay>65s;m0-59s30</delay>
 					<status>0</status>
 					<allowed_hosts/>
 					<snmpv3_contextname/>
@@ -336,10 +248,18 @@ IGNORE_ALERT_LEVEL = &quot;{$IGNORE_ALERT_LEVEL}&quot;
 IGNORE_ALERT_TYPE = &quot;{$IGNORE_ALERT_TYPE}&quot;
 IGNORE_ALERT_SUBTYPE = &quot;{$IGNORE_ALERT_SUBTYPE}&quot;
 IGNORE_ALERT_RESTYPE = &quot;{$IGNORE_ALERT_RESTYPE}&quot;
+IGNORE_ALERT_WITH_STRING = &quot;{$IGNORE_ALERT_WITH_STRING}&quot;
+
+#Quick and dirty fix for empty strings on var
+if not IGNORE_ALERT_WITH_STRING:
+    IGNORE_ALERT_WITH_STRING = &quot;justadummystring&quot; 
+
 IGNORE_ALERT_LEVEL = map(str.strip, IGNORE_ALERT_LEVEL.split(','))
 IGNORE_ALERT_TYPE = map(str.strip, IGNORE_ALERT_TYPE.split(','))
 IGNORE_ALERT_SUBTYPE = map(str.strip, IGNORE_ALERT_SUBTYPE.split(','))
 IGNORE_ALERT_RESTYPE = map(str.strip, IGNORE_ALERT_RESTYPE.split(','))
+IGNORE_ALERT_WITH_STRING = map(str.strip, IGNORE_ALERT_WITH_STRING.split(','))
+
 sherlockDir = '/var/Collector/'
 alertsFile = sherlockDir + 'data/vrops_alerts_{$VROPS_IP}.xml'
 resourcesFile = sherlockDir + 'data/vrops_resources_{$VROPS_IP}.xml'
@@ -406,22 +326,26 @@ for alert in alertsRoot.findall('ops:alert', ns):
         continue
     if subTypeName in IGNORE_ALERT_SUBTYPE:
         continue
-    startTimeUTC = alert.find('ops:startTimeUTC', ns)
-    startTimeStr = datetime.datetime.fromtimestamp(int(startTimeUTC.text) / 1000).strftime('%Y-%m-%d %H:%M:%S')
+    for i in IGNORE_ALERT_WITH_STRING:
+        if i in alertDefinitionName.text:
+            break
+    else:
+        startTimeUTC = alert.find('ops:startTimeUTC', ns)
+        startTimeStr = datetime.datetime.fromtimestamp(int(startTimeUTC.text) / 1000).strftime('%Y-%m-%d %H:%M:%S')
     
-    if first == 0:
-        print(',')
-    first = 0
-    print('    {')
-    print('        &quot;{#ALERTID}&quot;:&quot;' + alertId.text + '&quot;,')
-    print('        &quot;{#RESNAME}&quot;:&quot;' + resourceName + '&quot;,')
-    print('        &quot;{#RESTYPE}&quot;:&quot;' + resourceKindKey + '&quot;,')
-    print('        &quot;{#LEVEL}&quot;:&quot;' + alertLevel.text + '&quot;,')
-    print('        &quot;{#TIME}&quot;:&quot;' + startTimeStr + '&quot;,')
-    print('        &quot;{#TYPE}&quot;:&quot;' + typeName + '&quot;,')
-    print('        &quot;{#SUBTYPE}&quot;:&quot;' + subTypeName + '&quot;,')
-    print('        &quot;{#DEF}&quot;:&quot;' + alertDefinitionName.text + '&quot;')
-    print('    }')
+        if first == 0:
+            print(',')
+        first = 0
+        print('    {')
+        print('        &quot;{#ALERTID}&quot;:&quot;' + alertId.text + '&quot;,')
+        print('        &quot;{#RESNAME}&quot;:&quot;' + resourceName + '&quot;,')
+        print('        &quot;{#RESTYPE}&quot;:&quot;' + resourceKindKey + '&quot;,')
+        print('        &quot;{#LEVEL}&quot;:&quot;' + alertLevel.text + '&quot;,')
+        print('        &quot;{#TIME}&quot;:&quot;' + startTimeStr + '&quot;,')
+        print('        &quot;{#TYPE}&quot;:&quot;' + typeName + '&quot;,')
+        print('        &quot;{#SUBTYPE}&quot;:&quot;' + subTypeName + '&quot;,')
+        print('        &quot;{#DEF}&quot;:&quot;' + alertDefinitionName.text + '&quot;')
+        print('    }')
 print(&quot;]&quot;)
 print(&quot;}&quot;)
 
@@ -446,8 +370,8 @@ EOF</params>
 							<type>0</type>
 							<snmp_community/>
 							<snmp_oid/>
-							<key>vropsAlertInfo[{$VROPS_IP}, {#ALERTID}, severity]</key>
-							<delay>5m;m/5s30</delay>
+							<key>getAlertInfo[{$VROPS_IP}, {$VROPS_ID}, {$VROPS_PW}, {#ALERTID}, alertLevel]</key>
+							<delay>1m;m0-59s30</delay>
 							<history>60d</history>
 							<trends>0</trends>
 							<status>0</status>
@@ -488,8 +412,8 @@ EOF</params>
 							<type>0</type>
 							<snmp_community/>
 							<snmp_oid/>
-							<key>vropsAlertInfo[{$VROPS_IP}, {#ALERTID}, startTime]</key>
-							<delay>10m;m/10s30</delay>
+							<key>getAlertInfo[{$VROPS_IP}, {$VROPS_ID}, {$VROPS_PW}, {#ALERTID}, startTime]</key>
+							<delay>1m;m0-59s30</delay>
 							<history>60d</history>
 							<trends>0</trends>
 							<status>0</status>
@@ -530,7 +454,7 @@ EOF</params>
 							<type>0</type>
 							<snmp_community/>
 							<snmp_oid/>
-							<key>vropsAlertInfo[{$VROPS_IP}, {#ALERTID}, status]</key>
+							<key>getAlertInfo[{$VROPS_IP}, {$VROPS_ID}, {$VROPS_PW}, {#ALERTID}, status]</key>
 							<delay>1m;m0-59s30</delay>
 							<history>60d</history>
 							<trends>0</trends>
@@ -570,7 +494,7 @@ EOF</params>
 					</item_prototypes>
 					<trigger_prototypes>
 						<trigger_prototype>
-							<expression>{GTS-IS Template Virt VMware VROPS:vropsAlertInfo[{$VROPS_IP}, {#ALERTID}, status].str(ACTIVE)}=1 and {GTS-IS Template Virt VMware VROPS:vropsAlertInfo[{$VROPS_IP}, {#ALERTID}, severity].str(CRITICAL)}=1</expression>
+							<expression>{GTS-IS Template Virt VMware VROPS:getAlertInfo[{$VROPS_IP}, {$VROPS_ID}, {$VROPS_PW}, {#ALERTID}, status].str(ACTIVE)}=1 and {GTS-IS Template Virt VMware VROPS:getAlertInfo[{$VROPS_IP}, {$VROPS_ID}, {$VROPS_PW}, {#ALERTID}, alertLevel].str(CRITICAL)}=1</expression>
 							<recovery_mode>0</recovery_mode>
 							<recovery_expression/>
 							<name>{#RESNAME} ({#RESTYPE}) [{#TYPE}/{#SUBTYPE}] {#DEF}</name>
@@ -579,14 +503,14 @@ EOF</params>
 							<url/>
 							<status>0</status>
 							<priority>4</priority>
-							<description/>
+							<description>vROPS IP: {$VROPS_IP}</description>
 							<type>0</type>
 							<manual_close>0</manual_close>
 							<dependencies/>
 							<tags/>
 						</trigger_prototype>
 						<trigger_prototype>
-							<expression>{GTS-IS Template Virt VMware VROPS:vropsAlertInfo[{$VROPS_IP}, {#ALERTID}, status].str(ACTIVE)}=1 and {GTS-IS Template Virt VMware VROPS:vropsAlertInfo[{$VROPS_IP}, {#ALERTID}, severity].str(IMMEDIATE)}=1</expression>
+							<expression>{GTS-IS Template Virt VMware VROPS:getAlertInfo[{$VROPS_IP}, {$VROPS_ID}, {$VROPS_PW}, {#ALERTID}, status].str(ACTIVE)}=1 and {GTS-IS Template Virt VMware VROPS:getAlertInfo[{$VROPS_IP}, {$VROPS_ID}, {$VROPS_PW}, {#ALERTID}, alertLevel].str(IMMEDIATE)}=1</expression>
 							<recovery_mode>0</recovery_mode>
 							<recovery_expression/>
 							<name>{#RESNAME} ({#RESTYPE}) [{#TYPE}/{#SUBTYPE}] {#DEF}</name>
@@ -595,14 +519,14 @@ EOF</params>
 							<url/>
 							<status>0</status>
 							<priority>3</priority>
-							<description/>
+							<description>vROPS IP: {$VROPS_IP}</description>
 							<type>0</type>
 							<manual_close>0</manual_close>
 							<dependencies/>
 							<tags/>
 						</trigger_prototype>
 						<trigger_prototype>
-							<expression>{GTS-IS Template Virt VMware VROPS:vropsAlertInfo[{$VROPS_IP}, {#ALERTID}, status].str(ACTIVE)}=1 and {GTS-IS Template Virt VMware VROPS:vropsAlertInfo[{$VROPS_IP}, {#ALERTID}, severity].str(WARNING)}=1</expression>
+							<expression>{GTS-IS Template Virt VMware VROPS:getAlertInfo[{$VROPS_IP}, {$VROPS_ID}, {$VROPS_PW}, {#ALERTID}, status].str(ACTIVE)}=1 and {GTS-IS Template Virt VMware VROPS:getAlertInfo[{$VROPS_IP}, {$VROPS_ID}, {$VROPS_PW}, {#ALERTID}, alertLevel].str(WARNING)}=1</expression>
 							<recovery_mode>0</recovery_mode>
 							<recovery_expression/>
 							<name>{#RESNAME} ({#RESTYPE}) [{#TYPE}/{#SUBTYPE}] {#DEF}</name>
@@ -611,7 +535,7 @@ EOF</params>
 							<url/>
 							<status>0</status>
 							<priority>2</priority>
-							<description/>
+							<description>vROPS IP: {$VROPS_IP}</description>
 							<type>0</type>
 							<manual_close>0</manual_close>
 							<dependencies/>
@@ -627,7 +551,7 @@ EOF</params>
 			<macros>
 				<macro>
 					<macro>{$IGNORE_ALERT_LEVEL}</macro>
-					<value/>
+					<value>INFORMATIONAL, WARNING</value>
 				</macro>
 				<macro>
 					<macro>{$IGNORE_ALERT_RESTYPE}</macro>
@@ -639,6 +563,10 @@ EOF</params>
 				</macro>
 				<macro>
 					<macro>{$IGNORE_ALERT_TYPE}</macro>
+					<value/>
+				</macro>
+				<macro>
+					<macro>{$IGNORE_ALERT_WITH_STRING}</macro>
 					<value/>
 				</macro>
 				<macro>
@@ -668,7 +596,7 @@ EOF</params>
 	</templates>
 	<triggers>
 		<trigger>
-			<expression>{GTS-IS Template Virt VMware VROPS:ssh.run[createAlertsDatafile].nodata(1h)}=1</expression>
+			<expression>{GTS-IS Template Virt VMware VROPS:createAlertsDatafile[{$VROPS_IP},&quot;{$VROPS_ID}&quot;,&quot;{$VROPS_PW}&quot;].str(ERROR)}=1</expression>
 			<recovery_mode>0</recovery_mode>
 			<recovery_expression/>
 			<name>Not collecting alerts from VROPs server  {HOST.HOST}</name>

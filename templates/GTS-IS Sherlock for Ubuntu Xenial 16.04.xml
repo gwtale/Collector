@@ -494,7 +494,7 @@ echo &quot;done configuring snmp&quot;</params>
 					<snmp_community/>
 					<snmp_oid/>
 					<key>ssh.run[configureZbxAgent]</key>
-					<delay>10m</delay>
+					<delay>2m</delay>
 					<history>1d</history>
 					<trends>0</trends>
 					<status>0</status>
@@ -514,12 +514,15 @@ if [ -f &quot;$zbxClientConfig&quot; ]
 then
     echo &quot;Zabbix agent already configured. Applying enforced configuration...&quot;
     sudo chmod 666 $zbxClientConfig
+    sleep 1
     sudo echo &quot;AllowRoot=1&quot; &gt; $zbxClientConfig
-    sudo echo &quot;PidFile=/var/run/zabbix/zabbix_agentd.pid&quot; &gt;&gt; $zbxClientConfig
-    sudo echo &quot;LogFile=/var/log/zabbix/zabbix_agentd.log&quot; &gt;&gt; $zbxClientConfig
-    sudo echo &quot;LogFileSize=0&quot; &gt;&gt; $zbxClientConfig
+    sudo echo &quot;Timeout=30&quot; &gt;&gt; $zbxClientConfig
     sudo echo &quot;Server={$ZBX_SERVERIP}&quot; &gt;&gt; $zbxClientConfig
     sudo echo &quot;Include=/etc/zabbix/zabbix_agentd.d/&quot; &gt;&gt; $zbxClientConfig
+    sudo echo &quot;LogType=file&quot; &gt;&gt; $zbxClientConfig
+    sudo echo &quot;LogFile=/var/log/zabbix/zabbix_agentd.log&quot; &gt;&gt; $zbxClientConfig
+    sudo echo &quot;PidFile=/run/zabbix/zabbix_agentd.pid&quot; &gt;&gt; $zbxClientConfig
+    sudo echo &quot;StartAgents=15&quot; &gt;&gt; $zbxClientConfig
     sudo echo &quot;UserParameter=array_vpnc64Status[*],if pgrep array_vpnc64 &gt; /dev/null; then echo 1; else echo 0; fi&quot; &gt;&gt; $zbxClientConfig
     sudo echo &quot;UserParameter=SoftLayerPrivateApiEndpointAlive[*],if dpkg -l| grep &quot;fping &quot; &gt; /dev/null; then if fping -ur 1 api.service.softlayer.com &gt; /dev/null ;then echo 1; else echo 0; fi; else echo 0; fi&quot; &gt;&gt; $zbxClientConfig
     sudo echo &quot;UserParameter=connectedSSHsessions,ps auxwww | grep sshd:|grep -v grep| wc -l&quot; &gt;&gt; $zbxClientConfig
@@ -528,6 +531,7 @@ then
     sudo echo &quot;UserParameter=installRequestsLibs,if pip install requests -q --upgrade &gt; /dev/null; then echo 1; else echo 0;fi&quot; &gt;&gt; $zbxClientConfig
     sudo echo &quot;UserParameter=installSudsLibs,if pip install suds -q --upgrade &gt; /dev/null; then echo 1; else echo 0;fi&quot; &gt;&gt; $zbxClientConfig
     sudo echo &quot;UserParameter=ping_ip[*],if fping -u \$1 &gt; /dev/null ;then echo 1; else echo 0; fi&quot; &gt;&gt; $zbxClientConfig
+    sleep 1
     sudo service zabbix-agent restart
     echo &quot;Done enforcing configuration&quot;
 else
@@ -560,7 +564,7 @@ All changes in proxies agent configuration will be overwritten by the configurat
 					<snmp_community/>
 					<snmp_oid/>
 					<key>ssh.run[configureZbxProxy]</key>
-					<delay>2h</delay>
+					<delay>10m</delay>
 					<history>1d</history>
 					<trends>0</trends>
 					<status>0</status>
@@ -607,10 +611,10 @@ VMwareTimeout=120
 VMwareCacheSize={$PROXY_CONF_VMCACHESIZE}
 
 StartPollersUnreachable=10
-StartIPMIPollers=5
+StartIPMIPollers=30
 StartPingers=10
 ProxyOfflineBuffer=5
-StartPollers=25
+StartPollers=30
 
 DataSenderFrequency=1
 HeartbeatFrequency=15
@@ -629,8 +633,8 @@ then
         sudo chmod 666 $zbxProxyConfig
         sudo echo &quot;$zbxProxyConfigContents&quot; &gt; $zbxProxyConfig
         sleep 1
-        sudo service zabbix-proxy stop
-        sudo service zabbix-proxy start
+        #sudo service zabbix-proxy stop
+        #sudo service zabbix-proxy start
         echo &quot;Done enforcing configuration&quot;
     else
         sudo echo &quot;create database zabbix_proxy character set utf8 collate utf8_bin;&quot; | mysql -uroot -p{$ZBX_SERVERSQLPW}
@@ -1246,6 +1250,85 @@ else
     else
         echo &quot;fping&quot; &gt; $lockfile
         if sudo apt-get --assume-yes install fping &gt; /dev/null; then echo &quot;installed&quot;; else echo &quot;not installed&quot;;fi
+        rm -f $lockfile
+    fi
+fi</params>
+					<ipmi_sensor/>
+					<authtype>0</authtype>
+					<username>{$SSH_ID}</username>
+					<password>{$SSH_PASSWORD}</password>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<description/>
+					<inventory_link>0</inventory_link>
+					<applications>
+						<application>
+							<name>Sherlock Dependencies</name>
+						</application>
+					</applications>
+					<valuemap/>
+					<logtimefmt/>
+					<preprocessing/>
+					<jmx_endpoint/>
+					<master_item/>
+				</item>
+				<item>
+					<name>12 - Install ipmi-sensors</name>
+					<type>13</type>
+					<snmp_community/>
+					<snmp_oid/>
+					<key>ssh.run[installIpmiSensors]</key>
+					<delay>10m</delay>
+					<history>1d</history>
+					<trends>0</trends>
+					<status>0</status>
+					<value_type>4</value_type>
+					<allowed_hosts/>
+					<units/>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<params>lockfile=&quot;/tmp/lockfile&quot;
+
+# Wait for other packages to be installed
+if dpkg -l | grep &quot;zabbix-release  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting zabbix-release installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;mysql-server  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting mysql-server installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;expect  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting expect installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;fping  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting fping installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep python-pip &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting python-pip installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;snmp  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting snmp installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;snmp-mibs-downloader  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting snmpmibs-downloader installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;snmptt  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting snmptt installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;snmptrapd  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting snmptrapd installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;zabbix-agent  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting snmptt installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;zabbix-proxy-mysql  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting zabbix-proxy-mysql installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;nmap  &quot; &gt; /dev/null ;then echo 0 &gt; /dev/null; else echo &quot;waiting nmap installation&quot; &amp;&amp; exit ;fi
+if dpkg -l | grep &quot;freeipmi  &quot; &gt; /dev/null
+
+then
+    echo &quot;installed&quot;
+    if [ -f &quot;$lockfile&quot; ]
+    then
+        # Checking for leftover lockfile (annoying bug that happens sometimes)
+        if cat $lockfile|grep freeipmi &gt; /dev/null
+        then
+            rm -f $lockfile
+        fi
+    fi
+    exit
+else
+    if [ -f &quot;$lockfile&quot; ]
+    then
+        echo &quot;waiting lock release&quot;
+        exit
+    else
+        echo freeipmi &gt; $lockfile
+        if sudo apt-get --assume-yes install freeipmi &gt; /dev/null; then echo &quot;installed&quot;; else echo &quot;not installed&quot;;fi
         rm -f $lockfile
     fi
 fi</params>
@@ -2485,8 +2568,8 @@ zapi = ZabbixAPI(url='http://{$ZBX_SERVERIP}/zabbix/', user='{$ZBX_SERVERAPIID}'
 
 serverName = &quot;{#FQDN}&quot;
 serverType = &quot;{#TYPE}&quot;
-ipmi_username = {#MGT_USER}
-ipmi_password = {#MGT_PASSWORD}
+ipmi_username = &quot;{#MGT_USER}&quot;
+ipmi_password = &quot;{#MGT_PASSWORD}&quot;
 mgtIp = &quot;{#MGT_IP}&quot;
 serverIp = &quot;{#PRIVATE_IP}&quot;
 # zbxIfType = [1 for zabbix agent, 2 for SNMP]
@@ -2961,8 +3044,8 @@ zapi = ZabbixAPI(url='http://{$ZBX_SERVERIP}/zabbix/', user='{$ZBX_SERVERAPIID}'
 
 serverName = &quot;{#FQDN}&quot;
 serverType = &quot;{#TYPE}&quot;	
-ipmi_username = {#MGT_USER}
-ipmi_password = {#MGT_PASSWORD}
+ipmi_username = &quot;{#MGT_USER}&quot;
+ipmi_password = &quot;{#MGT_PASSWORD}&quot;
 mgtIp = &quot;{#MGT_IP}&quot;
 serverIp = &quot;{#PRIVATE_IP}&quot;
 # zbxIfType = [1 for zabbix agent, 2 for SNMP]
@@ -2992,6 +3075,7 @@ macros = [
     {'name':u'{\x24SSH_ID}','value':'{#USER}'},
     {'name':u'{\x24SSH_PASSWORD}','value':'{#PASSWORD}'},
     {'name':u'{\x24SNMP_COMMUNITY}','value':'ibm.cloudbr'},
+    {'name':u'{\x24MGT_IP}','value':'{#MGT_IP}'},
     {'name':u'{\x24MGT_USER}','value':'{#MGT_USER}'},
     {'name':u'{\x24MGT_PASSWORD}','value':'{#MGT_PASSWORD}'}
 ]
@@ -3542,8 +3626,8 @@ zapi = ZabbixAPI(url='http://{$ZBX_SERVERIP}/zabbix/', user='{$ZBX_SERVERAPIID}'
 
 serverName = &quot;{#FQDN}&quot;
 serverType = &quot;{#TYPE}&quot;
-ipmi_username = {#MGT_USER}
-ipmi_password = {#MGT_PASSWORD}
+ipmi_username = &quot;{#MGT_USER}&quot;
+ipmi_password = &quot;{#MGT_PASSWORD}&quot;
 mgtIp = &quot;{#MGT_IP}&quot;
 serverIp = &quot;{#PRIVATE_IP}&quot;
 # zbxIfType = [1 for zabbix agent, 2 for SNMP]
@@ -3563,6 +3647,7 @@ macros = [
     {'name':u'{\x24SSH_ID}','value':'{#USER}'},
     {'name':u'{\x24SSH_PASSWORD}','value':'{#PASSWORD}'},
     {'name':u'{\x24SNMP_COMMUNITY}','value':'ibm.cloudbr'},
+    {'name':u'{\x24MGT_IP}','value':'{#MGT_IP}'},
     {'name':u'{\x24MGT_USER}','value':'{#MGT_USER}'},
     {'name':u'{\x24MGT_PASSWORD}','value':'{#MGT_PASSWORD}'}
 ]
@@ -4018,8 +4103,8 @@ zapi = ZabbixAPI(url='http://{$ZBX_SERVERIP}/zabbix/', user='{$ZBX_SERVERAPIID}'
 
 serverName = &quot;{#FQDN}&quot;
 serverType = &quot;{#TYPE}&quot;
-ipmi_username = {#MGT_USER}
-ipmi_password = {#MGT_PASSWORD}
+ipmi_username = &quot;{#MGT_USER}&quot;
+ipmi_password = &quot;{#MGT_PASSWORD}&quot;
 mgtIp = &quot;{#MGT_IP}&quot;
 serverIp = &quot;{#PRIVATE_IP}&quot;
 # zbxIfType = [1 for zabbix agent, 2 for SNMP]
@@ -4041,6 +4126,7 @@ macros = [
     {'name':u'{\x24SSH_ID}','value':'{#USER}'},
     {'name':u'{\x24SSH_PASSWORD}','value':'{#PASSWORD}'},
     {'name':u'{\x24SNMP_COMMUNITY}','value':'ibm.cloudbr'},
+    {'name':u'{\x24MGT_IP}','value':'{#MGT_IP}'},
     {'name':u'{\x24MGT_USER}','value':'{#MGT_USER}'},
     {'name':u'{\x24MGT_PASSWORD}','value':'{#MGT_PASSWORD}'}
 ]
@@ -4493,8 +4579,8 @@ zapi = ZabbixAPI(url='http://{$ZBX_SERVERIP}/zabbix/', user='{$ZBX_SERVERAPIID}'
 
 serverName = &quot;{#FQDN}&quot;
 serverType = &quot;{#TYPE}&quot;	
-ipmi_username = {#MGT_USER}
-ipmi_password = {#MGT_PASSWORD}
+ipmi_username = &quot;{#MGT_USER}&quot;
+ipmi_password = &quot;{#MGT_PASSWORD}&quot;
 mgtIp = &quot;{#MGT_IP}&quot;
 serverIp = &quot;{#PRIVATE_IP}&quot;
 # zbxIfType = [1 for zabbix agent, 2 for SNMP]
@@ -4515,6 +4601,7 @@ templates = [
 macros = [
     {'name':u'{\x24SSH_ID}','value':'{#USER}'},
     {'name':u'{\x24SSH_PASSWORD}','value':'{#PASSWORD}'},
+    {'name':u'{\x24MGT_IP}','value':'{#MGT_IP}'},
     {'name':u'{\x24MGT_USER}','value':'{#MGT_USER}'},
     {'name':u'{\x24MGT_PASSWORD}','value':'{#MGT_PASSWORD}'}
 ]
@@ -4994,13 +5081,13 @@ if timeout 5 snmpwalk -v2c -c ibm.gbluemix {#PRIVATE_IP} iso.3.6.1.2.1.1.1.0 &am
 							<master_item_prototype/>
 						</item_prototype>
 						<item_prototype>
-							<name>{#FQDN} Registration Status</name>
+							<name>Create / Update Host {#FQDN}</name>
 							<type>13</type>
 							<snmp_community/>
 							<snmp_oid/>
 							<key>ssh.run[vmware_RegistrationStatus:{#FQDN}]</key>
-							<delay>10m</delay>
-							<history>15d</history>
+							<delay>2m</delay>
+							<history>3d</history>
 							<trends>0</trends>
 							<status>0</status>
 							<value_type>4</value_type>
@@ -5017,15 +5104,14 @@ if timeout 5 snmpwalk -v2c -c ibm.gbluemix {#PRIVATE_IP} iso.3.6.1.2.1.1.1.0 &am
 cat &lt;&lt;EOF | python -
 
 #!/usr/bin/python
-
 from pyzabbix import ZabbixAPI
 
 zapi = ZabbixAPI(url='http://{$ZBX_SERVERIP}/zabbix/', user='{$ZBX_SERVERAPIID}', password='{$ZBX_SERVERAPIPW}')
 
 serverName = &quot;{#FQDN}&quot;
 serverType = &quot;{#TYPE}&quot;	
-ipmi_username = {#MGT_USER}
-ipmi_password = {#MGT_PASSWORD}
+ipmi_username = &quot;{#MGT_USER}&quot;
+ipmi_password = &quot;{#MGT_PASSWORD}&quot;
 mgtIp = &quot;{#MGT_IP}&quot;
 serverIp = &quot;{#PRIVATE_IP}&quot;
 # zbxIfType = [1 for zabbix agent, 2 for SNMP]
@@ -5048,6 +5134,7 @@ macros = [
     {'name':u'{\x24URL}','value':'https://{#PRIVATE_IP}/sdk'},
     {'name':u'{\x24USERNAME}','value':'{#USER}'},
     {'name':u'{\x24PASSWORD}','value':'{#PASSWORD}'},
+    {'name':u'{\x24MGT_IP}','value':'{#MGT_IP}'},
     {'name':u'{\x24MGT_USER}','value':'{#MGT_USER}'},
     {'name':u'{\x24MGT_PASSWORD}','value':'{#MGT_PASSWORD}'}
 ]
@@ -5255,16 +5342,16 @@ for k in hostnames:
 
 if _exists is True:
     try:
+        print(&quot;Host exists, enforcing configuration...&quot;)
         updateInterface()
         addToProxy(hostID, proxyID)
         addTemplates(hostID, templates)
         updateHostMacros()
         updateGroups()
         updateIpmi()
-        print('1')
+        print('All done')
     except Exception as e:
-        print(e)
-        print('2')
+        print(&quot;Error:  &quot; + e)
 else:
     try:
         hostID = createHost()
@@ -5272,10 +5359,9 @@ else:
         for macro in macros:
             addMacro(hostID, macro['name'], macro['value'])
         addTemplates(hostID, templates)
-        print('0')
+        print('All done')
     except Exception as e:
-        print(e)
-        print('2')
+        print(&quot;Error:  &quot; + e)
 EOF</params>
 							<ipmi_sensor/>
 							<authtype>0</authtype>
@@ -5545,8 +5631,8 @@ zapi = ZabbixAPI(url='http://{$ZBX_SERVERIP}/zabbix/', user='{$ZBX_SERVERAPIID}'
 
 serverName = &quot;{#FQDN}&quot;
 serverType = &quot;{#TYPE}&quot;	
-ipmi_username = {#MGT_USER}
-ipmi_password = {#MGT_PASSWORD}
+ipmi_username = &quot;{#MGT_USER}&quot;
+ipmi_password = &quot;{#MGT_PASSWORD}&quot;
 mgtIp = &quot;{#MGT_IP}&quot;
 serverIp = &quot;{#PRIVATE_IP}&quot;
 # zbxIfType = [1 for zabbix agent, 2 for SNMP]
@@ -5567,6 +5653,7 @@ templates = [
 macros = [
     {'name':u'{\x24SSH_ID}','value':'{#USER}'},
     {'name':u'{\x24SSH_PASSWORD}','value':'{#PASSWORD}'},
+    {'name':u'{\x24MGT_IP}','value':'{#MGT_IP}'},
     {'name':u'{\x24MGT_USER}','value':'{#MGT_USER}'},
     {'name':u'{\x24MGT_PASSWORD}','value':'{#MGT_PASSWORD}'}
 ]
@@ -6063,8 +6150,8 @@ zapi = ZabbixAPI(url='http://{$ZBX_SERVERIP}/zabbix/', user='{$ZBX_SERVERAPIID}'
 
 serverName = &quot;{#FQDN}&quot;
 serverType = &quot;{#TYPE}&quot;
-ipmi_username = {#MGT_USER}
-ipmi_password = {#MGT_PASSWORD}
+ipmi_username = &quot;{#MGT_USER}&quot;
+ipmi_password = &quot;{#MGT_PASSWORD}&quot;
 mgtIp = &quot;{#MGT_IP}&quot;
 serverIp = &quot;{#PRIVATE_IP}&quot;
 # zbxIfType = [1 for zabbix agent, 2 for SNMP]
@@ -6085,6 +6172,7 @@ templates = [
 macros = [
     {'name':u'{\x24SSH_ID}','value':'{#USER}'},
     {'name':u'{\x24SSH_PASSWORD}','value':'{#PASSWORD}'},
+    {'name':u'{\x24MGT_IP}','value':'{#MGT_IP}'},
     {'name':u'{\x24MGT_USER}','value':'{#MGT_USER}'},
     {'name':u'{\x24MGT_PASSWORD}','value':'{#MGT_PASSWORD}'}
 ]

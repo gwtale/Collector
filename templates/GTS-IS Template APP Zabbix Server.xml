@@ -28,7 +28,7 @@
 					<type>3</type>
 					<snmp_community/>
 					<snmp_oid/>
-					<key>icmppingsec[9.8.227.202]</key>
+					<key>icmppingsec[9.8.227.1]</key>
 					<delay>30s</delay>
 					<history>90d</history>
 					<trends>90d</trends>
@@ -69,7 +69,7 @@
 					<type>3</type>
 					<snmp_community/>
 					<snmp_oid/>
-					<key>icmpping[9.8.227.202]</key>
+					<key>icmpping[9.8.227.1]</key>
 					<delay>30s</delay>
 					<history>90d</history>
 					<trends>90d</trends>
@@ -115,7 +115,7 @@
 	</templates>
 	<triggers>
 		<trigger>
-			<expression>{GTS-IS Template APP Zabbix Server:icmpping[9.8.227.202].min(5m)}=0</expression>
+			<expression>{GTS-IS Template APP Zabbix Server:icmpping[9.8.227.1].min(5m)}=0</expression>
 			<recovery_mode>0</recovery_mode>
 			<recovery_expression/>
 			<name>IBM 9.x network unreachable from Zabbix server</name>

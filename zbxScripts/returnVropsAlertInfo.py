@@ -16,22 +16,27 @@ ns = {'ops': 'http://webservice.vmware.com/vRealizeOpsMgr/1.0/'}
 try:
     alertsTree = et.parse(alertsFile)
     alertsRoot = alertsTree.getroot()
-except e:
-    print("ERROR: " + e)
+except Exception as e:
+    print("Error parsing " + alertsFile, str(e))
     sys.exit(2)
 
-for alert in alertsRoot.findall('ops:alert', ns):
-    alertID = alert.find('ops:alertId', ns)
-    if alertID.text == inputAlertid:
-        if infoType == "status":
-            _status = alert.find('ops:status', ns)
-            print(_status.text)
-        elif infoType == "severity":
-            _level = alert.find('ops:alertLevel', ns)
-            print(_level.text)
-        elif infoType == "startTime":
-           _time = alert.find('ops:startTimeUTC', ns)
-           startTimeStr = datetime.datetime.fromtimestamp(int(_time.text) / 1000).strftime('%Y-%m-%d %H:%M:%S')
-           print(startTimeStr)
-        else:
-           print("Invalid option")
+try:
+    for alert in alertsRoot.findall('ops:alert', ns):
+        alertID = alert.find('ops:alertId', ns)
+        if alertID.text == inputAlertid:
+            if infoType == "status":
+                _status = alert.find('ops:status', ns)
+                print(_status.text)
+            elif infoType == "severity":
+                _level = alert.find('ops:alertLevel', ns)
+                print(_level.text)
+            elif infoType == "startTime":
+               _time = alert.find('ops:startTimeUTC', ns)
+               startTimeStr = datetime.datetime.fromtimestamp(int(_time.text) / 1000).strftime('%Y-%m-%d %H:%M:%S')
+               print(startTimeStr)
+            else:
+               print("Invalid option")
+except Exception as e:
+    print("Error while iterating through " + alertsFile, str(e))
+    sys.exit(2)
+

@@ -1,0 +1,29 @@
+#!/usr/bin/expect -f
+log_user 0
+set timeout 25
+set CLIENTIP [lindex $argv 0]
+set CLIENTID [lindex $argv 1]
+set CLIENTPW [lindex $argv 2]
+set CLIENTTUNID [lindex $argv 3]
+set CLIENTTUNIP [lindex $argv 4]
+set SERVERTUNID [lindex $argv 5]
+set SERVERTUNIP [lindex $argv 6]
+set TUNMASK [lindex $argv 7]
+
+spawn ping -q -c2 -W2 $CLIENTTUNIP
+expect {
+    "100% packet loss" {
+        send_user "Client tunnel IP $CLIENTTUNIP is not responding. Trying to send tun$CLIENTTUNID configuration...\n"
+        spawn ssh -q -o StrictHostKeyChecking=no $CLIENTID@$CLIENTIP
+        expect "password"
+        send $CLIENTPW\r
+        expect \\\#
+        send "ifconfig tun$CLIENTTUNID $SERVERTUNIP $CLIENTTUNIP netmask $TUNMASK\r"
+        expect \\\#
+        send "exit\r"
+        send_user "Remote interface configuration command was sent. Exiting...\n"
+        exit
+    }
+}
+send_user "Client tunnel IP $CLIENTTUNIP is responding. Skipping configuration...\n"
+exit

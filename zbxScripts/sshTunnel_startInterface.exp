@@ -1,0 +1,33 @@
+#!/usr/bin/expect -f
+log_user 0
+set timeout 25
+set prompt "(%|#|\\\$) $"
+set CLIENTIP [lindex $argv 0]
+set CLIENTID [lindex $argv 1]
+set CLIENTPW [lindex $argv 2]
+set CLIENTTUNID [lindex $argv 3]
+set CLIENTTUNIP [lindex $argv 4]
+set SERVERTUNID [lindex $argv 5]
+set SERVERTUNIP [lindex $argv 6]
+set TUNMASK [lindex $argv 7]
+
+spawn ping -q -c2 -W2 $CLIENTTUNIP
+expect {
+    "100% packet loss" {
+        send_user "Client tunnel IP $CLIENTTUNIP is not responding. Trying to start a new tunnel...\n"
+        spawn ssh -f -w $SERVERTUNID:$CLIENTTUNID $CLIENTID@$CLIENTIP true
+        expect "password"
+        send $CLIENTPW\r
+        sleep 1 
+        send_user "Tunnel with $CLIENTIP started. Enabling ip_forward...\n"
+        spawn bash
+        sleep 1
+        send "echo 1 > /proc/sys/net/ipv4/ip_forward\n"
+        sleep 1
+        send "exit\n"
+        send_user "Done\n"
+        exit
+    }
+}
+send_user "Remote tunnel IP $CLIENTTUNIP is responding. Exiting...\n"
+exit

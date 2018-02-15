@@ -1,0 +1,25 @@
+#!/usr/bin/expect -f
+log_user 0
+set timeout 25
+set CLIENTIP [lindex $argv 0]
+set CLIENTID [lindex $argv 1]
+set CLIENTPW [lindex $argv 2]
+set CLIENTTUNID [lindex $argv 3]
+set CLIENTTUNIP [lindex $argv 4]
+set SERVERTUNID [lindex $argv 5]
+set SERVERTUNIP [lindex $argv 6]
+set TUNMASK [lindex $argv 7]
+
+spawn ping -q -c2 -W2 $SERVERTUNIP
+expect {
+    "100% packet loss" {
+        send_user "Server(local) tunnel IP $SERVERTUNIP is not responding. Trying to reconfigure tun$SERVERTUNID...\n"
+        spawn ifconfig tun$SERVERTUNID $CLIENTTUNIP $SERVERTUNIP netmask $TUNMASK
+        sleep 2
+        send_user "Interface tun$SERVERTUNID configured. Exiting...\n"
+        exit
+    }
+}
+send_user "Server(local) tunnel IP $SERVERTUNIP is responding. Skipping configuration...\n"
+exit
+

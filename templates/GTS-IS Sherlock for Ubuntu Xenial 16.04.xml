@@ -6448,64 +6448,12 @@ EOF</params>
 					<value>3</value>
 				</macro>
 				<macro>
-					<macro>{$SL_APIKEY}</macro>
-					<value/>
-				</macro>
-				<macro>
-					<macro>{$SL_PORTALID}</macro>
-					<value/>
-				</macro>
-				<macro>
-					<macro>{$SL_VPNHOST}</macro>
-					<value>vpn.sao01.softlayer.com</value>
-				</macro>
-				<macro>
-					<macro>{$SL_VPNID}</macro>
-					<value/>
-				</macro>
-				<macro>
-					<macro>{$SL_VPNPW}</macro>
-					<value/>
-				</macro>
-				<macro>
-					<macro>{$SSH_ID}</macro>
-					<value>cloudbr</value>
-				</macro>
-				<macro>
-					<macro>{$SSH_PASSWORD}</macro>
-					<value>dqm@50vnc</value>
-				</macro>
-				<macro>
 					<macro>{$ZBX_ADITIONALSERVERS}</macro>
 					<value/>
 				</macro>
 				<macro>
 					<macro>{$ZBX_CUSTOMERGROUP}</macro>
 					<value/>
-				</macro>
-				<macro>
-					<macro>{$ZBX_SERVERAPIID}</macro>
-					<value>Admin</value>
-				</macro>
-				<macro>
-					<macro>{$ZBX_SERVERAPIPW}</macro>
-					<value>dqm@50vnc</value>
-				</macro>
-				<macro>
-					<macro>{$ZBX_SERVERIP}</macro>
-					<value>192.168.10.15</value>
-				</macro>
-				<macro>
-					<macro>{$ZBX_SERVERSQLPW}</macro>
-					<value>dqm50vnc</value>
-				</macro>
-				<macro>
-					<macro>{$ZBX_SERVERSSHID}</macro>
-					<value>appliance</value>
-				</macro>
-				<macro>
-					<macro>{$ZBX_SERVERSSHPW}</macro>
-					<value>dqm@50vnc</value>
 				</macro>
 			</macros>
 			<templates/>

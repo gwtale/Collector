@@ -1,0 +1,252 @@
+<?xml version="1.0" ?>
+<zabbix_export>
+	<version>3.4</version>
+	<date>2017-01-01T01:01:01Z</date>
+	<groups>
+		<group>
+			<name>IPMI templates</name>
+		</group>
+	</groups>
+	<templates>
+		<template>
+			<template>GTS-IS Template IPMI Threshold Sensors</template>
+			<name>GTS-IS Template IPMI Threshold Sensors</name>
+			<description>IPMI template for thresold based sensors. Currently supported sensors are current, fan, temperature and voltage.
+
+The {$HOST.IPMI.CONN}, {$HOST.IPMI.USER} and {$HOST.IPMI.PASS} macros have to be set according to your IPMI configuration.
+
+This is a modded template, original can be found here: https://raw.githubusercontent.com/radiorabe/rabe-zabbix/master/ipmi/Threshold_Sensors/Template_IPMI_Threshold_Sensors.xml</description>
+			<groups>
+				<group>
+					<name>IPMI templates</name>
+				</group>
+			</groups>
+			<applications/>
+			<items/>
+			<discovery_rules>
+				<discovery_rule>
+					<name>Threshold based IPMI sensor discovery</name>
+					<type>10</type>
+					<snmp_community/>
+					<snmp_oid/>
+					<key>ipmi-sensor-discovery.sh[&quot;{$MGT_IP}&quot;,&quot;{$MGT_USER}&quot;,&quot;{$MGT_PASSWORD}&quot;, &quot;{$IPMI_THRESHOLD_SENSOR_TYPES}&quot;]</key>
+					<delay>1800</delay>
+					<status>0</status>
+					<allowed_hosts/>
+					<snmpv3_contextname/>
+					<snmpv3_securityname/>
+					<snmpv3_securitylevel>0</snmpv3_securitylevel>
+					<snmpv3_authprotocol>0</snmpv3_authprotocol>
+					<snmpv3_authpassphrase/>
+					<snmpv3_privprotocol>0</snmpv3_privprotocol>
+					<snmpv3_privpassphrase/>
+					<params/>
+					<ipmi_sensor/>
+					<authtype>0</authtype>
+					<username/>
+					<password/>
+					<publickey/>
+					<privatekey/>
+					<port/>
+					<filter>
+						<evaltype>0</evaltype>
+						<formula/>
+						<conditions/>
+					</filter>
+					<lifetime>7d</lifetime>
+					<description>Discovers threshold based IPMI sensors (such as Temperature, Fan, Voltage and Current) with the help of the external ipmi-sensor-discovery.sh script.</description>
+					<item_prototypes>
+						<item_prototype>
+							<name>Sensor $1</name>
+							<type>12</type>
+							<snmp_community/>
+							<snmp_oid/>
+							<key>ipmi.threshold-sensor[{#IPMI_SENSOR_NAME}]</key>
+							<delay>300</delay>
+							<history>90d</history>
+							<trends>365d</trends>
+							<status>0</status>
+							<value_type>0</value_type>
+							<allowed_hosts/>
+							<units>{#IPMI_SENSOR_UNITS}</units>
+							<snmpv3_contextname/>
+							<snmpv3_securityname/>
+							<snmpv3_securitylevel>0</snmpv3_securitylevel>
+							<snmpv3_authprotocol>0</snmpv3_authprotocol>
+							<snmpv3_authpassphrase/>
+							<snmpv3_privprotocol>0</snmpv3_privprotocol>
+							<snmpv3_privpassphrase/>
+							<params/>
+							<ipmi_sensor>{#IPMI_SENSOR_NAME}</ipmi_sensor>
+							<authtype>0</authtype>
+							<username/>
+							<password/>
+							<publickey/>
+							<privatekey/>
+							<port/>
+							<description>IPMI threshold sensor prototype item</description>
+							<inventory_link>0</inventory_link>
+							<applications/>
+							<valuemap/>
+							<logtimefmt/>
+							<preprocessing/>
+							<jmx_endpoint/>
+							<application_prototypes>
+								<application_prototype>
+									<name>{#IPMI_SENSOR_TYPE}</name>
+								</application_prototype>
+							</application_prototypes>
+							<master_item_prototype/>
+						</item_prototype>
+					</item_prototypes>
+					<trigger_prototypes>
+						<trigger_prototype>
+							<expression>{GTS-IS Template IPMI Threshold Sensors:ipmi.threshold-sensor[{#IPMI_SENSOR_NAME}].last()}&lt;{#IPMI_SENSOR_LOWER_C}</expression>
+							<recovery_mode>0</recovery_mode>
+							<recovery_expression/>
+							<name>Sensor {#IPMI_SENSOR_NAME} below critical threshold ({ITEM.VALUE1}  &lt; {#IPMI_SENSOR_LOWER_C}) on {HOST.NAME}</name>
+							<correlation_mode>0</correlation_mode>
+							<correlation_tag/>
+							<url/>
+							<status>0</status>
+							<priority>4</priority>
+							<description>The IPMI sensor has fallen below it's defined lower critical threshold.</description>
+							<type>0</type>
+							<manual_close>0</manual_close>
+							<dependencies>
+								<dependency>
+									<name>Sensor {#IPMI_SENSOR_NAME} reached non-recoverable threshold ({ITEM.VALUE1}  &lt;= {#IPMI_SENSOR_LOWER_NR}) on {HOST.NAME}</name>
+									<expression>{GTS-IS Template IPMI Threshold Sensors:ipmi.threshold-sensor[{#IPMI_SENSOR_NAME}].last()}&lt;={#IPMI_SENSOR_LOWER_NR}</expression>
+									<recovery_expression/>
+								</dependency>
+							</dependencies>
+							<tags/>
+						</trigger_prototype>
+						<trigger_prototype>
+							<expression>{GTS-IS Template IPMI Threshold Sensors:ipmi.threshold-sensor[{#IPMI_SENSOR_NAME}].last()}&lt;{#IPMI_SENSOR_LOWER_NC}</expression>
+							<recovery_mode>0</recovery_mode>
+							<recovery_expression/>
+							<name>Sensor {#IPMI_SENSOR_NAME} below non-critical threshold ({ITEM.VALUE1}  &lt; {#IPMI_SENSOR_LOWER_NC}) on {HOST.NAME}</name>
+							<correlation_mode>0</correlation_mode>
+							<correlation_tag/>
+							<url/>
+							<status>0</status>
+							<priority>2</priority>
+							<description>The IPMI sensor has fallen below it's defined lower non-critical threshold.</description>
+							<type>0</type>
+							<manual_close>0</manual_close>
+							<dependencies>
+								<dependency>
+									<name>Sensor {#IPMI_SENSOR_NAME} below critical threshold ({ITEM.VALUE1}  &lt; {#IPMI_SENSOR_LOWER_C}) on {HOST.NAME}</name>
+									<expression>{GTS-IS Template IPMI Threshold Sensors:ipmi.threshold-sensor[{#IPMI_SENSOR_NAME}].last()}&lt;{#IPMI_SENSOR_LOWER_C}</expression>
+									<recovery_expression/>
+								</dependency>
+							</dependencies>
+							<tags/>
+						</trigger_prototype>
+						<trigger_prototype>
+							<expression>{GTS-IS Template IPMI Threshold Sensors:ipmi.threshold-sensor[{#IPMI_SENSOR_NAME}].last()}&gt;{#IPMI_SENSOR_UPPER_C}</expression>
+							<recovery_mode>0</recovery_mode>
+							<recovery_expression/>
+							<name>Sensor {#IPMI_SENSOR_NAME} exceeded critical threshold ({ITEM.VALUE1}  &gt; {#IPMI_SENSOR_UPPER_C}) on {HOST.NAME}</name>
+							<correlation_mode>0</correlation_mode>
+							<correlation_tag/>
+							<url/>
+							<status>0</status>
+							<priority>4</priority>
+							<description>The IPMI sensor has exceeded it's defined upper critical threshold.</description>
+							<type>0</type>
+							<manual_close>0</manual_close>
+							<dependencies>
+								<dependency>
+									<name>Sensor {#IPMI_SENSOR_NAME} reached non-recoverable threshold ({ITEM.VALUE1} &gt;= {#IPMI_SENSOR_UPPER_NR}) on {HOST.NAME}</name>
+									<expression>{GTS-IS Template IPMI Threshold Sensors:ipmi.threshold-sensor[{#IPMI_SENSOR_NAME}].last()}&gt;={#IPMI_SENSOR_UPPER_NR}</expression>
+									<recovery_expression/>
+								</dependency>
+							</dependencies>
+							<tags/>
+						</trigger_prototype>
+						<trigger_prototype>
+							<expression>{GTS-IS Template IPMI Threshold Sensors:ipmi.threshold-sensor[{#IPMI_SENSOR_NAME}].last()}&gt;{#IPMI_SENSOR_UPPER_NC}</expression>
+							<recovery_mode>0</recovery_mode>
+							<recovery_expression/>
+							<name>Sensor {#IPMI_SENSOR_NAME} exceeded non-critical threshold ({ITEM.VALUE1}  &gt; {#IPMI_SENSOR_UPPER_NC}) on {HOST.NAME}</name>
+							<correlation_mode>0</correlation_mode>
+							<correlation_tag/>
+							<url/>
+							<status>0</status>
+							<priority>2</priority>
+							<description>The IPMI sensor has exceeded it's defined upper non-critical threshold.</description>
+							<type>0</type>
+							<manual_close>0</manual_close>
+							<dependencies>
+								<dependency>
+									<name>Sensor {#IPMI_SENSOR_NAME} exceeded critical threshold ({ITEM.VALUE1}  &gt; {#IPMI_SENSOR_UPPER_C}) on {HOST.NAME}</name>
+									<expression>{GTS-IS Template IPMI Threshold Sensors:ipmi.threshold-sensor[{#IPMI_SENSOR_NAME}].last()}&gt;{#IPMI_SENSOR_UPPER_C}</expression>
+									<recovery_expression/>
+								</dependency>
+							</dependencies>
+							<tags/>
+						</trigger_prototype>
+						<trigger_prototype>
+							<expression>{GTS-IS Template IPMI Threshold Sensors:ipmi.threshold-sensor[{#IPMI_SENSOR_NAME}].last()}&lt;={#IPMI_SENSOR_LOWER_NR}</expression>
+							<recovery_mode>0</recovery_mode>
+							<recovery_expression/>
+							<name>Sensor {#IPMI_SENSOR_NAME} reached non-recoverable threshold ({ITEM.VALUE1}  &lt;= {#IPMI_SENSOR_LOWER_NR}) on {HOST.NAME}</name>
+							<correlation_mode>0</correlation_mode>
+							<correlation_tag/>
+							<url/>
+							<status>0</status>
+							<priority>4</priority>
+							<description>The IPMI sensor has reached it's defined lower non-recoverable threshold.</description>
+							<type>0</type>
+							<manual_close>0</manual_close>
+							<dependencies/>
+							<tags/>
+						</trigger_prototype>
+						<trigger_prototype>
+							<expression>{GTS-IS Template IPMI Threshold Sensors:ipmi.threshold-sensor[{#IPMI_SENSOR_NAME}].last()}&gt;={#IPMI_SENSOR_UPPER_NR}</expression>
+							<recovery_mode>0</recovery_mode>
+							<recovery_expression/>
+							<name>Sensor {#IPMI_SENSOR_NAME} reached non-recoverable threshold ({ITEM.VALUE1} &gt;= {#IPMI_SENSOR_UPPER_NR}) on {HOST.NAME}</name>
+							<correlation_mode>0</correlation_mode>
+							<correlation_tag/>
+							<url/>
+							<status>0</status>
+							<priority>4</priority>
+							<description>The IPMI sensor has reached it's defined upper non-recoverable threshold.</description>
+							<type>0</type>
+							<manual_close>0</manual_close>
+							<dependencies/>
+							<tags/>
+						</trigger_prototype>
+					</trigger_prototypes>
+					<graph_prototypes/>
+					<host_prototypes/>
+					<jmx_endpoint/>
+				</discovery_rule>
+			</discovery_rules>
+			<httptests/>
+			<macros>
+				<macro>
+					<macro>{$IPMI_THRESHOLD_SENSOR_TYPES}</macro>
+					<value>Temperature,Voltage,Current,Fan</value>
+				</macro>
+				<macro>
+					<macro>{$MGT_IP}</macro>
+					<value>localhost</value>
+				</macro>
+				<macro>
+					<macro>{$MGT_PASSWORD}</macro>
+					<value>password</value>
+				</macro>
+				<macro>
+					<macro>{$MGT_USER}</macro>
+					<value>admin</value>
+				</macro>
+			</macros>
+			<templates/>
+			<screens/>
+		</template>
+	</templates>
+</zabbix_export>

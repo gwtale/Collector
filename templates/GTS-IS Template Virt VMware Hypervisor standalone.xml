@@ -1168,32 +1168,32 @@
 					</item_prototypes>
 					<trigger_prototypes>
 						<trigger_prototype>
-							<expression>{GTS-IS Template Virt VMware Hypervisor standalone:vmware.hv.datastore.read[{$URL},{HOST.HOST},{#DATASTORE},latency].min(15m)}&gt;99</expression>
+							<expression>{GTS-IS Template Virt VMware Hypervisor standalone:vmware.hv.datastore.read[{$URL},{HOST.HOST},{#DATASTORE},latency].min(30m)}&gt;120</expression>
 							<recovery_mode>0</recovery_mode>
 							<recovery_expression/>
-							<name>VMware datastore {#DATASTORE} - Read latency too high for 15min</name>
+							<name>VMware datastore {#DATASTORE} - Read latency too high (over 120ms for 30min)</name>
 							<correlation_mode>0</correlation_mode>
 							<correlation_tag/>
 							<url/>
 							<status>0</status>
 							<priority>2</priority>
-							<description/>
+							<description>Datastore have over 120ms read latency for the past 30min.</description>
 							<type>0</type>
 							<manual_close>0</manual_close>
 							<dependencies/>
 							<tags/>
 						</trigger_prototype>
 						<trigger_prototype>
-							<expression>{GTS-IS Template Virt VMware Hypervisor standalone:vmware.hv.datastore.write[{$URL},{HOST.HOST},{#DATASTORE},latency].min(15m)}&gt;99</expression>
+							<expression>{GTS-IS Template Virt VMware Hypervisor standalone:vmware.hv.datastore.write[{$URL},{HOST.HOST},{#DATASTORE},latency].min(15m)}&gt;120</expression>
 							<recovery_mode>0</recovery_mode>
 							<recovery_expression/>
-							<name>VMware datastore {#DATASTORE} - Write latency too high for 15min</name>
+							<name>VMware datastore {#DATASTORE} - Write latency too high (over 120ms for 30min)</name>
 							<correlation_mode>0</correlation_mode>
 							<correlation_tag/>
 							<url/>
 							<status>0</status>
 							<priority>2</priority>
-							<description/>
+							<description>Datastore have over 120ms write latency for the past 30min.</description>
 							<type>0</type>
 							<manual_close>0</manual_close>
 							<dependencies/>
@@ -1337,7 +1337,7 @@
 			<tags/>
 		</trigger>
 		<trigger>
-			<expression>{GTS-IS Template Virt VMware Hypervisor standalone:vmware.hv.cpu.usagePerc[{$URL},{HOST.HOST}].min(5m)}&gt;94</expression>
+			<expression>{GTS-IS Template Virt VMware Hypervisor standalone:vmware.hv.cpu.usagePerc[{$URL},{HOST.HOST}].min(15m)}&gt;94</expression>
 			<recovery_mode>0</recovery_mode>
 			<recovery_expression/>
 			<name>Very High CPU usage on ESXi {HOST.NAME}</name>
@@ -1346,14 +1346,14 @@
 			<url/>
 			<status>0</status>
 			<priority>4</priority>
-			<description/>
+			<description>ESXi is using more than 95% of CPU for the past 15min</description>
 			<type>0</type>
 			<manual_close>0</manual_close>
 			<dependencies/>
 			<tags/>
 		</trigger>
 		<trigger>
-			<expression>{GTS-IS Template Virt VMware Hypervisor standalone:vmware.hv.hw.memoryPerc[{$URL},{HOST.HOST}].min(5m)}&gt;94</expression>
+			<expression>{GTS-IS Template Virt VMware Hypervisor standalone:vmware.hv.hw.memoryPerc[{$URL},{HOST.HOST}].min(30m)}&gt;97</expression>
 			<recovery_mode>0</recovery_mode>
 			<recovery_expression/>
 			<name>Very high memory usage on ESXi {HOST.NAME}</name>
@@ -1362,7 +1362,7 @@
 			<url/>
 			<status>0</status>
 			<priority>4</priority>
-			<description/>
+			<description>ESXi using more than 98% of RAM for the past 30min</description>
 			<type>0</type>
 			<manual_close>0</manual_close>
 			<dependencies/>
